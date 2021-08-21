@@ -1,0 +1,50 @@
+
+#tab {
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    margin: 0;
+    display: inline-grid;
+    padding: 4px;
+}
+
+#tab button {
+    text-transform: uppercase;
+    border-radius: 1vh;
+    border: solid 3px #00000000;
+    /*border-width: 3px 20px;*/
+    margin: 4px;
+    padding: 0;
+    background: #579c6f;
+}
+
+@media screen and (max-width: 800px) {
+    #tab button {
+        font-size: 10pt;
+    }
+
+    #tab {
+        grid-template-columns: repeat(3, 1fr);
+        bottom: 90vh;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #tab button {
+        font-size: 11pt;
+    }
+
+    #tab {
+        grid-template-columns: repeat(6, 1fr);
+        bottom: 95vh;
+    }
+}
+
+#tab button[changed=true] {
+    border-color: #7fd57f;
+}
+
+#tab button[changed=false] {
+    /*border: solid 2px #7fd57f;*/
+}

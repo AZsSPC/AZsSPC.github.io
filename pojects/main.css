@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "JB mono";
+    src: url("../fonts/JetBrainsMono-Regular.woff2") format("woff2");
+}
+
+* {
+    font-family: "JB mono", monospace;
+    font-size: 11pt;
+    color: white;
+}
+
+@media screen and (max-width: 800px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #868686;
+        border-radius: 5px;
+        border: 2px solid #2f2f2f;
+    }
+
+    * {
+        font-size: 9pt;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    ::-webkit-scrollbar {
+        width: 18px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #868686;
+        border-radius: 9px;
+        border: 4px solid #2f2f2f;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background: #2f2f2f;
+}
+
+body {
+    background: #2f2f2f;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+*:focus {
+    outline: none;
+}
