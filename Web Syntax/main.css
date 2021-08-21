@@ -1,0 +1,89 @@
+.edit_pane {
+    font-family: Calibri, monospace;
+    white-space: pre-wrap;
+    background: #2f2f2f;
+    border-top: 5px solid #2f2f2f;
+    border-bottom: 5px solid #2f2f2f;
+    height: 90vh;
+    overflow-y: scroll;
+    padding: 0;
+}
+
+@media screen and (max-width: 1000px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #868686;
+        border-radius: 5px;
+        border: 2px solid #2f2f2f;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #868686;
+        border-radius: 10px;
+        border: 5px solid #2f2f2f;
+    }
+}
+
+::-webkit-scrollbar-track {
+    background: #2f2f2f;
+}
+
+body {
+    background: #3b3b3b;
+    color: white;
+    padding: 0;
+    margin: 0;
+}
+
+.red {
+    color: #ea6262
+}
+
+.blue {
+    color: #92adf1
+}
+
+.green {
+    color: #7fd57f
+}
+
+[changed=true] {
+    color: red
+}
+
+[changed=false] {
+    color: green
+}
+
+.edit_pane ::marker {
+    display: none;
+}
+
+li {
+    background: #424242;
+}
+
+.edit_pane {
+    counter-reset: item;
+    list-style-type: none;
+}
+
+li:before {
+    display: inline-block;
+    min-width: 42px;
+    content: " " counter(item) " ";
+    counter-increment: item;
+    color: #7f7f7f;
+    background: #2f2f2f;
+    margin-right: .5rem;
+    text-align: right;
+}
