@@ -1,4 +1,5 @@
 /** Edit Panes's */ let eps, epb;
+initEP();
 
 /** initialization all edit_pane's for future */
 function initEP() {
@@ -46,4 +47,3 @@ runOnKeys(function () {
     for (let i = 0; i < epb.length; i++) epb[i].setAttribute("changed", "false");
 }, "AltLeft", "ShiftLeft", "KeyF");
 
-initEP();
