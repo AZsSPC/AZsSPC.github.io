@@ -13,17 +13,37 @@ function initEP() {
 
 /** on [Edit Pane Input] detected */
 function onEPI(ep) {
-    console.log(ep.innerHTML)
     if (ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '</li><li>' + ep.innerText;
-    ep.innerHTML = ('<li>' + ep.innerHTML.replaceAll(/<li>/gim, '\n').replaceAll(/<.+?>/gim, '')
-            .replaceAll(/\bfasdg\b/gim, '<span class="blue">$&</span>')
-            .replaceAll(/\basd\b/gim, '<span class="red">$&</span>')
-            .replaceAll(/\b(\w)*?b(\w)*?\b/gim, '<span class="green">$&</span>')
-            .replaceAll(/\n/gim, '</li><li>')
+    ep.innerHTML = ('<li>' + ep.innerHTML.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '')
+            .replaceAll(/\bfasdg\b/gm, '<span class="blue">$&</span>')
+            .replaceAll(/\basd\b/gm, '<span class="red">$&</span>')
+           // .replaceAll(/\b(\w)*?b(\w)*?\b/gm, '<span class="green">$&</span>')
+            .replaceAll(/\n/gm, '</li><li>')
         + '</li>').substr(9);
-    console.log(ep.innerHTML)
 }
 
+function runOnKeys(func, ...codes) {
+    let pressed = new Set();
+
+    document.addEventListener('keydown', function (event) {
+        pressed.add(event.code);
+        //console.log(pressed)
+        for (let code of codes) if (!pressed.has(code)) return;
+        pressed.clear();
+        func();
+    });
+
+    document.addEventListener('keyup', function (event) {
+        pressed.delete(event.code);
+    });
+
+}
+
+//runOnKeys(function () { console.log('pressed')}, "KeyQ", "ControlLeft");
+runOnKeys(function () {
+    console.log('pressed')
+    for (let i = 0; i < eps.length; i++) onEPI(eps[i])
+}, "AltLeft", "ShiftLeft", "KeyF");
 /*
 function saveRangePosition(ep) {
     let range = window.getSelection().getRangeAt(0);
