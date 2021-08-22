@@ -51,3 +51,12 @@ body {
 *:focus {
     outline: none;
 }
+
+button {
+    border-radius: 8px;
+    border: solid 4px #00000000;
+    /*border-width: 3px 20px;*/
+    margin: 4px;
+    padding: 0;
+    background: #579c6f;
+}

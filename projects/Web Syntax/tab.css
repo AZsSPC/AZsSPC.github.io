@@ -11,11 +11,6 @@
 
 #tab button {
     text-transform: uppercase;
-    border-radius: 1vh;
-    border: solid 3px #00000000;
-    /*border-width: 3px 20px;*/
-    margin: 4px;
-    padding: 0;
     background: #579c6f;
 }
 

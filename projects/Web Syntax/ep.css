@@ -9,19 +9,6 @@
     bottom: 0;
     position: fixed;
     margin: 0;
-    text-transform: full-size-kana;
-}
-
-.red {
-    color: #ea6262
-}
-
-.blue {
-    color: #92adf1
-}
-
-.green {
-    color: #7fd57f
 }
 
 .edit_pane ::marker {
