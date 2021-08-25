@@ -1,0 +1,23 @@
+#project_list {
+    display: grid;
+}
+
+@media screen and (max-width: 800px) {
+    #project_list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    #project_list {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.plist_tile {
+    border: white solid 1px;
+}
+
+.plist_tile > p {
+    margin: 4px
+}

@@ -1,0 +1,191 @@
+s_{x} = x - x_{0}
+\vec v = \frac{\vec s}{t}
+v_{средн.} = \frac{s}{t}
+x = x_{0} + v_{x} t
+\vec a = \frac{\vec v - \vec v_{0}}{t}
+\vec v = \vec v_{0} + \vec a t
+\vec s = \frac{\vec v + \vec v_{0}}{2} t
+\vec s = \vec v_{0} t + \frac{\vec a t^2}{2}
+s_{x} = \frac{v^2_{x} - v^2_{0 x}}{2 a_{x}}
+x = x_{0} + v_{0} t + \frac{a t^2}{2}
+
+\nu = \frac{N}{t}
+T = \frac{t}{N}
+T = \frac{1}{\nu}
+v = \frac{s}{t}
+v = \frac{2 \pi r}{T}
+v = 2 \pi r \nu
+\omega = \frac{\varphi}{t}
+\omega = \frac{2 \pi}{T}
+\omega = 2 \pi \nu
+v = \omega r
+a = \frac{v^2}{r}
+a = \omega^2 r
+\vec a = \frac{\vec F_{R}}{m}
+\vec F_{1} = - \vec F_{2}
+F_{трения} = \mu N
+F_{упругости} = - k x
+\vec F = m \vec g
+\vec P = m \vec g
+\vec P = m \left( \vec g - \vec a \right)
+F = G \frac{m_{1} m_{2}}{r^2}
+g = G \frac{M}{\left( R + h \right)^2}
+\upsilon = \sqrt{G \frac{M}{R}}
+\frac{F} t = m \vec v - m \vec v_{0}
+m_{1} \vec v_{1} + m_{2} \vec v_{2} = m_{1} \vec v_{1} + m_{2} \vec v_{2}
+
+M = F d
+\sum_{i=1}^n \vec F_{i} = \vec 0
+\sum_{i=1}^n M_{i} = 0
+
+\rho = \frac{m}{V}
+p = \frac{F}{S}
+p = \rho g h
+F_{давления \ дно} = \rho g H S
+F_{давления \ бок} = \frac{\rho g H S}{2}
+\frac{h_{1}}{h_{2}} = \frac{\rho_{2}}{\rho_{1}}
+F_{A} = \rho g V
+F_{2} = \frac{F_{1} S_{2}}{S_{1}}
+A = F s \cos \alpha
+A = - F_{трения} s
+A = m g \left( h_{1} - h_{2} \right)
+A = \frac{k \left( x^2_{1} - x^2_{2} \right)}{2}
+N = F v
+N = \frac{A}{t}
+E_{кин.} = \frac{m v^2}{2}
+E_{пот.} = m g h
+E_{пот.} = \frac{k x^2}{2}
+E = E_{кин.} + E_{пот.}
+A = \frac{m \left( v^2_{2} - v^2_{1} \right)}{2}
+\eta = \frac{A_{n}}{A} = \frac{N_{n}}{N}
+
+x = A \sin \left( \omega t + \varphi_{0} \right)
+v_{x} = v_{m} \cos \left( \omega t + \varphi_{0} \right)
+a_{x} = - a_{m} \sin \left( \omega t + \varphi_{0} \right)
+\omega = 2 \pi \nu = \frac{2 \pi}{T}
+T = \frac{1}{\nu}
+v_{m} = \omega A
+a_{m} = - \omega^2 A
+T = 2 \pi \sqrt{\frac{m}{k}}
+T = 2 \pi \sqrt{\frac{l}{g}}
+\frac{k A^2}{2} = \frac{m v^2_{x} + k x^2}{2} = \frac{m v^2_{m}}{2}
+\lambda = v T
+
+\nu = \frac{N}{N_{A}} = \frac{m}{M}
+M = m_{0} N_{A}
+p = \frac{n m_{0} \bar v^2}{3}
+p = \frac{2 n \bar E}{3}
+p = n k T
+\bar E = \frac{3 k T}{2}
+v = \sqrt{\frac{3 R T}{M}}
+p V = \frac{m R T}{M}
+
+U = \frac{i m R T}{2 M}
+Q = c m \left( t_{2} - t_{1} \right)
+C = c m
+Q_{n} = r m
+Q_{плавления} = \lambda m
+Q_{сгорания} = - q m
+A = p \Delta V
+Q = \Delta U + A
+\sum_{i=1}^n Q_{i} = 0
+\eta = \frac{A}{Q_{1}} = \frac{Q_{1} - Q_{2}}{Q_{1}}
+\eta = \frac{T_{1} - T_{2}}{t_{1}}
+
+F = \frac{k \left| q_{1} \right| \left| q_{2} \right|}{\varepsilon r^2}
+k = \frac{1}{4 \pi \varepsilon_{0}}
+\vec E = \frac{\vec F}{q}
+E = \frac{k \left| q \right|}{\varepsilon r^2}
+E = \frac{k \left| q_{шара} \right|}{\varepsilon \left( R + r \right)^2}
+\vec E = \sum_{i=1}^n \vec E_{i}
+\varphi = \frac{W_{пот.}}{q}
+\varphi = \frac{k q}{\varepsilon r}
+\varphi = \frac{k q_{шара}}{\varepsilon \left( R + r \right)}
+\varphi = E d
+\varphi = \sum_{i=1}^n \varphi_{i}
+A = q \left( \varphi_{1} - \varphi_{2} \right) = q U
+E = \frac{E}{d}
+C = \frac{q}{U}
+C = \frac{\varepsilon \varepsilon_{0} S}{d}
+C = \sum_{i=1}^n C_{i}
+\frac{1}{C} = \sum_{i=1}^n \frac{1}{C_{i}}
+W = \frac{q U}{2} = \frac{C U^2}{2} = \frac{q^2}{2 C}
+\sigma = \frac{q}{S}
+
+I = \frac{q}{t}
+I = q_{0} n v S
+j = \frac{I}{S}
+I = \frac{U}{R}
+R = \frac{\rho l}{S}
+R = R_{0} \left( 1 + \alpha t \right)
+R = \sum_{i=1}^n R_{i}
+\frac{1}{R} = \sum_{i=1}^n \frac{1}{R_{i}}
+A = I U t = I^2 R t = \frac{U^2 t}{R}
+P = \frac{A}{t} = I U = I^2 R = \frac{U^2}{R}
+Q = I^2 R t
+\mathcal{E} = \frac{A}{q}
+I = \frac{\mathcal{E}}{R + r}
+I = \frac{n \mathcal{E}}{R + r n}
+I = \frac{\mathcal{E}}{R + \frac{r}{n}}
+m = k I t
+
+\hat A = \frac{M_{max}}{I S} = \frac{F_{max}}{I \Delta l}
+F = I B \Delta l \sin \alpha
+F = \left| q \right| v B \sin \alpha
+m v = q B R
+\Phi = B S \cos \alpha
+
+\mathcal{E}_{i} = - \frac{\Delta \Phi}{\Delta t}
+\Phi = L I
+\mathcal{E}_{max} = \omega \Phi
+\mathcal{E}_{самоиндукции} = - \frac{\Delta \Phi}{\Delta t} = - \frac{L \Delta I}{\Delta t}
+\mathcal{E} = B \upsilon l \sin \alpha
+q = \frac{\Delta \Phi}{R}
+
+q = q_{max} \sin \left( \omega t + \varphi_{0} \right)
+u = U_{max} \sin \left( \omega t + \varphi_{0} \right)
+i = I_{max} \cos \left( \omega t + \varphi_{0} \right)
+I_{max} = \omega q_{max}
+T = 2 \pi \sqrt{L C}
+W = \frac{L i^2}{2}
+\frac{q^2_{max}}{C} = \frac{q^2}{C} + \frac{L i^2}{2} = L I^2_{max}
+I = \frac{I_{max}}{\sqrt{2}}
+U = \frac{U_{max}}{\sqrt{2}}
+X_{L} = \omega L
+X_{C} = \frac{1}{\omega C}
+Z = \sqrt{R^2 + \left( X_{L} - X_{C} \right)^2}
+I = \frac{U}{Z}
+
+\frac{\sin \alpha}{\sin \beta} = \frac{n_{2}}{n_{1}} = \frac{v_{1}}{v_{2}}
+n = \frac{c}{v}
+\pm \frac{1}{F} = \pm \frac{1}{f} \pm \frac{1}{d}
+D = \frac{1}{F}
+\Gamma = \frac{H}{h} = \frac{f}{d}
+\Delta_{min} = \frac{\lambda \left( 2 k + 1 \right)}{2}
+\Delta_{max} = k \lambda
+d \sin \varphi = k \lambda
+
+v = \frac{v_{1} + v_{2}}{1 + \frac{v_{1} v_{2}}{c^2}}
+l = l_{0} \sqrt{1 - \frac{v^2}{c^2}}
+\tau = \frac{\tau_{0}}{\sqrt{1 - \frac{v^2}{c^2}}}
+m = \frac{m_{0}}{\sqrt{1 - \frac{v^2}{c^2}}}
+E = m c^2
+
+E = h \nu
+p = m c = \frac{h \nu}{c}
+h \nu = A + \frac{m v^2}{2}
+A = h \nu_{min} = \frac{h c}{\lambda}
+\frac{m v^2}{2} = e U
+h \nu = E_{n} - E_{m}
+\lambda = \frac{h}{m v}
+N = 2^{- \frac{t}{T}} N_{0}
+\Delta M = Z m_{p} + N m_{n} - M_{я}
+E_{связи} = \Delta M c^2
+
+tab \ const \\
+tab \ trigonometry \\
+
+azdatasplit
+
+Все формулы == =
+

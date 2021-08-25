@@ -1,7 +1,7 @@
-function onTextFromCloudLoaded(file, func){
+function onTextFromCloudLoaded(file, func, resType = 'text'){
     let rf = new XMLHttpRequest();
     rf.open("GET", file, false);
-    rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :'');
+    rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null);
     rf.send();
 }
 

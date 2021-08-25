@@ -1,0 +1,136 @@
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Formulaz!</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/AZsSPC/formulaz/main/faz_ic.svg">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: center no-repeat url("https://raw.githubusercontent.com/AZsSPC/formulaz/main/faz_ic.svg");
+        }
+
+        #f_r, #f_b {
+            text-align: center;
+            background-color: #ffefef;
+        }
+
+        #f_b {
+            padding: 8px;
+            background-color: #ba6363;
+        }
+
+        #f_d, .m_c > .m_f {
+            display: none;
+        }
+
+        .m_c, .m_cb {
+            display: inline-block;
+            margin: 3px;
+            padding: 8px;
+            border: solid 1px #ba6363;
+            background-color: #fff;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .m_cb {
+            border-radius: 0;
+            margin: 0;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 999;
+            padding: 36px;
+            border: solid 16px #712a2a;
+        }
+
+        .m_cb > .m_f {
+            display: block !important;
+            margin-top: 46px;
+        }
+
+        button {
+            border-radius: 8px;
+            color: #ba6363;
+            background-color: #fff;
+            border: 1px solid #ba6363;
+            cursor: pointer;
+        }
+
+        button:hover {
+            color: #fff;
+            background-color: #ba6363;
+            border: 1px solid #fff;
+        }
+    </style>
+    <script type="text/javascript"
+            src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div id="f_b"></div>
+<div id="f_r" hidden="hidden"></div>
+<div id="f_d"></div>
+</body>
+<script type="text/javascript">
+    f_d = document.getElementById('f_d');
+    f_r = document.getElementById('f_r');
+    f_b = document.getElementById('f_b');
+
+    function find(charclude){
+        arr = (f_d.textContent || f_d.innerText).split(/\n+/);
+        f_r.innerHTML = '';
+        for(i = 0; i < arr.length; i++) if(arr[i].includes(charclude)){
+            innerMJ = arr[i].split(/==+/, 2);
+            m_c = document.createElement('span');
+            m_c.className = 'm_c';
+            m_c.id = 'm_c-' + i;
+            m_c.setAttribute('onclick', 'smaz(' + i + ')');
+            m_h = document.createElement('span');
+            m_h.className = 'm_h';
+            m_h.innerHTML = '$$' + innerMJ[0] + '$$';
+            m_f = document.createElement('span');
+            m_f.className = 'm_f';
+            m_f.innerHTML = '$$' + innerMJ[1] + '$$';
+            m_c.append(m_h);
+            m_c.append(m_f);
+            f_r.append(m_c);
+        }
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        f_r.hidden = false;
+    }
+
+    function smaz(mi){
+        data = document.getElementById('m_c-' + mi);
+        data.className = (data.className == 'm_c' ?'m_cb' :'m_c');
+    }
+
+    function reload_data(){
+        f_r.hidden = true;
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://raw.githubusercontent.com/AZsSPC/formulaz/main/physic.faz', true);
+        xhr.send();
+        xhr.onreadystatechange = function (){
+            if(xhr.readyState != 4) return;
+            ret_data = (xhr.responseText).split(/\n*azdatasplit\n*/);
+            f_d.innerHTML = ret_data[0];
+            butts = ret_data[1].split(/\n+/);
+            f_b.innerHTML = '';
+            for(i = 0; i < butts.length; i++){
+                if(butts[i].length < 3) continue;
+                bd = butts[i].split(/==+/);
+                button = document.createElement('button');
+                button.innerHTML = bd[0];
+                button.setAttribute('onclick', 'find(\'' + bd[1] + '\')');
+                f_b.append(button);
+                f_b.append(' ');
+            }
+        }
+    }
+
+    reload_data();
+</script>
+</html>
