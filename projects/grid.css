@@ -28,6 +28,10 @@
     padding: 4px;
 }
 
+.plist_tile:hover {
+    background: var(--c-accent-2);
+}
+
 .plist_tile p:not(:first-child) {
     padding: 12px 4px;
     margin: 0 0 44px 0;

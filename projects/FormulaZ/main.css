@@ -1,8 +1,10 @@
-#f_r, #f_b {
+#f_r{
     text-align: center;
+    margin-bottom: 10vh;
 }
 
 #f_b {
+    text-align: center;
     padding: 8px;
     background-color: var(--c-back-head);
 }
