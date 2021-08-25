@@ -22,7 +22,8 @@
 
 .m_c *, .m_cb * {
     color: var(--c-accent-2-d) !important;
-    font-size: 13pt;
+    font-family: MathJax_Math-italic;
+    font-size: 14pt ;
 }
 
 .m_cb {

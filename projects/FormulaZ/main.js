@@ -4,19 +4,18 @@ let DATA;
 let rel_url = 'https://azsspc.github.io/projects/FormulaZ/physic.faz';
 
 function find(included_char){
-    let arr = DATA.formulas;
     f_formulas.innerHTML = '';
-    for(let i = 0; i < arr.length; i++) if(arr[i].includes(included_char)){
-        let innerMJ = arr[i].split(/==+/, 2);
+    for(let i in DATA.formulas) if(DATA.formulas[i].code.includes(included_char) || included_char === '*'){
+        let formula = DATA.formulas[i];
         let m_c = document.createElement('span');
         m_c.className = 'm_c';
         m_c.setAttribute('onclick', 'switchViewMode(this)');
         let m_h = document.createElement('span');
         m_h.className = 'm_h';
-        m_h.innerHTML = '$$' + innerMJ[0] + '$$';
+        m_h.innerHTML = '$$' + formula.code + '$$';
         let m_f = document.createElement('span');
         m_f.className = 'm_f';
-        m_f.innerHTML = '$$' + innerMJ[1] + '$$';
+        m_f.innerHTML = formula.lore;
         m_c.append(m_h);
         m_c.append(m_f);
         f_formulas.append(m_c);
