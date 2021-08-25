@@ -1,12 +1,11 @@
-let f_d = document.getElementById('f_d');
-let f_r = document.getElementById('f_r');
-let f_b = document.getElementById('f_b');
-
-console.log("2")
+let f_formulas = document.getElementById('f_r');
+let f_buttons = document.getElementById('f_b');
+let DATA;
+let rel_url = 'https://azsspc.github.io/projects/FormulaZ/physic.faz';
 
 function find(included_char){
-    let arr = (f_d.textContent || f_d.innerText).split(/\n+/);
-    f_r.innerHTML = '';
+    let arr = DATA.formulas;
+    f_formulas.innerHTML = '';
     for(let i = 0; i < arr.length; i++) if(arr[i].includes(included_char)){
         let innerMJ = arr[i].split(/==+/, 2);
         let m_c = document.createElement('span');
@@ -20,37 +19,35 @@ function find(included_char){
         m_f.innerHTML = '$$' + innerMJ[1] + '$$';
         m_c.append(m_h);
         m_c.append(m_f);
-        f_r.append(m_c);
+        f_formulas.append(m_c);
     }
     MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-    f_r.hidden = false;
+    f_formulas.hidden = false;
 }
 
 function switchViewMode(el){
     el.className = (el.className === 'm_c' ?'m_cb' :'m_c');
 }
 
-function reload_data(url = 'https://azsspc.github.io/projects/FormulaZ/physic.faz'){
-    f_r.hidden = true;
+function reload_data(url = rel_url){
+    rel_url = url;
+    f_formulas.hidden = true;
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.send();
     xhr.onreadystatechange = function (){
         if(xhr.readyState !== 4) return;
-        let ret_data = (xhr.responseText).split(/\n*azdatasplit\n*/);
-        f_d.innerHTML = ret_data[0];
-        let buttons = ret_data[1].split(/\n+/);
-        f_b.innerHTML = '';
-        for(let i = 0; i < buttons.length; i++){
-            if(buttons[i].length < 3) continue;
-            let bd = buttons[i].split(/==+/);
+        console.log(xhr.responseText)
+        DATA = JSON.parse(xhr.responseText);
+        f_buttons.innerHTML = '';
+        for(let i in DATA.buttons){
             let button = document.createElement('button');
-            button.innerHTML = bd[0];
-            button.setAttribute('onclick', 'find(\'' + bd[1] + '\')');
-            f_b.append(button);
-            f_b.append(' ');
+            button.innerHTML = DATA.buttons[i].name;
+            button.setAttribute('onclick', 'find(\'' + DATA.buttons[i].pattern + '\')');
+            f_buttons.append(button);
+            f_buttons.append(' ');
         }
     }
 }
 
-reload_data('https://azsspc.github.io/projects/FormulaZ/physic.faz');
+reload_data('https://azsspc.github.io/projects/FormulaZ/physic.json');
