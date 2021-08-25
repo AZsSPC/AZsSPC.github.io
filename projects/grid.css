@@ -1,5 +1,7 @@
 #project_list {
     display: grid;
+    grid-column-gap: 8px;
+    grid-row-gap: 8px;
 }
 
 @media screen and (max-width: 800px) {
@@ -15,9 +17,34 @@
 }
 
 .plist_tile {
-    border: white solid 1px;
+    background: var(--c-accent-2-d);
+    margin: 0;
+    position: relative;
 }
 
-.plist_tile > p {
-    margin: 4px
+.plist_tile p:first-child {
+    background: var(--c-accent-2);
+    margin: 0;
+    padding: 4px;
+}
+
+.plist_tile p:not(:first-child) {
+    padding: 12px 4px;
+    margin: 0 0 44px 0;
+}
+
+.plist_tile img {
+    height: 32px;
+    margin: 0;
+}
+
+.plist_tile p:last-child {
+    height: 32px;
+    padding: 6px;
+    background: white;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 0;
 }

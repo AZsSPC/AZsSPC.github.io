@@ -147,9 +147,3 @@ main {
 .center {
     text-align: center
 }
-
-.fw {
-    background: var(--c-accent-2);
-}
-.comment {color: var(--c-comment);
-}
