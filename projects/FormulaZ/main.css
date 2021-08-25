@@ -1,0 +1,45 @@
+#f_r, #f_b {
+    text-align: center;
+}
+
+#f_b {
+    padding: 8px;
+    background-color: var(--c-back-head);
+}
+
+#f_d, .m_c > .m_f {
+    display: none;
+}
+
+.m_c, .m_cb {
+    display: inline-block;
+    margin: 4px;
+    padding: 0 8px;
+    background-color: var(--c-accent-2-f);
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.m_c *, .m_cb * {
+    color: var(--c-accent-2-d) !important;
+    font-size: 13pt;
+}
+
+.m_cb {
+    border-radius: 0;
+    margin: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 999;
+    padding: 36px;
+    border: solid 16px var(--c-accent-2-d);
+}
+
+.m_cb > .m_f {
+    display: block !important;
+    margin-top: 46px;
+}
+

@@ -7,6 +7,7 @@
     --c-back-main: #2f2f2f;
     --c-back-head: #232323;
     --c-back-head-split: #474747;
+    --c-back-light: #6d6d6d;
 
     --c-accent: #44ac69;
     --c-accent-2: #ba53b8;
@@ -14,6 +15,8 @@
     --c-accent-2-l: #e753e5;
     --c-accent-d: #2b6d43;
     --c-accent-2-d: #713070;
+    --c-accent-f: #9acda8;
+    --c-accent-2-f: #c194c0;
 
     --c-thumb: #868686;
     --c-null: #00000000;
@@ -75,9 +78,10 @@ button {
     border: solid 4px var(--c-null);
     /*border-width: 3px 20px;*/
     margin: 4px;
-    padding: 0;
+    padding: 0 4px;
     background: var(--c-accent);
     color: white !important;
+    cursor: pointer;
 }
 
 header {

@@ -4,75 +4,25 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Formulaz!</title>
     <link rel="icon" href="https://azsspc.github.io/projects/FormulaZ/faz_ic.svg">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: center no-repeat url("https://azsspc.github.io/projects/FormulaZ/faz_ic.svg");
-        }
-
-        #f_r, #f_b {
-            text-align: center;
-            background-color: #ffefef;
-        }
-
-        #f_b {
-            padding: 8px;
-            background-color: #ba6363;
-        }
-
-        #f_d, .m_c > .m_f {
-            display: none;
-        }
-
-        .m_c, .m_cb {
-            display: inline-block;
-            margin: 3px;
-            padding: 8px;
-            border: solid 1px #ba6363;
-            background-color: #fff;
-            cursor: pointer;
-            border-radius: 8px;
-        }
-
-        .m_cb {
-            border-radius: 0;
-            margin: 0;
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            z-index: 999;
-            padding: 36px;
-            border: solid 16px #712a2a;
-        }
-
-        .m_cb > .m_f {
-            display: block !important;
-            margin-top: 46px;
-        }
-
-        button {
-            border-radius: 8px;
-            color: #ba6363;
-            background-color: #fff;
-            border: 1px solid #ba6363;
-            cursor: pointer;
-        }
-
-        button:hover {
-            color: #fff;
-            background-color: #ba6363;
-            border: 1px solid #fff;
-        }
-    </style>
+    <link rel="stylesheet" href="../../main.css">
+    <link rel="stylesheet" href="main.css">
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
-<div id="f_b"></div>
-<div id="f_r" hidden="hidden"></div>
-<div id="f_d"></div>
+<header>
+    <svg id="icon" viewBox="0 0 125 100" height="10vh" onclick="window.location.href='https://AZsSPC.github.io'">
+        <rect id="icon-r" x="10" y="29" fill="red" width="100" height="42"></rect>
+        <circle id="icon-c" r="36" cx="84" cy="50"></circle>
+        <circle id="icon-cin" r="30" cx="84" cy="50"></circle>
+        <text id="icon-text" font-family="Impact" x="18" y="63" color="red">AZ&nbsp;&nbsp;<tspan>SPC</tspan>
+        </text>
+    </svg>
+</header>
+<main>
+    <div id="f_b"></div>
+    <div id="f_r" hidden="hidden"></div>
+    <div id="f_d"></div>
+</main>
 </body>
 <script type="text/javascript" src="main.js"></script>
 </html>
