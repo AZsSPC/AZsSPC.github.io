@@ -90,6 +90,7 @@ header {
     left: 0;
     right: 0;
     top: 0;
+    height: 10vh;
     bottom: 90vh;
     position: fixed;
     margin: 0;
@@ -106,7 +107,7 @@ main {
     background: var(--c-back-main);
     white-space: normal;
     padding: 0;
-    min-height: 90vh;
+    height: 90vh;
 }
 
 #icon-text {
