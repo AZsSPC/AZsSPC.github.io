@@ -46,6 +46,7 @@ function reload_data(url = rel_url){
             f_buttons.append(button);
             f_buttons.append(' ');
         }
+        find('*')
     }
 }
 

@@ -134,7 +134,10 @@ main {
 }
 
 #icon {
-    margin-left: 16px;
+    left: 16px;
+    top: 0;
+    bottom: 0;
+    position: fixed;
     height: 10vh;
 }
 
@@ -152,4 +155,48 @@ main {
 
 .center {
     text-align: center
+}
+
+nav {
+    height: calc(10vh - 8px);
+    text-align: right;
+    left: calc(10vh + 16px);
+    right: 8px;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+}
+
+nav button {
+    display: inline-block;
+    height: calc(10vh - 16px);
+    padding: 0 4px;
+    margin: 8px 0;
+}
+
+.info-btn {
+    background: var(--c-accent-2);
+    border-radius: 50px;
+}
+
+::marker {
+    content: '• ';
+}
+
+.tree > li::marker {
+    content: none
+}
+
+.tree ul > li::marker {
+    content: '├─';
+    color: var(--c-split)
+}
+
+.tree ul > li:last-child::marker {
+    content: '└─';
+}
+
+ul, ol {
+    counter-reset: section;
+    padding-left: 1rem
 }
