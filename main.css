@@ -94,6 +94,7 @@ header {
     bottom: 90vh;
     position: fixed;
     margin: 0;
+    z-index: 99;
 }
 
 main {
@@ -199,4 +200,35 @@ nav button {
 ul, ol {
     counter-reset: section;
     padding-left: 1rem
+}
+
+#hsl {
+    left: 12px;
+    top: calc(10vh);
+    padding: 0 16px 4px;
+    font-weight: bold;
+    position: relative;
+    background: var(--c-back-head);
+    visibility: visible !important;
+    border-radius: 0 0 20px 20px;
+    border: 2px solid var(--c-back-head-split);
+    border-top: none;
+}
+
+#hsl:hover {
+    background: var(--c-accent-2);
+    border-color: var(--c-accent-2-d);
+}
+
+#navhider:checked ~ header {
+    visibility: hidden;
+}
+
+#navhider:checked ~ main {
+    top: 0
+}
+
+#navhider:checked ~ header > #hsl {
+    padding-top: 4px;
+    top: 4px;
 }

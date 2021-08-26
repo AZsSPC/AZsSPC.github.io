@@ -50,4 +50,4 @@ function reload_data(url = rel_url){
     }
 }
 
-reload_data('https://azsspc.github.io/projects/FormulaZ/physic.json');
+reload_data('https://azsspc.github.io/projects/FormulaZ/sets/physic.json');
