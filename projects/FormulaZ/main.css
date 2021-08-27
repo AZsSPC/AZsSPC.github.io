@@ -1,6 +1,5 @@
 #f_r {
     text-align: center;
-    margin-bottom: 10vh;
 }
 
 #f_b {
@@ -10,8 +9,12 @@
     background-color: var(--c-back-head);
     overflow-x: scroll;
     border-radius: 20px 20px 0 0;
-    padding: 8px 8px 4px;
-    margin: 4px 4px 16px;
+    padding: 8px;
+    margin: 4px;
+}
+
+#f_b button {
+    height: 2rem;
 }
 
 #f_d, .m_c > .m_f {
@@ -21,7 +24,7 @@
 .m_c, .m_cb {
     display: inline-block;
     margin: 4px;
-    padding: 0 8px;
+    padding: 8px;
     background-color: var(--c-accent-2-f);
     cursor: pointer;
     border-radius: 10px;
@@ -42,8 +45,8 @@
     top: 0;
     bottom: 0;
     z-index: 9999;
-    padding: 36px;
-    border: solid 16px var(--c-accent-2-d);
+    padding: 8px;
+    border: solid 8px var(--c-accent-2-d);
 }
 
 .m_cb > .m_f {
@@ -53,4 +56,8 @@
 
 .m_c:hover {
     background: white;
+}
+
+.MathJax_Display {
+    margin: 0 !important;
 }

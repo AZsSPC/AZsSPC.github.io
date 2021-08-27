@@ -39,21 +39,13 @@ function reload_data(url = rel_url){
         console.log(xhr.responseText)
         DATA = JSON.parse(xhr.responseText);
         f_buttons.innerHTML = '';
-
-        for(let i =0;i<20;i++){
-            let button = document.createElement('button');
-            button.innerHTML = DATA.buttons[0].name;
-            button.setAttribute('onclick', 'find(\'' + DATA.buttons[0].pattern + '\')');
-            f_buttons.append(button);
-            f_buttons.append(' ');
-        }/*
         for(let i in DATA.buttons){
             let button = document.createElement('button');
             button.innerHTML = DATA.buttons[i].name;
             button.setAttribute('onclick', 'find(\'' + DATA.buttons[i].pattern + '\')');
             f_buttons.append(button);
             f_buttons.append(' ');
-        }*/
+        }
         find('*')
     }
 }
