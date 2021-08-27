@@ -31,6 +31,13 @@
 .plist_tile:hover {
     background: var(--c-accent-2);
 }
+.plist_tile:hover  p:first-child{
+    background: white;
+    color: var(--c-accent-2-d);
+}
+.plist_tile:hover  p:last-child{
+    background: var(--c-accent-2-d);
+}
 
 .plist_tile p:not(:first-child) {
     padding: 12px 4px;

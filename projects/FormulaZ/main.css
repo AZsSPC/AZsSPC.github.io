@@ -1,12 +1,17 @@
-#f_r{
+#f_r {
     text-align: center;
     margin-bottom: 10vh;
 }
 
 #f_b {
     text-align: center;
-    padding: 8px;
+    overflow: auto;
+    white-space: nowrap;
     background-color: var(--c-back-head);
+    overflow-x: scroll;
+    border-radius: 20px 20px 0 0;
+    padding: 8px 8px 4px;
+    margin: 4px 4px 16px;
 }
 
 #f_d, .m_c > .m_f {
@@ -25,7 +30,7 @@
 .m_c *, .m_cb * {
     color: var(--c-accent-2-d) !important;
     font-family: MathJax_Math-italic;
-    font-size: 14pt ;
+    font-size: 14pt;
 }
 
 .m_cb {
@@ -36,7 +41,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 999;
+    z-index: 9999;
     padding: 36px;
     border: solid 16px var(--c-accent-2-d);
 }
@@ -46,3 +51,6 @@
     margin-top: 46px;
 }
 
+.m_c:hover {
+    background: white;
+}

@@ -107,8 +107,8 @@ main {
     overflow-y: scroll;
     background: var(--c-back-main);
     white-space: normal;
-    padding: 0;
-    height: 90vh;
+    padding: 2rem 0 2rem 1rem;
+    height: calc(90vh - 2rem);
 }
 
 #icon-text {
@@ -148,10 +148,6 @@ main {
 
 [title]:hover, u:hover, a:hover, [title]:hover *, u:hover *, a:hover * {
     color: var(--c-accent-l);
-}
-
-#content {
-    margin: 1vw 4vw;
 }
 
 .center {
@@ -231,4 +227,6 @@ ul, ol {
 #navhider:checked ~ header > #hsl {
     padding-top: 4px;
     top: 4px;
+    background: var(--c-accent-2);
+    border-color: var(--c-accent-2-d);
 }
