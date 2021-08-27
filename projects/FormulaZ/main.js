@@ -44,7 +44,6 @@ function reload_data(url = rel_url){
             button.innerHTML = DATA.buttons[i].name;
             button.setAttribute('onclick', 'find(\'' + DATA.buttons[i].pattern + '\')');
             f_buttons.append(button);
-            f_buttons.append(' ');
         }
         find('*')
     }

@@ -6,16 +6,10 @@
     text-align: center;
     overflow: auto;
     white-space: nowrap;
-    background-color: var(--c-back-head);
     overflow-x: scroll;
     border-radius: 20px 20px 0 0;
-    padding: 8px;
-    margin: 4px;
 }
 
-#f_b button {
-    height: 2rem;
-}
 
 #f_d, .m_c > .m_f {
     display: none;
