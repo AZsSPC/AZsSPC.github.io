@@ -3,7 +3,7 @@ const SETTINGS = [
         'name': 'Web Syntax',
         'path': 'Web Syntax',
         'lore': '(In development)\n\nJust an online editor with highlighted syntax that anyone can change',
-        'enabled': true
+        'enabled': false
     },
     {
         'name': 'Formulaz!',
@@ -24,7 +24,7 @@ for(let i in SETTINGS){
         .replace(/#name/gm, a.name)
         .replace(/#lore/gm, a.lore)
         .replace(/#alt/gm, a.name)
-        .replace(/#img/gm, 'https://AZsSPC.github.io/projects/' + a.path + '/faz_ic.png"').replaceAll('\n','<br>');
+        .replace(/#img/gm, 'https://AZsSPC.github.io/projects/' + a.path + '/faz_ic.png"').replaceAll('\n', '<br>');
         plist.append(tile);
     }
 }
