@@ -10,7 +10,7 @@ ir_h.setAttribute('oninput', 'spt(1)');
 let points = [{'x': 0, 'y': 125, 'z': 0}]
 let p_m;
 simg.setAttribute('crossOrigin', '');
-sc.drawImage(simg, 0, 0);
+sc.drawImage(simg, 0, 0, 144, 72);
 
 draw();
 
