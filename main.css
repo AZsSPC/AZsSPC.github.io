@@ -92,8 +92,8 @@ header {
     left: 0;
     right: 0;
     top: 0;
-    height: 10vh;
-    bottom: 90vh;
+    height: 48px;
+    bottom: calc(100vh - 48px);
     position: fixed;
     margin: 0;
     z-index: 99;
@@ -102,7 +102,7 @@ header {
 main {
     left: 0;
     right: 0;
-    top: 10vh;
+    top: 48px;
     bottom: 0;
     position: fixed;
     margin: 0;
@@ -110,7 +110,7 @@ main {
     background: var(--c-back-main);
     white-space: normal;
     padding: 2rem 0 2rem 1rem;
-    height: calc(90vh - 2rem);
+    height: calc(100vh - 48px - 4rem);
 }
 
 #icon-text {
@@ -141,7 +141,7 @@ main {
     top: 0;
     bottom: 0;
     position: fixed;
-    height: 10vh;
+    height: 48px;
 }
 
 [title], u, a, [title] *, u *, a * {
@@ -157,7 +157,7 @@ main {
 }
 
 nav {
-    height: calc(10vh - 8px);
+    height: 48px;
     text-align: right;
     left: calc(10vh + 16px);
     right: 8px;
@@ -168,7 +168,7 @@ nav {
 
 nav button {
     display: inline-block;
-    height: calc(10vh - 16px);
+    height: 32px;
     padding: 0 4px;
     margin: 8px 0;
 }
@@ -202,7 +202,7 @@ ul, ol {
 
 #hsl {
     left: 12px;
-    top: calc(10vh);
+    top: 48px;
     padding: 0 16px 4px;
     font-weight: bold;
     position: relative;
