@@ -3,12 +3,18 @@ const SETTINGS = [
         'name': 'Web Syntax',
         'path': 'Web Syntax',
         'lore': '(In development)\n\nJust an online editor with highlighted syntax that anyone can change',
-        'enabled': false
+        'enabled': true
     },
     {
         'name': 'Formulaz!',
         'path': 'FormulaZ',
         'lore': 'A collection of formulas in physics, mathematics and other subjects with a convenient search',
+        'enabled': true
+    },
+    {
+        'name': 'History Line',
+        'path': 'History Line',
+        'lore': 'Just a line with branches, what being historical events',
         'enabled': true
     }
 ];

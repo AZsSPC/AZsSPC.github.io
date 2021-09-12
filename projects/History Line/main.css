@@ -1,0 +1,39 @@
+.event-line {
+    fill: none;
+    stroke-width: 4;
+}
+
+.event-line-s {
+    fill: none;
+    opacity: .2;
+    stroke-width: 4;
+    stroke-dasharray: 8, 3;
+}
+
+.event-line-t {
+    font-size: 9pt;
+    stroke-width: 0;
+}
+
+.h-line {
+    fill: none;
+    stroke: #adc2cd;
+    stroke-width: 4;
+}
+
+g:hover * {
+    cursor: pointer;
+}
+
+g:hover .event-line-s {
+    opacity: .3;
+}
+
+g:hover .event-line-t {
+    fill: #fff;
+    stroke-width: 0;
+}
+
+g:hover .event-line {
+    stroke-width: 6;
+}
