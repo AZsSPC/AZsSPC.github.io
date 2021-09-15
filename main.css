@@ -168,7 +168,7 @@ nav button {
     display: inline-block;
     height: 32px;
     padding: 0 4px;
-    margin: 8px 0;
+    margin: calc(5vh - 16px) 0;
 }
 
 .info-btn {
