@@ -1,12 +1,17 @@
+
+:root {
+    --gc: 43;
+}
+
 @media (orientation: portrait) {
     :root {
-        --ts: calc((100vw - 36px) / 39);
+        --ts: calc((100vw - 36px) / var(--gc));
     }
 }
 
 @media (orientation: landscape) {
     :root {
-        --ts: calc((100vh - 48px) / 39);
+        --ts: calc((100vh - 72px) / var(--gc));
     }
 }
 
@@ -19,7 +24,7 @@
 #game {
     display: grid;
     border-spacing: 0;
-    grid-template-columns: repeat(39, var(--ts));
+    grid-template-columns: repeat(var(--gc), var(--ts));
     cursor: pointer;
     padding: 3px;
     width: fit-content;
@@ -34,13 +39,13 @@
     text-align: center;
     line-height: var(--ts);
     display: inline-grid;
-    color: #828282;
+    color: #fff;
 }
 
 #game > *:nth-child(2n) {
-    background: rgba(36, 36, 36, 0.9);
+    background: rgba(30, 30, 30, 0.8);
 }
 
 #game > *:not(:nth-child(2n)) {
-    background: rgba(23, 23, 23, 0.9);
+    background: rgba(25, 25, 25, 0.8);
 }
