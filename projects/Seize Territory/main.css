@@ -1,6 +1,6 @@
 @media (orientation: portrait) {
     :root {
-        --ts: calc((100vw - 36px) / 39);
+        --ts: calc((100vw - 48px) / 39);
     }
 }
 

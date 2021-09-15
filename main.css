@@ -92,6 +92,7 @@ header {
     left: 0;
     right: 0;
     top: 0;
+    height: 10vh;
     bottom: 90vh;
     position: fixed;
     margin: 0;
@@ -155,7 +156,7 @@ main {
 }
 
 nav {
-    height: 10vh;
+    height: 100%;
     text-align: right;
     left: calc(10vh + 16px);
     right: 8px;
