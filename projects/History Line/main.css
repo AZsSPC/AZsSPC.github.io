@@ -11,14 +11,14 @@
 }
 
 .event-line-t {
-    font-size: 9pt;
     stroke-width: 0;
+    font-size: 9pt;
 }
 
 .h-line {
     fill: none;
-    stroke: #adc2cd;
     stroke-width: 4;
+    stroke: #adc2cd;
 }
 
 g:hover * {

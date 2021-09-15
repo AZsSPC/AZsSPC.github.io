@@ -92,8 +92,7 @@ header {
     left: 0;
     right: 0;
     top: 0;
-    height: 48px;
-    bottom: calc(100vh - 48px);
+    bottom: 90vh;
     position: fixed;
     margin: 0;
     z-index: 99;
@@ -102,7 +101,7 @@ header {
 main {
     left: 0;
     right: 0;
-    top: 48px;
+    top: 10vh;
     bottom: 0;
     position: fixed;
     margin: 0;
@@ -110,7 +109,6 @@ main {
     background: var(--c-back-main);
     white-space: normal;
     padding: 2rem 0 2rem 1rem;
-    height: calc(100vh - 48px - 4rem);
 }
 
 #icon-text {
@@ -141,7 +139,7 @@ main {
     top: 0;
     bottom: 0;
     position: fixed;
-    height: 48px;
+    height: 10vh;
 }
 
 [title], u, a, [title] *, u *, a * {
@@ -157,7 +155,7 @@ main {
 }
 
 nav {
-    height: 48px;
+    height: 10vh;
     text-align: right;
     left: calc(10vh + 16px);
     right: 8px;
@@ -202,7 +200,7 @@ ul, ol {
 
 #hsl {
     left: 12px;
-    top: 48px;
+    top: calc(10vh - 2px);
     padding: 0 16px 4px;
     font-weight: bold;
     position: relative;
@@ -227,8 +225,7 @@ ul, ol {
 }
 
 #navhider:checked ~ header > #hsl {
-    padding-top: 4px;
-    top: 4px;
+    top: 0;
     background: var(--c-accent-2);
     border-color: var(--c-accent-2-d);
 }

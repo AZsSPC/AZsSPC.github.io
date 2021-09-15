@@ -1,0 +1,32 @@
+:root {
+    --ts: 24px;
+}
+
+#game {
+    display: grid;
+    border-spacing: 0;
+    grid-template-columns: repeat(63, var(--ts));
+    cursor: pointer;
+    border: dotted 5px #00f;
+
+}
+
+#game > * {
+    font-size: var(--ts);
+    width: var(--ts);
+    height: var(--ts);
+    text-align: center;
+    line-height: var(--ts);
+    display: block;
+    align-self: center;
+    justify-self: center;
+    color: #828282;
+}
+
+#game > *:nth-child(2n) {
+    background: #555555;
+}
+
+#game > *:not(:nth-child(2n)) {
+    background: #393939;
+}

@@ -16,6 +16,12 @@ const SETTINGS = [
         'path': 'History Line',
         'lore': 'Just a line with branches, what being historical events',
         'enabled': true
+    },
+    {
+        'name': 'Terr\'ize!',
+        'path': 'Seize Territory',
+        'lore': 'One-device multiplayer game',
+        'enabled': true
     }
 ];
 const TILE = '<p translate="no">#name</p><p>#lore</p><p><img src="#img" alt="#alt"></p>';
