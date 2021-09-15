@@ -1,6 +1,6 @@
 @media (orientation: portrait) {
     :root {
-        --ts: calc((100vw - 24px) / 39);
+        --ts: calc((100vw - 36px) / 39);
     }
 }
 
@@ -28,6 +28,7 @@
 }
 
 #game > * {
+    font-size: calc(var(--ts) * .8);
     width: var(--ts);
     height: var(--ts);
     text-align: center;
