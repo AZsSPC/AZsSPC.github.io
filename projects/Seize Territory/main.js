@@ -1,4 +1,4 @@
-const players = 4;
+const players = 3;
 const gc = 43;
 const Q_space = -1;
 const Q_wall = -2;
