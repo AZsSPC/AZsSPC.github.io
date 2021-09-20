@@ -15,6 +15,20 @@
     color: #e57926
 }
 
+.yellow {
+    color: #ffd800
+}
+
+.magenta {
+    color: #d297ff;
+}
+
 .comment {
-    color: #37725d
+    color: #8d8d8d !important;
+    background: #4c4c4c;
+}
+
+.string {
+    color: #7fd57f !important;
+    background: #484e48;
 }

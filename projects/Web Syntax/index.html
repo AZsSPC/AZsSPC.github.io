@@ -1,21 +1,25 @@
 <html lang="ru">
 <head>
     <title>Web Syntax</title>
-    <script type="text/javascript" src="https://azsspc.github.io/az.js"></script>
+    <script type="text/javascript" src="../../az.js"></script>
     <script type="text/javascript">settings();</script>
+    <link rel="stylesheet" href="synt.css">
 </head>
 <body>
 <script type="text/javascript">header();</script>
 <main>
     <div id="tab">
-        <button for="ep" class="edit_pane_refresh" title="Reformatting code using regex">reformat</button>
-        <button for="ep" class="edit_pane_download" title="Download this code as you need">download</button>
-        <button for="ep" class="edit_pane_upload" title="Upload file here! (syntax automatically changed)">upload</button>
-        <button for="ep" class="edit_pane_syntax" title="Change syntax">syntax</button>
-        <button for="ep" class="edit_pane_about" title="About project">about</button>
-        <button for="ep" class="edit_pane_author" title="AZsSPC">author</button>
+        <button id="edit_pane_refresh" title="Reformatting code using regex">reformat</button>
+        <button id="edit_pane_download" title="Download this code as you need">download</button>
+        <button id="edit_pane_upload" title="Upload file here! (syntax automatically changed)">upload</button>
+        <button id="edit_pane_syntax" title="Change syntax">syntax</button>
+        <button id="edit_pane_about" title="About project">about</button>
+        <button id="edit_pane_author" title="AZsSPC">author</button>
     </div>
-    <ol id="ep" class="edit_pane" contenteditable="true"></ol>
+    <div id="ec">
+        <ol id="epf"><li></li></ol>
+        <ol id="ep" contenteditable="PLAINTEXT-ONLY"><li></li></ol>
+    </div>
 </main>
 </body>
 </html>

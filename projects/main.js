@@ -2,7 +2,7 @@ const SETTINGS = [
     {
         'name': 'Web Syntax',
         'path': 'Web Syntax',
-        'lore': '(In development)\n\nJust an online editor with highlighted syntax that anyone can change',
+        'lore': 'Just an online editor with highlighted syntax that anyone can change.\n(Only JS, baggy)',
         'enabled': true
     },
     {

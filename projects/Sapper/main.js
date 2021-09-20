@@ -1,65 +1,89 @@
-const players = 2;
-let q = 0;
-let game = document.getElementById('game');
-for(let x = 0; x < 63 * 32; x++){
-    let tile = document.createElement('span');
-    tile.setAttribute('onclick', 'step(this)');
-    tile.innerText = '+';
-    game.append(tile);
-}
+const gc = 21;
+const BOMB = -1;
+const FLAG = -2;
+const EMPTY = 0;
+let game;
+let tiles = [];
+let search = [-1, 1, gc - 1, gc + 1, -1 - gc, 1 - gc, gc, -gc, 0];
 
-function step(el){
-    el.innerText = gms(q);
-    sep(el, 'background', gmc(q));
-    sep(el, 'color', 'white');
-    sep(game, 'border', 'dotted 5px #' + gmc(q + 1));
-    if(++q >= players) q = 0;
-}
-
-function sep(el, p, v){
-    el.style.setProperty(p, v);
+function setup(){
+    game = document.getElementById('game');
+    tiles = new Array(gc ** 2);
+    for(let x = 0; x < gc ** 2; x++){
+        let tile = document.createElement('span');
+        tile.setAttribute('onclick', 'find(' + x + ')');
+        tiles[x] = {v: (Math.random() * 100 < 10 ?BOMB :EMPTY), c: false};
+        game.append(tile);
+    }
+    for(let x = 0; x < gc ** 2; x++)
+        if(tiles[x].v !== BOMB){
+            let b = 0;
+            for(let i = 0; i < 8; i++){
+                let pos = x + search[i];
+                if(pos >= 0 && pos < gc ** 2 && tiles[pos].v === BOMB) b++;
+            }
+            tiles[x].v = b;
+        }
 }
 
 function gmc(id = 0){
-    id = id % players;
     switch(id){
         default:
-            return '#ff6f85';
-        case  1:
-            return '#95f';
-        case  2:
-            return '#9af';
-        case  3:
-            return '#9a0';
-        case  4:
-            return '#f0a';
-        case  5:
-            return '#ff5';
-        case  6:
-            return '#b0a';
-        case  7:
-            return '#84e';
+            return '#797979';
+        case 0:
+            return '#d7d7d7';
+        case 1:
+            return '#2f4de7';
+        case 2:
+            return '#1ec205';
+        case 3:
+            return '#de1c59';
+        case 4:
+            return '#8d0de0';
+        case 5:
+            return '#e88d00';
+        case 6:
+            return '#cd4ead';
+        case 7:
+            return '#8daf13';
+        case 8:
+            return '#007d02';
+        case BOMB:
+            return '#000000';
+        case FLAG:
+            return '#af8989';
     }
 }
 
 function gms(id = 0){
-    id = id % players;
     switch(id){
         default:
-            return '0';
-        case  1:
-            return '1';
-        case  2:
-            return '2';
-        case  3:
-            return '3';
-        case  4:
-            return '4';
-        case  5:
-            return '5';
-        case  6:
-            return '6';
-        case  7:
-            return '7';
+            return id + '';
+        case 0:
+            return '';
+        case BOMB:
+            return '*';
+        case FLAG:
+            return '?';
     }
 }
+
+function set(id){
+    let el = game.children[id];
+    tiles[id].c = true;
+    el.innerText = gms(tiles[id].v);
+    el.style.setProperty('background', gmc(tiles[id].v));
+    el.setAttribute('onclick', '');
+}
+
+function find(id){
+    for(let i = 0; i < 9; i++){
+        let pos = id + search[i];
+        if(pos >= 0 && pos < gc ** 2 && tiles[pos].v !== BOMB){
+            if(tiles[pos].v !== EMPTY && !tiles[pos].c) set(pos);
+            if(tiles[pos].v === EMPTY) find(pos);
+        }
+    }
+}
+
+setup();

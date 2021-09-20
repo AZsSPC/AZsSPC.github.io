@@ -51,14 +51,11 @@ function step(el, ignore = false){
     if(++querry >= players) querry = 0;
 
     for(let x = 0; x < gc ** 2; x++) if(gmq(tiles[x].innerText) === Q_hint) set(x, Q_space)
-    for(let x = 0; x < gc ** 2; x++){
-        if(gmq(tiles[x].innerText) === querry)
-            for(let i = 0; i < 4; i++){
-                let pos = x + fm[i];
-                if(pos >= 0 && gmq(tiles[pos].innerText) === Q_space)
-                    set(pos, Q_hint)
-            }
+    for(let x = 0; x < gc ** 2; x++) if(gmq(tiles[x].innerText) === querry) for(let i = 0; i < 4; i++){
+        let pos = x + fm[i];
+        if(pos >= 0 && gmq(tiles[pos].innerText) === Q_space) set(pos, Q_hint)
     }
+
 }
 
 function set(id, q){
