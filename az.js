@@ -30,15 +30,15 @@ function header(){
     document.write(
         '<input type="checkbox" id="navhider" hidden>\n' +
         '<header>\n' +
-        '    <img id="icon" src="../../img/icon.png" onclick="window.location.href=\'https://AZsSPC.github.io\'"/>\n' +
-        '    <nav>\n' +
-        '        <button onclick="window.location.href=\'https://AZsSPC.github.io/projects\'">projects</button>\n' +
-        '        <button onclick="window.location.href=\'https://AZsSPC.github.io/contacts\'">contacts</button>\n' +
-        '        <button onclick="window.location.href=\'https://AZsSPC.github.io/info\'" class="info-btn" translate="no">info\n' +
-        '        </button>\n' +
-        '    </nav>\n' +
-        '    <label id="hsl" for="navhider"></label>\n' +
-        '</header>'
+        '<img id="icon" src="https://AZsSPC.github.io/img/icon.png" onclick="window.location.href=\'https://AZsSPC.github.io\'"/>\n' +
+        '<nav>\n' +
+        '<button onclick="window.location.href=\'' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/AZsSPC/AZsSPC.github.io/blob/main')) + '\'" class="b-btn">&lt;/&gt;</button>\n' +
+        '<button onclick="window.location.href=\'https://AZsSPC.github.io/projects\'" class="m-btn">projects</button>\n' +
+        '<button onclick="window.location.href=\'https://AZsSPC.github.io/contacts\'">@</button>\n' +
+        '<button onclick="window.location.href=\'https://AZsSPC.github.io/info\'" translate="no">i</button>\n' +
+        '</nav>\n' +
+        '<label id="hsl" for="navhider"></label>\n' +
+        '</header>\n'
     );
 }
 
@@ -46,9 +46,9 @@ function settings(){
     document.write(
         '<meta charset="utf-8">\n' +
         '<meta name="viewport" content="width=device-width,initial-scale=1"/>\n' +
-        '<link rel="icon" href="https://azsspc.github.io/projects/FormulaZ/ic.png">\n' +
-        '<link rel="stylesheet" href="https://azsspc.github.io/main.css">\n' +
-        '<link rel="stylesheet" href="main.css">'
+        '<link rel="icon" href="https://azsspc.github.io/img/fic.png">\n' +
+        '<link rel="stylesheet" href="https://AZsSPC.github.io/main.css">\n' +
+        '<link rel="stylesheet" href="main.css">\n'
     );
 }
 

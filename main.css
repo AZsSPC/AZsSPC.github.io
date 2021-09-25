@@ -10,13 +10,17 @@
     --c-back-light: #6d6d6d;
 
     --c-accent: #44ac69;
-    --c-accent-2: #ba53b8;
     --c-accent-l: #4adb7e;
-    --c-accent-2-l: #e753e5;
     --c-accent-d: #2b6d43;
-    --c-accent-2-d: #713070;
     --c-accent-f: #9acda8;
+    --c-accent-2: #ba53b8;
+    --c-accent-2-l: #e753e5;
+    --c-accent-2-d: #713070;
     --c-accent-2-f: #c194c0;
+    --c-accent-3: #53a7d2;
+    --c-accent-3-l: #0ebdff;
+    --c-accent-3-d: #0d73c2;
+    --c-accent-3-f: #9ab3cd;
 
     --c-thumb: #868686;
     --c-null: #00000000;
@@ -82,7 +86,7 @@ button {
     margin: 4px;
     padding: 0 4px;
     background: var(--c-accent);
-    color: white !important;
+    color: white;
     cursor: pointer;
 }
 
@@ -136,11 +140,11 @@ main {
 }
 
 #icon {
-    left: 16px;
-    top: 0;
-    bottom: 0;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
     position: fixed;
-    height: 10vh;
+    height: calc(10vh - 16px);
 }
 
 [title], u, a, [title] *, u *, a * {
@@ -170,11 +174,31 @@ nav button {
     height: 32px;
     padding: 0 4px;
     margin: calc(5vh - 16px) 0;
+    border-radius: 50px;
+    background: var(--c-accent);
 }
 
-.info-btn {
+nav button:hover {
+    background: white;
+    color: var(--c-accent-d);
+}
+
+nav button.m-btn {
     background: var(--c-accent-2);
-    border-radius: 50px;
+}
+
+nav button.m-btn:hover {
+    background: white;
+    color: var(--c-accent-2-d);
+}
+
+nav button.b-btn {
+    background: var(--c-accent-3);
+}
+
+nav button.b-btn:hover {
+    background: white;
+    color: var(--c-accent-3-d);
 }
 
 ::marker {

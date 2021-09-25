@@ -22,26 +22,20 @@
     position: relative;
 }
 
-.plist_tile p:first-child {
-    background: var(--c-accent-2);
+.plist_tile {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+}
+
+.plist_tile p {
     margin: 0;
-    padding: 4px;
 }
 
-.plist_tile:hover {
-    background: var(--c-accent-2);
-}
-.plist_tile:hover  p:first-child{
-    background: white;
-    color: var(--c-accent-2-d);
-}
-.plist_tile:hover  p:last-child{
-    background: var(--c-accent-2-d);
-}
-
-.plist_tile p:not(:first-child) {
-    padding: 12px 4px;
-    margin: 0 0 44px 0;
+.plist_tile:hover p:nth-child(1):before {
+    content: '> ';
+    transition-duration: 1s;
+    transition-delay: 1s;
 }
 
 .plist_tile img {
@@ -49,13 +43,35 @@
     margin: 0;
 }
 
-.plist_tile p:last-child {
-    height: 32px;
+.plist_tile p:nth-child(1) {
+    transition-duration: 1s;
+    transition-delay: 1s;
+    background: var(--c-accent-2);
+    margin: 0;
+    padding: 4px;
+    height: fit-content;
+}
+
+.plist_tile p:nth-child(2) {
     padding: 6px;
+    height: auto;
+}
+
+.plist_tile p:nth-child(3) {
+    height: fit-content;
+    padding: 2px;
     background: white;
-    bottom: 0;
-    position: absolute;
+    position: center;
     right: 0;
     left: 0;
     margin: 0;
+    bottom: 0;
+}
+
+.plist_tile p:nth-child(3) button {
+    font-size: 8pt;
+    border-radius: 10px;
+    padding: 0 4px;
+    margin: 2px;
+    border-width: 1px;
 }
