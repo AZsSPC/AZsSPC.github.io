@@ -1,34 +1,42 @@
-/** Edit Panes's */ let ep, epf, epb_reformat, epb_download;
+/** Edit Panes's */ let ep, epf, epb_reformat, epb_download, epb_syntax;
 
 const AZR_NB = '[^\\s<>\\[\\]{}();:|\\\\/]', AZR_B = '[\\s<>\\[\\]{}();:|\\\\/]';
-let syntax = {
-    color: [
-        {p: '(?<=\\bfunction) +[a-zA-Z0-9_]*?(?=\\()', r: 'magenta'},
-        {p: '\\b[a-zA-Z0-9_]+?(?=\\()', r: 'yellow'},
-        {p: '\\basd\\b', r: 'blue'},
-        {p: '##const', r: 'orange'},
-        {p: '(?<!class=)"(?!>).+?(?<!class=)"(?!>)|\'.+?\'', r: 'string'},
-        {p: '//.*$|/\\*.*\\*/', r: 'comment'}
-    ],
-    reform: [
-        {p: '^\\s*(?=let)', r: '    '}
-    ]
-};
+let syntax = {color: [], reform: []};
 let user_syntax = [];
+const basic_syntax = {
+    "color": [
+        {"p": ";.*$", "r": "comment"},
+        {"p": "\".+?\"|'.+?'", "r": "string"},
+        {"p": "\.model\\s+(TINY|SMALL|MEDIUM|COMPACT|LARGE|HUGE|TCHUGE|TPASCAL|FLAT|tiny|small|medium|compact|large|huge|tchuge|tpascal|flat)|,", "r": "orange"},
+        {"p": "\\b[a-fA-F0-9]+(h|H)\\b", "r": "magenta"},
+        {"p": "\\b(e?[abcd][xhls]|E?[ABCD][XHLS])\\b", "r": "blue"},
+        {"p": "\\b[a-zA-Z0-9]+\\s+(proc|endp)", "r": "void"},
+        {"p": "\\bmain\\b", "r": "main"},
+        {"p": "\.(stack|data|code)", "r": "orange"},
+        {"p": "\\b[0-9]\\b", "r": "blue"},
+        {"p": "\\b[a-zA-Z0-9]+\\s+(d[bwdqt]|D[BWDQT])\\b", "r": "yellow"},
+        {"p": "\\b(mov|int)\\b", "r": "func"}
+    ],
+    "reform": [
+        {"p": "(?<=endp)\\s*", "r": "\n\n"},
+        {"p": "^\\s*(?=\\b(mov|int|([a-zA-Z0-9]+\\s+(d[bwdqt]|D[BWDQT])))\\b)", "r": "\t"},
+        {"p": "(?<=\\b(mov|int)\\b)\\s*", "r": "\t\t"}
+    ]
+};//{color: [{p: ".+", r: "red"}], reform: []}
 
 /** initialization all edit_pane's for future */
 function initEP(){
-    for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, 'gm');
-    for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, 'gm');
-
+    setSyntax('TASM');
     ep = document.getElementById('ep');
     epf = document.getElementById('epf');
     epb_reformat = document.getElementById('edit_pane_refresh');
     epb_download = document.getElementById('edit_pane_download');
+    epb_syntax = document.getElementById('edit_pane_syntax');
 
     ep.setAttribute('oninput', 'onEPI(); epb_reformat.setAttribute("changed","true")');
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
+    epb_syntax.setAttribute('onclick', 'setSyntax("JS")');
     onEPI(document.getElementById(epb_reformat.getAttribute('for')));
 }
 
@@ -36,7 +44,7 @@ function initEP(){
 function onEPI(){
     if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '</li><li>' + ep.innerText;
     let text = ep.innerHTML.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
-    syntax.color.forEach(function (a){text = text.replaceAll(a.p, '<span class="' + a.r + '">$&</span>')});
+    for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
     //user_syntax.forEach(function (a){text = text.replaceAll(a.p, a.replace)});
     epf.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
 }
@@ -63,7 +71,17 @@ function downloadThis(){
     if(filename) createNDownload(filename, ep.innerText);
 }
 
-onTextFromCloudLoaded('https://azsspc.github.io/projects/Web%20Syntax/syntax/JS.json', function (text){
-    syntax = JSON.parse(text);
-    initEP()
-});
+function setSyntax(syntax_name){
+    let rf = new XMLHttpRequest();
+    rf.open("GET", 'https://raw.githubusercontent.com/AZsSPC/AZsSPC.github.io/main/projects/Web%20Syntax/syntax/' + syntax_name + '.json', false);
+    rf.onreadystatechange = function (){
+        text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
+        syntax = text ?JSON.parse(text) :basic_syntax;
+        for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, 'gm');
+        for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, 'gm');
+        console.log(syntax);
+    }
+    rf.send();
+}
+
+initEP();

@@ -34,6 +34,11 @@
     color: white;
 }
 
+::-webkit-scrollbar-thumb {
+    background-color: var(--c-thumb);
+    border: 4px solid var(--c-back-main);
+}
+
 @media screen and (max-width: 800px) {
     ::-webkit-scrollbar {
         width: 10px;
@@ -41,13 +46,16 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: var(--c-thumb);
         border-radius: 5px;
-        border: 2px solid var(--c-back-main);
+        border-width: 2px;
     }
 
     * {
         font-size: 9pt;
+    }
+
+    main {
+        margin-left: 10px
     }
 }
 
@@ -58,9 +66,12 @@
     }
 
     ::-webkit-scrollbar-thumb {
-        background-color: var(--c-thumb);
         border-radius: 9px;
-        border: 4px solid var(--c-back-main);
+        border-width: 4px;
+    }
+
+    main {
+        margin-left: 18px
     }
 }
 
@@ -113,7 +124,7 @@ main {
     overflow-y: scroll;
     background: var(--c-back-main);
     white-space: normal;
-    padding: 2rem 0 2rem 1rem;
+    padding: 2rem 0;
 }
 
 #icon-text {

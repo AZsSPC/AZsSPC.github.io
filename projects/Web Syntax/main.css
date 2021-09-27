@@ -9,6 +9,7 @@
     padding: 0 0 0 3rem;
     border-top: 4px solid;
     border-bottom: 4px solid;
+    tab-size: 4;
 }
 
 #ec {
@@ -53,7 +54,6 @@
     margin: 0;
     display: inline-grid;
     padding: 4px;
-    z-index: 9;
 }
 
 #tab button {
@@ -105,4 +105,23 @@
 
 #tab button[changed=false] {
     /*border: solid 2px #7fd57f;*/
+}
+
+#csf {
+    background: #0ebdff;
+    position: absolute;
+    top: calc(50vh - 250px);
+    bottom: calc(50vh - 250px);
+    right: calc(50vw - 100px);
+    left: calc(50vw - 100px);
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    border: none;
+    z-index: 9999;
+    border-radius: 10px;
+}
+
+#csf::-webkit-scrollbar {
+    display: none;
 }

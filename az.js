@@ -1,7 +1,9 @@
+
+//can not be used
 function onTextFromCloudLoaded(file, func){
     let rf = new XMLHttpRequest();
     rf.open("GET", file, false);
-    rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :'null');
+    rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null);
     rf.send();
 }
 

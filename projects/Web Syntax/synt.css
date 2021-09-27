@@ -23,9 +23,21 @@
     color: #d297ff;
 }
 
+.main {
+    color: #f67ec6;
+}
+.func {
+    color: #58d559;
+}
+
+.void {
+    color: #6fcbff;
+    background: #4e5457;
+}
+
 .comment {
     color: #8d8d8d !important;
-    background: #4c4c4c;
+   /*background: #4c4c4c;*/
 }
 
 .string {
