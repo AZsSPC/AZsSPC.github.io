@@ -3,26 +3,7 @@
 const AZR_NB = '[^\\s<>\\[\\]{}();:|\\\\/]', AZR_B = '[\\s<>\\[\\]{}();:|\\\\/]';
 let syntax = {color: [], reform: []};
 let user_syntax = [];
-const basic_syntax = {
-    "color": [
-        {"p": ";.*$", "r": "comment"},
-        {"p": "\".+?\"|'.+?'", "r": "string"},
-        {"p": "\.model\\s+(TINY|SMALL|MEDIUM|COMPACT|LARGE|HUGE|TCHUGE|TPASCAL|FLAT|tiny|small|medium|compact|large|huge|tchuge|tpascal|flat)|,", "r": "orange"},
-        {"p": "\\b[a-fA-F0-9]+(h|H)\\b", "r": "magenta"},
-        {"p": "\\b(e?[abcd][xhls]|E?[ABCD][XHLS])\\b", "r": "blue"},
-        {"p": "\\b[a-zA-Z0-9]+\\s+(proc|endp)", "r": "void"},
-        {"p": "\\bmain\\b", "r": "main"},
-        {"p": "\.(stack|data|code)", "r": "orange"},
-        {"p": "\\b[0-9]\\b", "r": "blue"},
-        {"p": "\\b[a-zA-Z0-9]+\\s+(d[bwdqt]|D[BWDQT])\\b", "r": "yellow"},
-        {"p": "\\b(mov|int)\\b", "r": "func"}
-    ],
-    "reform": [
-        {"p": "(?<=endp)\\s*", "r": "\n\n"},
-        {"p": "^\\s*(?=\\b(mov|int|([a-zA-Z0-9]+\\s+(d[bwdqt]|D[BWDQT])))\\b)", "r": "\t"},
-        {"p": "(?<=\\b(mov|int)\\b)\\s*", "r": "\t\t"}
-    ]
-};//{color: [{p: ".+", r: "red"}], reform: []}
+const basic_syntax = {color: [{p: ".+", r: "red"}], reform: []};
 
 /** initialization all edit_pane's for future */
 function initEP(){
