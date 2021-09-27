@@ -17,7 +17,7 @@ function initEP(){
     ep.setAttribute('oninput', 'onEPI(); epb_reformat.setAttribute("changed","true")');
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
-    epb_syntax.setAttribute('onclick', 'setSyntax("JS")');
+    epb_syntax.setAttribute('onclick', 'setSyntax("TASM")');
     onEPI(document.getElementById(epb_reformat.getAttribute('for')));
 }
 
