@@ -1,7 +1,7 @@
 function onTextFromCloudLoaded(file, func){
     let rf = new XMLHttpRequest();
     rf.open("GET", file, false);
-    rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null);
+    rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :'null');
     rf.send();
 }
 
@@ -22,7 +22,7 @@ function reformatAZ(){
     document.getElementsByTagName('main')[0].innerHTML =
         document.getElementsByTagName('main')[0].innerHTML
         .replaceAll('#AZsSPC', '<span title="" translate="no">AZsSPC</span>')
-        .replace('#projects', '<a href="https://AZsSPC.github.io/projects">projects</a>')
+        .replace('#projects', '<a href="https://azsspc.github.io/projects">projects</a>')
     ;
 }
 
@@ -30,12 +30,12 @@ function header(){
     document.write(
         '<input type="checkbox" id="navhider" hidden>\n' +
         '<header>\n' +
-        '<img id="icon" src="https://AZsSPC.github.io/img/icon.png" onclick="window.location.href=\'https://AZsSPC.github.io\'"/>\n' +
+        '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>\n' +
         '<nav>\n' +
-        '<button onclick="window.location.href=\'' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/AZsSPC/AZsSPC.github.io/blob/main')) + '\'" class="b-btn">&lt;/&gt;</button>\n' +
-        '<button onclick="window.location.href=\'https://AZsSPC.github.io/projects\'" class="m-btn">projects</button>\n' +
-        '<button onclick="window.location.href=\'https://AZsSPC.github.io/contacts\'">@</button>\n' +
-        '<button onclick="window.location.href=\'https://AZsSPC.github.io/info\'" translate="no">i</button>\n' +
+        '<button onclick="window.location.href=\'' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '\'" class="b-btn">&lt;/&gt;</button>\n' +
+        '<button onclick="window.location.href=\'https://azsspc.github.io/projects\'" class="m-btn">projects</button>\n' +
+        '<button onclick="window.location.href=\'https://azsspc.github.io/contacts\'">@</button>\n' +
+        '<button onclick="window.location.href=\'https://azsspc.github.io/info\'" translate="no">i</button>\n' +
         '</nav>\n' +
         '<label id="hsl" for="navhider"></label>\n' +
         '</header>\n'
@@ -47,7 +47,7 @@ function settings(){
         '<meta charset="utf-8">\n' +
         '<meta name="viewport" content="width=device-width,initial-scale=1"/>\n' +
         '<link rel="icon" href="https://azsspc.github.io/img/fic.png">\n' +
-        '<link rel="stylesheet" href="https://AZsSPC.github.io/main.css">\n' +
+        '<link rel="stylesheet" href="https://azsspc.github.io/main.css">\n' +
         '<link rel="stylesheet" href="main.css">\n'
     );
 }

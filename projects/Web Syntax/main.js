@@ -1,58 +1,26 @@
 /** Edit Panes's */ let ep, epf, epb_reformat, epb_download;
 
 const AZR_NB = '[^\\s<>\\[\\]{}();:|\\\\/]', AZR_B = '[\\s<>\\[\\]{}();:|\\\\/]';
-const synt_g = [
-    {
-        p: '(?<=\\bfunction) +[a-zA-Z0-9_]*?(?=\\()',
-        r: 'magenta'
-    },
-    {
-        p: '\\b[a-zA-Z0-9_]+?(?=\\()',
-        r: 'yellow'
-    },
-    {
-        p: '\\basd\\b',
-        r: 'blue'
-    },
-    {
-        p: '##const',
-        r: 'orange'
-    },
-    {
-        p: '(?<!class=)"(?!>).+?(?<!class=)"(?!>)|\'.+?\'',
-        r: 'string'
-    },
-    {
-        p: '//.*$|/\\*.*\\*/',
-        r: 'comment'
-    }
-];
-const synt_r = [
-    {
-        p: '^\\s*(?=let)',
-        r: '    '
-    }
-];
-const irer = [
-    {
-        p: '##const',
-        r: '\\bthis\\b|\\bnew\\b|\\bconst\\b|\\blet\\b|\\bfunction\\b'
-    }
-];
+let syntax = {
+    color: [
+        {p: '(?<=\\bfunction) +[a-zA-Z0-9_]*?(?=\\()', r: 'magenta'},
+        {p: '\\b[a-zA-Z0-9_]+?(?=\\()', r: 'yellow'},
+        {p: '\\basd\\b', r: 'blue'},
+        {p: '##const', r: 'orange'},
+        {p: '(?<!class=)"(?!>).+?(?<!class=)"(?!>)|\'.+?\'', r: 'string'},
+        {p: '//.*$|/\\*.*\\*/', r: 'comment'}
+    ],
+    reform: [
+        {p: '^\\s*(?=let)', r: '    '}
+    ]
+};
 let user_syntax = [];
 
 /** initialization all edit_pane's for future */
 function initEP(){
-    for(let i in synt_g){
-        let text = synt_g[i].p;
-        for(let j in irer) text = text.replaceAll(irer[j].p, irer[j].r);
-        synt_g[i].p = new RegExp(text, 'gm');
-    }
-    for(let i in synt_r){
-        let text = synt_r[i].p;
-        for(let j in irer) text = text.replaceAll(irer[j].p, irer[j].r);
-        synt_r[i].p = new RegExp(text, 'gm');
-    }
+    for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, 'gm');
+    for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, 'gm');
+
     ep = document.getElementById('ep');
     epf = document.getElementById('epf');
     epb_reformat = document.getElementById('edit_pane_refresh');
@@ -68,7 +36,7 @@ function initEP(){
 function onEPI(){
     if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '</li><li>' + ep.innerText;
     let text = ep.innerHTML.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
-    synt_g.forEach(function (a){text = text.replaceAll(a.p, '<span class="' + a.r + '">$&</span>')});
+    syntax.color.forEach(function (a){text = text.replaceAll(a.p, '<span class="' + a.r + '">$&</span>')});
     //user_syntax.forEach(function (a){text = text.replaceAll(a.p, a.replace)});
     epf.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
 }
@@ -79,7 +47,7 @@ function reformat(){
 
     if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '</li><li>' + ep.innerText;
     let text = ep.innerHTML.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
-    synt_r.forEach(function (a){text = text.replaceAll(a.p, a.r)});
+    syntax.reform.forEach(function (a){text = text.replaceAll(a.p, a.r)});
     ep.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
 
     onEPI();
@@ -95,4 +63,7 @@ function downloadThis(){
     if(filename) createNDownload(filename, ep.innerText);
 }
 
-initEP();
+onTextFromCloudLoaded('https://azsspc.github.io/projects/Web%20Syntax/syntax/JS.json', function (text){
+    syntax = JSON.parse(text);
+    initEP()
+});

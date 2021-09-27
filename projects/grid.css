@@ -20,12 +20,10 @@
     background: var(--c-accent-2-d);
     margin: 0;
     position: relative;
-}
-
-.plist_tile {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
+    cursor: pointer;
 }
 
 .plist_tile p {
@@ -34,8 +32,6 @@
 
 .plist_tile:hover p:nth-child(1):before {
     content: '> ';
-    transition-duration: 1s;
-    transition-delay: 1s;
 }
 
 .plist_tile img {
@@ -44,12 +40,18 @@
 }
 
 .plist_tile p:nth-child(1) {
-    transition-duration: 1s;
-    transition-delay: 1s;
     background: var(--c-accent-2);
     margin: 0;
     padding: 4px;
     height: fit-content;
+}
+
+.plist_tile:hover p:nth-child(1) {
+    background: var(--c-accent-3);
+}
+
+.plist_tile:hover{
+    background: var(--c-accent-3-d);
 }
 
 .plist_tile p:nth-child(2) {

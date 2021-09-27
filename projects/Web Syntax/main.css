@@ -58,7 +58,8 @@
 
 #tab button {
     text-transform: uppercase;
-    background: #579c6f;
+    background: var(--c-accent);
+    color: white;
 }
 
 @media screen and (max-width: 800px) {
