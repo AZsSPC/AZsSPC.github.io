@@ -126,7 +126,7 @@
     width: calc(100% - 3rem);
     text-align: center;
     border-radius: 10px;
-    background: var(--c-accent-2-d);
+    background: var(--c-accent-3-d);
     margin: 1rem;
     padding: .5rem;
 }
