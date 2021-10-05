@@ -1,20 +1,24 @@
-/** Edit Panes's */ let ep, epf, epb_reformat, epb_download, epb_syntax;
+/** Edit Panes's */ let ep, epf, csf, epb_reformat, epb_download, epb_syntax;
 
 const AZR_NB = '[^\\s<>\\[\\]{}();:|\\\\/]', AZR_B = '[\\s<>\\[\\]{}();:|\\\\/]';
 let syntax = {color: [], reform: []};
 let user_syntax = [];
 const basic_syntax = {color: [{p: ".+", r: "red"}], reform: []};
-const syntax_list = ['JSON', 'TASM'];
+const syntax_list = ['JS', 'TASM'];
 
 /** initialization all edit_pane's for future */
 function initEP(){
     setSyntax(syntax_list[0]);
     ep = document.getElementById('ep');
     epf = document.getElementById('epf');
+    csf = document.getElementById('csf');
     epb_reformat = document.getElementById('edit_pane_refresh');
     epb_download = document.getElementById('edit_pane_download');
     epb_syntax = document.getElementById('edit_pane_syntax');
-
+    
+    csf.innerHTML = '';
+    for(let i in syntax_list) csf.innerHTML +=
+'<p onclick="setSyntax(\''+syntax_list[i]+'\'); csf.style.display = \'none\'">'+syntax_list[i]+'</p>';
     ep.setAttribute('oninput', 'onEPI(); epb_reformat.setAttribute("changed","true")');
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
