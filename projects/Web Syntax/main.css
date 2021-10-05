@@ -125,6 +125,8 @@
 #csf p {
     width: 100%;
     text-align: center;
+    border-radius: 10px;
+    background: var(--c-accent-2-d);
 }
 
 #csf::-webkit-scrollbar {
