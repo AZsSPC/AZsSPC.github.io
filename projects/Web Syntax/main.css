@@ -128,7 +128,7 @@
     border-radius: 10px;
     background: var(--c-accent-2-d);
     margin: 1rem;
-    padding .5rem;
+    padding: .5rem;
 }
 
 #csf::-webkit-scrollbar {
