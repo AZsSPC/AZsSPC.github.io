@@ -22,7 +22,7 @@ function initEP(){
     ep.setAttribute('oninput', 'onEPI(); epb_reformat.setAttribute("changed","true")');
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
-    epb_syntax.setAttribute('onclick', 'setSyntax("TASM")');
+    epb_syntax.setAttribute('onclick', 'csf.style.display = \'block\'');
     onEPI(document.getElementById(epb_reformat.getAttribute('for')));
 }
 
