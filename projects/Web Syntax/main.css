@@ -123,7 +123,7 @@
 }
 
 #csf p {
-    width: 100%;
+    width: calc(100% - 3rem);
     text-align: center;
     border-radius: 10px;
     background: var(--c-accent-2-d);
