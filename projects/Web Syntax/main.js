@@ -4,10 +4,11 @@ const AZR_NB = '[^\\s<>\\[\\]{}();:|\\\\/]', AZR_B = '[\\s<>\\[\\]{}();:|\\\\/]'
 let syntax = {color: [], reform: []};
 let user_syntax = [];
 const basic_syntax = {color: [{p: ".+", r: "red"}], reform: []};
+const syntax_list = ['JSON', 'TASM'];
 
 /** initialization all edit_pane's for future */
 function initEP(){
-    setSyntax('TASM');
+    setSyntax(syntax_list[0]);
     ep = document.getElementById('ep');
     epf = document.getElementById('epf');
     epb_reformat = document.getElementById('edit_pane_refresh');
@@ -61,6 +62,7 @@ function setSyntax(syntax_name){
         for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, 'gm');
         for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, 'gm');
         console.log(syntax);
+        onEPI();
     }
     rf.send();
 }
