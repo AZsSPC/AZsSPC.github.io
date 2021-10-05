@@ -122,6 +122,11 @@
     border-radius: 10px;
 }
 
+#csf p {
+    width: 100%;
+    text-align: center;
+}
+
 #csf::-webkit-scrollbar {
     display: none;
 }
