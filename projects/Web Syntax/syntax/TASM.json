@@ -14,7 +14,6 @@
     {"p": "^\\s*[a-z0-9_]+:", "r": "void", "f": "gmi"}
   ],
   "reform": [
-    {"p": "(?<=endp|end)\\s*", "r": "\n\n"},
-    {"p": "^\\s*(?=\\b(mov|int|lea|cmp|jmp|je|jz)\\b)", "r": "\t", "f": "gmi"}
+    {"p": "(?<=endp|end)\\s*", "r": "\n\n"}
   ]
 }
