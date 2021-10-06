@@ -2,7 +2,7 @@
   "color": [
     {"p": "\".+?\"|'.+?'", "r": "string"},
     {"p": ";.*$", "r": "comment"},
-    {"p": "^\\s*\\.model\\s+(tiny|small|medium|compact|large|huge|tchuge|tpascal|flat)|,", "r": "orange", "f": "gmi"},
+    {"p": "^\\s*\\.model\\s+(tiny|small|medium|compact|large|huge|tchuge|tpascal|flat)", "r": "orange", "f": "gmi"},
     {"p": "\\b[a-f0-9]+h\\b", "r": "magenta", "f": "gmi"},
     {"p": "\\be?[abcd][xhls]\\b", "r": "blue", "f": "gmi"},
     {"p": "\\b[a-z0-9_]+\\s+(proc|endp)|^\\s*[a-z0-9_]+:", "r": "void", "f": "gmi"},
