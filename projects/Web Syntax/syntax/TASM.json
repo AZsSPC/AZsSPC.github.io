@@ -10,7 +10,8 @@
     {"p": "\\.(stack|data|code|startup|exit)", "r": "orange"},
     {"p": "\\b[0-9]+\\b", "r": "blue"},
     {"p": "\\b[a-z0-9_]+\\s+d[bwdqt]\\b", "r": "yellow", "f": "gmi"},
-    {"p": "\\b(mov|int|lea|cmp|jmp|je|jz)\\b", "r": "func", "f": "gmi"}
+    {"p": "\\b(mov|int|lea|cmp|jmp|je|jz)\\b", "r": "func", "f": "gmi"},
+    {"p": "\\b[a-z0-9_]+:\\b", "r": "void", "f": "gmi"}
   ],
   "reform": [
     {"p": "(?<=endp)\\s*", "r": "\n\n"},
