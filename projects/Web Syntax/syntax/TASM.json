@@ -7,10 +7,10 @@
     {"p": "\\be?[abcd][xhls]\\b", "r": "blue", "f": "gmi"},
     {"p": "\\b[a-z0-9_]+\\s+(proc|endp)", "r": "void", "f": "gmi"},
     {"p": "\\b(main|end)\\b", "r": "main"},
-    {"p": "^\\s*\\.(stack|data|code|startup|exit)\\b", "r": "orange"},
     {"p": "\\b[0-9]+\\b", "r": "blue"},
     {"p": "\\b[a-z0-9_]+\\s+d[bwdqt]\\b", "r": "yellow", "f": "gmi"},
-    {"p": "\\b(mov|int|lea|cmp|jmp|je|jz)\\b", "r": "func", "f": "gmi"}
+    {"p": "\\b(mov|int|lea|cmp|jmp|je|jz)\\b", "r": "func", "f": "gmi"},
+    {"p": "^\\s*[a-z0-9_]+:", "r": "void", "f": "gmi"}
   ],
   "reform": [
     {"p": "(?<=endp|end)\\s*", "r": "\n\n"},
