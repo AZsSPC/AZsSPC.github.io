@@ -6,7 +6,7 @@
     {"p": "\\b[a-f0-9]+h\\b", "r": "magenta", "f": "gmi"},
     {"p": "\\be?[abcd][xhls]\\b", "r": "blue", "f": "gmi"},
     {"p": "\\b[a-z0-9_]+\\s+(proc|endp)", "r": "void", "f": "gmi"},
-    {"p": "^\\s*\\.(stack|data|code|startup|exit)\\b", "r": "orange"}
+    {"p": "^\\s*\\.(stack|data|code|startup|exit)\\b", "r": "orange"},
     {"p": "\\b[a-z0-9_]+\\s+d[bwdqt]\\b", "r": "yellow", "f": "gmi"},
     {"p": "\\b(mov|int|lea|cmp|jmp|je|jz)\\b", "r": "func", "f": "gmi"},
     {"p": "^\\s*[a-z0-9_]+:", "r": "void", "f": "gmi"}
