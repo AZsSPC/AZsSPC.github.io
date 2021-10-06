@@ -2,15 +2,15 @@
   "color": [
     {"p": "\".+?\"|'.+?'", "r": "string"},
     {"p": ";.*$", "r": "comment"},
-    {"p": "\\.model\\s+(TINY|SMALL|MEDIUM|COMPACT|LARGE|HUGE|TCHUGE|TPASCAL|FLAT|tiny|small|medium|compact|large|huge|tchuge|tpascal|flat)|,", "r": "orange"},
-    {"p": "\\b[a-fA-F0-9]+(h|H)\\b", "r": "magenta"},
-    {"p": "\\b(e?[abcd][xhls]|E?[ABCD][XHLS])\\b", "r": "blue"},
-    {"p": "\\b[a-zA-Z0-9]+\\s+(proc|endp)", "r": "void"},
+    {"p": "\\.model\\s+(tiny|small|medium|compact|large|huge|tchuge|tpascal|flat)|,", "r": "orange", "f": "gim"},
+    {"p": "\\b[a-f0-9]+h\\b", "r": "magenta", "f": "gim"},
+    {"p": "\\be?[abcd][xhls]\\b", "r": "blue", "f": "gim"},
+    {"p": "\\b[a-z0-9_]+\\s+(proc|endp)", "r": "void", "f": "gim"},
     {"p": "\\bmain\\b", "r": "main"},
     {"p": "\\.(stack|data|code)", "r": "orange"},
     {"p": "\\b[0-9]\\b", "r": "blue"},
-    {"p": "\\b[a-zA-Z0-9]+\\s+(d[bwdqt]|D[BWDQT])\\b", "r": "yellow"},
-    {"p": "\\b(mov|int)\\b", "r": "func"}
+    {"p": "\\b[a-z0-9_]+\\s+d[bwdqt]\\b", "r": "yellow", "f": "gim"},
+    {"p": "\\b(mov|int)\\b", "r": "func", "f": "gim"}
   ],
   "reform": [
     {"p": "(?<=endp)\\s*", "r": "\n\n"},
