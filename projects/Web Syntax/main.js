@@ -63,8 +63,8 @@ function setSyntax(syntax_name){
     rf.onreadystatechange = function (){
         text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
         syntax = text ?JSON.parse(text) :basic_syntax;
-        for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, 'gm');
-        for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, 'gm');
+        for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, syntax.color[i].f ?? 'gm');
+        for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, syntax.reform[i].f ?? 'gm');
         console.log(syntax);
         onEPI();
     }
