@@ -15,7 +15,7 @@
   ],
   "reform": [
     {"p": "(?<=endp)\\s*", "r": "\n\n"},
-    {"p": "^\\s*(?=\\b(mov|int|([a-zA-Z0-9]+\\s+(d[bwdqt]|D[BWDQT])))\\b)", "r": "\t"},
+    {"p": "^\\s*(?=\\b(mov|int|lea|cmp|jmp|je|jz)\\b)|(?<=\\b(mov|int|lea|cmp|jmp|je|jz)\\b)\\s+", "r": "\t", "f": "gmi"},
     {"p": "(?<=\\b(mov|int)\\b)\\s*", "r": "\t\t"}
   ]
 }
