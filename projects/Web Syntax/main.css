@@ -122,7 +122,7 @@
     border-radius: 10px;
 }
 
-#csf p {
+#csf > * {
     width: calc(100% - 3rem);
     text-align: center;
     border-radius: 10px;

@@ -15,10 +15,9 @@ function initEP(){
     epb_reformat = document.getElementById('edit_pane_refresh');
     epb_download = document.getElementById('edit_pane_download');
     epb_syntax = document.getElementById('edit_pane_syntax');
-    
+
     csf.innerHTML = '';
-    for(let i in syntax_list) csf.innerHTML +=
-'<p onclick="setSyntax(\''+syntax_list[i]+'\'); csf.style.display = \'none\'">'+syntax_list[i]+'</p>';
+    for(let i in syntax_list) csf.innerHTML += '<button onclick="setSyntax(\'' + syntax_list[i] + '\'); csf.style.display = \'none\'">' + syntax_list[i] + '</button>';
     ep.setAttribute('oninput', 'onEPI(); epb_reformat.setAttribute("changed","true")');
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
