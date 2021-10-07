@@ -9,12 +9,13 @@
     {"p": "\\b(main|end)\\b|\\.startup\\b", "r": "main"},
     {"p": "\\b[0-9]+\\b", "r": "blue"},
     {"p": "\\b[a-z0-9_]+\\s+d[bwdqt]\\b", "r": "yellow", "f": "gmi"},
-    {"p": "\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b", "r": "func", "f": "gmi"}
+    {"p": "\\b(mov|int|lea|cmp|jmp|je|jz|call|add)\\b", "r": "func", "f": "gmi"},
+    {"p": "\\[[a-z0-9_]+\\]", "r": "case", "f": "gmi"}
   ],
   "reform": [
     {"p": "(?<=endp|end)\\s*", "r": "\n\n"},
     {"p": "^\\s*(?=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)", "r": "\t", "f": "gmi"},
     {"p": "(?<=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)\\s+", "r": "\t\t", "f": "gmi"},
-    {"p": "[\\s\\t]+$", "r": ""}
+    {"p": "[\\s\\t]+$|^\\s+(?=[a-z0-9_]+:)", "r": "", "f": "gmi"}
   ]
 }

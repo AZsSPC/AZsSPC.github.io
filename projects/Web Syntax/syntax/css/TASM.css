@@ -31,9 +31,13 @@
     color: #58d559;
 }
 
+.case {
+    color: #e56cd6;
+    background: #440558;
+}
+
 .void {
     color: #6fcbff;
-    border-radius: 5px;
     background: #4e5457;
 }
 
