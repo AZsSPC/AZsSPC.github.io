@@ -37,13 +37,13 @@
     background: #4e5457;
 }
 
-.comment {
-    color: #8d8d8d !important;
+.comment, .comment * {
+    color: #8d8d8d;
     /*background: #4c4c4c;*/
 }
 
-.string {
-    color: #7fd57f !important;
+.string, .string * {
+    color: #7fd57f;
     border-radius: 5px;
     background: #484e48;
 }
