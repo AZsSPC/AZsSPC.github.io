@@ -23,6 +23,20 @@ function initEP(){
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
     epb_syntax.setAttribute('onclick', 'csf.style.display = \'block\'');
+
+//runOnKeys(function () {console.log('pressed')}, "KeyQ", "ControlLeft");
+    runOnKeys(function (){ reformat();}, "AltLeft", "ShiftLeft", "KeyF");
+    runOnKeys(function (){ downloadThis();}, "ControlLeft", "KeyD");
+    ep.addEventListener('keydown', function (e){
+        if(e.key === 'Tab'){
+            e.preventDefault();
+            let start = this.selectionStart;
+            let end = this.selectionEnd;
+            this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);
+            this.selectionStart = this.selectionEnd = start + 1;
+        }
+    });
+
     onEPI(document.getElementById(epb_reformat.getAttribute('for')));
 }
 
@@ -47,10 +61,6 @@ function reformat(){
     onEPI();
     epb_reformat.setAttribute("changed", "false")
 }
-
-//runOnKeys(function () {console.log('pressed')}, "KeyQ", "ControlLeft");
-runOnKeys(function (){ reformat();}, "AltLeft", "ShiftLeft", "KeyF");
-runOnKeys(function (){ downloadThis();}, "ControlLeft", "KeyD");
 
 function downloadThis(){
     let filename = prompt("What do you want to name the file?");
