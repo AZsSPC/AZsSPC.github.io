@@ -34,7 +34,7 @@ function initEP(){
 /** on [Edit Pane Input] detected */
 function onEPI(){
     if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '<li>' + ep.innerText + '</li>';
-    let text = ep.innerHTML.replaceAll(/\s*<\/li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
+    let text = ep.innerHTML.replaceAll(/\s*<\/li>\s*/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
     for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
     //user_syntax.forEach(function (a){text = text.replaceAll(a.p, a.replace)});
     epf.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
@@ -45,7 +45,7 @@ function reformat(){
     console.log('refresh');
 
     if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '<li>' + ep.innerText + '</li>';
-    let text = ep.innerHTML.replaceAll(/\s*<\/li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
+    let text = ep.innerHTML.replaceAll(/\s*<\/li>\s*/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
     syntax.reform.forEach(function (a){text = text.replaceAll(a.p, a.r)});
     ep.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
 
