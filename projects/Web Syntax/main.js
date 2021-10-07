@@ -33,8 +33,8 @@ function initEP(){
 
 /** on [Edit Pane Input] detected */
 function onEPI(){
-    if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '<li>' + ep.innerText + '</li>';
-    let text = ep.innerHTML.replaceAll(/<\/li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
+    if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '</li><li>' + ep.innerText;
+    let text = ep.innerHTML.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
     for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
     //user_syntax.forEach(function (a){text = text.replaceAll(a.p, a.replace)});
     epf.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
@@ -44,8 +44,8 @@ function onEPI(){
 function reformat(){
     console.log('refresh');
 
-    if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '<li>' + ep.innerText + '</li>';
-    let text = ep.innerHTML.replaceAll(/<\/li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
+    if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '</li><li>' + ep.innerText;
+    let text = ep.innerHTML.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
     syntax.reform.forEach(function (a){text = text.replaceAll(a.p, a.r)});
     ep.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
 
@@ -62,7 +62,7 @@ function setSyntax(syntax_name){
     let rf = new XMLHttpRequest();
     rf.open("GET", 'https://raw.githubusercontent.com/AZsSPC/AZsSPC.github.io/main/projects/Web%20Syntax/syntax/json/' + syntax_name + '.json');
     rf.onreadystatechange = function (){
-        text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
+       let text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
         syntax = text ?JSON.parse(text) :basic_syntax;
         for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, syntax.color[i].f ?? 'gmi');
         for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, syntax.reform[i].f ?? 'gmi');
