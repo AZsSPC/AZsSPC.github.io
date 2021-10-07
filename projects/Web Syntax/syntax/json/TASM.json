@@ -13,9 +13,9 @@
     {"p": "\\[[a-z0-9_]+\\]", "r": "case", "f": "gmi"}
   ],
   "reform": [
-    {"p": "(?<=endp|end)\\s*", "r": "\n\n"},
-    {"p": "^\\s*(?=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)", "r": "\t", "f": "gmi"},
+    {"p": "(?<=endp|end)\\s*|", "r": "\n\n"},
+    {"p": "^[^\\n]*(?=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)", "r": "\t", "f": "gmi"},
     {"p": "(?<=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)\\s+", "r": "\t\t", "f": "gmi"},
-    {"p": "[\\s\\t]+$|^\\s+(?=[a-z0-9_]+:)", "r": "", "f": "gmi"}
+    {"p": "^\\s+$|^\\s+(?=[a-z0-9_]+:)", "r": "\n\n", "f": "gmi"}
   ]
 }
