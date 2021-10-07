@@ -15,6 +15,6 @@
     {"p": "(?<=endp|end)\\s*", "r": "\n\n"},
     {"p": "^\\s*(?=\\b(mov|int|lea|cmp|jmp|je|jz)\\b)|\\s*(?=;)|(?<=,)\\s*", "r": "\t", "f": "gmi"},
     {"p": "(?<=\\b(mov|int|lea|cmp|jmp|je|jz)\\b)\\s+", "r": "\t\t", "f": "gmi"},
-    {"p": "\\s+$", "r": ""}
+    {"p": "\\s+(?=\n)", "r": ""}
   ]
 }
