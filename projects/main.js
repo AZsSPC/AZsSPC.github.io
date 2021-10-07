@@ -2,7 +2,7 @@ const SETTINGS = [
     {
         name: 'Web Syntax',
         path: 'Web Syntax',
-        lore: 'Just an online editor with highlighted syntax that anyone can change.',
+        lore: 'Just an online editor with highlighted syntax for different languages.',
         enabled: true,
         tag: ['web', 'regex', 'programming']
     },

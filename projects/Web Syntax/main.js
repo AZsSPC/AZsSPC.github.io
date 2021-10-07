@@ -1,4 +1,4 @@
-/** Edit Panes's */ let ep, epf, csf, epb_reformat, epb_download, epb_syntax;
+/** Edit Panes's */ let ep, epf, csf, epb_reformat, epb_download, epb_syntax, sssb;
 
 const AZR_NB = '[^\\s<>\\[\\]{}();:|\\\\/]', AZR_B = '[\\s<>\\[\\]{}();:|\\\\/]';
 let syntax = {color: [], reform: []};
@@ -15,6 +15,7 @@ function initEP(){
     epb_reformat = document.getElementById('edit_pane_refresh');
     epb_download = document.getElementById('edit_pane_download');
     epb_syntax = document.getElementById('edit_pane_syntax');
+    sssb = document.getElementById('sssb');
 
     csf.innerHTML = '';
     for(let i in syntax_list) csf.innerHTML += '<button onclick="setSyntax(\'' + syntax_list[i] + '\'); csf.style.display = \'none\'">' + syntax_list[i] + '</button>';
@@ -58,13 +59,13 @@ function downloadThis(){
 
 function setSyntax(syntax_name){
     let rf = new XMLHttpRequest();
-    rf.open("GET", 'https://raw.githubusercontent.com/AZsSPC/AZsSPC.github.io/main/projects/Web%20Syntax/syntax/' + syntax_name + '.json', false);
+    rf.open("GET", 'https://raw.githubusercontent.com/AZsSPC/AZsSPC.github.io/main/projects/Web%20Syntax/syntax/json/' + syntax_name + '.json');
     rf.onreadystatechange = function (){
         text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
         syntax = text ?JSON.parse(text) :basic_syntax;
         for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, syntax.color[i].f ?? 'gmi');
         for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, syntax.reform[i].f ?? 'gmi');
-        console.log(syntax);
+        sssb.href = 'syntax/css/' + syntax_name + '.css';
         onEPI();
     }
     rf.send();

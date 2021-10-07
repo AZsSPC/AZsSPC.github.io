@@ -1,0 +1,49 @@
+
+.red {
+    color: #ea6262
+}
+
+.blue {
+    color: #92adf1
+}
+
+.green {
+    color: #7fd57f
+}
+
+.orange {
+    color: #e57926
+}
+
+.yellow {
+    color: #ffd800
+}
+
+.magenta {
+    color: #d297ff;
+}
+
+.main {
+    color: #f67ec6;
+}
+
+.func {
+    color: #58d559;
+}
+
+.void {
+    color: #6fcbff;
+    border-radius: 5px;
+    background: #4e5457;
+}
+
+.comment {
+    color: #8d8d8d !important;
+    /*background: #4c4c4c;*/
+}
+
+.string {
+    color: #7fd57f !important;
+    border-radius: 5px;
+    background: #484e48;
+}
