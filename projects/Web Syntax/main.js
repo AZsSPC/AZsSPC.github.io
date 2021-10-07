@@ -27,15 +27,6 @@ function initEP(){
 //runOnKeys(function () {console.log('pressed')}, "KeyQ", "ControlLeft");
     runOnKeys(function (){ reformat();}, "AltLeft", "ShiftLeft", "KeyF");
     runOnKeys(function (){ downloadThis();}, "ControlLeft", "KeyD");
-    ep.addEventListener('keydown', function (e){
-        if(e.key === 'Tab'){
-            e.preventDefault();
-            let start = this.selectionStart;
-            let end = this.selectionEnd;
-            this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);
-            this.selectionStart = this.selectionEnd = start + 1;
-        }
-    });
 
     onEPI(document.getElementById(epb_reformat.getAttribute('for')));
 }
@@ -43,7 +34,7 @@ function initEP(){
 /** on [Edit Pane Input] detected */
 function onEPI(){
     if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '</li><li>' + ep.innerText;
-    let text = ep.innerHTML.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
+    let text = ep.innerHTML.replaceAll(/\s*<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
     for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
     //user_syntax.forEach(function (a){text = text.replaceAll(a.p, a.replace)});
     epf.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
@@ -54,7 +45,7 @@ function reformat(){
     console.log('refresh');
 
     if(ep.innerHTML.indexOf('<li>') !== 0) ep.innerHTML = '</li><li>' + ep.innerText;
-    let text = ep.innerHTML.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
+    let text = ep.innerHTML.replaceAll(/\s*<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
     syntax.reform.forEach(function (a){text = text.replaceAll(a.p, a.r)});
     ep.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
 
