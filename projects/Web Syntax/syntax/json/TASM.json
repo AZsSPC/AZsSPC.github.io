@@ -4,7 +4,7 @@
     {"p": ";.*$", "r": "comment"},
     {"p": "\\b[a-f0-9]+h\\b", "r": "magenta", "f": "gmi"},
     {"p": "\\be?[abcd][xhls]\\b", "r": "blue", "f": "gmi"},
-    {"p": "\\b[a-z0-9_]+\\s+(proc|endp)|^\\s*[a-z0-9_]+:", "r": "void", "f": "gmi"},
+    {"p": "\\b[a-z0-9_]+\\s+(proc|endp)|^\\s*[a-z0-9_]+:|ret", "r": "void", "f": "gmi"},
     {"p": "\\.(stack|data|code|startup|exit|model)|,", "r": "orange"},
     {"p": "\\b(main|end)\\b", "r": "main"},
     {"p": "\\b[0-9]+\\b", "r": "blue"},
@@ -13,8 +13,8 @@
   ],
   "reform": [
     {"p": "(?<=endp|end)\\s*", "r": "\n\n"},
-    {"p": "^\\s*(?=\\b(mov|int|lea|cmp|jmp|je|jz)\\b)", "r": "\t", "f": "gmi"},
-    {"p": "(?<=\\b(mov|int|lea|cmp|jmp|je|jz)\\b)\\s+", "r": "\t\t", "f": "gmi"},
+    {"p": "^\\s*(?=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)", "r": "\t", "f": "gmi"},
+    {"p": "(?<=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)\\s+", "r": "\t\t", "f": "gmi"},
     {"p": "[\\s\\t]+$", "r": ""}
   ]
 }
