@@ -14,7 +14,7 @@
   ],
   "reform": [
     {"p": "^\\s*(?=[a-z0-9_]+:)", "r": "\n\n", "f": "gmi"},
-    {"p": "^[^\\n]*(?=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)", "r": "\t", "f": "gmi"},
+    {"p": "^[ \\t]*(?=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)", "r": "\t", "f": "gmi"},
     {"p": "(?<=\\b(mov|int|lea|cmp|jmp|je|jz|call)\\b)\\s+", "r": "\t\t", "f": "gmi"}
   ]
 }
