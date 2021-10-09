@@ -83,8 +83,8 @@
     #popup_syntax, #popup_upload {
         top: 100px;
         bottom: 100px;
-        right:5%;
-        left:5%;
+        right: 5%;
+        left: 5%;
     }
 }
 
@@ -122,7 +122,7 @@
 }
 
 #popup_syntax, #popup_upload {
-    background: #0ebdff;
+    background: var(--c-accent-3);
     position: absolute;
     overflow-y: scroll;
     margin: 0;
@@ -130,14 +130,34 @@
     border: none;
     z-index: 9999;
     border-radius: 10px;
+    display: grid;
 }
 
-#popup_syntax > *, #popup_upload > * {
+#popup_syntax > * {
     width: calc(100% - 8px);
     text-align: center;
     border-radius: 10px;
     background: var(--c-accent-3-d);
 }
+
+#popup_upload > input {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+}
+
+#popup_upload > div {
+    text-align: center;
+    border: none;
+    position: center;
+    align-self: center;
+
+}
+
 
 #popup_syntax::-webkit-scrollbar, #popup_upload::-webkit-scrollbar {
     display: none;
