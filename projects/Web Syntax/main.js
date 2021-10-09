@@ -75,13 +75,14 @@ function setSyntax(syntax_name){
     rf.send();
 }
 
-function fileUploaded(){
-    console.log(popup_upload);
+function fileUploaded(el){
+    console.log(el);
     let file = popup_upload.files[0] ?? null;
     if(file){
         let reader = new FileReader();
         reader.readAsText(file, "UTF-8");
         reader.onload = function (evt){
+            popup_upload.style.display = 'none';
             ep.innerText = evt.target.result;
             onEPI();
         }
@@ -90,6 +91,7 @@ function fileUploaded(){
             onEPI();
         }
     }
+
 }
 
 function switchVisible(el, v){
