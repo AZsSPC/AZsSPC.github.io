@@ -76,8 +76,8 @@ function setSyntax(syntax_name){
 }
 
 function fileUploaded(){
+    console.log(popup_upload);
     let file = popup_upload.files[0];
-    console.log(popup_upload.files[0]);
     if(file){
         let reader = new FileReader();
         reader.readAsText(file, "UTF-8");
