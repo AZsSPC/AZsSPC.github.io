@@ -1,4 +1,4 @@
-/** Edit Panes's */ let ep, epf, popup_syntax, popup_upload, epb_reformat, epb_download, epb_syntax, sssb;
+/** Edit Panes's */ let ep, epf, popup_syntax, popup_upload, epb_reformat, epb_download, epb_syntax, epb_upload, sssb;
 
 const AZR_NB = '[^\\s<>\\[\\]{}();:|\\\\/]', AZR_B = '[\\s<>\\[\\]{}();:|\\\\/]';
 let syntax = {color: [], reform: []};
@@ -15,6 +15,7 @@ function initEP(){
     popup_upload = document.getElementById('popup_upload');
     epb_reformat = document.getElementById('edit_pane_refresh');
     epb_download = document.getElementById('edit_pane_download');
+    epb_upload = document.getElementById('edit_pane_upload');
     epb_syntax = document.getElementById('edit_pane_syntax');
     sssb = document.getElementById('sssb');
 
@@ -24,7 +25,7 @@ function initEP(){
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
     epb_syntax.setAttribute('onclick', 'switchVisible(popup_syntax,\'block\')');
-    epb_syntax.setAttribute('onclick', 'switchVisible(popup_upload,\'grid\')');
+    epb_upload.setAttribute('onclick', 'switchVisible(popup_upload,\'grid\')');
 
 //runOnKeys(function () {console.log('pressed')}, "KeyQ", "ControlLeft");
     runOnKeys(function (){ reformat();}, "AltLeft", "ShiftLeft", "KeyF");
