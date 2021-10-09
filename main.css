@@ -57,6 +57,11 @@
     main {
         margin-left: 10px
     }
+
+    main::-webkit-scrollbar-thumb {
+        border: none;
+        width: 0;
+    }
 }
 
 @media screen and (min-width: 800px) {

@@ -1,4 +1,4 @@
-/** Edit Panes's */ let ep, epf, csf, epb_reformat, epb_download, epb_syntax, sssb;
+/** Edit Panes's */ let ep, epf, popup_syntax, popup_upload, epb_reformat, epb_download, epb_syntax, sssb;
 
 const AZR_NB = '[^\\s<>\\[\\]{}();:|\\\\/]', AZR_B = '[\\s<>\\[\\]{}();:|\\\\/]';
 let syntax = {color: [], reform: []};
@@ -11,18 +11,19 @@ function initEP(){
     setSyntax(syntax_list[0]);
     ep = document.getElementById('ep');
     epf = document.getElementById('epf');
-    csf = document.getElementById('csf');
+    popup_syntax = document.getElementById('popup_syntax');
+    popup_upload = document.getElementById('popup_upload');
     epb_reformat = document.getElementById('edit_pane_refresh');
     epb_download = document.getElementById('edit_pane_download');
     epb_syntax = document.getElementById('edit_pane_syntax');
     sssb = document.getElementById('sssb');
 
-    csf.innerHTML = '';
-    for(let i in syntax_list) csf.innerHTML += '<button onclick="setSyntax(\'' + syntax_list[i] + '\'); csf.style.display = \'none\'">' + syntax_list[i] + '</button>';
+    popup_syntax.innerHTML = '';
+    for(let i in syntax_list) popup_syntax.innerHTML += '<button onclick="setSyntax(\'' + syntax_list[i] + '\'); popup_syntax.style.display = \'none\'">' + syntax_list[i] + '</button>';
     ep.setAttribute('oninput', 'onEPI(); epb_reformat.setAttribute("changed","true")');
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
-    epb_syntax.setAttribute('onclick', 'csf.style.display = \'block\'');
+    epb_syntax.setAttribute('onclick', 'popup_syntax.style.display = \'block\'');
 
 //runOnKeys(function () {console.log('pressed')}, "KeyQ", "ControlLeft");
     runOnKeys(function (){ reformat();}, "AltLeft", "ShiftLeft", "KeyF");
@@ -62,7 +63,7 @@ function setSyntax(syntax_name){
     let rf = new XMLHttpRequest();
     rf.open("GET", 'https://raw.githubusercontent.com/AZsSPC/AZsSPC.github.io/main/projects/Web%20Syntax/syntax/json/' + syntax_name + '.json');
     rf.onreadystatechange = function (){
-       let text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
+        let text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
         syntax = text ?JSON.parse(text) :basic_syntax;
         for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, syntax.color[i].f ?? 'gmi');
         for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, syntax.reform[i].f ?? 'gmi');
