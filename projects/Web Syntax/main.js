@@ -76,7 +76,7 @@ function setSyntax(syntax_name){
 }
 
 function fileUploaded(el){
-    console.log(el.value);
+    console.log(this.value);
     let file = popup_upload.files[0] ?? null;
     if(file){
         let reader = new FileReader();
