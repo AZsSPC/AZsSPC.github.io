@@ -23,7 +23,8 @@ function initEP(){
     ep.setAttribute('oninput', 'onEPI(); epb_reformat.setAttribute("changed","true")');
     epb_reformat.setAttribute('onclick', 'reformat()');
     epb_download.setAttribute('onclick', 'downloadThis()');
-    epb_syntax.setAttribute('onclick', 'popup_syntax.style.display = \'block\'');
+    epb_syntax.setAttribute('onclick', 'switchVisible(popup_syntax,\'block\')');
+    epb_syntax.setAttribute('onclick', 'switchVisible(popup_upload,\'grid\')');
 
 //runOnKeys(function () {console.log('pressed')}, "KeyQ", "ControlLeft");
     runOnKeys(function (){ reformat();}, "AltLeft", "ShiftLeft", "KeyF");
@@ -71,6 +72,26 @@ function setSyntax(syntax_name){
         onEPI();
     }
     rf.send();
+}
+
+function fileUploaded(){
+    let file = popup_upload.files[0];
+    if(file){
+        let reader = new FileReader();
+        reader.readAsText(file, "UTF-8");
+        reader.onload = function (evt){
+            ep.innerText = evt.target.result;
+            onEPI();
+        }
+        reader.onerror = function (evt){
+            ep.innerText = 'error while read file';
+            onEPI();
+        }
+    }
+}
+
+function switchVisible(el, v){
+    el.style.display = (el.style.display === v ?'none' :v);
 }
 
 initEP();
