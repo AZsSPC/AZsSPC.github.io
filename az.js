@@ -29,7 +29,7 @@ function reformatAZ(){
 
 function header(){
     document.write(
-        '<input type="checkbox" id="navhider" hidden ' + (document.cookie.includes('NAVH') ?'checked' :'') + '>\n' +
+        '<input type="checkbox" id="navhider" hidden ' + (document.cookie.includes('NAVH') ?'checked' :'') + ' onchange="navhider()">\n' +
         '<header>\n' +
         '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>\n' +
         '<nav>\n' +
@@ -38,7 +38,7 @@ function header(){
         '<button onclick="window.location.href=\'https://azsspc.github.io/contacts\'">@</button>\n' +
         /*'<button onclick="window.location.href=\'https://azsspc.github.io/info\'" translate="no">i</button>\n' +*/
         '</nav>\n' +
-        '<label id="hsl" for="navhider" onclick="navhider()"></label>\n' +
+        '<label id="hsl" for="navhider"></label>\n' +
         '</header>\n'
     );
 }
