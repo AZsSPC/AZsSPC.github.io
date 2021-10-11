@@ -69,4 +69,6 @@ function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
 function navhider(){
     let nh = document.getElementById('navhider');
     document.cookie = 'NAVH='+nh.checked+'; max-age=5';
+    console.log(nh.checked);
+    console.log(document.cookie);
 }
