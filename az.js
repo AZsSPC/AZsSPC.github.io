@@ -29,7 +29,7 @@ function reformatAZ(){
 
 function header(){
     document.write(
-        '<input type="checkbox" id="navhider" hidden ' + (document.cookie.includes('NAVH') ?'checked' :'') + ' onchange="navhider()">\n' +
+        '<input type="checkbox" id="navhider" hidden ' + (document.cookie.includes('NAVH=true') ?'checked' :'') + ' onchange="navhider()">\n' +
         '<header>\n' +
         '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>\n' +
         '<nav>\n' +
@@ -68,6 +68,7 @@ function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
 
 function navhider(){
     let nh = document.getElementById('navhider');
+    document.cookie = nh.checked ?'NAVH=true' :'NAVH=false';
     console.log(nh.checked);
-    document.cookie = nh.checked ?'NAVH' :'';
+    console.log(document.cookie);
 }
