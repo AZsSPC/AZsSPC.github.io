@@ -111,6 +111,11 @@ button {
     cursor: pointer;
 }
 
+button * {
+    background: var(--c-null);
+    color: white;
+}
+
 header {
     background: var(--c-back-head);
     border-bottom: 2px solid var(--c-back-head-split);
@@ -274,4 +279,8 @@ ul, ol {
     top: 0;
     background: var(--c-accent-2);
     border-color: var(--c-accent-2-d);
+}
+
+textarea {
+    background: var(--c-back-main);
 }
