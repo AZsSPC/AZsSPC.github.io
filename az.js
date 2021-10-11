@@ -68,6 +68,6 @@ function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
 
 function navhider(){
     let nh = document.getElementById('navhider');
-    console.log(nh);
+    console.log(nh.checked);
     document.cookie = nh.checked ?'NAVH' :'';
 }
