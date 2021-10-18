@@ -1,16 +1,16 @@
 <html lang="ru">
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>Web Syntax</title>
     <script type="text/javascript" src="../../az.js"></script>
     <script type="text/javascript">settings();</script>
 </head>
 <body>
 <script type="text/javascript">header();</script>
-<main>
-    <p><label for="et"></label><textarea id="et" oninput="ttt(this.value)"></textarea></p>
-    <button id="copy">click here to copy</button>
-    <p><label for="out"></label><textarea id="out" ></textarea></p>
+<main onclick="recreate()">
+    <label>
+        <textarea></textarea>
+    </label><br>
+    <pre id="as">p</pre>
 </main>
 </body>
 </html>

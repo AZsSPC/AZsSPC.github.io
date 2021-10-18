@@ -18,14 +18,21 @@ const SETTINGS = [
         path: 'History Line',
         lore: 'Just a line with branches, what being historical events',
         enabled: true,
-        tag: ['web', 'regex', 'programming']
+        tag: ['web', 'history', 'science']
     },
     {
         name: 'Terr\'ize!',
         path: 'Seize Territory',
         lore: 'One-device multiplayer game',
         enabled: true,
-        tag: ['web', 'regex', 'programming']
+        tag: ['web', 'game']
+    },
+    {
+        name: 'Ghbdtn translator',
+        path: 'Ghbdtn translator',
+        lore: 'Translate "Djn nfrjq ntrcn" to normal\n\n(For russian)',
+        enabled: true,
+        tag: ['web', 'util', 'translator']
     }
 ];
 const TILE = '<p translate="no">#name</p><p>#lore</p><p>#tag</p>';
