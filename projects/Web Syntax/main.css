@@ -1,6 +1,6 @@
 #ep, #epf {
     white-space: pre-wrap;
-    margin: 0;
+    margin: 0 0.3rem;
     left: 0;
     right: 0;
     bottom: 0;
@@ -25,10 +25,6 @@
     border-color: #00000000;
     color: #00000000;
     caret-color: #adadad;
-}
-
-#epf li, #ep li {
-    padding: 0 0.3rem;
 }
 
 #epf {

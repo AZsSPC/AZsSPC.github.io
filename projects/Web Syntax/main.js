@@ -51,7 +51,7 @@ function reformat(){
 	//initUserElement(text);
 	//for(let i in syntax.userel) user_syntax;
 	syntax.reform.forEach(function(a){ text = text.replaceAll(a.p, a.r) });
-	ep.innerHTML = ('<li>' + text.replaceAll(/\n|&#10;/g, '</li><li>') + '</li>');
+	//ep.innerHTML = ('<li>' + text.replaceAll(/\n|&#10;/g, '</li><li>') + '</li>');
 	onEPI();
 	epb_reformat.setAttribute("changed", "false");
 	console.log('refresh');
