@@ -37,7 +37,7 @@ function initEP(){
 
 /** on [Edit Pane Input] detected */
 function onEPI(){
-	let text = ep.innerText;
+	let text = ep.innerHTML.replaceAll(/<\/li>/g, '\n').replaceAll(/<.+?>/g, '');
 	for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
 	//for(let i in user_syntax.color) text = text.replaceAll(user_syntax.color[i].p, '<span class="' + user_syntax.color[i].r + '">$&</span>');
 	epf.innerHTML = ('<li>' + text.replaceAll(/\n/g, '</li><li>') + '</li>');
@@ -47,7 +47,7 @@ function onEPI(){
 /** reformat */
 function reformat(){
 	//user_syntax = {color:[], reform:[]};
-	let text = ep.innerText;
+	let text = ep.innerHTML.replaceAll(/<\/li>/g, '\n').replaceAll(/<.+?>/g, '');
 	//initUserElement(text);
 	//for(let i in syntax.userel) user_syntax;
 	syntax.reform.forEach(function(a){ text = text.replaceAll(a.p, a.r) });
@@ -62,6 +62,12 @@ function downloadThis(){
 	if(filename) createNDownload(filename, ep.innerText);
 }
 
+/*
+ function initUserElement(text){
+ user_elements = [];
+ for(let i in syntax.userel) user_elements.append({p:text.match(syntax.userel[i].p), r:syntax.userel[i].r});
+ }
+ */
 
 function setSyntax(syntax_name){
 	let rf = new XMLHttpRequest();
