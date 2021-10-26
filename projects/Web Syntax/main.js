@@ -62,12 +62,6 @@ function downloadThis(){
 	if(filename) createNDownload(filename, ep.innerText);
 }
 
-/*
- function initUserElement(text){
- user_elements = [];
- for(let i in syntax.userel) user_elements.append({p:text.match(syntax.userel[i].p), r:syntax.userel[i].r});
- }
- */
 
 function setSyntax(syntax_name){
 	let rf = new XMLHttpRequest();
