@@ -92,7 +92,7 @@ function fileUploaded(el){
 		reader.readAsText(file, "UTF-8");
 		reader.onload = function(evt){
 			popup_upload.style.display = 'none';
-			ep.innerText = evt.target.result;
+			ep.innerHTML = ('<li>' + evt.target.result.replaceAll(/^|\n/g, '</li><li>') + '</li>').substr(9);
 			onEPI();
 			file_name = file.name;
 		}
