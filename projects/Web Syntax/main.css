@@ -13,6 +13,9 @@
 }
 
 #ep {
+	border-color: #00000000;
+	color: #00000000;
+	caret-color: #ADADAD;
 	padding: 0 0 0 3.3rem;
 }
 
@@ -25,10 +28,10 @@
 	margin: 0;
 }
 
-#ep, #ep * {
+#ep * {
 	border-color: #00000000;
 	color: #00000000;
-	caret-color: #ADADAD;
+	caret-color: #C95353;
 }
 
 #epf {
