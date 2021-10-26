@@ -1,8 +1,9 @@
 let ep, epf, popup_syntax, popup_upload, epb_reformat, epb_download, epb_syntax, epb_upload, sssb;
 
-let user_elements = [];
-let syntax = {color:[], reform:[], userel:[]};
-let user_syntax = {color:[], reform:[]};
+let file_name = '';
+//let user_elements = [];
+let syntax = {color:[], reform:[]};
+//let user_syntax = {color:[], reform:[]};
 const basic_syntax = {color:[{p:".+", r:"red", f:"gmi"}], reform:[]};
 const syntax_list = ['JS', 'TASM'];
 
@@ -38,39 +39,44 @@ function initEP(){
 function onEPI(){
 	let text = ep.innerText;
 	for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
-	for(let i in user_syntax.color) text = text.replaceAll(user_syntax.color[i].p, '<span class="' + user_syntax.color[i].r + '">$&</span>');
+	//for(let i in user_syntax.color) text = text.replaceAll(user_syntax.color[i].p, '<span class="' + user_syntax.color[i].r + '">$&</span>');
 	epf.innerHTML = ('<li>' + text.replaceAll(/^|\n/g, '</li><li>') + '</li>').substr(9);
 }
 
 /** reformat */
 function reformat(){
 	console.log('refresh');
-	user_syntax = {color:[], reform:[]};
+	//user_syntax = {color:[], reform:[]};
 	let text = ep.innerText;
+	//initUserElement(text);
+	//for(let i in syntax.userel) user_syntax;
 	syntax.reform.forEach(function(a){ text = text.replaceAll(a.p, a.r) });
 	ep.innerHTML = ('<li>' + text.replaceAll(/^|\n/g, '</li><li>') + '</li>').substr(9);
-
 	onEPI();
 	epb_reformat.setAttribute("changed", "false")
 }
 
 function downloadThis(){
-	let filename = prompt("What do you want to name the file?");
+	let filename = prompt("What do you want to name the file?", file_name);
 	if(filename) createNDownload(filename, ep.innerText);
 }
 
-function initUserElement(){ user_syntax.color.append() }
+/*
+ function initUserElement(text){
+ user_elements = [];
+ for(let i in syntax.userel) user_elements.append({p:text.match(syntax.userel[i].p), r:syntax.userel[i].r});
+ }
+ */
 
 function setSyntax(syntax_name){
 	let rf = new XMLHttpRequest();
 	rf.open("GET", 'https://raw.githubusercontent.com/AZsSPC/AZsSPC.github.io/main/projects/Web%20Syntax/syntax/' + syntax_name + '/s.json');
 	rf.onreadystatechange = function(){
-		user_elements = [];
 		let text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
 		syntax = text ?JSON.parse(text) :basic_syntax;
 		for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, syntax.color[i].f ?? 'gm');
 		for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, syntax.reform[i].f ?? 'gm');
-		for(let i in syntax.userel) syntax.userel[i].p = new RegExp(syntax.userel[i].p, syntax.userel[i].f ?? 'gm');
+		//for(let i in syntax.userel) syntax.userel[i].p = new RegExp(syntax.userel[i].p, syntax.userel[i].f ?? 'gm');
 		sssb.href = 'syntax/' + syntax_name + '/s.css';
 		onEPI();
 	}
@@ -87,6 +93,7 @@ function fileUploaded(el){
 			popup_upload.style.display = 'none';
 			ep.innerText = evt.target.result;
 			onEPI();
+			file_name = file.name;
 		}
 		reader.onerror = function(evt){
 			ep.innerText = 'error while read file';
