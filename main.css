@@ -203,8 +203,6 @@ nav a {
 	border-radius: 50px;
 	background: var(--c-accent);
 	border: solid 4px var(--c-null);
-	/*border-width: 3px 20px;*/
-	background: var(--c-accent);
 	color: white;
 	cursor: pointer;
 }

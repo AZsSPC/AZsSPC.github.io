@@ -69,7 +69,7 @@ function setSyntax(syntax_name){
 		syntax = text ?JSON.parse(text) :basic_syntax;
 		for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, syntax.color[i].f ?? 'gmi');
 		for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, syntax.reform[i].f ?? 'gmi');
-		sssb.href = 'syntax/' + syntax_name + '/s.JS';
+		sssb.href = 'syntax/' + syntax_name + '/s.css';
 		onEPI();
 	}
 	rf.send();
