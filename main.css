@@ -55,10 +55,7 @@
 	}
 
 	main {
-		margin-left: 10px
-	}
-
-	main {
+		margin-left: 10px;
 		-ms-overflow-style: none; /* for Internet Explorer, Edge */
 		scrollbar-width: none; /* for Firefox */
 		overflow-y: scroll;
