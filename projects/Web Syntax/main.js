@@ -40,7 +40,7 @@ function onEPI(){
 	let text = ep.innerText;
 	for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
 	//for(let i in user_syntax.color) text = text.replaceAll(user_syntax.color[i].p, '<span class="' + user_syntax.color[i].r + '">$&</span>');
-	epf.innerHTML = ('<li>' + text.replaceAll(/\n/g, '</li>&#0;<li>') + '</li>');
+	epf.innerHTML = ('<li>' + text.replaceAll(/\n/g, '</li><li>&#x0;') + '</li>');
 	console.log('light');
 }
 
@@ -51,7 +51,7 @@ function reformat(){
 	//initUserElement(text);
 	//for(let i in syntax.userel) user_syntax;
 	syntax.reform.forEach(function(a){ text = text.replaceAll(a.p, a.r) });
-	ep.innerHTML = ('<li>' + text.replaceAll(/\n/g, '</li>&#0;<li>') + '</li>');
+	ep.innerHTML = ('<li>' + text.replaceAll(/\n/g, '</li><li>&#x0;') + '</li>');
 	onEPI();
 	epb_reformat.setAttribute("changed", "false");
 	console.log('refresh');
@@ -61,13 +61,6 @@ function downloadThis(){
 	let filename = prompt("What do you want to name the file?", file_name);
 	if(filename) createNDownload(filename, ep.innerText);
 }
-
-/*
- function initUserElement(text){
- user_elements = [];
- for(let i in syntax.userel) user_elements.append({p:text.match(syntax.userel[i].p), r:syntax.userel[i].r});
- }
- */
 
 function setSyntax(syntax_name){
 	let rf = new XMLHttpRequest();
@@ -106,3 +99,20 @@ function fileUploaded(el){
 function switchVisible(el, v){ el.style.display = (el.style.display === v ?'none' :v) }
 
 initEP();
+
+/*asd
+* as
+* d
+* a
+* s
+* d
+* as
+* d
+* a
+* sd
+*
+* as
+* d
+* a
+* sd
+* as*/
