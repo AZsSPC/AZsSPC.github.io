@@ -39,8 +39,8 @@ function settings(){
 	document.write('<meta charset="utf-8">\n'//
 		+ '<meta name="viewport" content="width=device-width,initial-scale=1"/>\n'//
 		+ '<link rel="icon" href="https://azsspc.github.io/img/fic.png">\n' //
-		+ '<link rel="stylesheet" href="https://azsspc.github.io/main.js">\n' //
-		+ '<link rel="stylesheet" href="main.js">\n');
+		+ '<link rel="stylesheet" href="https://azsspc.github.io/main.css">\n' //
+		+ '<link rel="stylesheet" href="main.css">\n');
 }
 
 function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
