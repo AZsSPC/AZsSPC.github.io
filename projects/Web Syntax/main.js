@@ -1,7 +1,8 @@
 let ep, epf, popup_syntax, popup_upload, epb_reformat, epb_download, epb_syntax, epb_upload, sssb;
 
-let syntax = {color:[], reform:[]};
-let user_syntax = [];
+let user_elements = [];
+let syntax = {color:[], reform:[], userel:[]};
+let user_syntax = {color:[], reform:[]};
 const basic_syntax = {color:[{p:".+", r:"red", f:"gmi"}], reform:[]};
 const syntax_list = ['JS', 'TASM'];
 
@@ -35,22 +36,19 @@ function initEP(){
 
 /** on [Edit Pane Input] detected */
 function onEPI(){
-	let text = ep.innerText.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
+	let text = ep.innerText;
 	for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
-	//user_syntax.forEach(function (a){text = text.replaceAll(a.p, a.replace)});
-	epf.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
+	for(let i in user_syntax.color) text = text.replaceAll(user_syntax.color[i].p, '<span class="' + user_syntax.color[i].r + '">$&</span>');
+	epf.innerHTML = ('<li>' + text.replaceAll(/^|\n/g, '</li><li>') + '</li>').substr(9);
 }
 
 /** reformat */
 function reformat(){
 	console.log('refresh');
-
-	let text = ep.innerText.replaceAll(/<li>/gm, '\n').replaceAll(/<.+?>/gm, '').replaceAll(/&nbsp;/gm, ' ');
-	syntax.reform.forEach(function(a){
-		text = text.replaceAll(a.p, a.r);
-		if(a.v ?? false) initUserElement(text.match(a.p));
-	});
-	ep.innerHTML = ('<li>' + text.replaceAll(/\n/gm, '</li><li>') + '</li>').substr(9);
+	user_syntax = {color:[], reform:[]};
+	let text = ep.innerText;
+	syntax.reform.forEach(function(a){ text = text.replaceAll(a.p, a.r) });
+	ep.innerHTML = ('<li>' + text.replaceAll(/^|\n/g, '</li><li>') + '</li>').substr(9);
 
 	onEPI();
 	epb_reformat.setAttribute("changed", "false")
@@ -61,18 +59,18 @@ function downloadThis(){
 	if(filename) createNDownload(filename, ep.innerText);
 }
 
-function initUserElement(){
-
-}
+function initUserElement(){ user_syntax.color.append() }
 
 function setSyntax(syntax_name){
 	let rf = new XMLHttpRequest();
 	rf.open("GET", 'https://raw.githubusercontent.com/AZsSPC/AZsSPC.github.io/main/projects/Web%20Syntax/syntax/' + syntax_name + '/s.json');
 	rf.onreadystatechange = function(){
+		user_elements = [];
 		let text = (rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null;
 		syntax = text ?JSON.parse(text) :basic_syntax;
 		for(let i in syntax.color) syntax.color[i].p = new RegExp(syntax.color[i].p, syntax.color[i].f ?? 'gm');
 		for(let i in syntax.reform) syntax.reform[i].p = new RegExp(syntax.reform[i].p, syntax.reform[i].f ?? 'gm');
+		for(let i in syntax.userel) syntax.userel[i].p = new RegExp(syntax.userel[i].p, syntax.userel[i].f ?? 'gm');
 		sssb.href = 'syntax/' + syntax_name + '/s.css';
 		onEPI();
 	}
@@ -95,11 +93,8 @@ function fileUploaded(el){
 			onEPI();
 		}
 	}
-
 }
 
-function switchVisible(el, v){
-	el.style.display = (el.style.display === v ?'none' :v);
-}
+function switchVisible(el, v){ el.style.display = (el.style.display === v ?'none' :v) }
 
 initEP();
