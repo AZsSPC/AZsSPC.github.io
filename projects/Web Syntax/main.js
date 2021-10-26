@@ -41,11 +41,11 @@ function onEPI(){
 	for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
 	//for(let i in user_syntax.color) text = text.replaceAll(user_syntax.color[i].p, '<span class="' + user_syntax.color[i].r + '">$&</span>');
 	epf.innerHTML = ('<li>' + text.replaceAll(/^|\n/g, '</li><li>') + '</li>').substr(9);
+	console.log('light');
 }
 
 /** reformat */
 function reformat(){
-	console.log('refresh');
 	//user_syntax = {color:[], reform:[]};
 	let text = ep.innerText;
 	//initUserElement(text);
@@ -53,7 +53,8 @@ function reformat(){
 	syntax.reform.forEach(function(a){ text = text.replaceAll(a.p, a.r) });
 	ep.innerHTML = ('<li>' + text.replaceAll(/^|\n/g, '</li><li>') + '</li>').substr(9);
 	onEPI();
-	epb_reformat.setAttribute("changed", "false")
+	epb_reformat.setAttribute("changed", "false");
+	console.log('refresh');
 }
 
 function downloadThis(){
