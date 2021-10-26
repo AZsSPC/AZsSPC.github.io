@@ -1,0 +1,23 @@
+.red { color: #EA6262 }
+
+.blue { color: #92ADF1 }
+
+.green { color: #7FD57F }
+
+.orange { color: #E57926 }
+
+.yellow { color: #FFD800 }
+
+.magenta { color: #D297FF }
+
+.main { color: #F67EC6 }
+
+.func { color: #58D559 }
+
+.case { color: #E56CD6; background: #440558 }
+
+.void { color: #6FCBFF; background: #4E5457 }
+
+.comment, .comment * { color: #8D8D8D; /*background: #4c4c4c;*/ }
+
+.string, .string * { color: #7FD57F; border-radius: 5px; background: #484E48 }
