@@ -28,7 +28,7 @@ function header(){
 	document.write('<input type="checkbox" id="navhider" hidden ' + (document.cookie.includes('NAVH=true') ?'checked' :'') + ' onchange="navhider()">\n'//
 		+ '<header>\n' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>\n' //
 		+ '<nav>\n'//
-		+ '<a href="'+(window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn">&lt;/&gt;</a>\n'//
+		+ '<a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn">&lt;/&gt;</a>\n'//
 		+ '<a href="https://azsspc.github.io/projects" class="m-btn">projects</a>\n'//
 		+ '<a href="https://azsspc.github.io/contacts">@</a>\n' /*'<button onclick="window.location.href=\'https://azsspc.github.io/info\'" translate="no">i</button>\n' +*///
 		+ '</nav>\n' + '<label id="hsl" for="navhider"></label>\n'//
@@ -36,7 +36,11 @@ function header(){
 }
 
 function settings(){
-	document.write('<meta charset="utf-8">\n' + '<meta name="viewport" content="width=device-width,initial-scale=1"/>\n' + '<link rel="icon" href="https://azsspc.github.io/img/fic.png">\n' + '<link rel="stylesheet" href="https://azsspc.github.io/main.JS">\n' + '<link rel="stylesheet" href="main.JS">\n');
+	document.write('<meta charset="utf-8">\n'//
+		+ '<meta name="viewport" content="width=device-width,initial-scale=1"/>\n'//
+		+ '<link rel="icon" href="https://azsspc.github.io/img/fic.png">\n' //
+		+ '<link rel="stylesheet" href="https://azsspc.github.io/main.JS">\n' //
+		+ '<link rel="stylesheet" href="main.JS">\n');
 }
 
 function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
