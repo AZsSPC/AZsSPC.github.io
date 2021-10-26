@@ -40,7 +40,7 @@ function onEPI(){
 	let text = ep.innerText;
 	for(let i in syntax.color) text = text.replaceAll(syntax.color[i].p, '<span class="' + syntax.color[i].r + '">$&</span>');
 	//for(let i in user_syntax.color) text = text.replaceAll(user_syntax.color[i].p, '<span class="' + user_syntax.color[i].r + '">$&</span>');
-	epf.innerHTML = ('<li>' + text.replaceAll(/\n|&#10;/g, ' </li><li>') + ' </li>');
+	epf.innerHTML = ('<li>' + text.replaceAll(/\n|&#10;/g, ' &nbsp;</li><li>') + ' &nbsp;</li>');
 	console.log('light');
 }
 
