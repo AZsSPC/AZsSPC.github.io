@@ -10,13 +10,14 @@
 	border-top: 4px solid;
 	border-bottom: 4px solid;
 	tab-size: 6;
+	height: fit-content;
 }
 
 #ep {
-	border-color: #00000000!important;
-	color: #00000000!important;
-	caret-color: #ADADAD!important;
-	padding: 0 0 0 3.3rem!important;
+	border-color: #00000000;
+	color: #00000000;
+	caret-color: #ADADAD;
+	padding: 0 0 0 3.3rem;
 }
 
 #ec {
@@ -27,7 +28,6 @@
 	position: absolute;
 	margin: 0;
 }
-
 
 #epf {
 	background: #2F2F2F;
