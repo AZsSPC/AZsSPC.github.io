@@ -62,6 +62,13 @@ function downloadThis(){
 	if(filename) createNDownload(filename, ep.innerText);
 }
 
+/*
+ function initUserElement(text){
+ user_elements = [];
+ for(let i in syntax.userel) user_elements.append({p:text.match(syntax.userel[i].p), r:syntax.userel[i].r});
+ }
+ */
+
 function setSyntax(syntax_name){
 	let rf = new XMLHttpRequest();
 	rf.open("GET", 'https://raw.githubusercontent.com/AZsSPC/AZsSPC.github.io/main/projects/Web%20Syntax/syntax/' + syntax_name + '/s.json');
@@ -99,20 +106,3 @@ function fileUploaded(el){
 function switchVisible(el, v){ el.style.display = (el.style.display === v ?'none' :v) }
 
 initEP();
-
-/*asd
-* as
-* d
-* a
-* s
-* d
-* as
-* d
-* a
-* sd
-*
-* as
-* d
-* a
-* sd
-* as*/
