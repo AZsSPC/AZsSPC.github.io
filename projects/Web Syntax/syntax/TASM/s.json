@@ -4,18 +4,18 @@
     {"p": ";.*$", "r": "comment"},
     {"p": "\\b[a-f0-9]+h\\b", "r": "magenta", "f": "gmi"},
     {"p": "\\be?[abcd][xhls]\\b", "r": "blue", "f": "gmi"},
-    {"p": "\\b[a-z0-9_]+[^\\n]+(proc|endp)|^[^\\n]*[a-z0-9_]+:|ret", "r": "void", "f": "gmi"},
+    {"p": "\\b[a-z0-9_]+[^\\n]+(proc|endp)|^[^\\n]*[a-z0-9_]+(?=:)|ret", "r": "void", "f": "gmi"},
     {"p": "\\.(stack|data|code|exit|model)|,", "r": "orange"},
     {"p": "\\b(main|end)\\b|\\.startup\\b", "r": "main"},
     {"p": "\\b[0-9]+\\b", "r": "blue"},
-    {"p": "\\b[a-z0-9_]+\\s+d[bwdqt]\\b", "r": "yellow", "f": "gmi"},
-    {"p": "\\b(AAA|AAD|AAM|AAS|ADC|ADD|AND|CALL|NEAR|NEAR|FAR|FAR|CBW|CLC|CLD|CLI|CMC|CMP|CMPS|CWD|DAA|DAS|DEC|DIV|ESC|OPCODE|HTL|IDIV|IMUL|IN|ADX|INC|INT|INT|INT|IRET|JA|JAE|JB|JBE|JC|JCXZ|JE|JG|JGE|JL|JLE|JMP|SHORT|NEAR|FAR|FAR|JNA|JNAE|JNB|JNC|JNE|JNG|JNGE|JNL|JNLE|JNO|JNP|JNS|JNZ|JO|JP|JPE|JPO|JS|JZ|LAHF|LDS|LEA|LES|LODS|LOOP|LOOPELOOPZLbel|LOOPNELOOPZLbel|MOV|MOVS|MUL|NEG|NOP|OR|OUT|DX|POP|POPF|PUSH|PUSHF|RCL|CL|RCR|CL|RET|ROL|CL|ROR|CL|SAHF|SAL|CL|SAR|CL|SBB|SCAS|SHL|CL|SHR|CL|STC|STD|STI|STOS|SUB|TEST|WAIT|XCHGAX|AX|XLAT|XOR)\\b", "r": "func", "f": "gmi"},
+    {"p": "\\b[a-z0-9_]+(?=\\s+d[bwdqt]\\b)", "r": "yellow", "f": "gmi", "v": true},
+    {"p": "\\bd[bwdqt]\\b", "r": "yellow", "f": "gmi"},
+    {"p": "\\b(AAA|AAD|AAM|AAS|ADC|ADD|AND|CALL|NEAR|NEAR|FAR|FAR|CBW|CLC|CLD|CLI|CMC|CMP|CMPS|CWD|DAA|DAS|DEC|DIV|ESC|OPCODE|HTL|IDIV|IMUL|IN|ADX|INC|INT|INT|INT|IRET|JA|JAE|JB|JBE|JC|JCXZ|JE|JG|JGE|JL|JLE|JMP|SHORT|NEAR|FAR|FAR|JNA|JNAE|JNB|JNC|JNE|JNG|JNGE|JNL|JNLE|JNO|JNP|JNS|JNZ|JO|JP|JPE|JPO|JS|JZ|LAHF|LDS|LEA|LES|LODS|LOOP|LOOPELOOPZLbel|LOOPNELOOPZLbel|MOV|MOVS|MUL|NEG|NOP|OR|OUT|DX|POP|POPF|PUSH|PUSHF|RCL|CL|RCR|CL|RET|ROL|CL|ROR|CL|SAHF|SAL|CL|SAR|CL|SBB|SCAS|SHL|CL|SHR|CL|STC|STD|STI|STOS|SUB|TEST|WAIT|XCHGAX|AX|XLAT|XOR)\\b", "r": "func", "f": "gmi", "v": true},
     {"p": "\\[[a-z0-9_]+\\]", "r": "case", "f": "gmi"}
   ],
   "reform": [
     {"p": "\\s+(?=\\b[a-z0-9_]+:)", "r": "\n\n", "f": "gmi"},
     {"p": "^[ \\t]*(?=\\b(AAA|AAD|AAM|AAS|ADC|ADD|AND|CALL|NEAR|NEAR|FAR|FAR|CBW|CLC|CLD|CLI|CMC|CMP|CMPS|CWD|DAA|DAS|DEC|DIV|ESC|OPCODE|HTL|IDIV|IMUL|IN|ADX|INC|INT|INT|INT|IRET|JA|JAE|JB|JBE|JC|JCXZ|JE|JG|JGE|JL|JLE|JMP|SHORT|NEAR|FAR|FAR|JNA|JNAE|JNB|JNC|JNE|JNG|JNGE|JNL|JNLE|JNO|JNP|JNS|JNZ|JO|JP|JPE|JPO|JS|JZ|LAHF|LDS|LEA|LES|LODS|LOOP|LOOPELOOPZLbel|LOOPNELOOPZLbel|MOV|MOVS|MUL|NEG|NOP|OR|OUT|DX|POP|POPF|PUSH|PUSHF|RCL|CL|RCR|CL|RET|ROL|CL|ROR|CL|SAHF|SAL|CL|SAR|CL|SBB|SCAS|SHL|CL|SHR|CL|STC|STD|STI|STOS|SUB|TEST|WAIT|XCHGAX|AX|XLAT|XOR)\\b)", "r": "\t", "f": "gmi"},
     {"p": "(?<=\\b(AAA|AAD|AAM|AAS|ADC|ADD|AND|CALL|NEAR|NEAR|FAR|FAR|CBW|CLC|CLD|CLI|CMC|CMP|CMPS|CWD|DAA|DAS|DEC|DIV|ESC|OPCODE|HTL|IDIV|IMUL|IN|ADX|INC|INT|INT|INT|IRET|JA|JAE|JB|JBE|JC|JCXZ|JE|JG|JGE|JL|JLE|JMP|SHORT|NEAR|FAR|FAR|JNA|JNAE|JNB|JNC|JNE|JNG|JNGE|JNL|JNLE|JNO|JNP|JNS|JNZ|JO|JP|JPE|JPO|JS|JZ|LAHF|LDS|LEA|LES|LODS|LOOP|LOOPELOOPZLbel|LOOPNELOOPZLbel|MOV|MOVS|MUL|NEG|NOP|OR|OUT|DX|POP|POPF|PUSH|PUSHF|RCL|CL|RCR|CL|RET|ROL|CL|ROR|CL|SAHF|SAL|CL|SAR|CL|SBB|SCAS|SHL|CL|SHR|CL|STC|STD|STI|STOS|SUB|TEST|WAIT|XCHGAX|AX|XLAT|XOR)\\b)\\s+", "r": "\t\t", "f": "gmi"}
-  ],
-  "hint": []
+  ]
 }
