@@ -32,7 +32,7 @@ function initEP(){
 	runOnKeys(function(){ reformat();}, "AltLeft", "ShiftLeft", "KeyF");
 	runOnKeys(function(){ downloadThis();}, "ControlLeft", "KeyD");
 
-	onEPI(document.getElementById(epb_reformat.getAttribute('for')));
+	onEPI();
 }
 
 /** on [Edit Pane Input] detected */
@@ -53,9 +53,9 @@ function reformat(){
 	syntax.reform.forEach(function(a){ text = text.replaceAll(a.p, a.r) });
 	//ep.innerHTML = ('<li>' + text.replaceAll(/\n|&#10;/g, '</li><li>') + '</li>');
 	ep.innerHTML = text;
-	onEPI();
 	epb_reformat.setAttribute("changed", "false");
 	console.log('refresh');
+	onEPI();
 }
 
 function downloadThis(){
