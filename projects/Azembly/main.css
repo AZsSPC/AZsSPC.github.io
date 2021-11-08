@@ -1,0 +1,147 @@
+#ep, #epf {
+	white-space: pre-wrap;
+	margin: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	position: absolute;
+	padding: 0 0 0 3rem;
+	border-top: 4px solid;
+	border-bottom: 4px solid;
+	tab-size: 5;
+	height: fit-content;
+}
+
+#ep {
+	border-color: #00000000;
+	color: #00000000;
+	caret-color: #ADADAD;
+	padding: 0 0 0 3.3rem;
+}
+
+#ec {
+	overflow-y: scroll;
+	top: 68px;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+	margin: 0;
+}
+
+#epf {
+	background: #2F2F2F;
+	border-color: #2F2F2F
+}
+
+#epf li::marker {
+	content: " " counter(list-item) " ";
+	color: #7F7F7F;
+}
+
+#epf li {
+	padding: 0 0 0 0.3rem;
+	display: list-item;
+	background: #424242;
+}
+
+#tab {
+	top: 24px;
+	left: 0;
+	right: 0;
+	position: absolute;
+	margin: 0;
+	display: inline-grid;
+	padding: 4px;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+#tab button {
+	text-transform: uppercase;
+	background: var(--c-accent);
+	color: white;
+}
+
+@media screen and (max-width: 800px) {
+	#tab button {
+		font-size: 10pt;
+	}
+
+	#epf ::marker {
+		font-size: 8pt;
+	}
+
+	#popup_syntax, #popup_upload {
+		top: 100px;
+		bottom: 100px;
+		right: 5%;
+		left: 5%;
+	}
+}
+
+@media screen and (min-width: 800px) {
+	#tab button {
+		font-size: 11pt;
+	}
+
+	#epf ::marker {
+		font-size: 9pt;
+	}
+
+	#popup_syntax, #popup_upload {
+		top: 100px;
+		bottom: 200px;
+		right: calc(50vw - 200px);
+		left: calc(50vw - 200px);
+	}
+}
+
+#tab button[changed=true] {
+	border-color: #7FD57F;
+}
+
+#tab button[changed=false] {
+	/*border: solid 2px #7fd57f;*/
+}
+
+#popup_syntax, #popup_upload {
+	background: var(--c-accent-3);
+	position: absolute;
+	overflow-y: scroll;
+	margin: 0;
+	padding: 0;
+	border: none;
+	z-index: 9999;
+	border-radius: 10px;
+	display: grid;
+}
+
+#popup_syntax > * {
+	width: calc(100% - 8px);
+	text-align: center;
+	border-radius: 10px;
+	background: var(--c-accent-3-d);
+}
+
+#popup_upload > input {
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	opacity: 0;
+	width: 100%;
+	position: absolute;
+}
+
+#popup_upload > div {
+	text-align: center;
+	border: none;
+	position: center;
+	align-self: center;
+
+}
+
+#popup_syntax::-webkit-scrollbar, #popup_upload::-webkit-scrollbar {
+	display: none;
+}
