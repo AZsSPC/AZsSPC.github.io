@@ -33,6 +33,20 @@ const SETTINGS = [
         lore: 'Translate "Djn nfrjq ntrcn" to normal\n\n(For russian)',
         enabled: true,
         tag: ['web', 'util', 'translator']
+    },
+    {
+        name: 'Matrix Laplas Helper',
+        path: 'Matrix Laplas Helper',
+        lore: 'Matrix Laplas Helper',
+        enabled: true,
+        tag: ['web', 'util']
+    },
+    {
+        name: 'Azembly',
+        path: 'Azembly',
+        lore: 'Azembly',
+        enabled: true,
+        tag: ['web', 'util']
     }
 ];
 const TILE = '<p translate="no">#name</p><p>#lore</p><p>#tag</p>';
