@@ -25,7 +25,23 @@
             <button onclick="generateSolution()">Get TeX</button>
         </div>
     </div>
-    <div id="solutionTeX"></div>
+    <div id="solutionTeX">
+        <p>
+        <p>How to use it?</p>
+        Single command - sNaF:<br>
+        <u>s</u> - <u>[r or c]</u> row or column<br>
+        <u>N</u> - <u>row/column</u> number<br>
+        <u>F</u> - <u>row/column</u> number or number<br>
+        <u>a</u> - <u>[+ - / *>]</u> the action to be applied
+        <ul>
+            <li><u>+</u> - adds all cells values from <u>F</u> to <u>N</u>, writing in <u>N</u></li>
+            <li><u>-</u> - subtracts all cells values of <u>F</u> from <u>N</u> and writes to <u>N</u></li>
+            <li><u>*</u> - multiplies each cell <u>N</u> by the value <u>F</u>, writing to <u>N</u></li>
+            <li><u>/</u> - divides each cell <u>N</u> by the value <u>F</u>, writing in <u>N</u></li>
+            <li><u>></u> - moves the <u>row/column</u> to the specified index, shifting all others
+        </ul>
+        </p>
+    </div>
 </main>
 </body>
 </html>

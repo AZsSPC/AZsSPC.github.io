@@ -35,11 +35,11 @@ const SETTINGS = [
         tag: ['web', 'util', 'translator']
     },
     {
-        name: 'Matrix Laplas Helper',
+        name: 'Matrix Helper',
         path: 'Matrix Laplas Helper',
-        lore: 'Matrix Laplas Helper',
+        lore: 'This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n(saves time, exports the solution in .TeX)',
         enabled: true,
-        tag: ['web', 'util']
+        tag: ['web', 'util', 'TeX', 'math']
     },
     {
         name: 'Azembly',
