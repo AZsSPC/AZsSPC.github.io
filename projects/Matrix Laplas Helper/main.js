@@ -44,13 +44,25 @@ function stepMatrix(){
             break;
         case '>':
             currentMatrix.splice(command[4] - 1, 0, currentMatrix.splice(command[2], 1)[0]);
-            break;
-    } else switch(command[3]){
-        case '-':
-        case '+':
-        case '*':
-        case '/':
-        case '>':
+    } else{
+        let temp = matrixTransponate(currentMatrix);
+        switch(command[3]){
+            case '-':
+                temp[command[2]] = temp[command[2]].map((a, i) => a - temp[command[4] - 1][i]);
+                break;
+            case '+':
+                temp[command[2]] = temp[command[2]].map((a, i) => a + temp[command[4] - 1][i]);
+                break;
+            case '*':
+                temp[command[2]] = temp[command[2]].map((a, i) => a * command[4]);
+                break;
+            case '/':
+                temp[command[2]] = temp[command[2]].map((a, i) => a / command[4]);
+                break;
+            case '>':
+                temp.splice(command[4] - 1, 0, temp.splice(command[2], 1)[0]);
+        }
+        currentMatrix = matrixTransponate(temp);
     }
     for(let h = 0; h < height; h++) for(let w = 0; w < width; w++) document.getElementById('me_i' + w + '_j' + h).innerText = currentMatrix[h][w];
 
@@ -79,6 +91,19 @@ function matrixClone(oldM){
         newM[h] = new Array(mw);
         for(let w = 0; w < mw; w++)
             newM[h][w] = oldM[h][w];
+    }
+    console.log(newM);
+    return newM;
+}
+
+function matrixTransponate(oldM){
+    let mh = oldM[0].length;
+    let mw = oldM.length;
+    let newM = new Array(mh);
+    for(let h = 0; h < mh; h++){
+        newM[h] = new Array(mw);
+        for(let w = 0; w < mw; w++)
+            newM[h][w] = oldM[w][h];
     }
     console.log(newM);
     return newM;
