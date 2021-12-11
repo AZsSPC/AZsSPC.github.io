@@ -8,7 +8,21 @@
 <body>
 <script type="text/javascript">header();</script>
 <main>
-    <div id="notepad"> asdas da sd a</div>
+    <div id="initMS">
+        Matrix width: <input id="mW" type="number" min="1" max="10" value="1">
+        Matrix height: <input id="mH" type="number" min="1" max="10" value="1">
+        <button onclick="initMatrixSize()">Use this size</button>
+    </div>
+    <div id="initMX">
+        <table id="matrixTable"></table>
+        <div id="initMatrix" hidden>
+            <button onclick="initMatrix()">Use this matrix</button>
+        </div>
+        <div id="stepMatrix" hidden>
+            <input id="stepCommand" type="text" value="" placeholder="r3+2" onchange="stepMatrix()">
+            <button onclick="stepMatrix()">Step</button>
+        </div>
+    </div>
 </main>
 </body>
 </html>
