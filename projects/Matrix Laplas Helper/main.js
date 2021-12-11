@@ -4,7 +4,8 @@ let mW = document.getElementById('mW'), mH = document.getElementById('mH'),
     initMS = document.getElementById('initMS'),
     stepCommand = document.getElementById('stepCommand'),
     initMatrixc = document.getElementById('initMatrix'),
-    stepMatrixc = document.getElementById('stepMatrix');
+    stepMatrixc = document.getElementById('stepMatrix'),
+    solutionTeX = document.getElementById('solutionTeX');
 
 function initMatrixSize(){
     initMS.hidden = true;
@@ -21,51 +22,63 @@ function initMatrixSize(){
     matrixTable.innerHTML = mt;
 }
 
-function stepMatrix(){
-    let command = stepCommand.value.replaceAll(/\s/g, '').toLowerCase().match(/([rc])(\d+)([\/\-+>*])(-?\d+)/);
+function userStepMatrix(){
+    let command = parseCommand(stepCommand.value);
+    if(command.length < 4) return;
     stepCommand.value = '';
-    command[2] = parseInt(command[2]) - 1;
-    command[4] = parseInt(command[4]);
     console.log(command)
-    if(command.length !== 5) return;
     commands.push(command[0]);
-    if(command[1] === 'r') switch(command[3]){
-        case '-':
-            currentMatrix[command[2]] = currentMatrix[command[2]].map((a, i) => a - currentMatrix[command[4] - 1][i]);
-            break;
-        case '+':
-            currentMatrix[command[2]] = currentMatrix[command[2]].map((a, i) => a + currentMatrix[command[4] - 1][i]);
-            break;
-        case '*':
-            currentMatrix[command[2]] = currentMatrix[command[2]].map((a, i) => a * command[4]);
-            break;
-        case '/':
-            currentMatrix[command[2]] = currentMatrix[command[2]].map((a, i) => a / command[4]);
-            break;
-        case '>':
-            currentMatrix.splice(command[4] - 1, 0, currentMatrix.splice(command[2], 1)[0]);
-    } else{
-        let temp = matrixTransponate(currentMatrix);
-        switch(command[3]){
-            case '-':
-                temp[command[2]] = temp[command[2]].map((a, i) => a - temp[command[4] - 1][i]);
-                break;
-            case '+':
-                temp[command[2]] = temp[command[2]].map((a, i) => a + temp[command[4] - 1][i]);
-                break;
-            case '*':
-                temp[command[2]] = temp[command[2]].map((a, i) => a * command[4]);
-                break;
-            case '/':
-                temp[command[2]] = temp[command[2]].map((a, i) => a / command[4]);
-                break;
-            case '>':
-                temp.splice(command[4] - 1, 0, temp.splice(command[2], 1)[0]);
-        }
-        currentMatrix = matrixTransponate(temp);
-    }
+    currentMatrix = stepMatrix(currentMatrix, command);
     for(let h = 0; h < height; h++) for(let w = 0; w < width; w++) document.getElementById('me_i' + w + '_j' + h).innerText = currentMatrix[h][w];
 
+}
+
+function generateSolution(){
+    let TeX = '';
+    let temp = matrixClone(startMatrix);
+    TeX += matrixTeX(temp) + '\n';
+    for(let i = 0; i < commands.length; i++) TeX += '\\overset{\\mbox{' + commands[i] + '}}{\\sim}' + matrixTeX(temp = stepMatrix(temp, parseCommand(commands[i]))) + '\n';
+    solutionTeX.innerText = '$$' + TeX + '$$';
+    console.log(TeX);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    let filename = prompt("What do you want to name the file?", 'matrix_sol_by_az');
+    if(filename) createNDownload(filename + '.tex', TeX);
+}
+
+function matrixTeX(matrix){
+    let ret = '';
+    let h = matrix.length;
+    for(let i = 0; i < h; i++) ret += matrix[i].join(' & ') + ' \\\\\n';
+    return '\\begin{pmatrix}\n' + ret + '\\end{pmatrix}';
+}
+
+function parseCommand(str){
+    let command = str.replaceAll(/\s/g, '').toLowerCase().match(/([rc])(\d+)([\/\-+>*])(-?\d+)/);
+    command[2] = parseInt(command[2]) - 1;
+    command[4] = parseInt(command[4]);
+    return command;
+}
+
+function stepMatrix(matrix, command){
+    if(command[1] === 'c') matrix = matrixTransponate(matrix);
+    switch(command[3]){
+        case '-':
+            matrix[command[2]] = matrix[command[2]].map((a, i) => a - matrix[command[4] - 1][i]);
+            break;
+        case '+':
+            matrix[command[2]] = matrix[command[2]].map((a, i) => a + matrix[command[4] - 1][i]);
+            break;
+        case '*':
+            matrix[command[2]] = matrix[command[2]].map((a, i) => a * command[4]);
+            break;
+        case '/':
+            matrix[command[2]] = matrix[command[2]].map((a, i) => a / command[4]);
+            break;
+        case '>':
+            matrix.splice(command[4] - 1, 0, matrix.splice(command[2], 1)[0]);
+    }
+    if(command[1] === 'c') matrix = matrixTransponate(matrix);
+    return matrix;
 }
 
 function initMatrix(){
@@ -92,19 +105,18 @@ function matrixClone(oldM){
         for(let w = 0; w < mw; w++)
             newM[h][w] = oldM[h][w];
     }
-    console.log(newM);
     return newM;
 }
 
 function matrixTransponate(oldM){
-    let mh = oldM[0].length;
+    console.log(oldM);
     let mw = oldM.length;
+    let mh = oldM[0].length;
     let newM = new Array(mh);
     for(let h = 0; h < mh; h++){
         newM[h] = new Array(mw);
         for(let w = 0; w < mw; w++)
             newM[h][w] = oldM[w][h];
     }
-    console.log(newM);
     return newM;
 }

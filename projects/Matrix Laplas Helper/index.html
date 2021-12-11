@@ -1,6 +1,7 @@
 <html lang="ru">
 <head>
     <title>Matrix Laplas Helper</title>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../az.js"></script>
     <script type="text/javascript">settings();</script>
 
@@ -19,10 +20,12 @@
             <button onclick="initMatrix()">Use this matrix</button>
         </div>
         <div id="stepMatrix" hidden>
-            <input id="stepCommand" type="text" value="" placeholder="r3+2" onchange="stepMatrix()">
-            <button onclick="stepMatrix()">Step</button>
+            <input id="stepCommand" type="text" value="" placeholder="r3+2" onchange="userStepMatrix()">
+            <button onclick="userStepMatrix()">Step</button>
+            <button onclick="generateSolution()">Get TeX</button>
         </div>
     </div>
+    <div id="solutionTeX"></div>
 </main>
 </body>
 </html>
