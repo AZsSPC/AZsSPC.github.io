@@ -29,11 +29,12 @@ function updateRules(){
 }
 
 function runMachine(){
-	string[-3]='g'
+	string[-3] = 'g'
+	string[2] = 'W'
 	drawLine();
 }
 
 function drawLine(){
 	line.innerHTML = '';
-	for(let q = quarry - 9; q < quarry + 10; q++) line.innerHTML += '<span' + (q === quarry ?' sel' :'') + ' contenteditable="true">' + ((string[q] ?? '') === '' ?'&nbsp;' :string[q]) + '</span>';
+	for(let q = quarry - 9; q < quarry + 10; q++) line.innerHTML += '<span q="' + q + '"' + (q === quarry ?' sel' :'') + ' contenteditable="true">' + ((string[q] ?? '') === '' ?'&nbsp;' :string[q]) + '</span>';
 }

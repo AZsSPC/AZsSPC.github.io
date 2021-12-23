@@ -18,13 +18,27 @@ main {
 #line > span {
 	display: inline-block;
 	background: #232323;
-	padding: 2px 6px;
+	width: 2.5rem;
+	padding: 1rem 0 4px 0;
 	border: solid 1px black;
 	text-align: center;
+	position: relative;
 }
 
 #line > span[sel] {
 	background: white;
 	border: solid 1px white;
 	color: black;
+}
+
+#line > span:before {
+	content: attr(q);
+	font-size: .7rem;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	color: #0EBDFF;
+}
+#line > span[sel]:before {
+	color: #00394F;
 }
