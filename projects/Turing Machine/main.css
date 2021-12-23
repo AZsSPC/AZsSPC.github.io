@@ -1,0 +1,30 @@
+input {
+	background: #232323;
+}
+
+main {
+	padding-left: 1rem;
+	padding-right: 1rem
+}
+
+#turing_table td {
+	min-width: 4rem;
+	min-height: 2rem;
+	text-align: center;
+	border-radius: 5px;
+	background: #232323;
+}
+
+#line > span {
+	display: inline-block;
+	background: #232323;
+	padding: 2px 6px;
+	border: solid 1px black;
+	text-align: center;
+}
+
+#line > span[sel] {
+	background: white;
+	border: solid 1px white;
+	color: black;
+}

@@ -1,0 +1,26 @@
+<html lang="ru">
+<head>
+  <title>Matrix Laplas Helper</title>
+  <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/javascript" src="../../az.js"></script>
+  <script type="text/javascript">settings();</script>
+
+</head>
+<body>
+<script type="text/javascript">header();</script>
+<main>
+  Line: <span id="line" translate="no"></span>
+  <button onclick="runMachine()">Run</button>
+  <button onclick="generateSolution()">Step</button>
+  <br>
+  ABC: <input id="alphabet" type="text" value="">
+  Q: <input id="q_count" type="number" min="1" max="10" value="1">
+  <button onclick="updateRules()">SET</button>
+  <button onclick="generateSolution()">Export TeX</button>
+  <table id="turing_table"></table>
+  <div id="solutionTeX"></div>
+</main>
+</body>
+</html>
+<script type="text/javascript" src="main.js">
+</script>
