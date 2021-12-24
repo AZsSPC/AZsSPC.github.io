@@ -81,7 +81,8 @@ function putSymbolGUI(el){
 
 function drawLine(){
 	line.innerHTML = '<span class="move_q" onclick="cell--;drawLine()">\<-</span>';
-	for(let c = cell - 9; c < cell + 10; c++) line.innerHTML += //
+	let cof = document.body.clientWidth > 600 ?9 :4;
+	for(let c = cell - cof; c < cell + cof + 1; c++) line.innerHTML += //
 		'<span oninput="putSymbolGUI(this)" c="' + c + '"' + (c === cell ?' sel' :'') + ' contenteditable="true">' + (string[c] ?? '') + '</span>';
 	line.innerHTML += '<span class="move_q" onclick="cell++;drawLine()">-\></span>';
 }

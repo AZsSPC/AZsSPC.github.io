@@ -83,15 +83,11 @@ main {
 	padding-right: 4px;
 }
 
-#grid > :first-child {
-	right: 0;
-	left: 0;
-	position: absolute;
-}
 
 #grid {
 	grid-template-rows: fit-content(0) 1fr;
 	display: grid;
+	position: relative;
 	grid-template-columns: 1fr;
 	height: 100%;
 }
