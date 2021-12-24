@@ -4,11 +4,31 @@ input {
 
 main {
 	padding-left: 1rem;
-	padding-right: 1rem
+	padding-right: 1rem;
+	overflow: unset !important;
+	text-align: center;
 }
 
-#turing_table td {
-	min-width: 4rem;
+#line {
+	display: flex;
+	justify-content: center;
+}
+
+#ttd {
+	overflow: scroll;
+	position: relative;
+	left: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#turing_table {
+	position: absolute;
+}
+
+#turing_table td, #turing_table th {
+	min-width: 3rem;
 	min-height: 2rem;
 	text-align: center;
 	border-radius: 5px;
@@ -34,7 +54,8 @@ main {
 	content: attr(c);
 	font-size: .7rem;
 	position: absolute;
-	top: -1.6rem;
+	top: -1rem;
+	line-height: normal;
 	left: 0;
 	text-align: center;
 	right: 0;
@@ -60,4 +81,13 @@ main {
 .move_q:last-child {
 	border-radius: 0 1rem 1rem 0;
 	padding-right: 4px;
+}
+
+#grid > :first-child {}
+
+#grid {
+	grid-template-rows: fit-content(0) 1fr;
+	display: grid;
+	grid-template-columns: 1fr;
+	height: 100%;
 }

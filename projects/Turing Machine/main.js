@@ -1,4 +1,4 @@
-let rules, width = 0, height = 0, abc, cell = 0, string = [], Q = 0, terminated = 't!', step = 's!', steps;
+let rules, width = 0, height = 0, abc, cell = 0, string = [], buf_string = [], Q = 0, terminated = 't!', step = 's!', steps, loop = true;
 let alphabet = document.getElementById('alphabet'), line = document.getElementById('line'), q_count = document.getElementById('q_count'), turing_table = document.getElementById('turing_table');
 
 function updateRules(){
@@ -19,7 +19,11 @@ function updateRules(){
 	for(let h = -1; h < height; h++){
 		mt += '<tr>';
 		for(let w = -1; w < width; w++){
-			if(h < 0 && w < 0) mt += '<td style="opacity: 0"></td>'; else if(h < 0) mt += '<td>q' + w + '</td>'; else if(w < 0) mt += '<td>' + abc.charAt(h) + '</td>';
+			if(h < 0 && w < 0) mt += '<td style="opacity: 0"></td>';
+
+			else if(h < 0) mt += '<td>q' + w + '</td>';
+
+			else if(w < 0) mt += '<td>' + abc.charAt(h) + '</td>';
 			//
 			else mt += '<td id="me_i' + w + '_j' + abc.charAt(h) + '" contenteditable="true">' + (rules[w] == null ?'' :rules[w][abc.charAt(h)] ?? '') + '</td>';
 		}
@@ -28,7 +32,7 @@ function updateRules(){
 	turing_table.innerHTML = mt;
 }
 
-function runMachine(){
+async function runMachine(){
 	console.log('start');
 	refreshString();
 	updateRules();
@@ -37,7 +41,10 @@ function runMachine(){
 
 	Q = 0;
 	steps = 0;
-	while(machineStep() !== terminated) steps++;
+	loop = true;
+	while(machineStep() !== terminated && loop) await new Promise(res => setTimeout(res, 100));
+
+	loop = false;
 
 	refreshString();
 	drawLine();
@@ -49,22 +56,19 @@ function machineStep(){
 	steps++;
 	let c = string[cell] ?? ' ';
 	let r = /(.?)([<>.])(\d*)/.exec(rules[Q][c]);
-	console.log(r);
 	if(r == null || r[0] === '.'){
 		drawLine();
-		console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 		return terminated;
 	}
 	if(r[1] !== '' && abc.includes(r[1])) putSymbol(cell, r[1]);
 	cell += r[2] === '<' ?-1 :r[2] === '>' ?1 :0;
-	if(parseInt(0 + r[3]) <= width) Q = parseInt(0 + r[3]);
+	if(r[3] !== '' && parseInt(0 + r[3]) <= width) Q = parseInt(0 + r[3]);
 
 	drawLine();
 	return step;
 }
 
 function putSymbol(id, symbol){
-	console.log(string);
 	if(abc.includes(symbol) && symbol !== ' ') string[id] = symbol; else delete string[id];
 	drawLine();
 }
@@ -86,6 +90,20 @@ function refreshString(){
 	let arr = [];
 	for(let e in string) arr[e] = string[e];
 	string = arr;
+}
+
+function clearString(){
+	string = [];
+	cell = 0;
+	loop = false;
+}
+
+function copyString(){
+	buf_string = [...(string ?? [])];
+}
+
+function pasteString(){
+	string = [...(buf_string ?? [])];
 }
 
 drawLine();

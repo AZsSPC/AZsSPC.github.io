@@ -136,7 +136,7 @@ main {
 	overflow-y: scroll;
 	background: var(--c-back-main);
 	white-space: normal;
-	padding: 2rem 0;
+	padding: 1rem 0;
 }
 
 #icon-text {
@@ -293,6 +293,7 @@ textarea {
 	-khtml-user-select: none; /* Konqueror */
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* Internet Explorer/Edge */
-	user-select: none; /* Non-prefixed version, currently
-                                  not supported by any browser */
+	user-select: none; /* Non-prefixed version, currently not supported by any browser */
 }
+
+::-webkit-scrollbar-corner {background-color: transparent;}

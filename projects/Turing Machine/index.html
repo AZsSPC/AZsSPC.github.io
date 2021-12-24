@@ -9,16 +9,26 @@
 <body>
 <script type="text/javascript">header();</script>
 <main>
-  Line: <span id="line" translate="no"></span>
-  <button onclick="runMachine()">Run</button>
-  <button onclick="machineStep()">Step</button>
-  <br>
-  ABC: <input id="alphabet" type="text" value="" onchange="updateRules()">
-  Q: <input id="q_count" type="number" min="1" value="1">
-  <button onclick="updateRules()">SET</button>
-  <button onclick="generateSolution()">Export TeX</button>
-  <table id="turing_table"></table>
-  <div id="solutionTeX"></div>
+  <div id="grid">
+    <div>
+      <p>
+        <button onclick="clearString()">Clear</button>
+        <button onclick="copyString()">Copy</button>
+        <button onclick="pasteString()">Paste</button>
+        <button onclick="runMachine()">Run</button>
+        <button onclick="loop=false">Stop</button>
+        <button onclick="machineStep()">Step</button>
+        <button onclick="updateRules()">SET</button>
+        <button onclick="generateSolution()">Export</button>
+      </p>
+      <span id="line" translate="no"></span>
+      <p>ABC: <input id="alphabet" type="text" value="" onchange="updateRules()"></p>
+      <p>Q: <input id="q_count" type="number" min="1" value="1" onchange="updateRules()"></p>
+    </div>
+    <div id="ttd">
+      <table id="turing_table"></table>
+    </div>
+  </div>
 </main>
 </body>
 </html>
