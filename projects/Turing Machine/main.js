@@ -1,4 +1,4 @@
-let rules, width = 0, height = 0, abc, quarry = 0, string = [];
+let rules, width = 0, height = 0, abc, cell = 0, string = [], Q = 0, terminated = 't!', step = 's!', steps;
 let alphabet = document.getElementById('alphabet'), line = document.getElementById('line'), q_count = document.getElementById('q_count'), turing_table = document.getElementById('turing_table');
 
 function updateRules(){
@@ -29,12 +29,63 @@ function updateRules(){
 }
 
 function runMachine(){
-	string[-3] = 'g'
-	string[2] = 'W'
+	console.log('start');
+	refreshString();
+	updateRules();
+	console.log(string);
+	console.log(rules);
+
+	Q = 0;
+	steps = 0;
+	while(machineStep() !== terminated) steps++;
+
+	refreshString();
+	drawLine();
+	refreshString();
+	console.log('end');
+}
+
+function machineStep(){
+	steps++;
+	let c = string[cell] ?? ' ';
+	let r = /(.?)([<>.])(\d*)/.exec(rules[Q][c]);
+	console.log(r);
+	if(r == null || r[0] === '.'){
+		drawLine();
+		console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+		return terminated;
+	}
+	if(r[1] !== '' && abc.includes(r[1])) putSymbol(cell, r[1]);
+	cell += r[2] === '<' ?-1 :r[2] === '>' ?1 :0;
+	if(parseInt(0 + r[3]) <= width) Q = parseInt(0 + r[3]);
+
+	drawLine();
+	return step;
+}
+
+function putSymbol(id, symbol){
+	console.log(string);
+	if(abc.includes(symbol) && symbol !== ' ') string[id] = symbol; else delete string[id];
 	drawLine();
 }
 
-function drawLine(){
-	line.innerHTML = '';
-	for(let q = quarry - 9; q < quarry + 10; q++) line.innerHTML += '<span q="' + q + '"' + (q === quarry ?' sel' :'') + ' contenteditable="true">' + ((string[q] ?? '') === '' ?'&nbsp;' :string[q]) + '</span>';
+function putSymbolGUI(el){
+	let symbol = (el.innerText + ' ').substr(0, 1);
+	el.innerText = symbol;
+	putSymbol(el.getAttribute('c'), symbol);
 }
+
+function drawLine(){
+	line.innerHTML = '<span class="move_q" onclick="cell--;drawLine()">\<-</span>';
+	for(let c = cell - 9; c < cell + 10; c++) line.innerHTML += //
+		'<span oninput="putSymbolGUI(this)" c="' + c + '"' + (c === cell ?' sel' :'') + ' contenteditable="true">' + (string[c] ?? '') + '</span>';
+	line.innerHTML += '<span class="move_q" onclick="cell++;drawLine()">-\></span>';
+}
+
+function refreshString(){
+	let arr = [];
+	for(let e in string) arr[e] = string[e];
+	string = arr;
+}
+
+drawLine();

@@ -11,10 +11,10 @@
 <main>
   Line: <span id="line" translate="no"></span>
   <button onclick="runMachine()">Run</button>
-  <button onclick="generateSolution()">Step</button>
+  <button onclick="machineStep()">Step</button>
   <br>
-  ABC: <input id="alphabet" type="text" value="">
-  Q: <input id="q_count" type="number" min="1" max="10" value="1">
+  ABC: <input id="alphabet" type="text" value="" onchange="updateRules()">
+  Q: <input id="q_count" type="number" min="1" value="1">
   <button onclick="updateRules()">SET</button>
   <button onclick="generateSolution()">Export TeX</button>
   <table id="turing_table"></table>

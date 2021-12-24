@@ -10,7 +10,7 @@
 	--c-back-light: #6D6D6D;
 
 	--c-accent: #579C6F;
-	--c-accent-l: #51C477;
+	--c-accent-l: #38AF61;
 	--c-accent-d: #186134;
 	--c-accent-f: #94C4A4;
 	--c-accent-2: #BA53B8;
@@ -285,4 +285,14 @@ ul, ol {
 
 textarea {
 	background: var(--c-back-main);
+}
+
+.unselectable {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
 }

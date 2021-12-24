@@ -1,5 +1,5 @@
 input {
-	background: #232323;
+	background: var(--c-back-head);
 }
 
 main {
@@ -12,33 +12,52 @@ main {
 	min-height: 2rem;
 	text-align: center;
 	border-radius: 5px;
-	background: #232323;
+	background: var(--c-back-head);
 }
 
 #line > span {
 	display: inline-block;
-	background: #232323;
-	width: 2.5rem;
-	padding: 1rem 0 4px 0;
+	background: var(--c-back-head);
+	width: 2rem;
+	line-height: 2rem;
+	height: 2rem;
 	border: solid 1px black;
 	text-align: center;
 	position: relative;
 }
 
 #line > span[sel] {
-	background: white;
-	border: solid 1px white;
-	color: black;
+	border: solid 1px var(--c-accent-3);
 }
 
-#line > span:before {
-	content: attr(q);
+#line > span[c]:before {
+	content: attr(c);
 	font-size: .7rem;
 	position: absolute;
-	top: 2px;
-	left: 2px;
-	color: #0EBDFF;
+	top: -1.6rem;
+	left: 0;
+	text-align: center;
+	right: 0;
+	color: var(--c-accent-2-f);
 }
-#line > span[sel]:before {
-	color: #00394F;
+
+.move_q {
+	border: 0 !important;
+	background: var(--c-accent-3-d) !important;
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Chrome/Safari/Opera */
+	-khtml-user-select: none; /* Konqueror */
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+}
+
+.move_q:first-child {
+	border-radius: 1rem 0 0 1rem;
+	padding-left: 4px;
+}
+
+.move_q:last-child {
+	border-radius: 0 1rem 1rem 0;
+	padding-right: 4px;
 }
