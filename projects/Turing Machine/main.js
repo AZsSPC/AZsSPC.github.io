@@ -97,6 +97,8 @@ function clearString(){
 	string = [];
 	cell = 0;
 	loop = false;
+	Q = 0;
+	drawLine();
 }
 
 function copyString(){
@@ -105,6 +107,10 @@ function copyString(){
 
 function pasteString(){
 	string = [...(buf_string ?? [])];
+	cell = 0;
+	loop = false;
+	Q = 0;
+	drawLine();
 }
 
 drawLine();
