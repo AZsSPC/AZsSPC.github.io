@@ -47,6 +47,13 @@ const SETTINGS = [
         lore: 'Azembly',
         enabled: true,
         tag: ['web', 'util']
+    },
+    {
+        name: 'Turing Machine',
+        path: 'Turing Machine',
+        lore: 'Now you can use comfortable Turing Machine redactor',
+        enabled: true,
+        tag: ['web', 'util']
     }
 ];
 const TILE = '<p translate="no">#name</p><p>#lore</p><p>#tag</p>';
