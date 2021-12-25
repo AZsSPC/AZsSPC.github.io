@@ -1,5 +1,19 @@
-let rules, width = 0, height = 0, abc, cell = 0, string = [], buf_string = [], Q = 0, terminated = 't!', step = 's!', steps, loop = true;
-let alphabet = document.getElementById('alphabet'), line = document.getElementById('line'), q_count = document.getElementById('q_count'), turing_table = document.getElementById('turing_table');
+let rules,
+	abc,
+	steps,
+	Q            = 0,
+	width        = 0,
+	height       = 0,
+	cell         = 0,
+	string       = [],
+	buf_string   = [],
+	terminated   = 't!',
+	step         = 's!',
+	loop         = true,
+	alphabet     = document.getElementById('alphabet'),
+	line         = document.getElementById('line'),
+	q_count      = document.getElementById('q_count'),
+	turing_table = document.getElementById('turing_table');
 
 function updateRules(){
 	rules = new Array(height);
@@ -19,13 +33,10 @@ function updateRules(){
 	for(let h = -1; h < height; h++){
 		mt += '<tr>';
 		for(let w = -1; w < width; w++){
-			if(h < 0 && w < 0) mt += '<td style="opacity: 0"></td>';
-
-			else if(h < 0) mt += '<td>q' + w + '</td>';
-
-			else if(w < 0) mt += '<td>' + abc.charAt(h) + '</td>';
-			//
-			else mt += '<td id="me_i' + w + '_j' + abc.charAt(h) + '" contenteditable="true">' + (rules[w] == null ?'' :rules[w][abc.charAt(h)] ?? '') + '</td>';
+			if(h < 0 && w < 0){ mt += '<td style="opacity: 0"></td>'; }
+			else if(h < 0){ mt += '<td>q' + w + '</td>'; }
+			else if(w < 0){ mt += '<td>' + abc.charAt(h) + '</td>'; }
+			else{ mt += '<td id="me_i' + w + '_j' + abc.charAt(h) + '" contenteditable="true">' + (rules[w] == null ?'' :rules[w][abc.charAt(h)] ?? '') + '</td>'; }
 		}
 		mt += '</tr>';
 	}
@@ -60,16 +71,17 @@ function machineStep(){
 		drawLine();
 		return terminated;
 	}
-	if(r[1] !== '' && abc.includes(r[1])) putSymbol(cell, r[1]);
+	if(r[1] !== '' && abc.includes(r[1])){ putSymbol(cell, r[1]); }
 	cell += r[2] === '<' ?-1 :r[2] === '>' ?1 :0;
-	if(r[3] !== '' && parseInt(0 + r[3]) <= width) Q = parseInt(0 + r[3]);
+	if(r[3] !== '' && parseInt(0 + r[3]) <= width){ Q = parseInt(0 + r[3]); }
 
 	drawLine();
 	return step;
 }
 
 function putSymbol(id, symbol){
-	if(abc.includes(symbol) && symbol !== ' ') string[id] = symbol; else delete string[id];
+	if(abc.includes(symbol) && symbol !== ' '){ string[id] = symbol; }
+	else{ delete string[id]; }
 	drawLine();
 }
 

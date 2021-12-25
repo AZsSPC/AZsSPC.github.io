@@ -178,7 +178,7 @@ main {
 	color: var(--c-accent-l);
 }
 
-a:not(.not_a_text) {text-decoration: none}
+a:not(.not_a_text), a:not(.not_a_text) * {text-decoration: none; color: white}
 
 .center {
 	text-align: center
