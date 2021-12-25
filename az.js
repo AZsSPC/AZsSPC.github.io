@@ -10,7 +10,7 @@ function runOnKeys(func, ...codes){
 	let pressed = new Set();
 	document.addEventListener('keydown', function(event){
 		pressed.add(event.code);
-		for(let code of codes) if(!pressed.has(code)) return;
+		for(let code of codes) if(!pressed.has(code)){ return; }
 		pressed.clear();
 		func();
 	});
@@ -28,9 +28,10 @@ function header(){
 	document.write('<input type="checkbox" id="navhider" hidden ' + (document.cookie.includes('NAVH=true') ?'checked' :'') + ' onchange="navhider()">\n'//
 		+ '<header>\n' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>\n' //
 		+ '<nav>\n'//
+		+ '<a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>\n'//
 		+ '<a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>\n'//
 		+ '<a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>\n'//
-		+ '<a href="https://azsspc.github.io/contacts" class="not_a_text">@</a>\n' /*'<button onclick="window.location.href=\'https://azsspc.github.io/info\'" translate="no">i</button>\n' +*///
+		+ '<a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>\n'//
 		+ '</nav>\n' + '<label id="hsl" for="navhider"></label>\n'//
 		+ '</header>\n');
 }
