@@ -61,9 +61,9 @@ let plist = document.getElementById('project_list')
 for(let i in SETTINGS){
     let a = SETTINGS[i];
     if(a.enabled){
-        let tile = document.createElement('div');
+        let tile = document.createElement('a');
         tile.className = 'plist_tile';
-        tile.setAttribute('onclick', 'window.location.href=\'https://AZsSPC.github.io/projects/' + a.path + '\'');
+        tile.href='https://AZsSPC.github.io/projects/' + a.path ;
         tile.innerHTML = TILE
         .replace(/#name/gm, a.name)
         .replace(/#lore/gm, a.lore)

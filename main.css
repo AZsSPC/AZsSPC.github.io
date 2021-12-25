@@ -170,13 +170,15 @@ main {
 	height: calc(10vh - 16px);
 }
 
-[title], u, a, [title] *, u *, a * {
+[title], u, a:not(.not_a_text), [title] *, u *, a:not(.not_a_text) * {
 	color: var(--c-accent);
 }
 
-[title]:hover, u:hover, a:hover, [title]:hover *, u:hover *, a:hover * {
+[title]:hover, u:hover, a:not(.not_a_text):hover, [title]:hover *, u:hover *, a:not(.not_a_text):hover * {
 	color: var(--c-accent-l);
 }
+
+a:not(.not_a_text) {text-decoration: none}
 
 .center {
 	text-align: center
