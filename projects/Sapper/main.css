@@ -1,9 +1,9 @@
 @media (orientation: portrait) {
-	:root { --ts: max(12pt, calc((100vw - 36px) / var(--gc))); }
+	:root { --ts: max(14pt, calc((100vw - 36px) / var(--gc))); }
 }
 
 @media (orientation: landscape) {
-	:root { --ts: max(12pt, calc((90vh - 72px) / var(--gc))); }
+	:root { --ts: max(14pt, calc((90vh - 72px) / var(--gc))); }
 }
 
 #forg {

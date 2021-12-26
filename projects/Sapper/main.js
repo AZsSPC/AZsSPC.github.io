@@ -1,13 +1,20 @@
-const width = 27,
-	  height = 20,
-	  BOMB = -2,
-	  FLAG = -3,
+const game  = document.getElementById('game'),
+	  BOMB  = -2,
+	  FLAG  = -3,
 	  EMPTY = -1,
-	  game = document.getElementById('game');
+	  iw    = document.getElementById('w'),
+	  ih    = document.getElementById('h'),
+	  ib    = document.getElementById('b');
 let tiles = [],
+	width,
+	height,
+	bomb_percentage,
 	bntp;
 
 function setup(){
+	width = parseInt(iw.value);
+	height = parseInt(ih.value);
+	bomb_percentage = parseInt(ih.value) / 100;
 	bntp = true;
 	document.documentElement.style.setProperty('--gc', width + '');
 	tiles = new Array(width * height);
@@ -26,7 +33,7 @@ function setup(){
 }
 
 function placeBombs(taboo){
-	let bombs_left = (width * height * .9).toFixed();
+	let bombs_left = (width * height * bomb_percentage).toFixed();
 	let tarr = getAround(taboo);
 	while(bombs_left > 0){
 		let r = parseInt((Math.random() * (width * height - 1)).toFixed());

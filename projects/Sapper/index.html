@@ -12,11 +12,13 @@
 <body>
 <script type="text/javascript">header();</script>
 <main>
-  Width: <input id="w" type="number" min="10" max="100" step="1" value="20">
-  <br>
-  Height: <input id="h" type="number" min="10" max="100" step="1" value="20">
-  <br>
-  Height: <input id="b" type="number" min="5" max="60" step="1" value="21.8">
+  <div class="center">
+    Width: <input id="w" type="number" min="10" max="100" step="1" value="20">
+    Height: <input id="h" type="number" min="10" max="100" step="1" value="20">
+    <br>
+    Bombs percentage: <input id="b" type="number" min="5" max="60" step="1" value="21.8">
+    <button onclick="setup()">SET</button>
+  </div>
   <div id="forg">
     <div id="game" class="unselectable"></div>
   </div>
