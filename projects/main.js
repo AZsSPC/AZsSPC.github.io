@@ -15,13 +15,13 @@ const TILE           = '<p translate="no">#name</p><p>#lore</p><p class="tags" o
 		  {
 			  name:'Web Syntax',
 			  path:'Web Syntax',
-			  lore:'Just an online editor with highlighted syntax for different languages.',
+			  lore:'Just an online editor with highlighted syntax for different languages',
 			  enabled:true,
 			  tag:[WEB, UTIL, REGEX, PROGRAMMING]
 		  }, {
 			  name:'Formulaz!',
 			  path:'FormulaZ',
-			  lore:'A collection of formulas in physics, mathematics and other subjects with a convenient search.',
+			  lore:'A collection of formulas in physics, mathematics and other subjects with a convenient search',
 			  enabled:true,
 			  tag:[WEB, UTIL, REGEX, MATH, PHYSIC, SCIENCE]
 		  }, {
