@@ -1,9 +1,9 @@
-const width  = 27,
+const width = 27,
 	  height = 20,
-	  BOMB   = -2,
-	  FLAG   = -3,
-	  EMPTY  = -1,
-	  game   = document.getElementById('game');
+	  BOMB = -2,
+	  FLAG = -3,
+	  EMPTY = -1,
+	  game = document.getElementById('game');
 let tiles = [],
 	bntp;
 
@@ -49,7 +49,7 @@ function gmc(id = 0){
 	default:
 		return '#797979';
 	case 0:
-		return '#c7c7c7';
+		return '#C7C7C7';
 	case 1:
 		return '#2F4DE7';
 	case 2:
