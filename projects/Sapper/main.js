@@ -26,7 +26,7 @@ function setup(){
 }
 
 function placeBombs(taboo){
-	let bombs_left = (width * height * .218).toFixed();
+	let bombs_left = (width * height * .9).toFixed();
 	let tarr = getAround(taboo);
 	while(bombs_left > 0){
 		let r = parseInt((Math.random() * (width * height - 1)).toFixed());

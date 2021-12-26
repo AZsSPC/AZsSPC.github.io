@@ -299,3 +299,5 @@ textarea {
 }
 
 ::-webkit-scrollbar-corner {background-color: transparent;}
+
+input {	background: #232323;}
