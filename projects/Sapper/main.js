@@ -1,43 +1,47 @@
-const gc = 21;
-const BOMB = -1;
-const FLAG = -2;
-const EMPTY = 0;
-let game= document.getElementById('game');
-let tiles = [];
-let search = [-1, 1, gc - 1, gc + 1, -1 - gc, 1 - gc, gc, -gc, 0];
+const width  = 27,
+	  height = 20,
+	  BOMB   = -2,
+	  FLAG   = -3,
+	  EMPTY  = -1,
+	  game   = document.getElementById('game');
+let tiles = [],
+	bntp;
 
 function setup(){
-	tiles = new Array(gc ** 2);
-	game.innerText = '';
-	for(let x = 0; x < gc ** 2; x++){
+	bntp = true;
+	document.documentElement.style.setProperty('--gc', width + '');
+	tiles = new Array(width * height);
+	game.innerHTML = '';
+	for(let x = 0; x < width * height; x++){
+		tiles[x] = {
+			v:0,
+			c:true,
+			f:false
+		};
 		let tile = document.createElement('span');
 		tile.setAttribute('onclick', 'find(' + x + ')');
 		tile.setAttribute('oncontextmenu', 'mark(' + x + ');return false');
-		tiles[x] = {
-			v:EMPTY,
-			c:false
-		};
 		game.append(tile);
 	}
-	let bombs_left = (gc ** 2 * .218).toFixed();
+}
+
+function placeBombs(taboo){
+	let bombs_left = (width * height * .218).toFixed();
+	let tarr = getAround(taboo);
 	while(bombs_left > 0){
-		console.log(bombs_left)
-		let r = (Math.random() * (gc ** 2)).toFixed();
-		if(tiles[r].v === EMPTY){
+		let r = parseInt((Math.random() * (width * height - 1)).toFixed());
+		let carr = [...tarr, ...getAround(r)];
+		if(tiles[r].v === 0 && r !== taboo && carr.length === [...new Set(carr)].length){
 			tiles[r].v = BOMB;
-			bombs_left--
+			bombs_left--;
 		}
 	}
-	for(let x = 0; x < gc ** 2; x++) if(tiles[x].v !== BOMB){
+	for(let x = 0; x < width * height; x++) if(tiles[x].v !== BOMB){
 		let b = 0;
-		for(let i = 0; i < 8; i++){
-			let pos = x + search[i];
-			if(pos >= 0 && pos < gc ** 2 && tiles[pos].v === BOMB){
-				b++;
-			}
-		}
+		getAround(x).forEach((pos) => {if(tiles[pos].v === BOMB) b++});
 		tiles[x].v = b;
 	}
+	bntp = false;
 }
 
 function gmc(id = 0){
@@ -45,7 +49,7 @@ function gmc(id = 0){
 	default:
 		return '#797979';
 	case 0:
-		return '#B2B2B2';
+		return '#c7c7c7';
 	case 1:
 		return '#2F4DE7';
 	case 2:
@@ -63,9 +67,9 @@ function gmc(id = 0){
 	case 8:
 		return '#007D02';
 	case BOMB:
-		return '#000000';
+		return 'linear-gradient(45deg, red, #ffc800)';
 	case FLAG:
-		return '#FFFFFF';
+		return 'linear-gradient(45deg, white, #ffad33)';
 	}
 }
 
@@ -84,29 +88,55 @@ function gms(id = 0){
 
 function set(id){
 	let el = game.children[id];
-	tiles[id].c = true;
+	tiles[id].c = false;
 	el.innerText = gms(tiles[id].v);
 	el.style.setProperty('background', gmc(tiles[id].v));
 	el.removeAttribute('onclick');
-	if(tiles[id].v === BOMB){ alert('You lose'); }
+	if(tiles[id].v === BOMB){
+		setTimeout(() => {
+			alert('You lose');
+			setup();
+		}, 10);
+		return false;
+	}
+	return true;
 }
 
 function mark(id){
-	let el = game.children[id];
-	el.innerText = gms(FLAG);
-	el.style.setProperty('background', gmc(FLAG));
+	if(tiles[id].c){
+		let el = game.children[id];
+		tiles[id].f = !tiles[id].f;
+		el.innerText = tiles[id].f ?gms(FLAG) :'';
+		el.style.setProperty('background', gmc(tiles[id].f ?FLAG :EMPTY));
+	}
 }
 
 function find(id){
-	if(!tiles[id].c){
-		set(id);
-		if(tiles[id].v === EMPTY){
-			for(let i = 0; i < 9; i++){
-				let pos = id + search[i];
-				if(pos >= 0 && pos < gc ** 2 && !tiles[pos].c){ setTimeout(() => find(pos), 0); }
-			}
-		}
-	}
+	if(bntp) placeBombs(id);
+	if(tiles[id].c && !tiles[id].f && set(id)) if(tiles[id].v === 0) for(let pos of getAround(id)) setTimeout(() => find(pos), 0);
+}
+
+function getAround(num){
+	let nh = getH(num),
+		nw = num % width;
+	let a = [//
+		(nh === getH(num - 1)) ?num - 1 :-1, //
+		(nh === getH(num + 1)) ?num + 1 :-1, //
+		(nw === (num - width) % width) ?num - width :-1, //
+		(nw === (num + width) % width) ?num + width :-1, //
+		(nw === (num - width - 1) % width + 1 && nh === getH(num - width - 1) + 1) ?num - width - 1 :-1, //
+		(nw === (num - width + 1) % width - 1 && nh === getH(num - width + 1) + 1) ?num - width + 1 :-1, //
+		(nw === (num + width - 1) % width + 1 && nh === getH(num + width - 1) - 1) ?num + width - 1 :-1, //
+		(nw === (num + width + 1) % width - 1 && nh === getH(num + width + 1) - 1) ?num + width + 1 :-1 //
+
+	];
+	for(let i = 0; i < a.length; i++) if(a[i] < 0 || a[i] >= width * height) a.splice(i--, 1);
+	//a.forEach((e) => game.children[e].setAttribute('style', 'border-color:red!important'));
+	return a;
+}
+
+function getH(num){
+	return parseInt(('' + (num / width)).replaceAll(/\..*/g, ''));
 }
 
 setup();
