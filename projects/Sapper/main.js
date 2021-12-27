@@ -14,7 +14,7 @@ let tiles = [],
 function setup(){
 	width = parseInt(iw.value);
 	height = parseInt(ih.value);
-	bomb_percentage = parseInt(ih.value) / 100;
+	bomb_percentage = parseInt(ib.value) / 100;
 	bntp = true;
 	document.documentElement.style.setProperty('--gc', width + '');
 	tiles = new Array(width * height);

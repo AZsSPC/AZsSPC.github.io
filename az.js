@@ -20,28 +20,27 @@ function runOnKeys(func, ...codes){
 }
 
 function reformatAZ(){
-	document.getElementsByTagName('main')[0].innerHTML = document.getElementsByTagName('main')[0].innerHTML.replaceAll('#AZsSPC', '<span title="" translate="no">AZsSPC</span>')
+	document.getElementsByTagName('main')[0].innerHTML = document.getElementsByTagName('main')[0].innerHTML.replaceAll('#AZsSPC',
+		'<span title="" translate="no">AZsSPC</span>')
 	.replace('#projects', '<a href="https://azsspc.github.io/projects">projects</a>');
 }
 
 function header(){
-	document.write('<input type="checkbox" id="navhider" hidden ' + (document.cookie.includes('NAVH=true') ?'checked' :'') + ' onchange="navhider()">\n'//
-		+ '<header>\n' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>\n' //
-		+ '<nav>\n'//
-		+ '<a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>\n'//
-		+ '<a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>\n'//
-		+ '<a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>\n'//
-		+ '<a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>\n'//
-		+ '</nav>\n' + '<label id="hsl" for="navhider"></label>\n'//
+	document.write(
+		'<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ?'checked' :'') + ' onchange="navhider()">\n'
+		+ '<header>\n' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>\n'
+		+ '<nav>\n' + '<a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main'))
+		+ '/README.md" class="b-btn not_a_text">?</a>\n' + '<a href="' + (window.location.href.replace(/^.+(github.io)/,
+			'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>\n'
+		+ '<a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>\n'
+		+ '<a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>\n' + '</nav>\n' + '<label id="hsl" for="navhider"></label>\n'
 		+ '</header>\n');
 }
 
 function settings(){
 	document.write('<meta charset="utf-8">\n'//
-		+ '<meta name="viewport" content="width=device-width,initial-scale=1"/>\n'//
-		+ '<link rel="icon" href="https://azsspc.github.io/img/fic.png">\n' //
-		+ '<link rel="stylesheet" href="https://azsspc.github.io/main.css">\n' //
-		+ '<link rel="stylesheet" href="main.css">\n');
+		+ '<meta name="viewport" content="width=device-width,initial-scale=1"/>\n' + '<link rel="icon" href="https://azsspc.github.io/img/fic.png">\n'
+		+ '<link rel="stylesheet" href="https://azsspc.github.io/main.css">\n' + '<link rel="stylesheet" href="main.css">\n');
 }
 
 function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
@@ -56,6 +55,24 @@ function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
 }
 
 function navhider(){
-	let nh = document.getElementById('navhider');
-	document.cookie = 'NAVH=' + nh.checked + '; path=/';
+	//Cookie - https://learn.javascript.ru/cookie
+	setCookie('NAVH', document.getElementById('navhider').checked);
 }
+
+function setCookie(name, value, options = {}){
+	options = {path:'/', ...options};
+	if(options.expires instanceof Date) options.expires = options.expires.toUTCString();
+	let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+	for(let optionKey in options){
+		updatedCookie += "; " + optionKey;
+		if(options[optionKey] !== true) updatedCookie += "=" + options[optionKey];
+	}
+	document.cookie = updatedCookie;
+}
+
+function getCookie(name){
+	let matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([.$?*|{}()\[\]\\\/+^])/g, '\\$1') + "=([^;]*)"));
+	return matches ?decodeURIComponent(matches[1]) :undefined;
+}
+
+function deleteCookie(name){ setCookie(name, "", {'max-age':-1});}
