@@ -32,6 +32,7 @@ main {
 	min-height: 2rem;
 	text-align: center;
 	border-radius: 5px;
+	white-space: pre-wrap;
 	background: var(--c-back-head);
 }
 
@@ -83,11 +84,14 @@ main {
 	padding-right: 4px;
 }
 
-
 #grid {
 	grid-template-rows: fit-content(0) 1fr;
 	display: grid;
 	position: relative;
 	grid-template-columns: 1fr;
 	height: 100%;
+}
+
+#q_display {
+	background: var(--c-null) !important;
 }
