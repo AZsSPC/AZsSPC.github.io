@@ -248,7 +248,7 @@ ul ::marker {
 	content: '└─';
 }
 
-ul, ol {
+.tree ul, ol {
 	counter-reset: section;
 	padding-left: 1rem
 }
