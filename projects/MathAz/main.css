@@ -1,0 +1,25 @@
+main {
+    padding-left: 1rem;
+    padding-right: 1rem
+}
+
+#out {
+    background: var(--c-back-head-split);
+    height: 50%;
+    padding: .7rem;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+}
+
+#in {
+    padding: .7rem;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+    height: 20%;
+}
+
+#compile {
+    width: calc(100% - 8px)
+}

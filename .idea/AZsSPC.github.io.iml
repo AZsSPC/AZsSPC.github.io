@@ -10,5 +10,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="main" level="application" />
     <orderEntry type="library" name="az" level="application" />
+    <orderEntry type="library" name="mathjs" level="application" />
   </component>
 </module>

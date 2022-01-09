@@ -231,7 +231,7 @@ nav a.b-btn:hover {
 	color: var(--c-accent-3-d);
 }
 
-::marker {
+ul ::marker {
 	content: '• ';
 }
 

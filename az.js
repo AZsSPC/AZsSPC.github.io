@@ -54,10 +54,8 @@ function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
 	document.body.removeChild(element);
 }
 
-function navhider(){
-	//Cookie - https://learn.javascript.ru/cookie
-	setCookie('NAVH', document.getElementById('navhider').checked);
-}
+//Cookie - https://learn.javascript.ru/cookie
+function navhider(){setCookie('NAVH', document.getElementById('navhider').checked)}
 
 function setCookie(name, value, options = {}){
 	options = {path:'/', ...options};
@@ -75,4 +73,7 @@ function getCookie(name){
 	return matches ?decodeURIComponent(matches[1]) :undefined;
 }
 
-function deleteCookie(name){ setCookie(name, "", {'max-age':-1});}
+function deleteCookie(name){setCookie(name, "", {'max-age':-1})}
+
+// <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+function useMathJax(){MathJax.Hub.Queue(["Typeset", MathJax.Hub])}

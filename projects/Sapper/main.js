@@ -120,7 +120,10 @@ function mark(id){
 
 function find(id){
 	if(bntp) placeBombs(id);
-	if(tiles[id].c && !tiles[id].f && set(id)) if(tiles[id].v === 0) for(let pos of getAround(id)) setTimeout(() => find(pos), 0);
+	if(tiles[id].c && !tiles[id].f && set(id))
+		if(tiles[id].v === 0)
+			for(let pos of getAround(id))
+				setTimeout(() => find(pos), 0);
 }
 
 function getAround(num){
