@@ -23,18 +23,22 @@ const
 	q_count      = document.getElementById('q_count'),
 	turing_table = document.getElementById('turing_table');
 
-function updateRules(){
-	rules = new Array(height);
-	for(let w = 0; w < width; w++){
-		rules[w] = new Array(width);
-		for(let h = 0; h < height; h++){
-			let el = document.getElementById('me_i' + w + '_j' + abc.charAt(h));
-			rules[w][abc.charAt(h)] = el == null ?ES :el.innerText;
+function updateRules(arr){
+	rules = [];
+	if(!arr){
+		for(let w = 0; w < width; w++){
+			rules[w] = {};
+			for(let h = 0; h < height; h++){
+				let el = document.getElementById('me_i' + w + '_j' + abc.charAt(h));
+				rules[w][abc.charAt(h)] = el == null ?ES :el.innerText;
+			}
 		}
+		setABC(alphabet.value);
 	}
-	abc = [...new Set(' ' + alphabet.value.replaceAll(/\s/g, ''))].sort().join('');
-	abcRegExp = new RegExp('([' + abc + ']?)([<>.!])(\\d*)');
-	alphabet.value = abc;
+	else{
+		rules = arr;
+		q_count.value = arr.length;
+	}
 	width = q_count.value;
 	height = abc.length;
 	let mt = ES;
@@ -52,6 +56,12 @@ function updateRules(){
 	}
 	turing_table.innerHTML = mt;
 	q_dis = document.getElementById('q_display');
+}
+
+function setABC(t){
+	abc = [...new Set(' ' + t.replaceAll(/\s/g, ''))].sort().join('');
+	alphabet.value = abc;
+	abcRegExp = new RegExp('([' + abc + ']?)([<>.!])(\\d*)');
 }
 
 function setRule(q, c){
@@ -79,8 +89,7 @@ async function runMachine(){
 }
 
 function transcriptRule(q, c){
-
-	if(rules[q] == null || rules[q][c] == null) return [c + '.' + q, c + '', '.', q];
+	if(!rules[q] || !rules[q][c]) return [c + '.' + q, c + '', '.', q];
 
 	let r = abcRegExp.exec(rules[q][c]) ?? nullES;
 	if(r === nullES){
@@ -165,25 +174,24 @@ function pasteString(){
 
 function exportTM(){
 	updateRules();
-	let ATM = abc;
-
-	for(let h = 0; h < height; h++){
-		ATM += '\n' + abc.charAt(h);
-		for(let w = 0; w < width; w++){
-			ATM += '\t' + transcriptRule(w, abc.charAt(h), this)[0];
-		}
-	}
-
 	let filename = prompt("Name this file?");
-	if(filename) createNDownload(filename + '.ATM', ATM);
+	if(filename) createNDownload(filename + '.json', JSON.stringify({
+		abc:abc,
+		rules:rules
+	}));
 }
 
 function importTM(){
-	switchDisplay(popup_upload,'grid')
+	switchDisplay(popup_upload, 'grid');
 }
 
 function uploadTM(el){
-	fileUploaded(el, (e) => alert(e.target.result), (e) => alert(e.target.result));
+	fileUploaded(el, (t) => {
+		let json = JSON.parse(t);
+		setABC(json.abc);
+		updateRules(json.rules);
+	}, (e) => {});
+	switchDisplay(popup_upload, 'grid');
 }
 
 updateRules();

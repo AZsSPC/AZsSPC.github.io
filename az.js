@@ -59,8 +59,8 @@ function fileUploaded(el, funcDone, funcError){
 	if(file){
 		let reader = new FileReader();
 		reader.readAsText(file, "UTF-8");
-		reader.onload = funcDone();
-		reader.onerror = funcError();
+		reader.onload = (e) => funcDone(e.target.result);
+		reader.onerror = (e) => funcError(e);
 	}
 }
 
