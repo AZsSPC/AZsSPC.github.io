@@ -1,5 +1,6 @@
 let rules,
 	abc,
+	abcRegExp,
 	steps,
 	Q          = 0,
 	width      = 0,
@@ -29,7 +30,8 @@ function updateRules(){
 			rules[w][abc.charAt(h)] = el == null ?ES :el.innerText;
 		}
 	}
-	abc = [...new Set(' ' + alphabet.value.replaceAll(/\s/gm, ''))].sort().join('');
+	abc = [...new Set(' ' + alphabet.value.replaceAll(/\s/g, ''))].sort().join('');
+	abcRegExp = new RegExp('([' + abc + ']?)([<>.!])(\\d*)');
 	alphabet.value = abc;
 	width = q_count.value;
 	height = abc.length;
@@ -75,10 +77,10 @@ async function runMachine(){
 }
 
 function transcriptRule(q, c){
-	let r = (rules[q] == null || rules[q][c] == null) ?[ES, ES, ES, ES] :/(.?)([<>.!])(\d*)/.exec(rules[q][c]) ?? [ES, ES, ES, ES];
+	let r = (rules[q] == null || rules[q][c] == null) ?[ES, ES, ES, ES] :abcRegExp.exec(rules[q][c]) ?? [ES, ES, ES, ES];
 	if(r[1] === ES) r[1] = c + '';
 	if(r[2] === ES) r[2] = '.';
-	if(r[3] === ES || parseInt(0 + r[3]) > width) r[3] = q;
+	if(r[3] === ES || parseInt('0' + r[3]) >= width) r[3] = q;
 	r[0] = r[1] + r[2] + r[3];
 
 	return r;
@@ -140,6 +142,21 @@ function pasteString(){
 	loop = false;
 	Q = 0;
 	drawLine();
+}
+
+function exportTM(){
+	updateRules();
+	let ATM = abc;
+
+	for(let h = 0; h < height; h++){
+		ATM += '\n' + abc.charAt(h);
+		for(let w = 0; w < width; w++){
+			ATM += '\t' + transcriptRule(w, abc.charAt(h), this)[0];
+		}
+	}
+
+	let filename = prompt("Name this file?");
+	if(filename) createNDownload(filename + '.ATM', ATM);
 }
 
 updateRules();

@@ -13,7 +13,7 @@ function compile(){
 			is_ended  = !!last_form.match(/^[0-9i]+$/gm);
 		if(variable) out += '<li>\\(' + sentence + (is_ended ?'' :'=' + answer) + '\\)</li>';
 	}
-	et_out.innerHTML = '<ol>' + out + '</ol>';
+	et_out.innerHTML =  out ;
 	useMathJax();
 }
 
