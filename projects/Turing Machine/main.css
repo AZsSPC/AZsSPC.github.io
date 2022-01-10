@@ -95,3 +95,7 @@ main {
 #q_display {
 	background: var(--c-null) !important;
 }
+
+[query]:not([terminated]) {background: var(--c-accent)!important;}
+[terminated]:not([query]) {background: var(--c-accent-2)!important;}
+[terminated][query] {background: var(--c-accent-3)!important;}

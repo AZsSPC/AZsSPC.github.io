@@ -64,6 +64,13 @@
 	main::-webkit-scrollbar {
 		display: none; /* for Chrome, Safari, and Opera */
 	}
+
+	#popup_upload {
+		top: 100px;
+		bottom: 100px;
+		right: 5%;
+		left: 5%;
+	}
 }
 
 @media screen and (min-width: 800px) {
@@ -79,6 +86,13 @@
 
 	main {
 		margin-left: 18px
+	}
+
+	#popup_upload {
+		top: 100px;
+		bottom: 200px;
+		right: calc(50vw - 200px);
+		left: calc(50vw - 200px);
 	}
 }
 
@@ -300,4 +314,38 @@ textarea {
 
 ::-webkit-scrollbar-corner {background-color: transparent;}
 
-input {	background: #232323;}
+input { background: #232323;}
+
+#popup_upload {
+	background: var(--c-accent-3);
+	position: absolute;
+	overflow-y: scroll;
+	margin: 0;
+	padding: 0;
+	border: none;
+	z-index: 9999;
+	border-radius: 10px;
+	display: grid;
+}
+
+#popup_upload > input {
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	opacity: 0;
+	width: 100%;
+	position: absolute;
+}
+
+#popup_upload > div {
+	text-align: center;
+	border: none;
+	position: center;
+	align-self: center;
+
+}
+
+#popup_upload::-webkit-scrollbar {
+	display: none;
+}

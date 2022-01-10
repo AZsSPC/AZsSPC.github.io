@@ -24,6 +24,7 @@
         <button onclick="machineStep()">Step</button>
         <button onclick="updateRules()">SET</button>
         <button onclick="exportTM()">Export</button>
+        <button onclick="importTM()">Import</button>
       </p>
       <span id="line" translate="no"></span>
       <p>ABC: <input id="alphabet" type="text" value=" " onchange="updateRules()"></p>
@@ -33,6 +34,9 @@
       <table id="turing_table"></table>
     </div>
   </div>
+  <form id="popup_upload" style="display:none"><input type="file" name="photo" onchange="uploadTM(this)">
+    <div>Drop files<br><br>or<br><br>Click here</div>
+  </form>
 </main>
 </body>
 </html>

@@ -2,6 +2,7 @@ let rules,
 	abc,
 	abcRegExp,
 	steps,
+	q_dis,
 	Q          = 0,
 	width      = 0,
 	height     = 0,
@@ -9,13 +10,14 @@ let rules,
 	cell       = 0,
 	string     = [],
 	buf_string = [],
-	q_dis,
 	loop       = true;
 const
 	terminated   = 't!',
 	step         = 's!',
 	SPACE        = ' ',
 	ES           = '',
+	nullES       = [ES, ES, ES, ES],
+	popup_upload = document.getElementById('popup_upload'),
 	alphabet     = document.getElementById('alphabet'),
 	line         = document.getElementById('line'),
 	q_count      = document.getElementById('q_count'),
@@ -77,13 +79,29 @@ async function runMachine(){
 }
 
 function transcriptRule(q, c){
-	let r = (rules[q] == null || rules[q][c] == null) ?[ES, ES, ES, ES] :abcRegExp.exec(rules[q][c]) ?? [ES, ES, ES, ES];
+
+	if(rules[q] == null || rules[q][c] == null) return [c + '.' + q, c + '', '.', q];
+
+	let r = abcRegExp.exec(rules[q][c]) ?? nullES;
+	if(r === nullES){
+		markTermination(q, c);
+		return [rules[q][c], c + '', '!', q];
+	}
+
 	if(r[1] === ES) r[1] = c + '';
 	if(r[2] === ES) r[2] = '.';
 	if(r[3] === ES || parseInt('0' + r[3]) >= width) r[3] = q;
 	r[0] = r[1] + r[2] + r[3];
-
 	return r;
+}
+
+function markTermination(q, c){setTimeout(() => document.getElementById('me_i' + q + '_j' + c).setAttribute('terminated', ''), 0)}
+
+function markQuery(q, c){
+	setTimeout(() => {
+		document.querySelectorAll('[query]').forEach((e) => e.removeAttribute('query'));
+		document.getElementById('me_i' + q + '_j' + c).setAttribute('query', '');
+	}, 0)
 }
 
 function machineStep(){
@@ -94,6 +112,7 @@ function machineStep(){
 	cell += r[2] === '<' ?-1 :r[2] === '>' ?1 :0;
 	Q = parseInt(0 + r[3]);
 	q_dis.innerText = 'Q:' + Q;
+	markQuery(Q, c);
 	drawLine();
 	return r[2] === '!' ?terminated :step;
 }
@@ -157,6 +176,14 @@ function exportTM(){
 
 	let filename = prompt("Name this file?");
 	if(filename) createNDownload(filename + '.ATM', ATM);
+}
+
+function importTM(){
+	switchDisplay(popup_upload,'grid')
+}
+
+function uploadTM(el){
+	fileUploaded(el, (e) => alert(e.target.result), (e) => alert(e.target.result));
 }
 
 updateRules();

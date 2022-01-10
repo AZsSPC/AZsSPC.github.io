@@ -104,6 +104,4 @@ function fileUploaded(el){
 	}
 }
 
-function switchVisible(el, v){ el.style.display = (el.style.display === v ?'none' :v) }
-
 initEP();

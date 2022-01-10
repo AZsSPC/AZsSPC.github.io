@@ -54,6 +54,16 @@ function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!'){
 	document.body.removeChild(element);
 }
 
+function fileUploaded(el, funcDone, funcError){
+	let file = el.files[0] ?? null;
+	if(file){
+		let reader = new FileReader();
+		reader.readAsText(file, "UTF-8");
+		reader.onload = funcDone();
+		reader.onerror = funcError();
+	}
+}
+
 //Cookie - https://learn.javascript.ru/cookie
 function navhider(){setCookie('NAVH', document.getElementById('navhider').checked)}
 
@@ -77,3 +87,5 @@ function deleteCookie(name){setCookie(name, "", {'max-age':-1})}
 
 // <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 function useMathJax(){MathJax.Hub.Queue(["Typeset", MathJax.Hub])}
+
+function switchDisplay(el, v){ el.style.display = (el.style.display === v ?'none' :v) }

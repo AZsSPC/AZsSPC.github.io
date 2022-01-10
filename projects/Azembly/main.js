@@ -35,7 +35,7 @@ function initEP(){
 	ep.setAttribute('oninput', 'onEPI(); epb_reformat.setAttribute("changed","true")');
 	epb_reformat.setAttribute('onclick', 'reformat()');
 	epb_download.setAttribute('onclick', 'downloadThis()');
-	epb_upload.setAttribute('onclick', 'switchVisible(popup_upload,\'grid\')');
+	epb_upload.setAttribute('onclick', 'switchDisplay(popup_upload,\'grid\')');
 
 //runOnKeys(function () {console.log('pressed')}, "KeyQ", "ControlLeft");
 	runOnKeys(function(){ reformat();}, "AltLeft", "ShiftLeft", "KeyF");
@@ -97,7 +97,5 @@ function fileUploaded(el){
 		}
 	}
 }
-
-function switchVisible(el, v){ el.style.display = (el.style.display === v ?'none' :v) }
 
 initEP();

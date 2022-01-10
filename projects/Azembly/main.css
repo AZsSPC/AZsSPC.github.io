@@ -72,7 +72,7 @@
 		font-size: 8pt;
 	}
 
-	#popup_syntax, #popup_upload {
+	#popup_syntax {
 		top: 100px;
 		bottom: 100px;
 		right: 5%;
@@ -89,7 +89,7 @@
 		font-size: 9pt;
 	}
 
-	#popup_syntax, #popup_upload {
+	#popup_syntax {
 		top: 100px;
 		bottom: 200px;
 		right: calc(50vw - 200px);
@@ -105,7 +105,7 @@
 	/*border: solid 2px #7fd57f;*/
 }
 
-#popup_syntax, #popup_upload {
+#popup_syntax {
 	background: var(--c-accent-3);
 	position: absolute;
 	overflow-y: scroll;
@@ -124,24 +124,4 @@
 	background: var(--c-accent-3-d);
 }
 
-#popup_upload > input {
-	top: 0;
-	bottom: 0;
-	right: 0;
-	left: 0;
-	opacity: 0;
-	width: 100%;
-	position: absolute;
-}
-
-#popup_upload > div {
-	text-align: center;
-	border: none;
-	position: center;
-	align-self: center;
-
-}
-
-#popup_syntax::-webkit-scrollbar, #popup_upload::-webkit-scrollbar {
-	display: none;
-}
+#popup_syntax::-webkit-scrollbar { display: none;}
