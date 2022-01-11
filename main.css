@@ -23,7 +23,7 @@
 	--c-blue-f: #9AB3CD;
 	--c-gold: #E1B140;
 	--c-gold-l: #FFC70E;
-	--c-gold-d: #AC8401;
+	--c-gold-d: #B97D01;
 	--c-gold-f: #CDBF9A;
 
 	--c-thumb: #868686;
@@ -44,19 +44,11 @@
 }
 
 @media screen and (max-width: 800px) {
-	::-webkit-scrollbar {
-		width: 10px;
-		height: 10px;
-	}
+	::-webkit-scrollbar { width: 10px; height: 10px; }
 
-	::-webkit-scrollbar-thumb {
-		border-radius: 5px;
-		border-width: 2px;
-	}
+	::-webkit-scrollbar-thumb { border-radius: 5px; border-width: 2px; }
 
-	* {
-		font-size: 9pt;
-	}
+	* { font-size: 9pt; }
 
 	main {
 		margin-left: 10px;
@@ -65,9 +57,7 @@
 		overflow-y: scroll;
 	}
 
-	main::-webkit-scrollbar {
-		display: none; /* for Chrome, Safari, and Opera */
-	}
+	main::-webkit-scrollbar { display: none; }
 
 	#popup_upload {
 		top: 100px;
@@ -78,19 +68,11 @@
 }
 
 @media screen and (min-width: 800px) {
-	::-webkit-scrollbar {
-		width: 18px;
-		height: 18px;
-	}
+	::-webkit-scrollbar { width: 18px; height: 18px; }
 
-	::-webkit-scrollbar-thumb {
-		border-radius: 9px;
-		border-width: 4px;
-	}
+	::-webkit-scrollbar-thumb { border-radius: 9px; border-width: 4px; }
 
-	main {
-		margin-left: 18px
-	}
+	main { margin-left: 18px }
 
 	#popup_upload {
 		top: 100px;
@@ -100,9 +82,7 @@
 	}
 }
 
-::-webkit-scrollbar-track {
-	background: var(--c-back-main);
-}
+::-webkit-scrollbar-track { background: var(--c-back-main);}
 
 body {
 	background: var(--c-back-main);
@@ -111,9 +91,7 @@ body {
 	margin: 0;
 }
 
-*:focus {
-	outline: none;
-}
+*:focus { outline: none;}
 
 button {
 	border-radius: 8px;
@@ -126,10 +104,7 @@ button {
 	cursor: pointer;
 }
 
-button * {
-	background: var(--c-null);
-	color: white;
-}
+button * { background: var(--c-null); color: white;}
 
 header {
 	background: var(--c-back-head);
@@ -168,17 +143,11 @@ main {
 	font-size: 32px;
 	font-family: Impact, sans-serif;
 	fill: #000000;
-
 }
 
-#icon-cin {
-	fill: #FFFFFF;
-	animation-name: icon-anim;
-}
+#icon-cin { fill: #FFFFFF; animation-name: icon-anim;}
 
-#icon-c, #icon-r {
-	fill: #4670B1;
-}
+#icon-c, #icon-r { fill: #4670B1;}
 
 #icon {
 	left: 8px;
@@ -188,19 +157,13 @@ main {
 	height: calc(10vh - 16px);
 }
 
-[title], u, a:not(.not_a_text), [title] *, u *, a:not(.not_a_text) * {
-	color: var(--c-green);
-}
+[title], u, a:not(.not_a_text), [title] *, u *, a:not(.not_a_text) * { color: var(--c-green);}
 
-[title]:hover, u:hover, a:not(.not_a_text):hover, [title]:hover *, u:hover *, a:not(.not_a_text):hover * {
-	color: var(--c-green-l);
-}
+[title]:hover, u:hover, a:not(.not_a_text):hover, [title]:hover *, u:hover *, a:not(.not_a_text):hover * { color: var(--c-green-l);}
 
 a.not_a_text, a.not_a_text * {text-decoration: none; color: white}
 
-.center {
-	text-align: center
-}
+.center { text-align: center}
 
 nav {
 	height: 10vh;
@@ -226,71 +189,41 @@ nav a {
 	text-decoration: none;
 }
 
-nav a:hover {
-	background: white;
-	color: var(--c-green-d);
-}
+nav a:hover { background: white; color: var(--c-green-d);}
 
-.g-btn {
-	background: var(--c-green);
-}
+.g-btn { background: var(--c-green);}
 
-.g-btn:hover {
-	background: white;
-	color: var(--c-green-d);
-}
+.g-btn:hover { background: white; color: var(--c-green-d);}
 
-.m-btn {
-	background: var(--c-magenta);
-}
+.m-btn { background: var(--c-magenta);}
 
-.m-btn:hover {
-	background: white;
-	color: var(--c-magenta-d);
-}
+.m-btn:hover { background: white; color: var(--c-magenta-d);}
 
-.b-btn {
-	background: var(--c-blue);
-}
+.b-btn { background: var(--c-blue);}
 
-.b-btn:hover {
-	background: white;
-	color: var(--c-blue-d);
-}
+.b-btn:hover { background: white; color: var(--c-blue-d);}
 
-.g-btnh {
-	background: var(--c-green);
-}
+.go-btn { background: var(--c-gold);}
 
-.m-btnh {
-	background: var(--c-magenta);
-}
+.go-btn:hover { background: white; color: var(--c-gold-d);}
 
-.b-btnh {
-	background: var(--c-blue);
-}
+.g-btnh { background: var(--c-green);}
 
-ul ::marker {
-	content: '• ';
-}
+.m-btnh { background: var(--c-magenta);}
 
-.tree > li::marker {
-	content: none
-}
+.b-btnh { background: var(--c-blue);}
 
-.tree ul > li::marker {
-	content: '├─';
-	color: var(--c-split)
-}
+.go-btnh { background: var(--c-gold);}
 
-.tree ul > li:last-child::marker {
-	content: '└─';
-}
+ul ::marker { content: '• ';}
 
-.tree ul, ol {
-	counter-reset: section;
-	padding-left: 1rem
-}
+.tree > li::marker { content: none}
+
+.tree ul > li::marker { content: '├─'; color: var(--c-split);}
+
+.tree ul > li:last-child::marker { content: '└─';}
+
+.tree ul, ol { counter-reset: section; padding-left: 1rem;}
 
 #hsl {
 	left: 12px;
@@ -310,13 +243,9 @@ ul ::marker {
 	border-color: var(--c-magenta-d);
 }
 
-#navhider:checked ~ header {
-	visibility: hidden;
-}
+#navhider:checked ~ header { visibility: hidden;}
 
-#navhider:checked ~ main {
-	top: 0
-}
+#navhider:checked ~ main { top: 0}
 
 #navhider:checked ~ header > #hsl {
 	top: 0;
@@ -324,9 +253,7 @@ ul ::marker {
 	border-color: var(--c-magenta-d);
 }
 
-textarea {
-	background: var(--c-back-main);
-}
+textarea { background: var(--c-back-main);}
 
 .unselectable {
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -371,6 +298,4 @@ input { background: #232323;}
 
 }
 
-#popup_upload::-webkit-scrollbar {
-	display: none;
-}
+#popup_upload::-webkit-scrollbar { display: none;}
