@@ -266,8 +266,6 @@ textarea { background: var(--c-back-main);}
 
 ::-webkit-scrollbar-corner {background-color: transparent;}
 
-input { background: #232323;}
-
 #popup_upload {
 	background: var(--c-blue);
 	position: absolute;
@@ -295,7 +293,8 @@ input { background: #232323;}
 	border: none;
 	position: center;
 	align-self: center;
-
 }
 
 #popup_upload::-webkit-scrollbar { display: none;}
+
+input { background: var(--c-back-head);}
