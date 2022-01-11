@@ -89,3 +89,5 @@ function deleteCookie(name){setCookie(name, "", {'max-age':-1})}
 function useMathJax(){MathJax.Hub.Queue(["Typeset", MathJax.Hub])}
 
 function switchDisplay(el, v){ el.style.display = (el.style.display === v ?'none' :v) }
+
+function takeshot(el, func){ html2canvas(el).then((canvas) => func(canvas))}

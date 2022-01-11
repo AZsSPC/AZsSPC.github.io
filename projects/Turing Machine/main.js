@@ -12,8 +12,8 @@ let rules,
 	buf_string = [],
 	loop       = true;
 const
-	terminated   = 't!',
-	step         = 's!',
+	TERMINATION  = '!',
+	STEP         = '?',
 	SPACE        = ' ',
 	ES           = '',
 	nullES       = [ES, ES, ES, ES],
@@ -59,9 +59,9 @@ function updateRules(arr){
 }
 
 function setABC(t){
-	abc = [...new Set(' ' + t.replaceAll(/\s/g, ''))].sort().join('');
+	abc = [...new Set(' ' + t.replaceAll(/\s/g, ES))].sort().join(ES);
 	alphabet.value = abc;
-	abcRegExp = new RegExp('([' + abc + ']?)([<>.!])(\\d*)');
+	abcRegExp = new RegExp('([' + abc + ']?)([<>.])(\\d*)');
 }
 
 function setRule(q, c){
@@ -79,7 +79,7 @@ async function runMachine(){
 	Q = 0;
 	steps = 0;
 	loop = true;
-	while(machineStep() !== terminated && loop) await new Promise(res => setTimeout(res, timeout));
+	while(machineStep() !== TERMINATION && loop) await new Promise(res => setTimeout(res, timeout));
 	loop = false;
 
 	refreshString();
@@ -89,27 +89,27 @@ async function runMachine(){
 }
 
 function transcriptRule(q, c){
-	if(!rules[q] || !rules[q][c]) return [c + '.' + q, c + '', '.', q];
+	if(!rules[q] || !rules[q][c]) return [ES, ES, TERMINATION, ES];
 
 	let r = abcRegExp.exec(rules[q][c]) ?? nullES;
 	if(r === nullES){
 		markTermination(q, c);
-		return [rules[q][c], c + '', '!', q];
+		return [rules[q][c], c + ES, TERMINATION, q];
 	}
 
-	if(r[1] === ES) r[1] = c + '';
+	if(r[1] === ES) r[1] = c + ES;
 	if(r[2] === ES) r[2] = '.';
 	if(r[3] === ES || parseInt('0' + r[3]) >= width) r[3] = q;
 	r[0] = r[1] + r[2] + r[3];
 	return r;
 }
 
-function markTermination(q, c){setTimeout(() => document.getElementById('me_i' + q + '_j' + c).setAttribute('terminated', ''), 0)}
+function markTermination(q, c){setTimeout(() => document.getElementById('me_i' + q + '_j' + c).setAttribute('terminated', ES), 0)}
 
 function markQuery(q, c){
 	setTimeout(() => {
 		document.querySelectorAll('[query]').forEach((e) => e.removeAttribute('query'));
-		document.getElementById('me_i' + q + '_j' + c).setAttribute('query', '');
+		document.getElementById('me_i' + q + '_j' + c).setAttribute('query', ES);
 	}, 0)
 }
 
@@ -117,13 +117,13 @@ function machineStep(){
 	steps++;
 	let c = string[cell] ?? SPACE;
 	let r = transcriptRule(Q, c);
+	markQuery(Q, c);
 	putSymbol(cell, r[1]);
 	cell += r[2] === '<' ?-1 :r[2] === '>' ?1 :0;
 	Q = parseInt(0 + r[3]);
 	q_dis.innerText = 'Q:' + Q;
-	markQuery(Q, c);
 	drawLine();
-	return r[2] === '!' ?terminated :step;
+	return r[2] === TERMINATION ?TERMINATION :STEP;
 }
 
 function putSymbol(id, symbol){
@@ -147,13 +147,13 @@ function drawLine(){
 }
 
 function refreshString(){
-	let arr = [];
+	let arr = {};
 	for(let e in string) arr[e] = string[e];
 	string = arr;
 }
 
 function clearString(){
-	string = [];
+	string = {};
 	cell = 0;
 	loop = false;
 	Q = 0;
@@ -161,11 +161,11 @@ function clearString(){
 }
 
 function copyString(){
-	buf_string = [...(string ?? [])];
+	buf_string = {...(string ?? {})};
 }
 
 function pasteString(){
-	string = [...(buf_string ?? [])];
+	string = {...(buf_string ?? {})};
 	cell = 0;
 	loop = false;
 	Q = 0;
@@ -192,6 +192,16 @@ function uploadTM(el){
 		updateRules(json.rules);
 	}, (e) => {});
 	switchDisplay(popup_upload, 'grid');
+}
+
+function makeImg(){
+	takeshot(document.getElementById('turing_table'),
+		(c) => {
+			let link = document.createElement('a');
+			link.setAttribute('download', 'AZ-TM shot.png');
+			link.setAttribute('href', c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+			link.click();
+		})
 }
 
 updateRules();

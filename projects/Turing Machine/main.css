@@ -24,6 +24,7 @@ main {
 }
 
 #turing_table {
+	background: var(--c-back-main);
 	position: absolute;
 }
 
@@ -96,6 +97,8 @@ main {
 	background: var(--c-null) !important;
 }
 
-[query]:not([terminated]) {background: var(--c-accent)!important;}
-[terminated]:not([query]) {background: var(--c-accent-2)!important;}
-[terminated][query] {background: var(--c-accent-3)!important;}
+[query]:not([terminated]) {background: var(--c-accent) !important;}
+
+[terminated]:not([query]) {background: var(--c-accent-2) !important;}
+
+[terminated][query] {background: var(--c-accent-3) !important;}

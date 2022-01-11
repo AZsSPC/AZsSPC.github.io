@@ -227,20 +227,29 @@ nav a:hover {
 	color: var(--c-accent-d);
 }
 
-nav a.m-btn {
+.g-btn {
+	background: var(--c-accent);
+}
+
+.g-btn:hover {
+	background: white;
+	color: var(--c-accent-d);
+}
+
+.m-btn {
 	background: var(--c-accent-2);
 }
 
-nav a.m-btn:hover {
+.m-btn:hover {
 	background: white;
 	color: var(--c-accent-2-d);
 }
 
-nav a.b-btn {
+.b-btn {
 	background: var(--c-accent-3);
 }
 
-nav a.b-btn:hover {
+.b-btn:hover {
 	background: white;
 	color: var(--c-accent-3-d);
 }
