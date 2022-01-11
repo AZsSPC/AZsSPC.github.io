@@ -9,18 +9,22 @@
 	--c-back-head-split: #474747;
 	--c-back-light: #6D6D6D;
 
-	--c-accent: #579C6F;
-	--c-accent-l: #38AF61;
-	--c-accent-d: #186134;
-	--c-accent-f: #94C4A4;
-	--c-accent-2: #BA53B8;
-	--c-accent-2-l: #E753E5;
-	--c-accent-2-d: #713070;
-	--c-accent-2-f: #C194C0;
-	--c-accent-3: #53A7D2;
-	--c-accent-3-l: #0EBDFF;
-	--c-accent-3-d: #0162AC;
-	--c-accent-3-f: #9AB3CD;
+	--c-green: #579C6F;
+	--c-green-l: #38AF61;
+	--c-green-d: #186134;
+	--c-green-f: #94C4A4;
+	--c-magenta: #BA53B8;
+	--c-magenta-l: #E753E5;
+	--c-magenta-d: #713070;
+	--c-magenta-f: #C194C0;
+	--c-blue: #53A7D2;
+	--c-blue-l: #0EBDFF;
+	--c-blue-d: #0162AC;
+	--c-blue-f: #9AB3CD;
+	--c-gold: #E1B140;
+	--c-gold-l: #FFC70E;
+	--c-gold-d: #AC8401;
+	--c-gold-f: #CDBF9A;
 
 	--c-thumb: #868686;
 	--c-null: #00000000;
@@ -117,7 +121,7 @@ button {
 	/*border-width: 3px 20px;*/
 	margin: 4px;
 	padding: 0 4px;
-	background: var(--c-accent);
+	background: var(--c-green);
 	color: white;
 	cursor: pointer;
 }
@@ -185,11 +189,11 @@ main {
 }
 
 [title], u, a:not(.not_a_text), [title] *, u *, a:not(.not_a_text) * {
-	color: var(--c-accent);
+	color: var(--c-green);
 }
 
 [title]:hover, u:hover, a:not(.not_a_text):hover, [title]:hover *, u:hover *, a:not(.not_a_text):hover * {
-	color: var(--c-accent-l);
+	color: var(--c-green-l);
 }
 
 a.not_a_text, a.not_a_text * {text-decoration: none; color: white}
@@ -214,7 +218,7 @@ nav a {
 	padding: 0 4px;
 	margin: calc(5vh - 20px) 0;
 	border-radius: 50px;
-	background: var(--c-accent);
+	background: var(--c-green);
 	border: solid 4px var(--c-null);
 	color: white;
 	cursor: pointer;
@@ -224,46 +228,46 @@ nav a {
 
 nav a:hover {
 	background: white;
-	color: var(--c-accent-d);
+	color: var(--c-green-d);
 }
 
 .g-btn {
-	background: var(--c-accent);
+	background: var(--c-green);
 }
 
 .g-btn:hover {
 	background: white;
-	color: var(--c-accent-d);
+	color: var(--c-green-d);
 }
 
 .m-btn {
-	background: var(--c-accent-2);
+	background: var(--c-magenta);
 }
 
 .m-btn:hover {
 	background: white;
-	color: var(--c-accent-2-d);
+	color: var(--c-magenta-d);
 }
 
 .b-btn {
-	background: var(--c-accent-3);
+	background: var(--c-blue);
 }
 
 .b-btn:hover {
 	background: white;
-	color: var(--c-accent-3-d);
+	color: var(--c-blue-d);
 }
 
 .g-btnh {
-	background: var(--c-accent);
+	background: var(--c-green);
 }
 
 .m-btnh {
-	background: var(--c-accent-2);
+	background: var(--c-magenta);
 }
 
 .b-btnh {
-	background: var(--c-accent-3);
+	background: var(--c-blue);
 }
 
 ul ::marker {
@@ -302,8 +306,8 @@ ul ::marker {
 }
 
 #hsl:hover {
-	background: var(--c-accent-2);
-	border-color: var(--c-accent-2-d);
+	background: var(--c-magenta);
+	border-color: var(--c-magenta-d);
 }
 
 #navhider:checked ~ header {
@@ -316,8 +320,8 @@ ul ::marker {
 
 #navhider:checked ~ header > #hsl {
 	top: 0;
-	background: var(--c-accent-2);
-	border-color: var(--c-accent-2-d);
+	background: var(--c-magenta);
+	border-color: var(--c-magenta-d);
 }
 
 textarea {
@@ -338,7 +342,7 @@ textarea {
 input { background: #232323;}
 
 #popup_upload {
-	background: var(--c-accent-3);
+	background: var(--c-blue);
 	position: absolute;
 	overflow-y: scroll;
 	margin: 0;

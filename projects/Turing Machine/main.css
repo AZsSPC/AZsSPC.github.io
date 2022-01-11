@@ -49,7 +49,7 @@ main {
 }
 
 #line > span[sel] {
-	border: solid 1px var(--c-accent-3);
+	border: solid 1px var(--c-blue);
 }
 
 #line > span[c]:before {
@@ -61,12 +61,12 @@ main {
 	left: 0;
 	text-align: center;
 	right: 0;
-	color: var(--c-accent-2-f);
+	color: var(--c-magenta-f);
 }
 
 .move_q {
 	border: 0 !important;
-	background: var(--c-accent-3-d) !important;
+	background: var(--c-blue-d) !important;
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Chrome/Safari/Opera */
 	-khtml-user-select: none; /* Konqueror */
@@ -97,11 +97,11 @@ main {
 	background: var(--c-null) !important;
 }
 
-[query]:not([terminated]) {background: var(--c-accent) !important;}
+[query]:not([terminated]) {background: var(--c-green) !important;}
 
-[terminated]:not([query]) {background: var(--c-accent-2) !important;}
+[terminated]:not([query]) {background: var(--c-magenta) !important;}
 
-[terminated][query] {background: var(--c-accent-3) !important;}
+[terminated][query] {background: var(--c-blue) !important;}
 
 #q_count{width: 3rem}
 #alphabet{width: 12rem}

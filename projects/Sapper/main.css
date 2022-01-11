@@ -15,7 +15,7 @@
 
 #game {
 	margin: 1rem;
-	border: var(--c-accent-3) calc(var(--ts) * .1) solid;
+	border: var(--c-blue) calc(var(--ts) * .1) solid;
 	display: grid;
 	border-spacing: 0;
 	grid-template-columns: repeat(var(--gc), var(--ts));

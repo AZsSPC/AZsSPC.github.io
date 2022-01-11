@@ -19,13 +19,13 @@
     display: inline-block;
     margin: 4px;
     padding: 8px;
-    background-color: var(--c-accent-2-f);
+    background-color: var(--c-magenta-f);
     cursor: pointer;
     border-radius: 10px;
 }
 
 .m_c *, .m_cb * {
-    color: var(--c-accent-2-d) !important;
+    color: var(--c-magenta-d) !important;
     font-family: MathJax_Math-italic;
     font-size: 14pt;
 }
@@ -40,7 +40,7 @@
     bottom: 0;
     z-index: 9999;
     padding: 8px;
-    border: solid 8px var(--c-accent-2-d);
+    border: solid 8px var(--c-magenta-d);
 }
 
 .m_cb > .m_f {

@@ -14,7 +14,7 @@
 }
 
 .plist_tile {
-	background: var(--c-accent-2-d);
+	background: var(--c-magenta-d);
 	margin: 0;
 	position: relative;
 	display: grid;
@@ -32,18 +32,18 @@
 }
 
 .plist_tile p:nth-child(1) {
-	background: var(--c-accent-2);
+	background: var(--c-magenta);
 	margin: 0;
 	padding: 4px;
 	height: fit-content;
 }
 
 .plist_tile:hover p:nth-child(1) {
-	background: var(--c-accent-3);
+	background: var(--c-blue);
 }
 
 .plist_tile:hover {
-	background: var(--c-accent-3-d);
+	background: var(--c-blue-d);
 }
 
 .plist_tile p:nth-child(2) {
@@ -70,7 +70,7 @@
 	border-width: 1px;
 }
 
-.tags button:hover {background: var(--c-accent-3);}
+.tags button:hover {background: var(--c-blue);}
 
 .tags { cursor: default;}
 

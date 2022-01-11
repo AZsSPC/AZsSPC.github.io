@@ -57,7 +57,7 @@
 
 #tab button {
 	text-transform: uppercase;
-	background: var(--c-accent);
+	background: var(--c-green);
 	color: white;
 }
 
@@ -121,7 +121,7 @@
 }
 
 #popup_syntax, #popup_upload {
-	background: var(--c-accent-3);
+	background: var(--c-blue);
 	position: absolute;
 	overflow-y: scroll;
 	margin: 0;
@@ -136,7 +136,7 @@
 	width: calc(100% - 8px);
 	text-align: center;
 	border-radius: 10px;
-	background: var(--c-accent-3-d);
+	background: var(--c-blue-d);
 }
 
 #popup_upload > input {
