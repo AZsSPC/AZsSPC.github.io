@@ -254,6 +254,18 @@ nav a:hover {
 	color: var(--c-accent-3-d);
 }
 
+.g-btnh {
+	background: var(--c-accent);
+}
+
+.m-btnh {
+	background: var(--c-accent-2);
+}
+
+.b-btnh {
+	background: var(--c-accent-3);
+}
+
 ul ::marker {
 	content: '• ';
 }
