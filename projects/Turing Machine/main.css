@@ -102,3 +102,6 @@ main {
 [terminated]:not([query]) {background: var(--c-accent-2) !important;}
 
 [terminated][query] {background: var(--c-accent-3) !important;}
+
+#q_count{width: 3rem}
+#alphabet{width: 12rem}
