@@ -1,5 +1,3 @@
-
-
 main {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -46,7 +44,7 @@ main {
 	position: relative;
 }
 
-#line > span[sel] {	border: solid 1px var(--c-blue);}
+#line > span[sel] { border: solid 1px var(--c-blue);}
 
 #line > span[c]:before {
 	content: attr(c);
@@ -89,13 +87,14 @@ main {
 	height: 100%;
 }
 
-#q_display {	background: var(--c-null) !important;}
+#q_display { background: var(--c-null) !important;}
 
 [query]:not([terminated]) {background: var(--c-green) !important;}
 
 [terminated]:not([query]) {background: var(--c-magenta) !important;}
 
-[terminated][query] {background: var(--c-blue) !important;}
+[terminated][query] {background: var(--c-gold) !important;}
 
-#q_count{width: 3rem}
-#alphabet{width: 12rem}
+#q_count {width: 3rem}
+
+#alphabet {width: 12rem}
