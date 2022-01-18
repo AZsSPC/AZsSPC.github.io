@@ -18,20 +18,23 @@
     <div id="grid">
         <div>
             <p style="margin-top: 0;">
+                <button onclick="updateRules([],true);line.innerText=''" class="m-btnh">Reset</button>
+                <button onclick="updateRules(null,true)" class="g-btnh">Cleanup</button>
                 <button onclick="runNMA()" class="b-btnh">|></button>
                 <button onclick="loop=false" class="b-btnh">||</button>
-                <button onclick="NMAStep()" class="b-btnh">-></button>
-                <button onclick="updateRules()" class="m-btnh">SET</button>
-                <button onclick="exportNMA()">Export</button>
-                <button onclick="importNMA()">Import</button>
+                <!--button onclick="NMAStep()" class="b-btnh">-></button-->
+                <!--button onclick="exportNMA()">Export</button-->
+                <!--button onclick="importNMA()">Import</button-->
+                <button onclick="addEmptyRule()" class="go-btnh">+1</button>
+                <button onclick="addEmptyRule(10)" class="go-btnh">+10</button>
             </p>
-            <p id="line" translate="no" contenteditable="true">Hello, world!</p>
+            <p id="line" translate="no" contenteditable>Hello, world!</p>
         </div>
         <div id="ttd">
             <ol id="nma_table"></ol>
         </div>
     </div>
-    <form id="popup_upload" style="display:none"><input type="file" name="photo" onchange="uploadTM(this)">
+    <form id="popup_upload" style="display:none"><input type="file" onchange="uploadTM(this)">
         <div>Drop files<br><br>or<br><br>Click here</div>
     </form>
 </main>
