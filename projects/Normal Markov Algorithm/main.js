@@ -38,9 +38,9 @@ function stepNMA() {
             if (rule.exit) return false;
         } else {
             iterator++;
-            return true;
         }
     }
+    return true;
 }
 
 function updateRules(arr, clear = false) {
@@ -64,10 +64,10 @@ function updateRules(arr, clear = false) {
 }
 
 function addEmptyRule(count = 1) {
-    for (let i = 0; i < count; i++) nma_table.innerHTML += '<li translate="no" draggable="true" >' +
-        '<span class="bounds from" contenteditable="true" onchange="updateRules()"></span>' +
+    for (let i = 0; i < count; i++) nma_table.innerHTML += '<li translate="no" draggable="true">' +
+        '<span class="from" contenteditable="true" onchange="updateRules()"></span>' +
         '<span class="exit" onclick="switchExit(this)">' + STEP + '</span>' +
-        '<span class="bounds to" contenteditable="true"></span>' +
+        '<span class="to" contenteditable="true"></span>' +
         '</li>';
 }
 
@@ -109,7 +109,6 @@ function check(arr, clear = false) {
         dragEl.classList.remove('ghost');
         nma_table.removeEventListener('dragover', _onDragOver, false);
         nma_table.removeEventListener('dragend', _onDragEnd, false);
-
     }
 
     nma_table.addEventListener('dragstart', function (evt) {

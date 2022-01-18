@@ -51,16 +51,16 @@ main {
 }
 
 #nma_table ::marker {
-    color: var(--c-blue-l);
+    color: var(--c-back-light);
+    content: counter(list-item) '.';
 }
 
 #nma_table li {
     cursor: move;
-    word-break: break-all;
     color: var(--c-blue-d);
     text-align: left;
-    width: fit-content;
     margin-left: 2rem;
+    margin-top: 4px;
 }
 
 .exit {
@@ -72,32 +72,13 @@ main {
     color: var(--c-magenta-l);
 }
 
-.bounds {
-    display: inline-block;
+.from, .to {
     cursor: text;
-    white-space: nowrap;
-}
-
-.bounds:before {
-    color: var(--c-blue-d);
-    content: '[';
-}
-
-.bounds:after {
-    color: var(--c-blue-d);
-    content: ']';
-}
-
-/*
-#nma_table td, #nma_table th {
-    min-width: 3rem;
-    min-height: 2rem;
-    text-align: center;
-    border-radius: 5px;
     white-space: pre-wrap;
     background: var(--c-back-head);
+    border-radius: 5px;
+    padding: 0 .5rem;
 }
- */
 
 #grid {
     grid-template-rows: fit-content(0) 1fr;
