@@ -195,6 +195,7 @@ function uploadTM(el){
 }
 
 function makeImg(){
+	updateRules();
 	takeshot(document.getElementById('turing_table'),
 		(c) => {
 			let link = document.createElement('a');

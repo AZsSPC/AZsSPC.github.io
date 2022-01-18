@@ -1,0 +1,40 @@
+<html lang="ru">
+<head>
+    <title>Normal Markov Algorithm</title>
+    <script type="text/javascript"
+            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../az.js"></script>
+    <script type="text/javascript">settings();</script>
+
+    <meta property="og:url" content="https://azsspc.github.io/projects/Normal%20Markov%20Algorithm/"/>
+    <meta property="og:title" content="Turing Machine redactor"/>
+    <meta property="og:description"
+          content="You want to create Turing Machine, but can't find normal redactor? You already find it!"/>
+    <meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
+</head>
+<body>
+<script type="text/javascript">header();</script>
+<main>
+    <div id="grid">
+        <div>
+            <p style="margin-top: 0;">
+                <button onclick="runNMA()" class="b-btnh">|></button>
+                <button onclick="loop=false" class="b-btnh">||</button>
+                <button onclick="NMAStep()" class="b-btnh">-></button>
+                <button onclick="updateRules()" class="m-btnh">SET</button>
+                <button onclick="exportNMA()">Export</button>
+                <button onclick="importNMA()">Import</button>
+            </p>
+            <p id="line" translate="no" contenteditable="true">Hello, world!</p>
+        </div>
+        <div id="ttd">
+            <ol id="nma_table"></ol>
+        </div>
+    </div>
+    <form id="popup_upload" style="display:none"><input type="file" name="photo" onchange="uploadTM(this)">
+        <div>Drop files<br><br>or<br><br>Click here</div>
+    </form>
+</main>
+</body>
+</html>
+<script type="text/javascript" src="main.js"></script>

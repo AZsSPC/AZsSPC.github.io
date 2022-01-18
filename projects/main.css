@@ -70,7 +70,7 @@
 	border-width: 1px;
 }
 
-.tags button:hover {background: var(--c-blue);}
+.tags button:hover {background: var(--c-gold);}
 
 .tags { cursor: default;}
 
@@ -125,6 +125,4 @@
 	padding: 0 4px;
 }
 */
-:root {
-	--him: calc(-.75rem - 7px);
-}
+:root {	--him: calc(-.75rem - 7px);}
