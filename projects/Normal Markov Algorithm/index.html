@@ -23,8 +23,8 @@
                 <button onclick="runNMA()" class="b-btnh">|></button>
                 <button onclick="loop=false" class="b-btnh">||</button>
                 <!--button onclick="NMAStep()" class="b-btnh">-></button-->
-                <!--button onclick="exportNMA()">Export</button-->
-                <!--button onclick="importNMA()">Import</button-->
+                <button onclick="exportNMA()">Export</button>
+                <button onclick="importNMA()">Import</button>
                 <button onclick="addEmptyRule()" class="go-btnh">+1</button>
                 <button onclick="addEmptyRule(10)" class="go-btnh">+10</button>
             </p>
@@ -34,7 +34,7 @@
             <ol id="nma_table"></ol>
         </div>
     </div>
-    <form id="popup_upload" style="display:none"><input type="file" onchange="uploadTM(this)">
+    <form id="popup_upload" style="display:none"><input type="file" onchange="uploadNMA(this)">
         <div>Drop files<br><br>or<br><br>Click here</div>
     </form>
 </main>

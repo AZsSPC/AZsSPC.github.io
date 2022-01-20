@@ -60,6 +60,7 @@ function updateRules(arr, clear = false) {
         '<span class="bounds from" contenteditable="true" onchange="updateRules()">' + a.from + '</span>' +
         '<span class="exit" onclick="switchExit(this)" ' + (a.exit ? 't' : '') + '>' + (a.exit ? TERMINATION : STEP) + '</span>' +
         '<span class="bounds to" contenteditable="true">' + a.to + '</span>' +
+        '<button class="r-btnh">del</button>' +
         '</li>';
 }
 
@@ -68,6 +69,7 @@ function addEmptyRule(count = 1) {
         '<span class="from" contenteditable="true" onchange="updateRules()"></span>' +
         '<span class="exit" onclick="switchExit(this)">' + STEP + '</span>' +
         '<span class="to" contenteditable="true"></span>' +
+        '<button class="r-btnh">del</button>' +
         '</li>';
 }
 
@@ -86,8 +88,8 @@ function check(arr, clear = false) {
             b = false;
             break;
         }
-        s.from = s.from.replaceAll(/\xA0/g, ' ')
-        s.to = s.to.replaceAll(/\xA0/g, ' ')
+        s.from = s.from.replaceAll(/\xA0/g, ' ');
+        s.to = s.to.replaceAll(/\xA0/g, ' ');
         s.off = !b;
         if (!clear) result.push(s); else if (b) result.push(s);
     }
@@ -120,6 +122,26 @@ function check(arr, clear = false) {
         setTimeout(() => dragEl.classList.add('ghost'), 0);
     }, false);
 })();
+
+function exportNMA() {
+    updateRules();
+    let filename = prompt("Name this file?");
+    if (filename) createNDownload(filename + '.json', JSON.stringify({line: string, rules: check(rules, true)}));
+}
+
+function importNMA() {
+    switchDisplay(popup_upload, 'grid');
+}
+
+function uploadNMA(el) {
+    fileUploaded(el, (t) => {
+        let json = JSON.parse(t);
+        line.innerText = json.line;
+        updateRules(json.rules);
+    }, (e) => {
+    });
+    switchDisplay(popup_upload, 'grid');
+}
 
 // Используем
 updateRules();

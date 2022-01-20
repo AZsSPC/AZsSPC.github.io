@@ -273,6 +273,15 @@ nav a:hover {
     color: var(--c-gold-d);
 }
 
+.r-btn {
+    background: var(--c-red);
+}
+
+.r-btn:hover {
+    background: white;
+    color: var(--c-red-d);
+}
+
 .g-btnh {
     background: var(--c-green);
 }
@@ -287,6 +296,10 @@ nav a:hover {
 
 .go-btnh {
     background: var(--c-gold);
+}
+
+.r-btnh {
+    background: var(--c-red);
 }
 
 ul ::marker {
