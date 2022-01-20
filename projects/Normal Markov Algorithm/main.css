@@ -60,7 +60,16 @@ main {
     color: var(--c-blue-d);
     text-align: left;
     margin-left: 2rem;
-    margin-top: 4px;
+    background: var(--c-gray-help);
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+#nma_table li > div {
+    width: calc(100% - 6px);
+    position: relative;
+    display: inline-block;
+    margin: 3px;
 }
 
 .exit {
@@ -102,4 +111,19 @@ main {
 
 .ghost {
     opacity: .4;
+}
+
+.del {
+    white-space: pre-wrap;
+    background: var(--c-red);
+    border-radius: 5px;
+    padding: 0 4px;
+    right: 0;
+    position: absolute;
+    color: white;
+    cursor: pointer;
+}
+
+#speed {
+    margin: 0;
 }

@@ -7,6 +7,7 @@
     --c-back-main: #2F2F2F;
     --c-back-head: #232323;
     --c-back-head-split: #474747;
+    --c-gray-help: #3b3b3b;
     --c-back-light: #6D6D6D;
 
     --c-green: #459B51;
@@ -408,4 +409,30 @@ textarea {
 
 input {
     background: var(--c-back-head);
+}
+
+input[type='range'] {
+    overflow: hidden;
+    width: 8rem;
+    -webkit-appearance: none;
+    background-color: var(--c-magenta-d);
+    border-radius: 7px;
+    height: 1rem;
+    vertical-align: middle;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+    height: 1rem;
+    color: var(--c-magenta-l);
+}
+
+input[type='range']::-webkit-slider-thumb {
+    width: 1rem;
+    -webkit-appearance: none;
+    height: 1rem;
+    cursor: ew-resize;
+    border: 3px solid var(--c-magenta-l);
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: -8rem 0 0 7.5rem var(--c-magenta-l);
 }

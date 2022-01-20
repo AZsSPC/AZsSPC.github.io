@@ -56,21 +56,20 @@ function updateRules(arr, clear = false) {
 
     rules = check(arr, clear);
     nma_table.innerHTML = '';
-    for (const a of rules) nma_table.innerHTML += '<li translate="no" draggable="true" ' + (a.off ? 'terminated' : '') + '>' +
-        '<span class="bounds from" contenteditable="true" onchange="updateRules()">' + a.from + '</span>' +
-        '<span class="exit" onclick="switchExit(this)" ' + (a.exit ? 't' : '') + '>' + (a.exit ? TERMINATION : STEP) + '</span>' +
-        '<span class="bounds to" contenteditable="true">' + a.to + '</span>' +
-        '<button class="r-btnh">del</button>' +
-        '</li>';
+    for (const a of rules) addRule(a.from, a.exit, a.to);
 }
 
-function addEmptyRule(count = 1) {
-    for (let i = 0; i < count; i++) nma_table.innerHTML += '<li translate="no" draggable="true">' +
-        '<span class="from" contenteditable="true" onchange="updateRules()"></span>' +
-        '<span class="exit" onclick="switchExit(this)">' + STEP + '</span>' +
-        '<span class="to" contenteditable="true"></span>' +
-        '<button class="r-btnh">del</button>' +
-        '</li>';
+function addEmptyRules(count = 1) {
+    for (let i = 0; i < count; i++) addRule('', STEP, '');
+}
+
+function addRule(from, exit, to) {
+    nma_table.innerHTML += '<li translate="no" draggable="true"><div>' +
+        '<span class="from" contenteditable="true" onchange="updateRules()">' + from + '</span>' +
+        '<span class="exit" onclick="switchExit(this)">' + exit + '</span>' +
+        '<span class="to" contenteditable="true">' + to + '</span>' +
+        '<span class="del" onclick="nma_table.removeChild(this.parentNode)">-</span>' +
+        '</div></li>';
 }
 
 function switchExit(el) {
@@ -145,4 +144,4 @@ function uploadNMA(el) {
 
 // Используем
 updateRules();
-addEmptyRule(15)
+addEmptyRules(15)
