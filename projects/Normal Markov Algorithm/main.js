@@ -3,7 +3,7 @@ let rules = [],
     Q = 0,
     width = 0,
     height = 0,
-    timeout = 100,
+    timeout = 200,
     string = '',
     loop = true, iterator = 0, run;
 const
@@ -20,62 +20,67 @@ async function runNMA() {
     string = line.innerText.replaceAll(/\s/g, ' ');
     run = check(rules, true);
     console.log('in')
-    while (stepNMA() && loop) await new Promise(res => setTimeout(res, timeout));
+    while (loop) {
+        if (iterator >= run.length) {
+            loop = false;
+        } else {
+            let rule = run[iterator];
+            let s = ' ' + string + ' ';
+            if (s.includes(rule.from)) {
+                console.log(iterator + 1)
+                string = s.replace(rule.from, rule.to).replaceAll(/^\s+|\s+$/g, '');
+                line.innerText = string;
+                markQuery(iterator);
+                iterator = 0;
+                if (rule.exit) loop = false;
+                await new Promise(res => setTimeout(res, timeout));
+            } else {
+                iterator++;
+            }
+        }
+    }
     console.log('out')
 }
 
-function stepNMA() {
-    if (iterator >= run.length) {
-        return false;
-    } else {
-        let rule = run[iterator];
-        let s = ' ' + string + ' ';
-        if (s.includes(rule.from)) {
-            console.log(iterator + 1)
-            string = s.replace(rule.from, rule.to).replaceAll(/^\s+|\s+$/g, '');
-            line.innerText = string;
-            iterator = 0;
-            if (rule.exit) return false;
-        } else {
-            iterator++;
-        }
-    }
-    return true;
-}
-
 function updateRules(arr, clear = false) {
+    loop = false;
     if (!arr) {
         arr = [];
         nma_table.childNodes.forEach((a) => arr.push({
-                exit: a.querySelector('.exit').innerText === TERMINATION,
-                from: a.querySelector('.from').innerText.replaceAll(/\s/g, ' '),
-                to: a.querySelector('.to').innerText.replaceAll(/\s/g, ' ')
-            })
-        )
+            exit: a.querySelector('.exit').innerText === TERMINATION,
+            from: a.querySelector('.from').innerText.replaceAll(/\s/g, ' '),
+            to: a.querySelector('.to').innerText.replaceAll(/\s/g, ' ')
+        }))
     }
-
     rules = check(arr, clear);
     nma_table.innerHTML = '';
-    for (const a of rules) addRule(a.from, a.exit, a.to);
+    for (const a of rules) addRule(a.from, a.to, a.exit, a.off);
+}
+
+function markQuery(i) {
+    setTimeout(() => {
+        document.querySelectorAll('[query]').forEach((e) => e.removeAttribute('query'));
+        nma_table.querySelectorAll('li:not([off])')[i].setAttribute('query', '');
+    }, 0)
 }
 
 function addEmptyRules(count = 1) {
-    for (let i = 0; i < count; i++) addRule('', STEP, '');
+    for (let i = 0; i < count; i++) addRule();
 }
 
-function addRule(from, exit, to) {
-    nma_table.innerHTML += '<li translate="no" draggable="true"><div>' +
+function addRule(from = '', to = '', exit = false, off = false) {
+    nma_table.innerHTML += '<li translate="no" draggable="true"' + (off ? ' off' : '') + '><div>' +
         '<span class="from" contenteditable="true" onchange="updateRules()">' + from + '</span>' +
-        '<span class="exit" onclick="switchExit(this)">' + exit + '</span>' +
+        '<span class="exit" onclick="switchExit(this)"' + (exit ? ' t' : '') + '>' + (exit ? TERMINATION : STEP) + '</span>' +
         '<span class="to" contenteditable="true">' + to + '</span>' +
         '<span class="del" onclick="nma_table.removeChild(this.parentNode)">-</span>' +
         '</div></li>';
 }
 
 function switchExit(el) {
-    let b = el.innerText !== TERMINATION;
-    el.innerText = b ? TERMINATION : STEP;
-    if (b) el.setAttribute('t', '');
+    let term = el.innerText === STEP;
+    el.innerText = term ? TERMINATION : STEP;
+    if (term) el.setAttribute('t', '');
     else el.removeAttribute('t');
 }
 

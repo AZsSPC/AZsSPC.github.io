@@ -25,29 +25,13 @@ main {
 
 #nma_table {
     margin: 0;
-    width: calc(100% - 1rem);
+    width: calc(100% - 2rem);
     background: var(--c-back-main);
     position: absolute;
     padding-left: 1rem;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-}
-
-@media screen and (min-width: 800px) {
-    #nma_table {
-        -webkit-columns: 3;
-        -moz-columns: 3;
-        columns: 3;
-    }
-}
-
-@media screen and (max-width: 800px) {
-    #nma_table {
-        -webkit-columns: 1;
-        -moz-columns: 1;
-        columns: 1;
-    }
 }
 
 #nma_table ::marker {
@@ -97,16 +81,12 @@ main {
     height: 100%;
 }
 
-[query]:not([terminated]) {
+[query] {
     background: var(--c-green-d) !important;
 }
 
-[terminated]:not([query]) {
+[off] {
     background: var(--c-magenta-d) !important;
-}
-
-[terminated][query] {
-    background: var(--c-gold-d) !important;
 }
 
 .ghost {
@@ -122,8 +102,4 @@ main {
     position: absolute;
     color: white;
     cursor: pointer;
-}
-
-#speed {
-    margin: 0;
 }
