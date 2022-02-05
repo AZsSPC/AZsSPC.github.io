@@ -1,0 +1,17 @@
+
+#game {
+    margin: 1rem;
+}
+
+@media (orientation: portrait) {
+    #game {
+        width: 95%;
+    }
+}
+
+@media (orientation: landscape) {
+
+    #game {
+        height: 95%;
+    }
+}
