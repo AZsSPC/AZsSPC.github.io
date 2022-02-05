@@ -49,6 +49,12 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             enabled: true,
             tag: [WEB, GAME, FOR_ALL]
         }, {
+            name: 'EVO',
+            path: 'Evo',
+            lore: 'Primitive evolution simulator developed in 6h',
+            enabled: true,
+            tag: [WEB, GAME, SCIENCE]
+        }, {
             name: 'Matrix Helper',
             path: 'Matrix Laplas Helper',
             lore: 'This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n(saves time, exports the solution in .TeX)',

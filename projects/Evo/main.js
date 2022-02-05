@@ -209,8 +209,8 @@ function draw() {
 
 function cycle() {
     for (let i = width / 5; i > 0; i--) {
-        let x = parseInt((Math.random() * width * 0.9).toFixed()),
-            y = parseInt((Math.random() * width * 0.9).toFixed());
+        let x = parseInt((Math.random() * width * 0.95).toFixed()),
+            y = parseInt((Math.random() * width * 0.95).toFixed());
         if (petri[x][y] === TYPE.EMPTY) petri[x][y] = TYPE.VEG;
     }
 
