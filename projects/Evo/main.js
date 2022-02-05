@@ -61,9 +61,11 @@ class Cell {
         switch (action) {
             case ACTION.RIGHT:
                 this.way = (this.way + 1) % 8;
+                this.vis--;
                 break;
             case ACTION.LEFT:
                 this.way = (this.way + 7) % 8;
+                this.vis--;
                 break;
             case ACTION.ACT:
                 switch (front_type) {
@@ -74,16 +76,20 @@ class Cell {
                         if (this.vis >= this.div) {
                             this.vis = parseInt((this.vis * 0.4).toFixed());
                             petri[x][y] = new Cell(this.bcs, this.gen + 1, this.vis, this.mutateDNA(this.dna));
-                        } else petri[x][y] = TYPE.EMPTY;
+                        } else {
+                            petri[x][y] = TYPE.EMPTY;
+                            this.vis--;
+                        }
                         break;
                     case TYPE.FRIEND:
                     case TYPE.ENEMY:
                         petri[next_cell[0]][next_cell[1]].vis -= 10;
                         front.react(next_cell[0], next_cell[1]);
+                        this.vis -= 3;
                         break;
                     case TYPE.VEG:
                     case TYPE.MEAT:
-                        this.vis += 6;
+                        this.vis += 5;
                         petri[next_cell[0]][next_cell[1]] = this;
                         petri[x][y] = TYPE.EMPTY;
                         break;
@@ -91,10 +97,10 @@ class Cell {
                 break;
             default:
             case ACTION.NONE:
+                this.vis--;
         }
 
         this.age++;
-        this.vis--;
         this.stp++;
     }
 
