@@ -15,3 +15,20 @@
         height: 95%;
     }
 }
+
+input[type="number"] {
+    width: 3rem
+}
+
+#food {
+    background-color: var(--c-green-d);
+}
+
+#food::-webkit-slider-runnable-track {
+    color: var(--c-green-l);
+}
+
+#food::-webkit-slider-thumb {
+    border: 3px solid var(--c-green-l);
+    box-shadow: -8rem 0 0 7.5rem var(--c-green-l);
+}

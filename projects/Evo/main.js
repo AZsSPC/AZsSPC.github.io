@@ -1,14 +1,16 @@
 const
     game = document.getElementById('game').getContext("2d"),
     iw = document.getElementById('w'),
+    ib = document.getElementById('b'),
     TYPE = {EMPTY: 0, VEG: 1, MEAT: 2, FRIEND: 3, ENEMY: 4},
     ROTATE = {U: 0, UR: 1, R: 2, DR: 3, D: 4, DL: 5, L: 6, UL: 7},
     ACTION = {NONE: 0, ACT: 1, RIGHT: 2, LEFT: 3};//ACT - move, bite, eat, birth
 
-let petri = [], width, bntp, bc = 2, cof = 1, cell_rad = 1, food_rad = 1, timeout = 100, loop = false;
+let petri = [], width, cof = 1, cell_rad = 1, food_rad = 1, timeout = 100, loop = false, bc, fc = 5;
 
 function setup() {
     width = parseInt(iw.value);
+    bc = parseInt(ib.value);
     cof = (1000 / width).toFixed();
     cell_rad = (cof * 0.42).toFixed();
     food_rad = (cof * 0.32).toFixed();
@@ -16,7 +18,7 @@ function setup() {
     for (let x = 0; x < width; x++) {
         petri[x] = [];
         for (let y = 0; y < width; y++) {
-            petri[x][y] = Math.random() < .3 ? new Cell(5) : Math.random() < .3 ? TYPE.VEG : TYPE.EMPTY;
+            petri[x][y] = Math.random() < .3 ? new Cell(bc) : Math.random() < .3 ? TYPE.VEG : TYPE.EMPTY;
         }
     }
     draw()
@@ -208,7 +210,7 @@ function draw() {
 }
 
 function cycle() {
-    for (let i = width / 5; i > 0; i--) {
+    for (let i = fc; i > 0; i--) {
         let x = parseInt((Math.random() * width * 0.95).toFixed()),
             y = parseInt((Math.random() * width * 0.95).toFixed());
         if (petri[x][y] === TYPE.EMPTY) petri[x][y] = TYPE.VEG;
