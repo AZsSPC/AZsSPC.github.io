@@ -4,22 +4,25 @@ const
     iw = document.getElementById('w'),
     ib = document.getElementById('b'),
     pb = document.getElementById('pause'),
-    DEFGENES = 12, MUTATE_COUNT = 3, MUTATE_CHANCE = 0.3,
-    TYPE = {EMPTY: 0, VEG: 1, MEAT: 2, KIN: 3, CELL: 4, GARBAGE: 5},
+    DEFGENES = 12, MUTATE_COUNT = 3, MUTATE_CHANCE = 0.1,
+    TYPE = {EMPTY: 0, VEG: 1, MEAT: 2, KIN: 3, CELL: 4, GARBAGE: 5, A: 6, B: 7},
     ROTATE = {U: 0, UR: 1, R: 2, DR: 3, D: 4, DL: 5, L: 6, UL: 7},
-    ACTION = {NONE: 0, ACT: 1, RIGHT: 2, LEFT: 3};//ACT - move, bite, eat, birth
+    ACTION = {NONE: 0, MOVE: 1, RIGHT: 2, LEFT: 3, EAT: 4, HIT: 5, A: 6, B: 7};//ACT - move, bite, eat, birth
 
-let petri = [], width, cof, cell_rad, food_rad, timeout = 100, loop = false, bc, fc = 5, id_counter, lineW,
-    target = {id: 1, type: 4}, fixer = false;
+let petri = [], width, cof, cell_rad, pul_rad, food_rad, timeout = 100, loop = false, bc, fc = 5, id_counter, lineW,
+    target = {id: 1, type: 4}, fixer = false, steps;
 
 function setup() {
+    steps = 0;
     loop = false;
+    loop_change(true);
     width = parseInt(iw.value);
     bc = parseInt(ib.value);
-    cof = (1000 / width) | 0;
-    cell_rad = (cof * 0.4) | 0;
-    food_rad = (cof * 0.3) | 0;
-    lineW = (cof / 25) | 0;
+    cof = 1000 / width | 0;
+    cell_rad = cof * 0.4 | 0;
+    food_rad = cof * 0.3 | 0;
+    lineW = cof >> 4 | 0;
+    pul_rad = cof >> 1;
     petri = new Array(width * width);
     id_counter = 0;
     for (let x = 0; x < width; x++) {
@@ -40,19 +43,20 @@ class Cell {
         this.stp = 0;   //witch bc actually working
         this.age = 0;   //age
         this.gen = gen; //generation
-        this.way = parseInt((Math.random() * 7) | 0); //look at
+        this.way = Math.random() * 7 | 0; //look at
         this.dna = dna ?? this.randomDNA(this.bcs);
 
         //family
-        this.kin = '#' + parseInt(this.dna.substr(0, 6), 4).toString(16);
+        this.kin = '#' + parseInt(this.dna.substr(0, 4), 8).toString(16);
         //age limit
-        this.lima = parseInt(this.dna.substr(6, 6), 4).toString(10);
+        this.lima = parseInt(this.dna.substr(4, 3), 8).toString(10);
         //energy limit
-        this.lime = parseInt(this.dna.substr(12, 4), 4);
+        this.lime = parseInt(this.dna.substr(7, 3), 8);
         // divide if energy > than div
-        this.div = parseInt(this.dna.substr(16, 4), 4);
+        this.div = parseInt(this.dna.substr(10, 3), 8);
 
         this.vis = Math.min(this.lime, vis ?? this.div - 1); //energy
+        //this.prettyLog();
     }
 
     step(x, y) {
@@ -65,7 +69,7 @@ class Cell {
         let next_cell = this.next_from(x, y, this.way);
         let front = petri[next_cell[0]][next_cell[1]];
         let front_type = typeof front === 'object' ? front.kin === this.kin ? TYPE.KIN : TYPE.CELL : front;
-        let action = parseInt(this.dna.substr(55 + this.stp * 5, 5).split('')[front_type]);
+        let action = parseInt(this.dna.substr((DEFGENES + this.stp) * 8, 8).split('')[front_type]);
 
         switch (action) {
             case ACTION.RIGHT:
@@ -76,32 +80,33 @@ class Cell {
                 this.way = (this.way + 7) % 8;
                 this.vis--;
                 break;
-            case ACTION.ACT:
-                switch (front_type) {
-                    default:
-                    case TYPE.EMPTY:
-                        petri[next_cell[0]][next_cell[1]] = this;
+            case ACTION.MOVE:
+                if (front_type === TYPE.EMPTY || front_type === TYPE.VEG || front_type === TYPE.MEAT) {
+                    petri[next_cell[0]][next_cell[1]] = this;
 
-                        if (this.vis >= this.div) {
-                            this.vis = parseInt((this.vis * 0.4) | 0);
-                            petri[x][y] = new Cell(this.bcs, this.gen + 1, this.vis, this.mutateDNA(this.dna));
-                        } else {
-                            petri[x][y] = TYPE.EMPTY;
-                            this.vis--;
-                        }
-                        break;
-                    case TYPE.KIN:
-                    case TYPE.CELL:
-                        petri[next_cell[0]][next_cell[1]].vis -= 10;
-                        front.react(next_cell[0], next_cell[1]);
-                        this.vis -= 3;
-                        break;
-                    case TYPE.VEG:
-                    case TYPE.MEAT:
-                        this.vis += 5;
-                        petri[next_cell[0]][next_cell[1]] = this;
+                    if (this.vis >= this.div) {
+                        this.vis = this.vis * 0.4 | 0;
+                        petri[x][y] = new Cell(this.bcs, this.gen + 1, this.vis, this.mutateDNA(this.dna));
+                    } else {
                         petri[x][y] = TYPE.EMPTY;
-                        break;
+                        this.vis--;
+                    }
+                }
+                break;
+            case ACTION.EAT:
+                if (front_type === TYPE.VEG || front_type === TYPE.MEAT) {
+                    this.vis += 5;
+                    petri[next_cell[0]][next_cell[1]] = this;
+                    petri[x][y] = TYPE.EMPTY;
+                }
+                break;
+            case ACTION.HIT:
+                if (front_type === TYPE.KIN || front_type === TYPE.CELL) {
+                    petri[next_cell[0]][next_cell[1]].vis -= 10;
+                    front.react(next_cell[0], next_cell[1]);
+                    this.vis -= 3;
+                } else if (front_type === TYPE.VEG || front_type === TYPE.MEAT) {
+                    petri[next_cell[0]][next_cell[1]] = TYPE.EMPTY;
                 }
                 break;
             default:
@@ -166,29 +171,69 @@ class Cell {
     }
 
     rg() {
-        return (Math.random() * 3.5) | 0;
+        return Math.random() * 8 | 0;
     }
 
-    prettyDNA() {
-        return this.dna.replaceAll(/.{5}/g, '$& ')
+    prettyLog() {
+        let f = 'color:';
+        let t = this.dna.match(/(\d{4})(\d{3})(\d{3})(\d{3})(\d{3})(\d+)/);
+        let a = this.vis / this.lime, b = this.age / this.lima, c = this.vis / this.div;
+        console.log('%c        val\t|\tmax\t| val/max'
+            + '\n%cenergy: %c' + this.vis + '\t|\t' + this.lime + '\t| ' + (a * 100 | 0) + '%%'
+            + '\n%c   age: %c' + this.age + '\t|\t' + this.lima + '\t| ' + (b * 100 | 0) + '%%'
+            + '\n%c   div: %c' + this.vis + '\t|\t' + this.div + '\t| ' + (c * 100 | 0) + '%%'
+            + '\n%creduct: %c' + t[5]
+            + '\n%c breed: %c' + this.gen
+            + '\n%c    id: %c' + this.id
+            + '\n%c  %c kin: %c' + this.kin.substr(1) + ' : ' + this.dna.substr(0, 4)
+            //{EMPTY: 0, VEG: 1, MEAT: 2, KIN: 3, CELL: 4, GARBAGE: 5, A: 6, B: 7},
+            + '\n\n%c    | %c   %c | %c   %c | %c   %c | CEL | %c   %c |  ?  |  ? %c'
+            + t[6].replaceAll(/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/g, '\n$1 | $2 | $3 | $4 | $5 | $6 | $7 | $8')
+                .replaceAll(0, '   ')
+                .replaceAll(1, 'MOV')
+                .replaceAll(2, ' > ')
+                .replaceAll(3, ' < ')
+                .replaceAll(4, 'EAT')
+                .replaceAll(5, 'BIT')
+                .replaceAll(6, '   ')
+                .replaceAll(7, '   ')
+            + '\n\n%c' + this.dna,
+
+            f + '#888',
+            '', f + (a < 0.3 ? 'coral' : a < 0.7 ? 'gold' : 'limegreen'),
+            '', f + (b > 0.3 ? 'coral' : b > 0.7 ? 'gold' : 'limegreen'),
+            '', f + (c < 0.3 ? 'coral' : c < 0.7 ? 'gold' : 'limegreen'),
+            '', f + '#888',
+            '', f + '#888',
+            '', f + '#888',
+            'background:' + this.kin, '', f + 'gold',
+            f + '#888', 'background:green',
+            f + '#888', 'background:crimson',
+            f + '#888', 'background:' + this.kin,
+            f + '#888', 'background:gold',
+            f + '#888',
+            f + '#a7d',
+            f + '#888'
+        );
     }
 
     mutateDNA(dna) {
         let new_dna = dna;
-        for (let i = MUTATE_COUNT; i > 0; i++) if (Math.random() > MUTATE_CHANCE)
-            new_dna = new_dna.replace(new RegExp('(?<=^.{' + (Math.random() * dna.length) | 0 + '}).'), this.rg());
+        for (let i = MUTATE_COUNT; i > 0; i--) if (Math.random() > MUTATE_CHANCE)
+            new_dna = new_dna.replace(new RegExp('(?<=^.{' + (Math.random() * dna.length | 0) + '}).'), this.rg());
         return new_dna;
     }
 
     randomDNA(braincells = 1) {
         if (braincells < 1) braincells = 1;
         let DNA = '';
-        for (let i = (DEFGENES + braincells) * 5; i > 0; i--) DNA += this.rg();
+        for (let i = (DEFGENES + braincells) * 8; i > 0; i--) DNA += this.rg();
         return DNA;
     }
 }
 
 function draw() {
+    if (timeout < 10 && steps % 10 !== 0) return;
     let tx = -1, ty = -1;
     game_ctx.clearRect(0, 0, 1000, 1000);
     game_ctx.font = food_rad + "px serif";
@@ -238,34 +283,31 @@ function draw() {
     game_ctx.lineWidth = lineW;
     game_ctx.strokeStyle = 'gold';
     game_ctx.beginPath();
-    game_ctx.arc((tx + 0.5) * cof, (ty + 0.5) * cof, cof / 2, 0, 7);
+    game_ctx.arc((tx + 0.5) * cof, (ty + 0.5) * cof, pul_rad, 0, 7);
     game_ctx.stroke();
 }
 
 function cycle() {
     fixer = !fixer;
     for (let i = fc; i > 0; i--) {
-        let x = parseInt((Math.random() * width * 0.95) | 0),
-            y = parseInt((Math.random() * width * 0.95) | 0);
+        let x = Math.random() * width | 0, y = Math.random() * width | 0;
         if (petri[x][y] === TYPE.EMPTY) petri[x][y] = TYPE.VEG;
     }
 
     for (let x = 0; x < width; x++) for (let y = 0; y < width; y++)
         if (typeof petri[x][y] === 'object' && petri[x][y].fixer !== fixer) petri[x][y].step(x, y);
     draw();
+    steps++;
+    return true;
 }
 
 function look(x, y) {
     alert(x + ' ' + y + ' ' + petri[y][x]);
 }
 
-function run() {
+async function run() {
     loop = true;
-
-    (function loopF() {
-        cycle();
-        if (loop) setTimeout(loopF, timeout);
-    })();
+    while (loop && cycle()) await new Promise(res => setTimeout(res, timeout));
 }
 
 function d2h(d) {
@@ -277,30 +319,39 @@ function h2d(h) {
 }
 
 function loop_click() {
-    if (loop) {
+    loop_change();
+    if (loop) loop = false;
+    else run().then(r => console.log('stopped'));
+}
+
+function loop_change(b = loop) {
+    if (b) {
         pb.innerText = '|>';
         pb.className = 'b-btn';
-        loop = false;
     } else {
-        pb.className = 'r-btn';
         pb.innerText = '||';
-        run();
+        pb.className = 'r-btn';
     }
 }
 
 function screen_clicked(e) {
     let rect = e.target.getBoundingClientRect(),
-        x = ((e.clientX - rect.left) / game.offsetWidth * 1000 / cof - 0.5) | 0,
-        y = ((e.clientY - rect.top) / game.offsetHeight * 1000 / cof - 0.5) | 0;
+        x = (e.clientX - rect.left) / game.offsetWidth * 1000 / cof | 0,
+        y = (e.clientY - rect.top) / game.offsetHeight * 1000 / cof | 0;
     target = typeof petri[x][y] === 'object' ? {id: petri[x][y].id, type: TYPE.CELL} : {x: x, y: y, type: -TYPE.CELL};
     draw();
+    if (typeof petri[x][y] === 'object') petri[x][y].prettyLog()
 }
+
 
 runOnKeys(loop_click, "KeyP");
 runOnKeys(cycle, "KeyS");
 runOnKeys(setup, "KeyR");
 
-game.addEventListener("click", screen_clicked);
+game.addEventListener("click", e => {
+    screen_clicked(e);
+    e.preventDefault();
+});
 setup();
 /*
       let sum = 0;
