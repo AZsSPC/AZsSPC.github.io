@@ -2,8 +2,6 @@
 <head>
     <title>Turing Machine</title>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="../../az.js"></script>
     <script type="text/javascript">settings();</script>
 
@@ -22,8 +20,7 @@
                 <button onclick="clearString()" class="r-btnh">#</button>
                 <button onclick="copyString()">Copy</button>
                 <button onclick="pasteString()">Paste</button>
-                <button onclick="runMachine()" class="b-btnh">|></button>
-                <button onclick="loop=false" class="b-btnh">||</button>
+                <button id="run_button" class="b-btn">|></button>
                 <button onclick="machineStep()" class="b-btnh">-></button>
                 <button onclick="updateRules()" class="m-btnh">SET</button>
                 <button onclick="exportTM()">Export</button>

@@ -3,13 +3,12 @@ const
     game_ctx = game.getContext("2d"),
     iw = document.getElementById('w'),
     ib = document.getElementById('b'),
-    pb = document.getElementById('pause'),
     DEFGENES = 12, MUTATE_COUNT = 3, MUTATE_CHANCE = 0.1,
     TYPE = {EMPTY: 0, VEG: 1, MEAT: 2, KIN: 3, CELL: 4, GARBAGE: 5, A: 6, B: 7},
     ROTATE = {U: 0, UR: 1, R: 2, DR: 3, D: 4, DL: 5, L: 6, UL: 7},
     ACTION = {NONE: 0, MOVE: 1, RIGHT: 2, LEFT: 3, EAT: 4, HIT: 5, A: 6, B: 7};//ACT - move, bite, eat, birth
 
-let petri = [], width, cof, cell_rad, pul_rad, food_rad, timeout = 100, loop = false, bc, fc = 5, id_counter, lineW,
+let petri = [], width, cof, cell_rad, pul_rad, food_rad, bc, fc = 5, id_counter, lineW,
     target = {id: 1, type: 4}, fixer = false, steps;
 
 function setup() {
@@ -308,6 +307,7 @@ function look(x, y) {
 async function run() {
     loop = true;
     while (loop && cycle()) await new Promise(res => setTimeout(res, timeout));
+    loop_change();
 }
 
 function d2h(d) {
@@ -316,22 +316,6 @@ function d2h(d) {
 
 function h2d(h) {
     return parseInt(h, 16);
-}
-
-function loop_click() {
-    loop_change();
-    if (loop) loop = false;
-    else run().then(r => console.log('stopped'));
-}
-
-function loop_change(b = loop) {
-    if (b) {
-        pb.innerText = '|>';
-        pb.className = 'b-btn';
-    } else {
-        pb.innerText = '||';
-        pb.className = 'r-btn';
-    }
 }
 
 function screen_clicked(e) {
@@ -343,7 +327,6 @@ function screen_clicked(e) {
     if (typeof petri[x][y] === 'object') petri[x][y].prettyLog()
 }
 
-
 runOnKeys(loop_click, "KeyP");
 runOnKeys(cycle, "KeyS");
 runOnKeys(setup, "KeyR");
@@ -352,6 +335,8 @@ game.addEventListener("click", e => {
     screen_clicked(e);
     e.preventDefault();
 });
+
+document.getElementById('run_button').onclick = loop_click;
 setup();
 /*
       let sum = 0;

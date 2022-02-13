@@ -23,16 +23,15 @@ async function run() {
             loop = false;
         } else {
             let rule = runable[iterator];
+            let pattern = new RegExp(rule.from);
             let s = ' ' + string + ' ';
-            if (s.includes(rule.from)) {
+            if (s.match(pattern)) {
                 console.log(iterator + 1)
-                string = s.replace(rule.from, rule.to).replaceAll(/^\s+|\s+$/g, '');
+                string = s.replace(pattern, rule.to).replaceAll(/^\s+|\s+$/g, '');
                 line.innerText = string;
                 markQuery(iterator);
                 iterator = 0;
-                if (rule.exit) {
-                    loop = false;
-                }
+                if (rule.exit) loop = false;
                 await new Promise(res => setTimeout(res, timeout));
             } else {
                 iterator++;
@@ -71,9 +70,9 @@ function addEmptyRules(count = 1) {
 
 function addRule(from = '', to = '', exit = false, off = false) {
     nma_table.innerHTML += '<li translate="no" draggable="true"' + (off ? ' off' : '') + '><div>' +
-        '<span class="from" contenteditable="true" onchange="updateRules()">' + from + '</span>' +
+        '<span class="from" contenteditable="true" oninput="redrawFrom(this)">' + retextFrom(from) + '</span>' +
         '<span class="exit" onclick="switchExit(this)"' + (exit ? ' t' : '') + '>' + (exit ? TERMINATION : STEP) + '</span>' +
-        '<span class="to" contenteditable="true">' + to + '</span>' +
+        '<span class="to" contenteditable="true" oninput="redrawTo(this)">' + to + '</span>' +
         '<span class="del" onclick="nma_table.removeChild(this.parentNode)">-</span>' +
         '</div></li>';
 }
@@ -84,6 +83,68 @@ function switchExit(el) {
     if (term) el.setAttribute('t', '');
     else el.removeAttribute('t');
 }
+
+function redrawFrom(el) {
+    let sel = document.getSelection();
+    sel.modify("extend", "backward", "paragraphboundary");
+    let pos = sel.toString().length;
+    if (sel.anchorNode !== undefined) sel.collapseToEnd();
+    el.innerHTML = retextFrom(el.innerText);
+    setCaret(el, pos);
+}
+
+function retextFrom(t) {
+    return t.replaceAll('<', '&lt;')
+        .replaceAll(/\\[\\.()\[\]{}*?+^$]/g, solor('darkolivegreen'))
+        .replaceAll(/\\[ntsr]|(?<!\\)[$^]/gi, solor('gold'))
+        .replaceAll(/\\[dw]|(?<!\\)[.]/gi, solor('cornflowerblue'))
+        .replaceAll(/(?<!\\)(\+|\*|\?|{\d+(,\d+)?})/g, solor('darkgoldenrod'))
+        .replaceAll(/(\\k|\?)(&lt;|<)\w+(&gt;|>)|\\\d+/g, solor('purple'))
+        .replaceAll(/[()\[\]{}]/g, solor('darksalmon'))
+}
+
+function redrawTo(el) {
+    let sel = document.getSelection();
+    sel.modify("extend", "backward", "paragraphboundary");
+    let pos = sel.toString().length;
+    if (sel.anchorNode !== undefined) sel.collapseToEnd();
+    el.innerHTML = el.innerText.replaceAll(/\$(&|[0-9]+)/gi, solor('orange'));
+    setCaret(el, pos);
+}
+
+function solor(color) {
+    return '<span style="color:' + color + '">$&</span>';
+}
+
+function setCaret(el, pos) {
+    let range = document.createRange();
+    let sel = window.getSelection();
+    let selected_node = false;
+    let len = 0;
+    console.log(el.parentNode)
+
+    function findNodeByCharPosition(node) {
+        if (node.childNodes.length === 0) {
+            len += node.length;
+            if (len >= pos) {
+                selected_node = node;
+                pos += node.length - len;
+            }
+        } else {
+            for (let n of node.childNodes) if (!findNodeByCharPosition(n)) break;
+        }
+        return !selected_node;
+    }
+
+    findNodeByCharPosition(el.childNodes[0].parentNode)
+
+    range.setStart(selected_node, pos)
+    range.collapse(true)
+
+    sel.removeAllRanges()
+    sel.addRange(range)
+}
+
 
 function check(arr, clear = false) {
     let result = [];

@@ -6,11 +6,9 @@ let rules,
     Q = 0,
     width = 0,
     height = 0,
-    timeout = 100,
     cell = 0,
     string = [],
-    buf_string = [],
-    loop = true;
+    buf_string = [];
 const
     TERMINATION = '!',
     STEP = '?',
@@ -68,7 +66,7 @@ function setRule(q, c) {
     document.getElementById('me_i' + q + '_j' + c).innerText = transcriptRule(q, c)[0];
 }
 
-async function runMachine() {
+async function run() {
     console.log('start');
     refreshString();
     updateRules();
@@ -84,6 +82,7 @@ async function runMachine() {
     refreshString();
     drawLine();
     refreshString();
+    loop_change(true);
     console.log('end');
 }
 
@@ -207,5 +206,6 @@ function makeImg() {
         })
 }
 
+document.getElementById('run_button').onclick = loop_click;
 updateRules();
 drawLine();

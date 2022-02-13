@@ -1,3 +1,22 @@
+let loop = true, timeout = 200;
+
+function loop_change(b = loop) {
+    let btn = document.getElementById('run_button');
+    if (b) {
+        btn.innerText = '|>';
+        btn.className = 'b-btn';
+    } else {
+        btn.innerText = '||';
+        btn.className = 'r-btn';
+    }
+}
+
+function loop_click() {
+    loop_change(loop);
+    if (loop) loop = false;
+    else run().then(r => console.log('stopped'));
+}
+
 //can not be used
 function onTextFromCloudLoaded(file, func) {
     let rf = new XMLHttpRequest();

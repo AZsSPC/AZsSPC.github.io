@@ -72,14 +72,13 @@ main {
     border-radius: 5px;
 }
 
-.from:before, .to:before {
+.from:before,  .to:before {
     color: var(--c-gray-help);
     font-weight: bolder;
     padding: 0 1px;
     content: '('
 }
-
-.from:after, .to:after {
+ .from:after,  .to:after {
     color: var(--c-gray-help);
     font-weight: bolder;
     padding: 0 1px;
