@@ -31,8 +31,8 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             enabled: true,
             tag: [WEB, UTIL, PROGRAMMING]
         }, {
-            name: 'Rugular Agorithm',
-            path: 'Rugular Agorithm',
+            name: 'Rugular Algorithm',
+            path: 'Rugular Algorithm',
             lore: 'Same as Normal Markov algorithm, but with RegExp!',
             enabled: true,
             tag: [WEB, UTIL, PROGRAMMING, REGEX]
