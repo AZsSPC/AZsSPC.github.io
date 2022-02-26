@@ -46,15 +46,30 @@ function reformatAZ() {
 
 function header() {
     document.write(
-        '<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'checked' : '') + ' onchange="navhider()">\n'
-        + '<header>\n' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>\n'
-        + '<nav>\n' + '<a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main'))
-        + '/README.md" class="b-btn not_a_text">?</a>\n' + '<a href="' + (window.location.href.replace(/^.+(github.io)/,
-            'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>\n'
-        + '<a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>\n'
-        + '<a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>\n' + '</nav>\n' + '<label id="hsl" for="navhider"></label>\n'
-        + '</header>\n');
+        '<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'value="true"' : '') + '>'
+        + '<nav>'
+        + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>'
+        + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>'
+        + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
+        + ' <a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>'
+        + '</nav>'
+        + '<label id="hsl" for="navhider" onclick="navhider()">===</label> ');
 }
+
+/*
+function header() {
+    document.write('<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'checked' : '') + ' onchange="navhider()">'
+        + '<header>' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>'
+        + '<input type="checkbox" id="nav-burger-cb" hidden><label for="nav-burger-cb" id="nav-burger-labe">===</label> '
+        + '<nav>'
+        + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>'
+        + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>'
+        + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
+        + ' <a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>'
+        + '</nav>'
+        + '<label id="hsl" for="navhider"></label>'
+        + '</header> ');
+}*/
 
 function settings() {
     document.write('<meta charset="utf-8">\n'//

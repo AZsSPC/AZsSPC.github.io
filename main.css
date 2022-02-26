@@ -326,16 +326,16 @@ ul ::marker {
 }
 
 #hsl {
-    left: 12px;
-    top: 10vh;
-    padding: 0 16px 4px;
-    font-weight: bold;
-    position: relative;
+    left: 1rem;
+    top: 1rem;
+    position: fixed;
     background: var(--c-back-head);
     visibility: visible !important;
-    border-radius: 0 0 20px 20px;
-    border: 2px solid var(--c-back-head-split);
-    border-top: none;
+    border-radius: 20px;
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    z-index: 9;
 }
 
 #hsl:hover {
