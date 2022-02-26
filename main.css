@@ -3,6 +3,71 @@
     src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2");
 }
 
+.g-btn {
+    background: var(--c-green);
+}
+
+.g-btn:hover {
+    background: white;
+    color: var(--c-green-d);
+}
+
+.m-btn {
+    background: var(--c-magenta);
+}
+
+.m-btn:hover {
+    background: white;
+    color: var(--c-magenta-d);
+}
+
+.b-btn {
+    background: var(--c-blue);
+}
+
+.b-btn:hover {
+    background: white;
+    color: var(--c-blue-d);
+}
+
+.go-btn {
+    background: var(--c-gold);
+}
+
+.go-btn:hover {
+    background: white;
+    color: var(--c-gold-d);
+}
+
+.r-btn {
+    background: var(--c-red);
+}
+
+.r-btn:hover {
+    background: white;
+    color: var(--c-red-d);
+}
+
+.g-btnh {
+    background: var(--c-green);
+}
+
+.m-btnh {
+    background: var(--c-magenta);
+}
+
+.b-btnh {
+    background: var(--c-blue);
+}
+
+.go-btnh {
+    background: var(--c-gold);
+}
+
+.r-btnh {
+    background: var(--c-red);
+}
+
 :root {
     --c-back-main: #2F2F2F;
     --c-back-head: #232323;
@@ -196,104 +261,89 @@ a.not_a_text, a.not_a_text * {
     text-align: center
 }
 
-nav {
+
+#nfs1 {
     background: var(--c-back-head);
-    height: 100vh;
     text-align: right;
+    width: fit-content;
+    padding: 1rem 1rem 1rem 5rem;
+}
+
+#nfs1 a {
+    display: inline-block;
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0 0.5rem;
+    margin: 0.5rem 0;
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+#nfs2 {
+    width: available;
+    padding: 1rem;
+}
+
+#nfs2 a {
+    display: block;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    border-radius: 50px;
+    background: var(--c-gray-help);
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+fieldset {
+    margin: 0;
+    border: none;
+}
+
+nav {
+    display: block;
+    background: var(--c-back-main);
     left: 0;
     top: 0;
     bottom: 0;
     position: fixed;
-    max-width: 20rem;
+    z-index: 99;
+    box-shadow: 0 0 1rem black;
 }
 
 #navhider:checked ~ nav {
-    top: -100vh;
-    bottom: 100vh;
+    animation: 0.5s slidein;
+    left: 0;
 }
 
-nav a {
-    display: inline-block;
-    height: 32px;
-    padding: 0 4px;
-    margin: calc(5vh - 20px) 0;
-    border-radius: 50px;
-    background: var(--c-green);
-    border: solid 4px var(--c-null);
-    color: white;
-    cursor: pointer;
-    line-height: 32px;
-    text-decoration: none;
+#navhider:not(:checked) ~ nav {
+    animation: 1s slideout;
+    left: -100vw;
 }
 
-nav a:hover {
-    background: white;
-    color: var(--c-green-d);
+@keyframes slidein {
+    from {
+        left: -100vw;
+    }
+
+    to {
+        left: 0;
+    }
 }
 
-.g-btn {
-    background: var(--c-green);
-}
+@keyframes slideout {
+    from {
+        left: 0;
+    }
 
-.g-btn:hover {
-    background: white;
-    color: var(--c-green-d);
-}
-
-.m-btn {
-    background: var(--c-magenta);
-}
-
-.m-btn:hover {
-    background: white;
-    color: var(--c-magenta-d);
-}
-
-.b-btn {
-    background: var(--c-blue);
-}
-
-.b-btn:hover {
-    background: white;
-    color: var(--c-blue-d);
-}
-
-.go-btn {
-    background: var(--c-gold);
-}
-
-.go-btn:hover {
-    background: white;
-    color: var(--c-gold-d);
-}
-
-.r-btn {
-    background: var(--c-red);
-}
-
-.r-btn:hover {
-    background: white;
-    color: var(--c-red-d);
-}
-
-.g-btnh {
-    background: var(--c-green);
-}
-
-.m-btnh {
-    background: var(--c-magenta);
-}
-
-.b-btnh {
-    background: var(--c-blue);
-}
-
-.go-btnh {
-    background: var(--c-gold);
-}
-
-.r-btnh {
-    background: var(--c-red);
+    to {
+        left: -100vw;
+    }
 }
 
 ul ::marker {
@@ -319,28 +369,67 @@ ul ::marker {
 }
 
 #hsl {
-    left: 1rem;
-    top: 1rem;
+    cursor: pointer;
+    z-index: 100;
+    left: 0;
+    top: 0;
     position: fixed;
     text-align: center;
     line-height: 3rem;
     transform: rotate(90deg);
     background: var(--c-back-main);
     visibility: visible !important;
-    border-radius: 2rem;
     width: 3rem;
     height: 3rem;
     display: block;
     box-shadow: 0 0 1rem black;
+    border-radius: 0 1.5rem 0 0;
+    animation: 0.4s menu_bout;
+}
+
+@keyframes menu_bin {
+    from {
+        border-radius: 0 1.5rem 0 0;
+        left: 0;
+        top: 0;
+    }
+
+    to {
+        border-radius: 1.5rem;
+        left: 1rem;
+        top: 1rem;
+    }
+}
+
+@keyframes menu_bout {
+    from {
+        border-radius: 1.5rem;
+        left: 1rem;
+        top: 1rem;
+    }
+
+    to {
+        border-radius: 0 1.5rem 0 0;
+        left: 0;
+        top: 0;
+    }
 }
 
 #hsl:hover {
     box-shadow: 0 0 1rem var(--c-magenta);
 }
 
-#navhider:not(:checked) ~ #hsl {
+#navhider:checked ~ #hsl {
     box-shadow: 0 0 1rem var(--c-magenta-d);
     background: var(--c-magenta);
+    border-radius: 1.5rem;
+    left: 1rem;
+    top: 1rem;
+    animation: 0.4s menu_bin;
+}
+
+#navhider:checked ~ #hsl:hover {
+    background: var(--c-magenta-l);
 }
 
 textarea {

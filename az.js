@@ -45,14 +45,19 @@ function reformatAZ() {
 }
 
 function header() {
-    document.write(
-        '<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'checked  ' : '') + '>'
-        + '<nav>'
-        + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>'
-        + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>'
+    document.write(//&lt;/&gt;
+        '<input type="checkbox" id="navhider" hidden>'
+        + '<nav><fieldset id="nfs1">'
+        + ' <a href="https://azsspc.github.io/contacts" class="g-btn not_a_text">author</a>'
+        + ' <a id="nav-btn-readme" href="' + (window.location.href.replace(/^.+(github.io)/,
+            'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">readme</a>'
+        + ' <a id="nav-btn-source" href="' + (window.location.href.replace(/^.+(github.io)/,
+            'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">source</a>'
+        + '</fieldset><fieldset id="nfs2">'
         + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
-        + ' <a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>'
-        + '</nav>'
+        + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
+        + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
+        + '</fieldset></nav>'
         + '<label id="hsl" for="navhider" onclick="navhider()">|||</label> ');
 }
 
@@ -72,9 +77,11 @@ function header() {
 }*/
 
 function settings() {
-    document.write('<meta charset="utf-8">\n'//
-        + '<meta name="viewport" content="width=device-width,initial-scale=1"/>\n' + '<link rel="icon" href="https://azsspc.github.io/img/fic.png">\n'
-        + '<link rel="stylesheet" href="https://azsspc.github.io/main.css">\n' + '<link rel="stylesheet" href="main.css">\n');
+    document.write('<meta charset="utf-8">'
+        + '<meta name="viewport" content="width=device-width,initial-scale=1"/>'
+        + '<link rel="icon" href="https://azsspc.github.io/img/fic.png">'
+        //+ '<link rel="stylesheet" href="https://azsspc.github.io/main.css">'
+        + '<link rel="stylesheet" href="main.css">');
 }
 
 function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!') {
