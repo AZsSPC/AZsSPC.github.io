@@ -48,6 +48,15 @@
     color: var(--c-red-d);
 }
 
+.gr-btn {
+    background: var(--c-gray);
+}
+
+.gr-btn:hover {
+    background: white;
+    color: var(--c-gray-d);
+}
+
 .g-btnh {
     background: var(--c-green);
 }
@@ -66,6 +75,10 @@
 
 .r-btnh {
     background: var(--c-red);
+}
+
+.gr-btnh {
+    background: var(--c-gray);
 }
 
 :root {
@@ -91,9 +104,13 @@
     --c-red-l: #ff0f0f;
     --c-red-d: #9a0d0d;
     --c-red-f: #dea7a7;
-    --c-gold: #d7a329;
+    --c-gray: #626262;
+    --c-gray-l: #858585;
+    --c-gray-d: #3a3a3a;
+    --c-gray-f: #b7b7b7;
+    --c-gold: #cf8b14;
     --c-gold-l: #FFC70E;
-    --c-gold-d: #B97D01;
+    --c-gold-d: #a96602;
     --c-gold-f: #CDBF9A;
 
     --c-thumb: #868686;
@@ -252,7 +269,7 @@ main {
     color: var(--c-green-l);
 }
 
-a.not_a_text, a.not_a_text * {
+a.not_a_text, a.not_a_text *, a.btna, a.btna * {
     text-decoration: none;
     color: white
 }
@@ -280,7 +297,6 @@ a.not_a_text, a.not_a_text * {
     text-decoration: none;
 }
 
-
 #nfs2 {
     width: available;
     padding: 1rem;
@@ -293,9 +309,7 @@ a.not_a_text, a.not_a_text * {
     padding: 0 1rem;
     margin-bottom: 1rem;
     border-radius: 50px;
-    background: var(--c-gray-help);
     text-align: center;
-    color: white;
     cursor: pointer;
     text-decoration: none;
 }
@@ -366,6 +380,15 @@ ul ::marker {
 .tree ul, .tree ol {
     counter-reset: section;
     padding-left: 1rem;
+}
+
+.btna {
+    color: white;
+    display: inline-block;
+    padding: 0 0.3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 #hsl {

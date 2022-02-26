@@ -48,15 +48,16 @@ function header() {
     document.write(//&lt;/&gt;
         '<input type="checkbox" id="navhider" hidden>'
         + '<nav><fieldset id="nfs1">'
-        + ' <a href="https://azsspc.github.io/contacts" class="g-btn not_a_text">author</a>'
+        + ' <a href="https://azsspc.github.io" class="r-btn not_a_text">main</a>'
         + ' <a id="nav-btn-readme" href="' + (window.location.href.replace(/^.+(github.io)/,
-            'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">readme</a>'
+            'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="g-btn not_a_text">readme</a>'
         + ' <a id="nav-btn-source" href="' + (window.location.href.replace(/^.+(github.io)/,
             'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">source</a>'
         + '</fieldset><fieldset id="nfs2">'
-        + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
-        + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
-        + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
+        + ' <a href="https://azsspc.github.io/contacts" class="go-btn not_a_text">author</a>'
+        + ' <a href="https://azsspc.github.io/projects" class="gr-btn not_a_text">projects</a>'
+        + ' <a href="https://azsspc.github.io/projects" class="gr-btn not_a_text">projects</a>'
+        + ' <a href="https://azsspc.github.io/projects" class="gr-btn not_a_text">projects</a>'
         + '</fieldset></nav>'
         + '<label id="hsl" for="navhider" onclick="navhider()">|||</label> ');
 }
@@ -80,7 +81,7 @@ function settings() {
     document.write('<meta charset="utf-8">'
         + '<meta name="viewport" content="width=device-width,initial-scale=1"/>'
         + '<link rel="icon" href="https://azsspc.github.io/img/fic.png">'
-        + '<link rel="stylesheet" href="https://azsspc.github.io/main.css">'
+        //+ '<link rel="stylesheet" href="https://azsspc.github.io/main.css">'
         + '<link rel="stylesheet" href="main.css">');
 }
 
@@ -141,4 +142,8 @@ function switchDisplay(el, v) {
 
 function takeshot(el, func) {
     html2canvas(el).then((canvas) => func(canvas))
+}
+
+function page(link) {
+    window.location.href = link
 }
