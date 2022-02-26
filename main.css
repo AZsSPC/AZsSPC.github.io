@@ -136,23 +136,10 @@ button * {
     color: white;
 }
 
-header {
-    background: var(--c-back-head);
-    border-bottom: 2px solid var(--c-back-head-split);
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 10vh;
-    bottom: 90vh;
-    position: fixed;
-    margin: 0;
-    z-index: 99;
-}
-
 main {
     left: 0;
     right: 0;
-    top: 10vh;
+    top: 0;
     bottom: 0;
     position: fixed;
     margin: 0;
@@ -210,13 +197,19 @@ a.not_a_text, a.not_a_text * {
 }
 
 nav {
-    height: 10vh;
+    background: var(--c-back-head);
+    height: 100vh;
     text-align: right;
-    left: calc(10vh + 16px);
-    right: 8px;
+    left: 0;
     top: 0;
     bottom: 0;
     position: fixed;
+    max-width: 20rem;
+}
+
+#navhider:checked ~ nav {
+    top: -100vh;
+    bottom: 100vh;
 }
 
 nav a {
@@ -329,39 +322,32 @@ ul ::marker {
     left: 1rem;
     top: 1rem;
     position: fixed;
-    background: var(--c-back-head);
+    text-align: center;
+    line-height: 3rem;
+    transform: rotate(90deg);
+    background: var(--c-back-main);
     visibility: visible !important;
-    border-radius: 20px;
+    border-radius: 2rem;
     width: 3rem;
     height: 3rem;
     display: block;
-    z-index: 9;
+    box-shadow: 0 0 1rem black;
 }
 
 #hsl:hover {
+    box-shadow: 0 0 1rem var(--c-magenta);
+}
+
+#navhider:not(:checked) ~ #hsl {
+    box-shadow: 0 0 1rem var(--c-magenta-d);
     background: var(--c-magenta);
-    border-color: var(--c-magenta-d);
-}
-
-#navhider:checked ~ header {
-    visibility: hidden;
-}
-
-#navhider:checked ~ main {
-    top: 0
-}
-
-#navhider:checked ~ header > #hsl {
-    top: 0;
-    background: var(--c-magenta);
-    border-color: var(--c-magenta-d);
 }
 
 textarea {
     background: var(--c-back-main);
 }
 
-.unselectable {
+.unselectable, #hsl {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Chrome/Safari/Opera */
     -khtml-user-select: none; /* Konqueror */

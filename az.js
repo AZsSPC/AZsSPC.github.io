@@ -46,14 +46,14 @@ function reformatAZ() {
 
 function header() {
     document.write(
-        '<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'value="true"' : '') + '>'
+        '<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'checked  ' : '') + '>'
         + '<nav>'
         + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>'
         + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>'
         + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
         + ' <a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>'
         + '</nav>'
-        + '<label id="hsl" for="navhider" onclick="navhider()">===</label> ');
+        + '<label id="hsl" for="navhider" onclick="navhider()">|||</label> ');
 }
 
 /*
