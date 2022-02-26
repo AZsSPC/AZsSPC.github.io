@@ -80,7 +80,7 @@ function settings() {
     document.write('<meta charset="utf-8">'
         + '<meta name="viewport" content="width=device-width,initial-scale=1"/>'
         + '<link rel="icon" href="https://azsspc.github.io/img/fic.png">'
-        //+ '<link rel="stylesheet" href="https://azsspc.github.io/main.css">'
+        + '<link rel="stylesheet" href="https://azsspc.github.io/main.css">'
         + '<link rel="stylesheet" href="main.css">');
 }
 
