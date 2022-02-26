@@ -211,7 +211,7 @@ main {
     overflow-y: scroll;
     background: var(--c-back-main);
     white-space: normal;
-    padding: 2rem 0;
+    padding: 1rem;
 }
 
 #icon-text {
