@@ -43,12 +43,6 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             enabled: true,
             tag: [WEB, UTIL, PROGRAMMING]
         }, {
-            name: 'Formulaz!',
-            path: 'FormulaZ',
-            lore: 'A collection of formulas in physics, mathematics and other subjects with a convenient search',
-            enabled: true,
-            tag: [WEB, UTIL, REGEX, MATH, PHYSIC, SCIENCE]
-        }, {
             name: 'Sapper',
             path: 'Sapper',
             lore: 'Almost a classic Sapper Game!',
@@ -61,17 +55,29 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             enabled: true,
             tag: [WEB, GAME, SCIENCE]
         }, {
+            name: 'Azembly',
+            path: 'Azembly',
+            lore: 'Azembly',
+            enabled: true,
+            tag: [WEB, UTIL, REGEX, PROGRAMMING]
+        }, {
+            name: 'Formulaz!',
+            path: 'FormulaZ',
+            lore: 'A collection of formulas in physics, mathematics and other subjects with a convenient search',
+            enabled: true,
+            tag: [WEB, UTIL, REGEX, MATH, PHYSIC, SCIENCE]
+        }, {
             name: 'Matrix Helper',
             path: 'Matrix Laplas Helper',
             lore: 'This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n(saves time, exports the solution in .TeX)',
             enabled: true,
             tag: [WEB, UTIL, TEX, MATH]
         }, {
-            name: 'Azembly',
-            path: 'Azembly',
-            lore: 'Azembly',
+            name: 'Tattoo Templater',
+            path: 'Tattoo Templater',
+            lore: 'Tattoo Templater',
             enabled: true,
-            tag: [WEB, UTIL, REGEX, PROGRAMMING]
+            tag: [WEB, UTIL, FOR_ALL]
         }, {
             name: 'History Line',
             path: 'History Line',
