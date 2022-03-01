@@ -24,12 +24,11 @@
     padding: 1rem;
     background-color: var(--c-back-head);
     cursor: pointer;
-    border-radius: 1rem;
+    border-radius: 30pt;
 }
 
 .m_c *, .m_cb * {
     color: var(--c-gray-l);
-    /*font-size: 14pt;*/
 }
 
 .m_cb {
@@ -84,4 +83,8 @@
     line-height: 1.5rem;
     border-radius: 1rem;
     padding: 0 0.5rem;
+}
+
+.m_h *{
+    font-size: 20pt;
 }
