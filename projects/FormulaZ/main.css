@@ -1,12 +1,17 @@
 #f_r {
     text-align: center;
+    padding-top: 4rem;
 }
 
 #f_b {
     text-align: center;
     overflow: auto;
     white-space: nowrap;
-    overflow-x: scroll;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
 }
 
 #f_b button {
@@ -85,6 +90,6 @@
     padding: 0 0.5rem;
 }
 
-.m_h *{
+.m_h * {
     font-size: 20pt;
 }
