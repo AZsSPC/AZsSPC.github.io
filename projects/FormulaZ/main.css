@@ -4,6 +4,7 @@
 }
 
 #f_b {
+    z-index: 90;
     text-align: center;
     overflow: auto;
     white-space: nowrap;
@@ -48,7 +49,7 @@
     right: 0;
     top: 0;
     bottom: 0;
-    z-index: 9999;
+    z-index: 99;
     padding: 2rem 1rem;
     border: solid 0.5rem var(--c-green);
     animation: 0.2s tobig;
