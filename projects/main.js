@@ -21,9 +21,9 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
         }, {
             name: 'Ghbdtn translator',
             path: 'Ghbdtn translator',
-            lore: 'Translate "Djn nfrjq ntrcn" to normal\n\n(For russians)',
+            lore: 'Translate "Djn nfrjq ntrcn" to normal\n(For russians)',
             enabled: true,
-            tag: [WEB, UTIL, 'translator', FOR_ALL]
+            tag: [WEB, UTIL, FOR_ALL]
         }, {
             name: 'Normal Markov Algorithm',
             path: 'Normal Markov Algorithm',
@@ -91,7 +91,7 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             enabled: true,
             tag: [WEB, GAME]
         }],
-    TILES_PER_LIST = 24;
+    TILES_PER_LIST = 16;
 let plist = document.getElementById('project_list');
 
 function displayProjects(page = 0, tags = []) {
@@ -102,7 +102,7 @@ function displayProjects(page = 0, tags = []) {
         if (counter > 0) {
             let tile = document.createElement('a');
             tile.className = 'plist_tile not_a_text';
-            tile.href = 'https://AZsSPC.github.io/projects/' + a.path;
+            tile.href = '/projects/' + a.path;
             tile.innerHTML = TILE
                 .replace(/#name/gm, a.name)
                 .replace(/#lore/gm, a.lore)
@@ -115,19 +115,21 @@ function displayProjects(page = 0, tags = []) {
         if (counter++ >= TILES_PER_LIST) break;
     }
     if (page > 0) {
-        let pp = document.createElement('button');
-        pp.innerText = '<- Go to the previous page';
-        pp.onclick = function () {
-            displayProjects(page - 1, tags)
-        };
+        let pp = document.createElement('a');
+        pp.className = 'prev-page btna not_a_text g-btnh';
+        pp.innerText = '<- Previous page';
+        pp.onclick = () => displayProjects(page - 1, tags);
         plist.append(pp);
     } else plist.append(document.createElement('div'));
     if (counter++ >= TILES_PER_LIST) {
-        let np = document.createElement('button');
-        np.innerText = 'Go to the next page ->';
-        np.onclick = function () {
-            displayProjects(page + 1, tags)
-        };
+        let ns = document.createElement('div');
+        ns.className = 'null-space';
+        plist.append(ns);
+        plist.append(ns.cloneNode());
+        let np = document.createElement('a');
+        np.className = 'next-page btna not_a_text g-btnh';
+        np.innerText = 'Next page ->';
+        np.onclick = () => displayProjects(page + 1, tags);
         plist.append(np);
     }
 }

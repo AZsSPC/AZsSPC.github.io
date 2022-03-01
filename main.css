@@ -85,7 +85,7 @@
     --c-back-main: #2F2F2F;
     --c-back-head: #232323;
     --c-back-head-split: #474747;
-    --c-gray-help: #3b3b3b;
+    --c-gray-help: #3B3B3B;
     --c-back-light: #6D6D6D;
 
     --c-green: #459B51;
@@ -95,22 +95,22 @@
     --c-magenta: #BA53B8;
     --c-magenta-l: #E753E5;
     --c-magenta-d: #713070;
-    --c-magenta-f: #C194C0;
+    --c-magenta-f: #C9A9C8;
     --c-blue: #459CC9;
     --c-blue-l: #0EBDFF;
     --c-blue-d: #0162AC;
     --c-blue-f: #9AB3CD;
-    --c-red: #d73838;
-    --c-red-l: #ff0f0f;
-    --c-red-d: #9a0d0d;
-    --c-red-f: #dea7a7;
+    --c-red: #D73838;
+    --c-red-l: #FF0F0F;
+    --c-red-d: #9A0D0D;
+    --c-red-f: #DEA7A7;
     --c-gray: #626262;
     --c-gray-l: #858585;
-    --c-gray-d: #3a3a3a;
-    --c-gray-f: #b7b7b7;
-    --c-gold: #cf8b14;
+    --c-gray-d: #3A3A3A;
+    --c-gray-f: #B7B7B7;
+    --c-gold: #CF8B14;
     --c-gold-l: #FFC70E;
-    --c-gold-d: #a96602;
+    --c-gold-d: #A96602;
     --c-gold-f: #CDBF9A;
 
     --c-thumb: #868686;
@@ -202,15 +202,19 @@ body {
     outline: none;
 }
 
-button {
-    border-radius: 8px;
-    border: solid 4px var(--c-null);
-    /*border-width: 3px 20px;*/
-    margin: 4px;
-    padding: 0 4px;
+button, .btna {
+    border-radius: 1rem;
+    border: none;
+    display: inline-block;
+    margin: 0.1rem;
+    padding: 0 0.4rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+button:not([class*=-btn]), .btna:not([class*=-btn]) {
     background: var(--c-green);
     color: white;
-    cursor: pointer;
 }
 
 button * {
@@ -261,11 +265,12 @@ main {
     height: calc(10vh - 16px);
 }
 
-[title], u, a:not(.not_a_text), [title] *, u *, a:not(.not_a_text) * {
+[title], u, a:not([class]), [title] *, u *, a:not([class]) * {
+    text-decoration: none;
     color: var(--c-green);
 }
 
-[title]:hover, u:hover, a:not(.not_a_text):hover, [title]:hover *, u:hover *, a:not(.not_a_text):hover * {
+[title]:hover, u:hover, a:not([class]):hover, [title]:hover *, u:hover *, a:not([class]):hover * {
     color: var(--c-green-l);
 }
 
@@ -277,7 +282,6 @@ a.not_a_text, a.not_a_text *, a.btna, a.btna * {
 .center {
     text-align: center
 }
-
 
 #nfs1 {
     background: var(--c-back-head);
@@ -380,15 +384,6 @@ ul ::marker {
 .tree ul, .tree ol {
     counter-reset: section;
     padding-left: 1rem;
-}
-
-.btna {
-    color: white;
-    display: inline-block;
-    padding: 0 0.3rem;
-    border-radius: 1rem;
-    cursor: pointer;
-    text-decoration: none;
 }
 
 #hsl {

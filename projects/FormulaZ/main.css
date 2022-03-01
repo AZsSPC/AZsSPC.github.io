@@ -7,9 +7,12 @@
     overflow: auto;
     white-space: nowrap;
     overflow-x: scroll;
-    border-radius: 20px 20px 0 0;
 }
 
+#f_b button {
+    line-height: 1.5rem;
+    height: 1.5rem;
+}
 
 #f_d, .m_c > .m_f {
     display: none;
@@ -17,17 +20,16 @@
 
 .m_c, .m_cb {
     display: inline-block;
-    margin: 4px;
-    padding: 8px;
-    background-color: var(--c-magenta-f);
+    margin: 0.3rem;
+    padding: 1rem;
+    background-color: var(--c-back-head);
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 1rem;
 }
 
 .m_c *, .m_cb * {
-    color: var(--c-magenta-d) !important;
-    font-family: MathJax_Math-italic;
-    font-size: 14pt;
+    color: var(--c-gray-l);
+    /*font-size: 14pt;*/
 }
 
 .m_cb {
@@ -39,13 +41,33 @@
     top: 0;
     bottom: 0;
     z-index: 9999;
-    padding: 8px;
-    border: solid 8px var(--c-magenta-d);
+    padding: 2rem 1rem;
+    border: solid 0.5rem var(--c-green);
+    animation: 0.2s tobig;
 }
+
+@keyframes tobig {
+    from {
+        position: fixed;
+        left: 40vw;
+        right: 40vw;
+        top: 40vh;
+        bottom: 40vh;
+    }
+
+    to {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
+
 
 .m_cb > .m_f {
     display: block !important;
-    margin-top: 46px;
+    margin-top: 2rem;
 }
 
 .m_c:hover {
@@ -54,4 +76,12 @@
 
 .MathJax_Display {
     margin: 0 !important;
+}
+
+#find_labe {
+    width: 9rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    border-radius: 1rem;
+    padding: 0 0.5rem;
 }

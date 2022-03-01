@@ -3,10 +3,6 @@
     {
       "name": "All formulas",
       "pattern": "*"
-    },
-    {
-      "name": "$$v$$",
-      "pattern": "v"
     }
   ],
   "formulas": [
@@ -60,11 +56,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "\\nu = \\frac{N}{t}",
       "tags": [],
@@ -185,11 +176,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "M = F d",
       "tags": [],
@@ -205,11 +191,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "\\rho = \\frac{m}{V}",
       "tags": [],
@@ -310,11 +291,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "x = A \\sin \\left( \\omega t + \\varphi_{0} \\right)",
       "tags": [],
@@ -370,11 +346,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "\\nu = \\frac{N}{N_{A}} = \\frac{m}{M}",
       "tags": [],
@@ -415,11 +386,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "U = \\frac{i m R T}{2 M}",
       "tags": [],
@@ -475,11 +441,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "F = \\frac{k \\left| q_{1} \\right| \\left| q_{2} \\right|}{\\varepsilon r^2}",
       "tags": [],
@@ -575,11 +536,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "I = \\frac{q}{t}",
       "tags": [],
@@ -660,11 +616,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "\\hat A = \\frac{M_{max}}{I S} = \\frac{F_{max}}{I \\Delta l}",
       "tags": [],
@@ -690,11 +641,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "\\mathcal{E}_{i} = - \\frac{\\Delta \\Phi}{\\Delta t}",
       "tags": [],
@@ -725,11 +671,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "q = q_{max} \\sin \\left( \\omega t + \\varphi_{0} \\right)",
       "tags": [],
@@ -795,11 +736,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "\\frac{\\sin \\alpha}{\\sin \\beta} = \\frac{n_{2}}{n_{1}} = \\frac{v_{1}}{v_{2}}",
       "tags": [],
@@ -840,11 +776,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "v = \\frac{v_{1} + v_{2}}{1 + \\frac{v_{1} v_{2}}{c^2}}",
       "tags": [],
@@ -870,11 +801,6 @@
       "tags": [],
       "lore": "some lore about this formula"
     },
-
-
-
-
-
     {
       "code": "E = h \\nu",
       "tags": [],
