@@ -13,7 +13,7 @@
     left: 0;
     right: 0;
     padding: 1rem;
-    background: #131313;
+    background: var(--c-back-head);
 }
 
 #f_b button {
@@ -94,4 +94,5 @@
     line-height: 1.5rem;
     border-radius: 1rem;
     padding: 0 0.5rem;
+    background: var(--c-back-main);
 }
