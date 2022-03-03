@@ -55,11 +55,11 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             enabled: true,
             tag: [WEB, GAME, SCIENCE]
         }, {
-            name: 'Azembly',
-            path: 'Azembly',
-            lore: 'Azembly',
+            name: 'Block Schemes',
+            path: 'Block Schemes',
+            lore: 'Block Schemes',
             enabled: true,
-            tag: [WEB, UTIL, REGEX, PROGRAMMING]
+            tag: [WEB, GAME]
         }, {
             name: 'Formulaz!',
             path: 'FormulaZ',
@@ -90,6 +90,12 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             lore: 'One-device multiplayer game',
             enabled: true,
             tag: [WEB, GAME]
+        }, {
+            name: 'Azembly',
+            path: 'Azembly',
+            lore: 'Azembly',
+            enabled: true,
+            tag: [WEB, UTIL, REGEX, PROGRAMMING]
         }],
     TILES_PER_LIST = 16;
 let plist = document.getElementById('project_list');

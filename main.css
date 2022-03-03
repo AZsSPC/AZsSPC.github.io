@@ -326,7 +326,6 @@ fieldset {
 nav {
     display: block;
     background: var(--c-back-main);
-    left: 0;
     top: 0;
     bottom: 0;
     position: fixed;
