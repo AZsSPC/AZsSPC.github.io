@@ -61,6 +61,12 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             enabled: true,
             tag: [WEB, GAME]
         }, {
+            name: 'Score Table',
+            path: 'Score Table',
+            lore: 'Score Table',
+            enabled: true,
+            tag: [WEB, GAME]
+        }, {
             name: 'Formulaz!',
             path: 'FormulaZ',
             lore: 'A collection of formulas in physics, mathematics and other subjects with a convenient search',
@@ -101,10 +107,10 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
 let plist = document.getElementById('project_list');
 
 function displayProjects(page = 0, tags = []) {
-    console.log(page, tags)
     plist.innerHTML = '';
-    let counter = 1 - page * TILES_PER_LIST;
+    let counter = -page * TILES_PER_LIST;
     for (let a of PROJECTS) if (a.enabled && [...new Set([...tags, ...a.tag])].length === a.tag.length) {
+        if (++counter > TILES_PER_LIST) break;
         if (counter > 0) {
             let tile = document.createElement('a');
             tile.className = 'plist_tile not_a_text';
@@ -118,7 +124,6 @@ function displayProjects(page = 0, tags = []) {
                 .replaceAll('\n', '<br>');
             plist.append(tile);
         }
-        if (counter++ >= TILES_PER_LIST) break;
     }
     if (page > 0) {
         let pp = document.createElement('a');
@@ -127,7 +132,7 @@ function displayProjects(page = 0, tags = []) {
         pp.onclick = () => displayProjects(page - 1, tags);
         plist.append(pp);
     } else plist.append(document.createElement('div'));
-    if (counter++ >= TILES_PER_LIST) {
+    if (counter > TILES_PER_LIST) {
         let ns = document.createElement('div');
         ns.className = 'null-space';
         plist.append(ns);

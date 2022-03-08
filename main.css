@@ -1,9 +1,8 @@
 @font-face {
     font-family: "JB mono";
-    src: url(fonts/JB_mono.woff2) format("woff2");
+    src: url("/fonts/JB_Mono.woff2") format("woff2"),
+    url("https://azsspc.github.io/fonts/JB_Mono.woff2") format("woff2");
 }
-
-@import url(//azsspc.github.io/main.css?family=JB+mono);
 
 .g-btn {
     background: var(--c-green);
@@ -241,7 +240,6 @@ main {
     font-size: 32px;
     font-family: Impact, sans-serif;
     fill: #FFFFFF;
-
 }
 
 #icon-text tspan {
