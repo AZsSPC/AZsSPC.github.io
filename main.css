@@ -1,7 +1,9 @@
 @font-face {
     font-family: "JB mono";
-    src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2");
+    src: url(fonts/JB_mono.woff2) format("woff2");
 }
+
+@import url(//azsspc.github.io/main.css?family=JB+mono);
 
 .g-btn {
     background: var(--c-green);

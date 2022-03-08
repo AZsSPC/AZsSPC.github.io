@@ -1,0 +1,77 @@
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+    grid-row-gap: 1rem;
+}
+
+.group {
+    display: block;
+    background: var(--c-back-main);
+    box-shadow: 0 0 0.5rem black;
+    border-radius: 1rem;
+    position: relative;
+    padding: 2.3rem 0.7rem 0.5rem 0.7rem;
+}
+
+caption {
+    border-radius: 1rem;
+    margin: 0.5rem;
+    padding: 0.2rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    background: var(--c-back-head);
+    position: absolute;
+    content: attr(group);
+}
+
+
+.inp_num input {
+    width: 100%;
+    text-align: center;
+    border: none;
+    padding: 0;
+    margin: 0;
+    z-index: 9;
+    background: var(--c-null);
+}
+
+.group tbody {
+    width: 100%;
+    display: table;
+}
+
+.inp_num label {
+    border-radius: 1rem;
+    background: var(--c-back-head);
+    padding: 0.2rem;
+    border: 0.2rem inset var(--c-gray);
+    display: block;
+    color: var(--c-gray);
+    position: relative;
+    min-width: 10rem;
+}
+
+.inp_num label:after {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.2rem;
+    bottom: 0.2rem;
+    content: attr(max);
+}
+
+.inp_num label:before {
+    position: absolute;
+    left: 0.5rem;
+    top: 0.2rem;
+    bottom: 0.2rem;
+    content: attr(min);
+}
+
+td:first-child {
+    /*text-align: right;*/
+    width: fit-content;
+    padding-right: 0.5rem;
+}
