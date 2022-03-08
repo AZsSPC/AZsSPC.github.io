@@ -267,11 +267,6 @@ main {
 
 [title], u, a:not([class]), [title] *, u *, a:not([class]) * {
     text-decoration: none;
-    color: var(--c-green);
-}
-
-[title]:hover, u:hover, a:not([class]):hover, [title]:hover *, u:hover *, a:not([class]):hover * {
-    color: var(--c-green-l);
 }
 
 a.not_a_text, a.not_a_text *, a.btna, a.btna * {

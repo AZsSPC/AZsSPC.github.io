@@ -5,6 +5,18 @@ main {
     grid-row-gap: 1rem;
 }
 
+@media screen and (max-width: 800px) {
+    main {
+        padding: 4rem 1rem;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    main {
+        padding: 1rem 4rem;
+    }
+}
+
 .group {
     display: block;
     background: var(--c-back-main);
@@ -15,6 +27,8 @@ main {
 }
 
 caption {
+    display: flex;
+    justify-content: space-between;
     border-radius: 1rem;
     margin: 0.5rem;
     padding: 0.2rem;
@@ -27,12 +41,11 @@ caption {
     content: attr(group);
 }
 
-
 .inp_num input {
+    line-height: 1.6rem;
     width: 100%;
     text-align: center;
     border: none;
-    padding: 0;
     margin: 0;
     z-index: 9;
     background: var(--c-null);
@@ -41,37 +54,68 @@ caption {
 .group tbody {
     width: 100%;
     display: table;
-}
-
-.inp_num label {
-    border-radius: 1rem;
-    background: var(--c-back-head);
-    padding: 0.2rem;
-    border: 0.2rem inset var(--c-gray);
-    display: block;
-    color: var(--c-gray);
-    position: relative;
-    min-width: 10rem;
+    border-spacing: 0 0.5rem;
 }
 
 .inp_num label:after {
+    line-height: 1.8rem;
     position: absolute;
     right: 0.5rem;
-    top: 0.2rem;
-    bottom: 0.2rem;
+    top: 0;
+    bottom: 0;
     content: attr(max);
 }
 
 .inp_num label:before {
+    line-height: 1.8rem;
     position: absolute;
     left: 0.5rem;
-    top: 0.2rem;
-    bottom: 0.2rem;
+    top: 0;
+    bottom: 0;
     content: attr(min);
 }
 
-td:first-child {
+.numintr td:first-child {
     /*text-align: right;*/
     width: fit-content;
     padding-right: 0.5rem;
+}
+
+.numintr td:first-child > *, .inp_num label {
+    background: var(--c-back-head);
+    border: 0.2rem outset var(--borc, var(--c-gray));
+    border-radius: 1rem;
+}
+
+.numintr td:first-child > * {
+    padding: 0.2rem 0.5rem;
+    display: inline-block;
+    margin-left: 0.3rem;
+}
+
+.inp_num label {
+    margin-right: 0.3rem;
+    display: block;
+    color: var(--c-gray);
+    position: relative;
+}
+
+.numintr td:last-child {
+    width: 60%;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    z-index: 9;
+}
+
+.numintr {
+    background: linear-gradient(var(--c-null) calc(50% - 0.15rem), var(--borc, var(--c-gray)) calc(50% - 0.15rem),
+    var(--borc, var(--c-gray)) calc(50% + 0.15rem), var(--c-null) calc(50% + 0.15rem));
+}
+
+.cetr td {
+    border-radius: 1rem;
+    min-height: 2rem;
+    padding: 0.5rem;
+    background: linear-gradient(var(--c-back-head) 0, var(--c-null) 1rem);
 }
