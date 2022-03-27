@@ -18,20 +18,29 @@ let tables = {
     }
 }
 
-let main = document.querySelector('main')
+let tables_display = document.getElementById('tables'),
+    constructor = document.getElementById('constructor')
+
+constructor.addEventListener("submit", (event) => {
+    event.preventDefault();
+    window.history.back();
+}, true);
 
 function draw() {
     let str_b = ''
     for (let t_id of Object.keys(tables)) {
         let t = tables[t_id]
+        let comment = ''
         str_b += '<table class="group" id="' + t_id + '"><caption>' +
             '<button class="r-btn" onclick="delete_table(\'' + t_id + '\')">del</button>' + t.name +
             '<button class="g-btn" onclick="new_score(\'' + t_id + '\')">add</button>' + '</caption>'
         for (let s_id of Object.keys(t.scores)) {
             let s = t.scores[s_id]
+            comment += '[' + s.name + ':' + s_id + '] '
             str_b +=
                 '<tr title="' + t_id + '" class="numintr"' + (s.col ? (' style="--borc:' + s.col + '"') : '') + '>' +
-                '<td><label for="' + t_id + '-' + s_id + '">' + s.name + '</label></td>' +
+                '<td><label for="' + t_id + '-' + s_id + '">&nbsp;' + s.name + '&nbsp;' +
+                '<button class="r-btn" onclick="delete_score(\'' + t_id + '\',\'' + s_id + '\')">-</button></label></td>' +
                 '<td class="inp_num">' +
                 '<label for="' + t_id + '-' + s_id + '" ' +
                 'max="' + s.max + '" min="' + s.min + '" val="' + s.val + '">' +
@@ -39,21 +48,28 @@ function draw() {
                 'type="number" id="' + t_id + '-' + s_id + '" max="' + s.max + '" min="' + s.min + '" value="' + s.val + '">' +
                 '</label></td></tr>'
         }
-        str_b += '<tr class="cetr"><td colspan="2" contenteditable="PLAINTEXT-ONLY" oninput="tables.' + t_id + '.comment=this.innerText">' + t.comment + '</td></tr></table>'
+        str_b += '<tr class="cetr"><td colspan="2" contenteditable="PLAINTEXT-ONLY" ' +
+            'oninput="tables.' + t_id + '.comment=this.innerText" afterc="' + comment + '">' + t.comment + '</td></tr></table>'
         //n.oninput = () => n.parentElement.setAttribute('value', n.value)
     }
-    main.innerHTML = str_b
+    tables_display.innerHTML = str_b
 }
 
-function delete_table(t_name) {
-    if (confirm('Delete table [' + t_name + ']?')) {
+function delete_table(t_name, conf = confirm('Delete table [' + t_name + ']?')) {
+    if (conf) {
         delete tables[t_name]
         draw()
     }
 }
 
-function new_score(t_name) {
-    let name = prompt('Name the score')
+function delete_score(t_name, s_name, conf = confirm('Delete score [' + s_name + ']?')) {
+    if (conf) {
+        delete tables[t_name].scores[s_name]
+        draw()
+    }
+}
+
+function new_score(t_name, name = prompt('Name the score')) {
     if (name) {
         let id = prompt('Give id to [' + name + ']\n\nallowed: [a-zA-Z_]')
         if (id) {
@@ -64,6 +80,29 @@ function new_score(t_name) {
             draw()
         }
     }
+}
+
+function new_table(name = prompt('Name the table')) {
+    if (name) {
+        tables[name] = {name: name, comment: '', scores: {}}
+        draw()
+    }
+}
+
+function new_score_template() {
+    constructor.innerHTML =
+        '<input type="text" id="c_name" name="c_name" oninput="nextElementSibling.value=value" pattern=".+" placeholder="name">' +
+        '<input type="text" id="c_id" name="" pattern="[a-z_]+" title="required a-z and _" placeholder="id">' +
+        '<label for="c_min">&nbsp;Min:</label><input type="number" id="c_min" name="c_min" value="0">' +
+        '<label for="c_max">&nbsp;Max:</label><input type="number" id="c_max" name="c_max" value="100">' +
+        '<label for="c_val">&nbsp;Value:</label><input type="number" id="c_val" name="c_val" value="0">' +
+        '<label for="c_c">color<input type="color" id="c_c" name="c_c" oninput="parentNode.style.background=value"></label>' +
+        '<button onclick="create_score_template()">save score template</button>'
+    constructor.style.display = 'grid'
+}
+
+function create_score_template() {
+    constructor.style.display = 'none'
 }
 
 draw()
