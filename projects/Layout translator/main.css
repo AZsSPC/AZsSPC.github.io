@@ -20,6 +20,14 @@ main {
     height: 20%;
 }
 
-#copy {
-    width: calc(100% - 8px)
+fieldset {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+}
+
+select {
+    background: var(--c-back-head);
+    border: 0.2rem solid var(--c-back-head);
+    border-radius: 1rem;
 }
