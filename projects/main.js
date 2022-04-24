@@ -73,6 +73,12 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             enabled: true,
             tag: [WEB, UTIL, REGEX, MATH, PHYSIC, SCIENCE]
         }, {
+            name: 'Layout translator',
+            path: 'Layout translator',
+            lore: 'Layout translator',
+            enabled: true,
+            tag: [WEB, UTIL, 'translator', FOR_ALL]
+        }, {
             name: 'Matrix Helper',
             path: 'Matrix Laplas Helper',
             lore: 'This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n(saves time, exports the solution in .TeX)',
