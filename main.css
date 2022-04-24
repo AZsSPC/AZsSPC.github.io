@@ -148,7 +148,7 @@
     }
 
     main {
-        margin-left: 10px;
+        padding: 1rem;
         -ms-overflow-style: none; /* for Internet Explorer, Edge */
         scrollbar-width: none; /* for Firefox */
         overflow-y: scroll;
@@ -234,7 +234,7 @@ main {
     overflow-y: scroll;
     background: var(--c-back-main);
     white-space: normal;
-    padding: 1rem;
+    padding: 1rem 0rem 1rem 1rem;
 }
 
 #icon-text {

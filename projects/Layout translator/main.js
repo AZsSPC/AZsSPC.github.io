@@ -55,7 +55,7 @@ function ttt(text) {
     let translated = ''
     for (const s of text)
         translated += translate_map[s]
-    eo.innerHTML = translated;
+    eo.innerText = translated;
 }
 
 function setsel() {

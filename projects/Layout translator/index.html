@@ -11,21 +11,21 @@
     <fieldset>
         <label for="from">From: </label>
         <select id="from" onchange="set_tm(sf.value,st.value)">
-        <option value="en" selected>en</option>
-        <option value="ru">ru</option>
-        <option value="fr">fr</option>
-    </select>
+            <option value="en" selected>en</option>
+            <option value="ru">ru</option>
+            <option value="fr">fr</option>
+        </select>
         <label for="to">To: </label>
         <select id="to" onchange="set_tm(sf.value,st.value)">
-        <option value="en">en</option>
-        <option value="ru" selected>ru</option>
-        <option value="fr">fr</option>
-    </select>
+            <option value="en">en</option>
+            <option value="ru" selected>ru</option>
+            <option value="fr">fr</option>
+        </select>
         <button id="copy">click here to copy</button>
     </fieldset>
     <p><label for="et"></label><textarea id="et" oninput="ttt(this.value)"></textarea></p>
-
-    <p><label for="out"></label><textarea id="out"></textarea></p>
+    <span id="arrows" class="unselectable">\/ \/ \/</span>
+    <p><label for="out"></label><span id="out"></span></p>
 </main>
 </body>
 </html>
