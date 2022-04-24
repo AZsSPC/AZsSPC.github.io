@@ -33,7 +33,7 @@ function layout_parse(from, filename = null) {
 function get_layout(from) {
     let ret = undefined;
     let rf = new XMLHttpRequest();
-    rf.open("GET", 'http://AZsSPC.github.io/projects/Layout%20translator/langs/qwerty/' + from + '.json', false);
+    rf.open("GET", 'https://AZsSPC.github.io/projects/Layout%20translator/langs/qwerty/' + from + '.json', false);
     rf.onreadystatechange = () => ret = ((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ? rf.responseText : null);
     rf.send();
     for (let i = 0; ret == undefined && i < 10; i++) setTimeout(() => console.log(i), 100)
