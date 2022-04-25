@@ -132,62 +132,6 @@
     border: 4px solid var(--c-back-main);
 }
 
-@media screen and (max-width: 800px) {
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        border-radius: 5px;
-        border-width: 2px;
-    }
-
-    * {
-        font-size: 9pt;
-    }
-
-    main {
-        padding: 1rem;
-        -ms-overflow-style: none; /* for Internet Explorer, Edge */
-        scrollbar-width: none; /* for Firefox */
-        overflow-y: scroll;
-    }
-
-    main::-webkit-scrollbar {
-        display: none;
-    }
-
-    #popup_upload {
-        top: 100px;
-        bottom: 100px;
-        right: 5%;
-        left: 5%;
-    }
-}
-
-@media screen and (min-width: 800px) {
-    ::-webkit-scrollbar {
-        width: 18px;
-        height: 18px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        border-radius: 9px;
-        border-width: 4px;
-    }
-
-    main {
-        margin-left: 18px
-    }
-
-    #popup_upload {
-        top: 100px;
-        bottom: 200px;
-        right: calc(50vw - 200px);
-        left: calc(50vw - 200px);
-    }
-}
 
 ::-webkit-scrollbar-track {
     background: var(--c-back-main);
@@ -524,4 +468,64 @@ input[type='range']::-webkit-slider-thumb {
     background: white;
     border-radius: 0.5rem;
     box-shadow: -8rem 0 0 7.5rem var(--c-magenta-l);
+}
+
+@media screen and (max-width: 800px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        border-width: 2px;
+    }
+
+    * {
+        font-size: 9pt;
+    }
+
+    main {
+        padding: 1rem;
+        -ms-overflow-style: none; /* for Internet Explorer, Edge */
+        scrollbar-width: none; /* for Firefox */
+        overflow-y: scroll;
+    }
+
+    main::-webkit-scrollbar {
+        display: none;
+    }
+
+    #popup_upload {
+        top: 100px;
+        bottom: 100px;
+        right: 5%;
+        left: 5%;
+    }
+}
+
+::-webkit-resizer {
+    background: inherit;
+    border: 2px solid white;
+    box-shadow: inset 0 0 5px 0 var(--c-gray);
+    border-radius: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+    ::-webkit-scrollbar {
+        width: 18px;
+        height: 18px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 9px;
+        border-width: 4px;
+    }
+
+    #popup_upload {
+        top: 100px;
+        bottom: 200px;
+        right: calc(50vw - 200px);
+        left: calc(50vw - 200px);
+    }
 }
