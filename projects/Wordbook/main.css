@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Nulact";
+    src: url("/fonts/nulact.ttf") format("ttf"),
+    url("/AZsSPC.github.io/fonts/nulact.ttf") format("ttf"),
+    url("https://azsspc.github.io/fonts/nulact.ttf") format("ttf");
+}
+
+main {
+    text-align: center;
+}
+
+.nulact {
+    font-family: "Nulact";
+}

@@ -1,0 +1,51 @@
+:root {
+    --map-x-offset: 1rem;
+    --map-y-offset: 1rem;
+    --map-z-offset: 3rem;
+}
+
+main {
+    margin: 0;
+    padding: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: hidden;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+   /*
+    background-image: linear-gradient(gray 2px, transparent 2px), linear-gradient(90deg, gray 2px, transparent 2px);
+    background-position: var(--map-x-offset) var(--map-y-offset);
+    background-size: var(--map-z-offset) var(--map-z-offset);
+    */
+}
+
+#movement {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+main * {
+    font-size: 24pt;
+}
+
+svg text, svg tspan {
+    font-family: "JetBrains Mono";
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-size: 1rem;
+}
+
+svg rect {
+    fill: white;
+    rx: 1rem;
+    ry: 1rem;
+}

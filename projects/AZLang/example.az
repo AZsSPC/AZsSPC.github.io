@@ -6,9 +6,9 @@ class Question {
         for i from 0 to answers.length {
             quest_str += '\n\t' i ') ' answers
         }
-        this.quest = quest_str
-        this.current = current
-        this.cost = cost
+        @quest = quest_str
+        @current = current
+        @cost = cost
     }
 
     make_question {
