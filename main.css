@@ -1,8 +1,6 @@
 @font-face {
     font-family: "JB mono";
-    src: url("/fonts/JB_Mono.woff2") format("woff2"),
-    url("/AZsSPC.github.io/fonts/JB_Mono.woff2") format("woff2"),
-    url("https://azsspc.github.io/fonts/JB_Mono.woff2") format("woff2");
+    src: url("/fonts/JB_Mono.woff2");
 }
 
 .g-btn {
