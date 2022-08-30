@@ -5,50 +5,53 @@ const tattoo_default = {
     side: 0.6, corner: 0.3, dark: 70,
     kr: 0.2126, kg: 0.7152, kb: 0.0722,
 }
-let tattoo = tattoo_default, color_fg = '#000', color_bg = '#d2bca7'
+let tattoo, color_fg, color_bg
 
-
-for (let k of Object.keys(tattoo)) {
-    const e = document.getElementById(k)
-    e.value = tattoo_default[k]
-    e.oninput = function () {
-        tattoo[k] = this.value
-        redrawImg(null)
-    }
-}
-
-document.getElementById('cbg').value = color_bg
-document.getElementById('cbg').oninput = function () {
-    img_buf.style.background = this.value
-}
-document.getElementById('cfg').oninput = function () {
-    img_buf.style.background = this.value
-}
-document.getElementById('img').onchange = function () {
-    if (this.files && this.files[0]) {
-        let reader = new FileReader()
-        reader.onload = (e) => {
-            img_from.src = e.target.result
+function setDefaults() {
+    color_fg = '#000'
+    color_bg = '#d2bca7'
+    tattoo = tattoo_default
+    for (let k of Object.keys(tattoo)) {
+        const e = document.getElementById(k)
+        e.value = tattoo_default[k]
+        e.oninput = function () {
+            tattoo[k] = this.value
             redrawImg(null)
         }
-        reader.readAsDataURL(this.files[0])
+    }
+
+    document.getElementById('cbg').value = color_bg
+    document.getElementById('cbg').oninput = function () {
+        img_to.style.background = this.value
+    }
+    document.getElementById('cfg').oninput = function () {
+        img_to.style.background = this.value
+    }
+    document.getElementById('img').onchange = function () {
+        if (this.files && this.files[0]) {
+            let reader = new FileReader()
+            reader.onload = (e) => {
+                redrawImg(e.target.result)
+            }
+            reader.readAsDataURL(this.files[0])
+        }
     }
 }
 
+setDefaults()
 redrawImg('./v2.jpg')
 
 function redrawImg(url) {
     if (url != null) img_from.src = url
     img_buf.onload = function () {
-        let can = document.createElement('canvas')
-        let c = can.getContext('2d')
-        let w = img_from.offsetWidth, h = img_from.offsetHeight
-        can.width = w
-        can.height = h
+        let can = document.createElement('canvas'),
+            c = can.getContext('2d'),
+            w = can.width = this.naturalWidth,
+            h = can.height = this.naturalHeight,
+            gray = []
         c.drawImage(this, 0, 0)
         let idata = c.getImageData(0, 0, w, h)
         let pix = idata.data
-        let gray = []
 
         for (let y = 0, i = 0; y < h; y++) for (let x = 0; x < w; x++, i += 4)
             gray[i] = sc(
