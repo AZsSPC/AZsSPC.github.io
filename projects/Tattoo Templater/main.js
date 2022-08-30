@@ -27,7 +27,10 @@ document.getElementById('cfg').oninput = function () {
 document.getElementById('img').onchange = function () {
     if (this.files && this.files[0]) {
         let reader = new FileReader()
-        reader.onload = (e) => img_from.src = e.target.result
+        reader.onload = (e) => {
+            img_from.src = e.target.result
+            redrawImg(null)
+        }
         reader.readAsDataURL(this.files[0])
     }
 }
