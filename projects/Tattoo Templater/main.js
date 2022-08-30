@@ -42,7 +42,7 @@ function redrawImg(url) {
     img_buf.onload = function () {
         let can = document.createElement('canvas')
         let c = can.getContext('2d')
-        let w = this.offsetWidth, h = this.offsetHeight
+        let w = img_from.offsetWidth, h = img_from.offsetHeight
         can.width = w
         can.height = h
         c.drawImage(this, 0, 0)
