@@ -123,6 +123,7 @@
     font-family: "JB mono", monospace;
     font-size: 12pt;
     color: white;
+    box-sizing: border-box;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -177,6 +178,8 @@ main {
     background: var(--c-back-main);
     white-space: normal;
     padding: 1rem 0rem 1rem 1rem;
+    background-size: 100px 100px;
+    background-image: repeating-radial-gradient(#232323, #232323 20px, #282828 20px, #282828 40px, #2d2d2d 40px, #2d2d2d 60px);
 }
 
 #icon-text {
@@ -466,6 +469,10 @@ input[type='range']::-webkit-slider-thumb {
     background: white;
     border-radius: 0.5rem;
     box-shadow: -8rem 0 0 7.5rem var(--c-magenta-l);
+}
+
+.relative {
+    position: relative
 }
 
 @media screen and (max-width: 800px) {
