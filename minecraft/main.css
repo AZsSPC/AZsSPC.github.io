@@ -1,0 +1,19 @@
+
+* {
+    /*font-family: "JB mono", monospace;*/
+    font-size: 12pt;
+    color: white;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+body {
+    background-size: 100px 100px;
+    background-image: repeating-radial-gradient(
+            #232323, #232323 20px,
+            #282828 20px, #282828 40px,
+            #2d2d2d 40px, #2d2d2d 60px
+    );
+}
