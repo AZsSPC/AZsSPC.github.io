@@ -1,0 +1,81 @@
+main {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 0 10vw 6vh 10vw;
+    justify-content: center;
+    position: relative;
+}
+
+#rules, #about, #guide {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 1rem;
+    filter: drop-shadow(0 0 5px black);
+    align-items: center;
+    text-decoration: none;
+    gap: 5px;
+}
+
+#rules span, #about span, #guide span {
+    display: block;
+    font-size: 24px;
+    text-shadow: 0 0 10px black;
+    animation: text_out;
+    animation-duration: 300ms;
+}
+
+#rules img, #about img, #guide img {
+    width: 200px;
+    animation: box_out;
+    animation-duration: 300ms;
+}
+
+#rules:hover img, #about:hover img, #guide:hover img {
+    width: 250px;
+    animation: box_in;
+    animation-duration: 300ms;
+}
+
+#rules:hover span, #about:hover span, #guide:hover span {
+    font-size: 36px;
+    animation: text_in;
+    animation-duration: 300ms;
+}
+
+@keyframes box_in {
+    from {
+        width: 200px;
+    }
+    to {
+        width: 250px;
+    }
+}
+
+@keyframes box_out {
+    from {
+        width: 250px;
+    }
+    to {
+        width: 200px;
+    }
+}
+
+@keyframes text_in {
+    from {
+        font-size: 24px;
+    }
+    to {
+        font-size: 36px;
+    }
+}
+
+@keyframes text_out {
+    from {
+        font-size: 36px;
+    }
+    to {
+        font-size: 24px;
+    }
+}
