@@ -54,7 +54,7 @@ ol ol li {
     padding: 1rem;
     border-radius: 1rem;
     background: #ffffff0a;
-    box-shadow: 0 0 1rem #00000050;
+    box-shadow: 0 0 1rem #00000080;
 }
 
 ol:not(:last-child) {

@@ -1,7 +1,7 @@
 main {
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #grid {
@@ -25,7 +25,7 @@ main {
 #grid > a span {
     display: block;
     font-size: 24px;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0 0 1rem #00000080;
     animation: text_out;
     animation-duration: 300ms;
 }
