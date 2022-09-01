@@ -5,8 +5,3 @@ main {
     align-items: center;
     gap: 1rem;
 }
-
-
-iframe {
-    box-shadow: 0 0 1rem #00000080;
-}
