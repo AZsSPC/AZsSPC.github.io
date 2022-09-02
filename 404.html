@@ -1,30 +1,95 @@
 <html lang="en">
 <head>
-    <title>AZsSPC</title>
-    <script type="text/javascript" src="/az.js"></script>
-    <script type="text/javascript">settings();</script>
+	<title>AZsSPC | 404</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
 
-    <meta property="og:url" content="https://azsspc.github.io/"/>
-    <meta property="og:title" content="Main page"/>
-    <meta property="og:description"
-          content="This site may for all: coders, students, kids, humans, aliens... If you find something useful - why not to use it?"/>
-    <meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
+		body {
+			background-size: 100px 100px;
+			background-image: repeating-radial-gradient(
+				#232323, #232323 20px,
+				#282828 20px, #282828 40px,
+				#2d2d2d 40px, #2d2d2d 60px
+			);
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 100vw;
+			height: 100vh;
+			padding-bottom: 20vmin;
+			position: relative;
+		}
+
+		* {
+			font-family: 'Comfortaa', cursive;
+			font-size: 18px;
+			color: white;
+			box-sizing: border-box;
+			padding: 0;
+			margin: 0;
+			border: none;
+		}
+
+		header {
+			font-size: 30vmin;
+			text-shadow: 0 0 1rem #00000080;
+		}
+
+		main {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1rem;
+			position: relative;
+		}
+
+		a {
+			color: white;
+			box-shadow: 0 0 1rem #00000080;
+			text-shadow: 0 0 1rem #00000080;
+			background: #30303b;
+			padding: 1rem;
+			border-radius: 3rem;
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: #ffe176;
+			text-decoration: underline;
+		}
+
+		a + div {
+			box-shadow: 0 0 1rem #00000080;
+			text-shadow: 0 0 1rem #00000080;
+			display: none;
+			position: absolute;
+			left: auto;
+			right: auto;
+			top: 100%;
+			width: auto;
+			text-align: center;
+			padding: 1rem;
+			border-radius: 1rem;
+			background: #434350;
+			margin: 1rem;
+		}
+
+		a:hover + div {
+			display: block
+		}
+	</style>
 </head>
 <body>
-<script type="text/javascript">header();</script>
+<header>404</header>
 <main>
-    <div class="center">
-        Welcome to #AZsSPC!
-        <br><br>
-        Im developer & gamer, so here I'll post my <a class="btna m-btn" href="/projects">projects</a>
-        or something related with games.
-        <br><br>
-        <a class="btna b-btn" href="https://github.com/azsspc/azsspc.github.io/blob/main">source</a> code of current
-        page
-        <br>
-        information about
-        <a class="btna go-btn" href="/contacts">author</a>
-    </div>
+	<a href="https://azsspc.github.io/minecraft/">Go to Minecraft pages</a>
+	<div>Temporary site pages for my minecraft server named Azalea Lands RPG</div>
+	<a href="https://azsspc.github.io/projects/">Go to projects pages</a>
+	<div>The main part of the site with projects witch written using pure JavaScript</div>
 </main>
 </body>
 </html>
