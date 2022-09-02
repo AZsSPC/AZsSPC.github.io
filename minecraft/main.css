@@ -12,14 +12,12 @@
 
 body {
     background-size: 100px 100px;
+    background-color: #2d2d2d;
     background-image: repeating-radial-gradient(
             #232323, #232323 20px,
             #282828 20px, #282828 40px,
             #2d2d2d 40px, #2d2d2d 60px
     );
-}
-
-body {
     padding: 1rem;
     min-height: 100vh;
     display: flex;
@@ -43,6 +41,7 @@ header {
     animation-duration: 300ms;
     max-width: 800px;
     text-align: center;
+    z-index: 999;
 }
 
 header * {
@@ -52,6 +51,7 @@ header * {
 }
 
 nav {
+    z-index: 998;
     padding: 1rem 1.5rem;
     background: #30303b;
     box-shadow: 0 0 1rem #00000080;
@@ -71,4 +71,26 @@ nav > a:hover {
 
 .azalea {
     color: #ffe176
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: white;
+    border: .3rem solid #1a1a1a;
+    border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffe176;
 }

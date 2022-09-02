@@ -5,3 +5,8 @@ main {
     align-items: center;
     gap: 1rem;
 }
+
+canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
