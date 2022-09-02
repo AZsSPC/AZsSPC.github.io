@@ -56,8 +56,6 @@ nav {
     background: #30303b;
     box-shadow: 0 0 1rem #00000080;
     border-radius: 2rem;
-    position: sticky;
-    bottom: 1rem;
 }
 
 nav > a {
