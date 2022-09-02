@@ -1,15 +1,9 @@
 main {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-#grid {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-#grid > a {
+main > a {
     display: inline-flex;
     filter: drop-shadow(0 0 5px black);
     text-decoration: none;
@@ -22,7 +16,7 @@ main {
     margin: auto;
 }
 
-#grid > a span {
+main > a span {
     display: block;
     font-size: 24px;
     text-shadow: 0 0 1rem #00000080;
@@ -30,20 +24,19 @@ main {
     animation-duration: 300ms;
 }
 
-#grid > a img {
+main > a img {
     width: 150px;
     animation: box_out;
     animation-duration: 300ms;
 }
 
-#grid > a:hover img {
+main > a:hover img {
     width: 200px;
     animation: box_in;
     animation-duration: 300ms;
 }
 
-
-#grid > a:hover span {
+main > a:hover span {
     font-size: 28px;
     animation: text_in;
     animation-duration: 300ms;
@@ -82,5 +75,17 @@ main {
     }
     to {
         font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        grid-template-columns: 1fr;
     }
 }

@@ -1,9 +1,3 @@
-main {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
 
 #features {
     max-width: 800px;
@@ -13,12 +7,12 @@ main {
     gap: 1rem;
 }
 
-.title {
+dt {
     display: block;
     font-weight: bold;
 }
 
-.sub {
+dd {
     display: block;
     color: darkgray;
     padding: 1rem 0;
@@ -62,7 +56,7 @@ ul {
     padding: 1rem;
     border-radius: 1rem;
     background: #0000000a;
-    box-shadow:inset 0 0 1rem #00000080;
+    box-shadow: inset 0 0 1rem #00000080;
 }
 
 ul:not(:last-child) {
@@ -73,6 +67,6 @@ input[type=checkbox]:not(:checked) ~ label:after {
     content: 'Детальнее...'
 }
 
-li > .sub {
+li > dd {
     padding-bottom: 0
 }
