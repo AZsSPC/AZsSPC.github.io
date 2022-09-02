@@ -25,9 +25,6 @@ main {
 }
 
 header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 3rem 3rem 2.5rem 3rem;
     font-weight: bold;
     text-shadow: 0 0 1rem #00000080;
@@ -38,6 +35,12 @@ header {
     font-size: 24px;
     animation: header_out;
     animation-duration: 300ms;
+}
+
+header * {
+    font-size: inherit;
+    font-weight: inherit;
+    text-shadow: inherit;
 }
 
 #to_the_main {
@@ -51,6 +54,10 @@ header {
 }
 
 #to_the_main:hover {
-    color: #ffdd5b;
+    color: #ffe176;
     text-decoration: underline;
+}
+
+.azalea {
+    color: #ffe176
 }
