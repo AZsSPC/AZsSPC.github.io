@@ -326,4 +326,12 @@
 	</div>
 </main>
 </body>
+<script>document.body.onclick = () => {
+	const media = new Audio('/sweden.mp3')
+	media.loop = true
+	media.play()
+	document.body.onclick = () => {
+	}
+}
+</script>
 </html>
