@@ -1,0 +1,95 @@
+#rules {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 1rem;
+}
+
+.title {
+    display: block;
+    font-weight: bold;
+    padding-bottom: 1rem;
+}
+
+.sub {
+    display: block;
+    color: darkgray;
+    padding: 1rem 0;
+    line-height: 24px;
+}
+
+#rules > li {
+    background: #30303b;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem #00000080;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+label {
+    color: #ffe176;
+    padding-bottom: 1rem;
+    cursor: pointer;
+}
+
+input[type=checkbox]:not(:checked) ~ ol {
+    display: none;
+}
+
+ol ol li {
+    color: darkgray;
+    display: block;
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #383843;
+    box-shadow: 0 0 1rem #00000080;
+}
+
+ol:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+input[type=checkbox]:not(:checked) ~ label:after {
+    content: 'Детальнее...'
+}
+
+ol {
+    counter-reset: item;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+li {
+    display: block
+}
+
+.title:before, ol ol li:before {
+    content: counters(item, ".");
+    counter-increment: item;
+    color: #ffe176;
+    margin-right: .5rem;
+}
+
+.red {
+    color: #ff6c6c
+}
+
+.green {
+    color: #79bd79
+}
+
+#R438B {
+    cursor: help;
+    background: #ffffff2a;
+}
+
+#R438B:before {
+    content: '438-B' !important;
+}
