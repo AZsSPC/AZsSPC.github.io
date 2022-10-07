@@ -93,3 +93,7 @@ li {
 #R438B:before {
     content: '438-B' !important;
 }
+
+#DmitriRule:before {
+    content: 'rule #1' !important;
+}

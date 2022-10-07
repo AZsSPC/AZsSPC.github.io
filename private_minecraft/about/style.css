@@ -7,12 +7,12 @@
     gap: 1rem;
 }
 
-dt {
+.title {
     display: block;
     font-weight: bold;
 }
 
-dd {
+.sub {
     display: block;
     color: darkgray;
     padding: 1rem 0;
@@ -67,6 +67,33 @@ input[type=checkbox]:not(:checked) ~ label:after {
     content: 'Детальнее...'
 }
 
-li > dd {
+li > .sub {
     padding-bottom: 0
+}
+
+.craft, .screens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+#lodestone_portals .craft img {
+    width: calc(50% - .5rem);
+}
+
+.screens img {
+    width: 100%
+}
+
+img {
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem #00000080;
+}
+
+@media screen and (max-width: 600px) {
+    #lodestone_portals .craft img {
+        width: 100%
+    }
 }
