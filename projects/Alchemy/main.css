@@ -1,0 +1,22 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.glyph {
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 20px;
+    border-radius: 50%;
+    background-color: gray;
+    font-family: monospace;
+    padding: 4px;
+    margin: 4px;
+    box-shadow: 0 0 15px #00000080;
+}

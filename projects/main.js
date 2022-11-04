@@ -108,7 +108,14 @@ const TILE = '<p translate="no">#name</p><p>#lore</p><p class="tags" onclick="re
             lore: 'Azembly',
             enabled: true,
             tag: [WEB, UTIL, REGEX, PROGRAMMING]
-        }],
+        }, {
+            name: 'Alchemy',
+            path: 'Alchemy',
+            lore: 'My interpretation of the alchemical games',
+            enabled: true,
+            tag: [WEB, GAME, FOR_ALL]
+        },
+    ],
     TILES_PER_LIST = 16;
 let plist = document.getElementById('project_list');
 

@@ -129,6 +129,16 @@
 			</ul>
 		</div-->
 	</div>
+	<!--script>
+		function book_unicode(str = "") {
+			for (let i = 1040; i < 1104; i++)
+				str = str.replaceAll(
+					String.fromCharCode(i),
+					"\\\\u" + i.toString(16).padStart(4, '0')
+				)
+			console.log(str)
+		}
+	</script-->
 </main>
 </body>
 </html>

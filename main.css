@@ -1,6 +1,6 @@
 @font-face {
     font-family: "JB mono";
-    src: url("/fonts/JB_Mono.woff2");
+    src: url("/fonts/JB_Mono.woff2"), url("/AZsSPC.github.io/fonts/JB_Mono.woff2");
 }
 
 .g-btn {
@@ -134,9 +134,8 @@
     border: 4px solid var(--c-back-main);
 }
 
-
 ::-webkit-scrollbar-track {
-    background: var(--c-back-main);
+    background: transparent;
 }
 
 body {
@@ -406,6 +405,7 @@ textarea {
 
 ::-webkit-scrollbar-corner {
     background-color: transparent;
+
 }
 
 #popup_upload {
@@ -508,13 +508,6 @@ input[type='range']::-webkit-slider-thumb {
         right: 5%;
         left: 5%;
     }
-}
-
-::-webkit-resizer {
-    background: inherit;
-    border: 2px solid white;
-    box-shadow: inset 0 0 5px 0 var(--c-gray);
-    border-radius: 1rem;
 }
 
 @media screen and (min-width: 800px) {
