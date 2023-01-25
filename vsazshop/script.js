@@ -19,9 +19,9 @@ const using_sheet = async (name, query, fun) => {
                 LORE: row.c[2].v.trim(),
                 COUNT: row.c[3].v,
                 PRICE: row.c[4].v,
-                AVAILABLE: row.c[5].v,
+                AVAILABLE: row.c[5].v === -1 ? 'много' : row.c[5].v,
                 BUY: row.c[6].v,
-                IMG: (row.c[7].v ?? 'img/null.png').trim().split(/\s+/gm),
+                IMG: (row.c[7] ?? {v: 'img/null.png'}).v.trim().split(/\s+/gm),
                 TAG: row.c[8].v ?? '',
                 SHOP: shop,
                 DELIVERY: delivery,
@@ -38,7 +38,7 @@ const using_sheet = async (name, query, fun) => {
                 ID: row.c[0].v.trim(),
                 TITLE: row.c[1].v.trim(),
                 ABOUT: row.c[2].v.trim(),
-                DELIVERY: row.c[3].v,
+                DELIVERY: row.c[3].v == 0 ? 'самовывоз' : row.c[3].v == 1 ? 'на варпе' : 'достака',
                 CONTACT: row.c[4].v.trim(),
                 IMG: row.c[5].v.trim()
             })
