@@ -1,0 +1,558 @@
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<title>Turing Machine</title>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			border: none;
+			font-family: monospace;
+			font-size: 16px;
+			color: white;
+		}
+
+		body {
+			background-size: 100px 100px;
+			background-image: repeating-radial-gradient(#232323, #232323 20px, #282828 20px, #282828 40px, #2d2d2d 40px, #2d2d2d 60px);
+			overflow: hidden;
+		}
+
+		main {
+			padding: 1rem;
+			overflow: hidden;
+			text-align: center;
+		}
+
+		#menu {
+			display: flex;
+			flex-direction: column;
+			align-content: center;
+			gap: 1rem;
+			align-items: center;
+		}
+
+		#ttd {
+			overflow: scroll;
+			position: relative;
+			left: 0;
+			right: 0;
+			width: 100%;
+			height: 100%;
+		}
+
+		#turing_table {
+			background: #495962;
+			border-radius: 5px;
+			position: absolute;
+		}
+
+		#turing_table td, #turing_table th {
+			min-width: 3rem;
+			min-height: 2rem;
+			text-align: center;
+			border-radius: 5px;
+			white-space: pre-wrap;
+			background: #232323FF;
+		}
+
+		#line {
+			margin-top: 0.5rem;
+			display: flex;
+			justify-content: center;
+			background: royalblue;
+			width: fit-content;
+			border-radius: 2rem;
+		}
+
+		#line > span {
+			display: inline-block;
+			background: #232323FF;
+			width: 2rem;
+			line-height: 2rem;
+			height: 2rem;
+			margin: 1px;
+			text-align: center;
+			position: relative;
+			border-radius: 5px;
+		}
+
+		#line > span[sel] {
+			border: solid 1px white;
+		}
+
+		#line > span[c]:before {
+			content: attr(c);
+			font-size: .7rem;
+			position: absolute;
+			top: -1rem;
+			line-height: normal;
+			left: 0;
+			text-align: center;
+			right: 0;
+			color: lightpink;
+		}
+
+		.move_q {
+			border: 0;
+			-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Chrome/Safari/Opera */
+			-khtml-user-select: none; /* Konqueror */
+			-moz-user-select: none; /* Firefox */
+			-ms-user-select: none; /* Internet Explorer/Edge */
+			user-select: none;
+			background: none !important;
+		}
+
+		.move_q:first-child {
+			padding-left: 4px;
+		}
+
+		.move_q:last-child {
+			padding-right: 4px;
+		}
+
+		#grid {
+			display: grid;
+			position: relative;
+			grid-template-columns: 1fr;
+			grid-template-rows: auto 1fr;
+			height: 100%;
+			gap: 1rem;
+		}
+
+		#q_display {
+			background: transparent !important;
+		}
+
+		[query]:not([terminated]) {
+			background: lightseagreen !important;
+		}
+
+		[terminated]:not([query]) {
+			background: magenta !important;
+		}
+
+		[terminated][query] {
+			background: gold !important;
+		}
+
+		#q_count {
+			width: 3rem
+		}
+
+		#alphabet {
+			width: 12rem
+		}
+
+		#buttons {
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			flex-wrap: wrap;
+			flex-direction: row;
+			gap: 0.5rem;
+		}
+
+		#buttons > button {
+			border-radius: 1rem;
+			padding: 0.2rem 0.5rem;
+			background: #459B51;
+		}
+
+		#buttons > .b-btn {
+			background: #3675c7;
+		}
+		#buttons > .g-btn {
+			background: #CF8B14;
+		}
+
+		#buttons > .r-btn {
+			background: #D73838;
+		}
+
+		#buttons > .m-btn {
+			background: #BA53B8;
+		}
+
+		#popup_upload {
+			background: #3675c7;
+			position: absolute;
+			margin: auto;
+			overflow-y: scroll;
+			padding: 0;
+			border: none;
+			z-index: 9999;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 50vmin;
+			height: 50vmin;
+			border-radius: 50vmin;
+			box-shadow: 0 3vmin 10vmin black;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			animation: infinite popup_upload 500ms;
+		}
+
+		@keyframes popup_upload {
+			0% {
+				width: 48vmin;
+				height: 48vmin;
+			}
+			50% {
+				width: 52vmin;
+				height: 52vmin;
+			}
+			100% {
+				width: 48vmin;
+				height: 48vmin;
+			}
+		}
+
+		#popup_upload > input {
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			opacity: 0;
+			width: 100%;
+			position: absolute;
+		}
+
+		#popup_upload > div {
+			text-align: center;
+			border: none;
+			position: center;
+			align-self: center;
+		}
+
+		#inputs input {
+			background: #222;
+			border: 1px solid #555;
+			border-radius: 5px;
+			padding: 0 4px;
+		}
+
+		#popup_upload::-webkit-scrollbar {
+			display: none;
+		}
+
+		@media screen and (max-width: 600px) {
+			#line [c]:nth-child(-n+6), #line [c]:nth-child(n+16) {
+				display: none !important;
+			}
+		}
+
+		@media screen and (max-width: 800px) {
+			#line [c]:nth-child(-n+4), #line [c]:nth-child(n+18) {
+				display: none !important;
+			}
+
+			::-webkit-scrollbar {
+				width: 10px;
+				height: 10px;
+			}
+
+			::-webkit-scrollbar-thumb {
+				border-radius: 5px;
+				border-width: 2px;
+			}
+
+			* {
+				font-size: 10pt;
+			}
+
+			main {
+				padding: 1rem;
+				-ms-overflow-style: none; /* for Internet Explorer, Edge */
+				scrollbar-width: none; /* for Firefox */
+				overflow-y: scroll;
+			}
+
+			main::-webkit-scrollbar {
+				display: none;
+			}
+		}
+
+		@media screen and (min-width: 800px) {
+			::-webkit-scrollbar {
+				width: 18px;
+				height: 18px;
+			}
+
+			::-webkit-scrollbar-thumb {
+				border-radius: 9px;
+				border-width: 4px;
+			}
+		}
+	</style>
+</head>
+<body>
+<main>
+	<div id="grid">
+		<div id="menu">
+			<p id="buttons">
+				<button onclick="clearString()" class="r-btn">Очистити</button>
+				<button onclick="copyString()">Копіювати</button>
+				<button onclick="pasteString()">Вставити</button>
+				<button onclick="loop_click()" id="run_button" class="g-btn">Запустити</button>
+				<button onclick="machineStep()" class="b-btn">Крок</button>
+				<button onclick="updateRules()" class="m-btn">Застосувати</button>
+				<button onclick="exportTM()">Експорт</button>
+				<button onclick="importTM()">Імпорт</button>
+			</p>
+			<span id="line" translate="no"></span>
+			<p id="inputs">
+				<label>Алфавіт:<input id="alphabet" type="text" value=" " onchange="updateRules()"></label>
+				<br>
+				<label>Кількість станів:<input id="q_count" type="number" min="1" value="1" onchange="updateRules()"></label>
+				<br>
+				<label for="speed">Затримка між кроками: <input type="range" id="speed" min="0" max="500" onchange="timeout=this.value"></label>
+			</p>
+		</div>
+		<div id="ttd">
+			<table id="turing_table"></table>
+		</div>
+	</div>
+	<form id="popup_upload" style="display:none"><input type="file" name="photo" onchange="uploadTM(this)">
+		<div>Drop files<br><br>or<br><br>Click here</div>
+	</form>
+</main>
+</body>
+</html>
+<script>
+	let loop = true, timeout = 200,
+		rules, abc, abcRegExp, steps, q_dis,
+		Q = 0, width = 0, height = 0, cell = 0,
+		string = [], buf_string = [];
+	const
+		TERMINATION = '!', STEP = '?', SPACE = ' ', ES = '',
+		nullES = [ES, ES, ES, ES],
+		popup_upload = document.getElementById('popup_upload'),
+		alphabet = document.getElementById('alphabet'),
+		line = document.getElementById('line'),
+		q_count = document.getElementById('q_count'),
+		turing_table = document.getElementById('turing_table');
+
+	const updateRules = (arr) => {
+		rules = [];
+		if (!arr) {
+			for (let w = 0; w < width; w++) {
+				rules[w] = {};
+				for (let h = 0; h < height; h++) {
+					let el = document.getElementById('me_i' + w + '_j' + abc[h]);
+					rules[w][abc[h]] = el == null ? ES : el.innerText;
+				}
+			}
+			setABC(alphabet.value);
+		} else {
+			rules = arr;
+			q_count.value = arr.length;
+		}
+		width = q_count.value;
+		height = abc.length;
+		let mt = ES;
+		turing_table.innerHTML = ES;
+		for (let h = -1; h < height; h++) {
+			mt += '<tr>';
+			for (let w = -1; w < width; w++) {
+				if (h >= 0 && w >= 0) mt += '<td contenteditable="true" id="me_i' + w + '_j' + abc[h] + '" >' + transcriptRule(w, abc[h], this)[0] + '</td>';
+				else if (w < 0 && h < 0) mt += '<td id="q_display"></td>';
+				else if (h < 0) mt += '<td>q' + w + '</td>';
+				else mt += '<td>' + abc[h] + '</td>';
+			}
+			mt += '</tr>';
+		}
+		turing_table.innerHTML = mt;
+		q_dis = document.getElementById('q_display');
+	}
+
+	const setABC = (t) => {
+		abc = [...new Set(' ' + t.replaceAll(/\s/g, ES))].sort().join(ES);
+		alphabet.value = abc;
+		abcRegExp = new RegExp('([' + abc + ']?)([<>.])(\\d*)');
+	}
+
+	const setRule = (q, c) => {
+		rules[q][c] = transcriptRule(q, c)[0];
+		document.getElementById('me_i' + q + '_j' + c).innerText = transcriptRule(q, c)[0];
+	}
+
+	const run = async () => {
+		console.log('start');
+		refreshString();
+		updateRules();
+		console.log(string);
+		console.log(rules);
+
+		Q = 0;
+		steps = 0;
+		loop = true;
+		while (machineStep() !== TERMINATION && loop) await new Promise(res => setTimeout(res, timeout));
+		loop = false;
+
+		refreshString();
+		drawLine();
+		refreshString();
+		loop_change(true);
+		console.log('end');
+	}
+
+	const transcriptRule = (q, c) => {
+		if (!rules[q] || !rules[q][c]) return [ES, ES, TERMINATION, ES];
+
+		let r = abcRegExp.exec(rules[q][c]) ?? nullES;
+		if (r === nullES) {
+			markTermination(q, c);
+			return [rules[q][c], c + ES, TERMINATION, q];
+		}
+
+		if (r[1] === ES) r[1] = c + ES;
+		if (r[2] === ES) r[2] = '.';
+		if (r[3] === ES || parseInt('0' + r[3]) >= width) r[3] = q;
+		r[0] = r[1] + r[2] + r[3];
+		return r;
+	}
+
+	const markTermination = (q, c) => {
+		setTimeout(() => document.getElementById('me_i' + q + '_j' + c).setAttribute('terminated', ES), 0)
+	}
+
+	const markQuery = (q, c) => {
+		setTimeout(() => {
+			document.querySelectorAll('[query]').forEach((e) => e.removeAttribute('query'));
+			document.getElementById('me_i' + q + '_j' + c).setAttribute('query', ES);
+		}, 0)
+	}
+
+	const machineStep = () => {
+		steps++;
+		let c = string[cell] ?? SPACE;
+		let r = transcriptRule(Q, c);
+		markQuery(Q, c);
+		putSymbol(cell, r[1]);
+		cell += r[2] === '<' ? -1 : r[2] === '>' ? 1 : 0;
+		Q = parseInt(0 + r[3]);
+		q_dis.innerText = 'Q:' + Q;
+		drawLine();
+		return r[2] === TERMINATION ? TERMINATION : STEP;
+	}
+
+	const putSymbol = (id, symbol) => {
+		if (abc.includes(symbol) && symbol !== SPACE) string[id] = symbol;
+		else delete string[id];
+		drawLine();
+	}
+
+	const putSymbolGUI = (el) => {
+		let symbol = (el.innerText + SPACE).substr(0, 1);
+		el.innerText = symbol;
+		putSymbol(el.getAttribute('c'), symbol);
+	}
+
+	const drawLine = () => {
+		line.innerHTML = '<span class="move_q" onclick="cell--;drawLine()">◄</span>';
+		for (let c = cell - 9; c < cell + 10; c++) line.innerHTML +=
+			'<span oninput="putSymbolGUI(this)" c="' + c + '"' + (c === cell ? ' sel' : ES) + ' contenteditable="true">' + (string[c] ?? ES) + '</span>';
+		line.innerHTML += '<span class="move_q" onclick="cell++;drawLine()">►</span>';
+	}
+
+	const refreshString = () => {
+		let arr = {};
+		for (let e in string) arr[e] = string[e];
+		string = arr;
+	}
+
+	const clearString = () => {
+		string = {};
+		cell = 0;
+		loop = false;
+		Q = 0;
+		drawLine();
+	}
+
+	const copyString = () => {
+		buf_string = {...(string ?? {})};
+	}
+
+	const pasteString = () => {
+		string = {...(buf_string ?? {})};
+		cell = 0;
+		loop = false;
+		Q = 0;
+		drawLine();
+	}
+
+	const exportTM = () => {
+		updateRules();
+		let filename = prompt("Name this file?");
+		if (filename) createNDownload(filename + '.json', JSON.stringify({abc: abc, rules: rules}));
+	}
+
+	const importTM = () => {
+		switchDisplay(popup_upload, 'grid');
+
+	}
+
+	const uploadTM = (el) => {
+		fileUploaded(el, t => {
+			let json = JSON.parse(t);
+			setABC(json.abc);
+			updateRules(json.rules);
+		}, e => {
+		});
+		switchDisplay(popup_upload, 'grid');
+	}
+
+	function switchDisplay(el, v) {
+		el.style.display = (el.style.display === v ? 'none' : v)
+	}
+
+	const loop_click = () => {
+		loop_change(loop);
+		if (loop) loop = false;
+		else run().then(r => console.log('stopped'));
+	}
+	const loop_change = (b = loop) => {
+		let btn = document.getElementById('run_button');
+		if (b) {
+			btn.innerText = 'Запустити';
+			btn.className = 'g-btn';
+		} else {
+			btn.innerText = 'Зупинити';
+			btn.className = 'r-btn';
+		}
+	}
+
+	function createNDownload(filename = 'AZsSPC.file', text = 'Hello World!') {
+		let element = document.createElement('a');
+		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+		console.log(filename);
+		element.style.display = 'none';
+		document.body.appendChild(element);
+		element.click();
+		document.body.removeChild(element);
+	}
+
+	function fileUploaded(el, funcDone, funcError) {
+		let file = el.files[0] ?? null;
+		if (file) {
+			let reader = new FileReader();
+			reader.readAsText(file, "UTF-8");
+			reader.onload = (e) => funcDone(e.target.result);
+			reader.onerror = (e) => funcError(e);
+		}
+	}
+
+	updateRules();
+	drawLine();
+
+</script>

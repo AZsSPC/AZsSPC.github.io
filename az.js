@@ -3,10 +3,10 @@ let loop = true, timeout = 200;
 function loop_change(b = loop) {
     let btn = document.getElementById('run_button');
     if (b) {
-        btn.innerText = '|>';
+        btn.innerText = 'Run';
         btn.className = 'b-btn';
     } else {
-        btn.innerText = '||';
+        btn.innerText = 'Stop';
         btn.className = 'r-btn';
     }
 }

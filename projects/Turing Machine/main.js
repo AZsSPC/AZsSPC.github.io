@@ -206,6 +206,5 @@ function makeImg() {
         })
 }
 
-document.getElementById('run_button').onclick = loop_click;
 updateRules();
 drawLine();

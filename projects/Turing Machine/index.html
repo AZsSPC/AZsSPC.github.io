@@ -1,49 +1,49 @@
 <html lang="ru">
 <head>
-    <title>Turing Machine</title>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
-    <script type="text/javascript" src="../../az.js"></script>
-    <script type="text/javascript">settings();</script>
+	<title>Turing Machine</title>
+	<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+	<script type="text/javascript" src="../../az.js"></script>
+	<script type="text/javascript">settings();</script>
 
-    <meta property="og:url" content="https://azsspc.github.io/projects/Turing%20Machine/"/>
-    <meta property="og:title" content="Turing Machine redactor"/>
-    <meta property="og:description"
-          content="You want to create Turing Machine, but can't find normal redactor? You already find it!"/>
-    <meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
+	<meta property="og:url" content="https://azsspc.github.io/projects/Turing%20Machine/"/>
+	<meta property="og:title" content="Turing Machine redactor"/>
+	<meta property="og:description"
+				content="You want to create Turing Machine, but can't find normal redactor? You already find it!"/>
+	<meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
 </head>
 <body>
 <script type="text/javascript">header();</script>
 <main>
-    <div id="grid">
-        <div>
-            <p style="margin-top: 0;">
-                <button onclick="clearString()" class="r-btnh">#</button>
-                <button onclick="copyString()">Copy</button>
-                <button onclick="pasteString()">Paste</button>
-                <button id="run_button" class="b-btn">|></button>
-                <button onclick="machineStep()" class="b-btnh">-></button>
-                <button onclick="updateRules()" class="m-btnh">SET</button>
-                <button onclick="exportTM()">Export</button>
-                <button onclick="importTM()">Import</button>
-                <button onclick="makeImg()" class="go-btnh">SaveIMG</button>
-            </p>
-            <span id="line" translate="no"></span>
-            <p>
-                ABC:<input id="alphabet" type="text" value=" " onchange="updateRules()">
-                Q:<input id="q_count" type="number" min="1" value="1" onchange="updateRules()">
-            </p>
-            <p>
-                <label for="speed">Delay between steps:</label>
-                <input type="range" id="speed" min="0" max="500" onchange="timeout=this.value">
-            </p>
-        </div>
-        <div id="ttd">
-            <table id="turing_table"></table>
-        </div>
-    </div>
-    <form id="popup_upload" style="display:none"><input type="file" name="photo" onchange="uploadTM(this)">
-        <div>Drop files<br><br>or<br><br>Click here</div>
-    </form>
+	<div id="grid">
+		<div>
+			<p style="margin-top: 0;">
+				<button onclick="clearString()" class="r-btnh">Clear</button>
+				<button onclick="copyString()">Copy</button>
+				<button onclick="pasteString()">Paste</button>
+				<button onclick="loop_click()" class="b-btn">Run</button>
+				<button onclick="machineStep()" class="b-btnh">-></button>
+				<button onclick="updateRules()" class="m-btnh">SET</button>
+				<button onclick="exportTM()">Export</button>
+				<button onclick="importTM()">Import</button>
+				<button onclick="makeImg()" class="go-btnh">SaveIMG</button>
+			</p>
+			<span id="line" translate="no"></span>
+			<p>
+				ABC:<input id="alphabet" type="text" value=" " onchange="updateRules()">
+				Q:<input id="q_count" type="number" min="1" value="1" onchange="updateRules()">
+			</p>
+			<p>
+				<label for="speed">Delay between steps:</label>
+				<input type="range" id="speed" min="0" max="500" onchange="timeout=this.value">
+			</p>
+		</div>
+		<div id="ttd">
+			<table id="turing_table"></table>
+		</div>
+	</div>
+	<form id="popup_upload" style="display:none"><input type="file" name="photo" onchange="uploadTM(this)">
+		<div>Drop files<br><br>or<br><br>Click here</div>
+	</form>
 </main>
 </body>
 </html>
