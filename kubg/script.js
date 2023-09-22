@@ -1,4 +1,4 @@
-const domen = 'https://azsspc.github.io/kubg/'
+const domen = 'azsspc.github.io/kubg'
 
 const l_pages = {
 	"":"Головна",
