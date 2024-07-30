@@ -1,8 +1,0 @@
-
-    <svg id="icon" viewBox="0 0 125 100" height="10vh" onclick="window.location.href='https://AZsSPC.github.io'">
-        <rect id="icon-r" x="10" y="29" fill="red" width="100" height="42"></rect>
-        <circle id="icon-c" r="36" cx="84" cy="50"></circle>
-        <circle id="icon-cin" r="30" cx="84" cy="50"></circle>
-        <text id="icon-text" font-family="Impact" x="18" y="63" color="red">AZ&nbsp;&nbsp;<tspan>SPC</tspan>
-        </text>
-    </svg>

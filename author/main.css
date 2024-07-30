@@ -1,9 +1,0 @@
-main {
-    padding: 0 20vw;
-}
-
-main > * {
-    background: var(--c-back-main);
-    box-shadow: 0 0 2rem black;
-    padding: 2rem;
-}
