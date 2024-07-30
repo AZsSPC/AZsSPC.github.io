@@ -2,7 +2,7 @@
 @font-face {
     font-family: "JB mono";
     font-size: 16px;
-    src: url("/_src/fonts/JB_Mono.woff2"), url("/AZsSPC.github.io/fonts/JB_Mono.woff2");
+    src: url("/resources/fonts/JB_Mono.woff2"), url("/AZsSPC.github.io/fonts/JB_Mono.woff2");
 }
 
 :root {

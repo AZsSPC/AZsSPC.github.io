@@ -3,11 +3,11 @@ function $AZ() {
 	this.timeout = 200
 }
 
-$AZ.prototype.run = async function () {
+$AZ.prototype.run = async function() {
 	console.log('run is not override')
 }
 
-$AZ.prototype.get_replace_href = function (regex = /^.+(github.io)/, replace = 'https://github.com/azsspc/azsspc.github.io/blob/main') {
+$AZ.prototype.get_replace_href = function(regex = /^.+(github.io)/, replace = 'https://github.com/azsspc/azsspc.github.io/blob/main') {
 	return window.location.href.replace(regex, replace)
 }
 
@@ -45,19 +45,19 @@ function loop_click(old_state = AZ.loop) {
 function on_text_from_cloud_loaded(file, func) {
 	let rf = new XMLHttpRequest()
 	rf.open('GET', file, false)
-	rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ? rf.responseText : null)
+	rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null)
 	rf.send()
 }
 
 function on_keys_action(func, ...codes) {
 	let pressed = new Set()
-	document.addEventListener('keydown', function (event) {
+	document.addEventListener('keydown', function(event) {
 		pressed.add(event.code)
 		for (let code of codes) if (!pressed.has(code)) return
 		pressed.clear()
 		func()
 	})
-	document.addEventListener('keyup', function (event) {
+	document.addEventListener('keyup', function(event) {
 		pressed.delete(event.code)
 	})
 }
@@ -87,9 +87,9 @@ function nav() {//&lt;/&gt;
 }
 
 function copy_to_clipboard(text) {
-	navigator.clipboard.writeText(text).then(function () {
+	navigator.clipboard.writeText(text).then(function() {
 		console.log(`Async: Copying to clipboard was successful! [${text}]`)
-	}, function (err) {
+	}, function(err) {
 		console.error('Async: Could not copy text: ', err)
 	})
 }
@@ -113,8 +113,8 @@ function settings() {
 	document.write('<meta charset="utf-8">' +
 		'<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">' +
 		'<meta name="viewport" content="width=device-width,initial-scale=1"/>' +
-		'<link rel="icon" href="/_src/img/fic.png">' +
-		'<link rel="stylesheet" href="/_src/css/main.css">' +
+		'<link rel="icon" href="/resources/img/fic.png">' +
+		'<link rel="stylesheet" href="/resources/css/main.css">' +
 		'<link rel="stylesheet" href="main.css">'
 	)
 }
@@ -158,7 +158,7 @@ function setCookie(name, value, options = {}) {
 
 function getCookie(name) {
 	let matches = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\\/+^])/g, '\\$1') + '=([^;]*)'))
-	return matches ? decodeURIComponent(matches[1]) : undefined
+	return matches ?decodeURIComponent(matches[1]) :undefined
 }
 
 function deleteCookie(name) {
@@ -171,7 +171,7 @@ function useMathJax() {
 }
 
 function switchDisplay(el, v) {
-	el.style.display = (el.style.display === v ? 'none' : v)
+	el.style.display = (el.style.display === v ?'none' :v)
 }
 
 function takeshot(el, func) {
