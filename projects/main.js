@@ -14,14 +14,14 @@ const TAG = {
 }
 const PROJECTS = [
 	{
-		name: 'alchemy',
+		name: 'Alchemy',
 		path: 'alchemy',
 		lore: 'My interpretation of the alchemical games',
 		enabled: true, weight: -1,
 		tag: [TAG.WEB, TAG.GAME, TAG.FOR_ALL]
 	},
 	{
-		name: 'az_lang',
+		name: 'AZLang',
 		path: 'az_lang',
 		lore: '',
 		enabled: false,
@@ -49,14 +49,14 @@ const PROJECTS = [
 		tag: [TAG.WEB]
 	},
 	{
-		name: 'evo',
+		name: 'Evo',
 		path: 'evo',
-		lore: 'Primitive evolution simulator developed in 6h',
+		lore: 'Primitive evolution simulator developed in 6h [Updating]',
 		enabled: true,
 		tag: [TAG.WEB, TAG.GAME, TAG.SCIENCE]
 	},
 	{
-		name: 'formulaz',
+		name: 'FormulaZ',
 		path: 'formulaz',
 		lore: 'A collection of formulas in physics, mathematics and other subjects with a convenient search',
 		enabled: true,
@@ -70,14 +70,14 @@ const PROJECTS = [
 		tag: [TAG.WEB, 'history', TAG.SCIENCE, TAG.FOR_ALL]
 	},
 	{
-		name: 'laplas_matrix_helper',
+		name: 'Laplas Matrix Helper',
 		path: 'laplas_matrix_helper',
 		lore: 'This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n(saves time, exports the solution in .TeX)',
 		enabled: true,
 		tag: [TAG.WEB, TAG.UTIL, TAG.TEX, TAG.MATH]
 	},
 	{
-		name: 'layout_translator',
+		name: 'Layout Translator',
 		path: 'layout_translator',
 		lore: 'Insert mistyped russian or ukrainian text and receive the right version',
 		enabled: true,
@@ -91,30 +91,30 @@ const PROJECTS = [
 		tag: [TAG.WEB]
 	},
 	{
-		name: 'normal_markov_algorithm',
+		name: 'Normal Markov Algorithm',
 		path: 'normal_markov_algorithm',
 		lore: 'Now you can use comfortable normal_markov_algorithm',
 		enabled: true,
 		tag: [TAG.WEB, TAG.UTIL, TAG.PROGRAMMING]
 	},
 	{
-		name: 'regexp_algorithm',
+		name: 'Regexp Algorithm',
 		path: 'regexp_algorithm',
 		lore: 'Same as Normal Markov algorithm, but with RegExp!',
 		enabled: true,
 		tag: [TAG.WEB, TAG.UTIL, TAG.PROGRAMMING, TAG.REGEX]
 	},
 	{
-		name: 'sapper',
+		name: 'Sapper',
 		path: 'sapper',
 		lore: 'Almost a classic sapper Game!',
 		enabled: true,
 		tag: [TAG.WEB, TAG.GAME, TAG.FOR_ALL]
 	},
 	{
-		name: 'score_table',
+		name: 'Score Table',
 		path: 'score_table',
-		lore: '',
+		lore: 'Just some editable score tables',
 		enabled: true,
 		tag: [TAG.WEB]
 	},
@@ -126,14 +126,14 @@ const PROJECTS = [
 		tag: [TAG.WEB, TAG.GAME]
 	},
 	{
-		name: 'tattoo_templater',
+		name: 'Tattoo Templater',
 		path: 'tattoo_templater',
-		lore: '',
+		lore: 'Helps you to convert any image to simple contour like monochrome tattoo template',
 		enabled: true, weight: 3,
 		tag: [TAG.WEB, TAG.UTIL, TAG.FOR_ALL]
 	},
 	{
-		name: 'turing_machine',
+		name: 'Turing Machine',
 		path: 'turing_machine',
 		lore: 'Now you can use comfortable turing_machine redactor',
 		enabled: true, weight: 5,

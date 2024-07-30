@@ -18,7 +18,7 @@
     flex: 1 1 0;
     min-width: 300px;
     grid-template: auto 1fr auto / 1fr;
-    height: 218px;
+    height: auto;
 }
 
 .plist-title {
