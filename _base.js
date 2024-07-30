@@ -79,8 +79,8 @@ function nav() {//&lt;/&gt;
 </div>
 
 <div id="az-nav-subfield-list">
- <a is="az-link-button" color="gold" href="/contacts/">author</a>
- <a is="az-link-button" color="green" href="/projects/">projects</a>
+ <a is="az-link-button" color="gold" href="/contacts">author</a>
+ <a is="az-link-button" color="green" href="/projects">projects</a>
 </div>
 </nav>
 `)
@@ -113,8 +113,8 @@ function settings() {
 	document.write('<meta charset="utf-8">' +
 		'<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">' +
 		'<meta name="viewport" content="width=device-width,initial-scale=1"/>' +
-		'<link rel="icon" href="/src/img/fic.png">' +
-		'<link rel="stylesheet" href="/src/css/main.css">' +
+		'<link rel="icon" href="/_src/img/fic.png">' +
+		'<link rel="stylesheet" href="/_src/css/main.css">' +
 		'<link rel="stylesheet" href="main.css">'
 	)
 }
