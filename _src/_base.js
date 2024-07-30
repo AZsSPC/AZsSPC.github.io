@@ -79,8 +79,8 @@ function nav() {//&lt;/&gt;
 </div>
 
 <div id="az-nav-subfield-list">
- <a is="az-link-button" color="gold" href="/contacts">author</a>
- <a is="az-link-button" color="green" href="/projects">projects</a>
+ <a is="az-link-button" color="gold" href="/contacts/">author</a>
+ <a is="az-link-button" color="green" href="/projects/">projects</a>
 </div>
 </nav>
 `)
