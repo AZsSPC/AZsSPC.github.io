@@ -1,0 +1,46 @@
+#text-in {
+    border-radius: 1rem;
+    background: var(--c-back-head);
+    border: 1px solid var(--c-magenta);
+    padding: .7rem;
+    width: 100%;
+    min-height: 20dvh;
+    overflow: auto;
+    resize: vertical;
+    display: flex;
+}
+
+#text-out {
+    border: 1px solid var(--c-blue);
+    border-radius: 1rem;
+    background: var(--c-back-head);
+    min-height: 20dvh;
+    padding: .7rem;
+    overflow: auto;
+    resize: vertical;
+    display: flex;
+}
+
+main fieldset {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+}
+
+select {
+    background: var(--c-back-head);
+    border: 0.2rem solid var(--c-back-head);
+    border-radius: 1rem;
+}
+
+#arrows {
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: var(--c-gray-l);
+    font-size: 24px;
+}
+
+p {
+    margin: 0.5rem 0
+}

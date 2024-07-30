@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sapper</title>
+	<script type="text/javascript" src="/_src/custom_html.js"></script>
+	<script type="text/javascript" src="/_src/_base.js"></script>
+	<script type="text/javascript">settings()</script>
+
+	<meta property="og:url" content="https://azsspc.github.io/projects/sapper/"/>
+	<meta property="og:title" content="AZsSPC | Sapper game"/>
+	<meta property="og:description" content="Almost a classic Sapper Game!"/>
+	<meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
+</head>
+<body>
+<script type="text/javascript">nav()</script>
+<header>
+	<label is="az-input-button" color="purple">Width <input id="w" type="number" min="10" max="100" step="1" value="20"></label>
+	<label is="az-input-button" color="purple">Height <input id="h" type="number" min="10" max="100" step="1" value="20"></label>
+	<label is="az-input-button">Bombs percentage <input id="b" type="number" min="5" max="60" step="1" value="21.8"></label>
+	<button is="az-button" color="gold" onclick="setup()">SET</button>
+</header>
+<main>
+	<div id="game" class="unselectable"></div>
+</main>
+</body>
+<script type="text/javascript" src="main.js"></script>
+</html>

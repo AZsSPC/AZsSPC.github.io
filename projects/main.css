@@ -1,50 +1,35 @@
+:root {
+    --him: calc(-.75rem - 7px);
+}
+
 #project_list {
-    display: grid;
-    padding: 8px;
-    grid-column-gap: 8px;
-    grid-row-gap: 8px;
-}
-
-@media screen and (max-width: 800px) {
-    #project_list {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .null-space {
-        display: none
-    }
-}
-
-@media screen and (min-width: 800px) {
-    #project_list {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
+    display: flex;
+    gap: .75rem;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .plist_tile {
     background: var(--c-magenta-d);
-    margin: 0;
     position: relative;
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
     cursor: pointer;
     border-radius: 1rem;
+    flex: 1 1 0;
+    min-width: 300px;
+    grid-template: auto 1fr auto / 1fr;
+    height: 218px;
 }
 
-.plist_tile p {
-    margin: 0;
-}
-
-.plist_tile p:first-child {
-    border-radius: 1rem;
+.plist-title {
+    border-radius: 1rem 1rem 0 0;
     background: var(--c-magenta);
-    margin: 0;
-    padding: 0.2rem;
+    padding: 0.2rem 0.5rem;
     height: fit-content;
+    text-align: center;
 }
 
-.plist_tile:hover p:first-child {
+.plist_tile:hover .plist-title {
     background: var(--c-blue);
 }
 
@@ -52,25 +37,21 @@
     background: var(--c-blue-d);
 }
 
-.plist_tile p:nth-child(2) {
+.plist-lore {
     padding: 6px;
     height: auto;
+    overflow-y: auto;
 }
 
-.plist_tile p:last-child {
-    border-radius: 1rem;
-    height: fit-content;
-    padding: 0.2rem;
+.plist-tags {
+    border-radius: 0 0 1rem 1rem;
+    padding: 0.25rem;
     background: white;
-    position: center;
-    right: 0;
-    left: 0;
-    margin: 0;
-    bottom: 0;
-}
-
-.prev-page, .next-page {
-    padding: 1rem;
+    cursor: default;
+    /*
+    height: 32px;
+    overflow-y: auto;
+    */
 }
 
 .tags button {
@@ -121,23 +102,8 @@
     height: 4rem;
 }
 
-/*
-.tags span:hover:after {
-	border-radius: 10px;
-	content: attr(tag);
-	z-index: 10;
-	background: var(--c-accent);
-	bottom: -2rem;
-	position: absolute;
-	left: calc(-1rem - 6px);
-	right: calc(-1rem - 6px);
-	border: 2px solid black;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	padding: 0 4px;
+@media screen and (max-width: 800px) {
 }
-*/
-:root {
-    --him: calc(-.75rem - 7px);
+
+@media screen and (min-width: 800px) {
 }

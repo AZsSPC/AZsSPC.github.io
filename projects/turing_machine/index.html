@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Turing Machine</title>
+	<script type="text/javascript" src="/_src/custom_html.js"></script>
+	<script type="text/javascript" src="/_src/_base.js"></script>
+	<script type="text/javascript">settings()</script>
+	<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
+
+	<meta property="og:url" content="https://azsspc.github.io/projects/turing_machine/"/>
+	<meta property="og:title" content="AZsSPC | Turing Machine redactor"/>
+	<meta property="og:description" content="You want to create Turing Machine, but can't find normal redactor? You already find it!"/>
+	<meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
+</head>
+<body>
+<script type="text/javascript">nav()</script>
+<header>
+	<div>
+		<button is="az-button" onclick="clearString()" color="red">Clear</button>
+		<button is="az-button" onclick="copyString()">Copy</button>
+		<button is="az-button" onclick="pasteString()">Paste</button>
+		<button is="az-run-button"></button>
+		<button is="az-button" onclick="machineStep()" color="blue">-></button>
+		<button is="az-button" onclick="updateRules()" color="magenta">Apply rules</button>
+		<button is="az-button" onclick="exportTM()">Export</button>
+		<button is="az-button" onclick="importTM()">Import</button>
+		<button is="az-button" onclick="makeImg()" color="gold">SaveIMG</button>
+	</div>
+	<div><span id="line" translate="no"></span></div>
+	<div>
+		<label is="az-input-button" color="purple">ABC <input id="alphabet" type="text" value=" " onchange="updateRules()"></label>
+		<label is="az-input-button" color="purple">Q <input id="q_count" type="number" min="1" value="1" onchange="updateRules()"></label>
+	</div>
+	<div><label is="az-input-button" color="purple">Delay between steps <input type="range" id="speed" min="0" max="500" onchange="AZ.timeout=this.value"></label></div>
+</header>
+<main>
+	<table id="turing_table"></table>
+	<form id="popup_upload" style="display:none"><input type="file" name="photo" onchange="uploadTM(this)">
+		<div>Drop files<br><br>or<br><br>Click here</div>
+	</form>
+</main>
+</body>
+</html>
+<script type="text/javascript" src="main.js"></script>
