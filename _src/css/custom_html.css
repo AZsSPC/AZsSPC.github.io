@@ -1,0 +1,124 @@
+button.az-button, a.az-link-button, label.az-input-button, label.az-input-button {
+    --az-button-background: var(--c-green);
+    --az-button-hover: var(--c-green-d);
+    --az-button-foreground: var(--c-white-text);
+    background: var(--az-button-background);
+    color: var(--az-button-foreground);
+    border-radius: 1rem;
+    border: none;
+    margin: 0.1rem;
+    padding: 0 0.4rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: space-between;
+}
+
+label.az-input-button input {
+    background: var(--az-button-hover);
+    color: var(--az-button-foreground);
+    border: none
+}
+
+:is(button.az-button, a.az-link-button, label.az-input-button):not([static]):hover {
+    background: var(--az-button-foreground);
+    color: var(--az-button-hover);
+}
+
+label.az-input-button {
+    padding: 2px 0.4rem;
+}
+
+label.az-input-button:has(input:is([type=number],[type=text],[type=range])) {
+    padding: 2px 2px 2px 0.4rem;
+}
+
+label.az-input-button input[type=number] {
+    width: 5rem;
+    border-radius: 1rem;
+    padding: 0 .3rem;
+    -moz-appearance: textfield;
+}
+
+label.az-input-button input[type=number]::-webkit-outer-spin-button,
+label.az-input-button input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+label.az-input-button input[type=text] {
+    border-radius: 1rem;
+    padding: 0 .3rem;
+}
+
+label.az-input-button input[type=range] {
+    -webkit-appearance: none;
+    width: 8rem;
+    background-color: var(--az-button-hover);
+    cursor: ew-resize;
+    border-radius: 1rem;
+}
+
+label.az-input-button input[type=range]::-moz-range-thumb,
+label.az-input-button input[type=range]::-moz-range-thumb {
+    border: solid 2px var(--az-button-hover);
+    background: transparent;
+    background: var(--az-button-foreground);
+    box-sizing: border-box;
+    border-radius: 1rem;
+}
+
+label.az-input-button input[type=color],
+label.az-input-button input[type=color]::-webkit-color-swatch-wrapper,
+label.az-input-button input[type=color]::-webkit-color-swatch,
+label.az-input-button input[type=color]::-moz-focus-inner,
+label.az-input-button input[type=color]::-moz-color-swatch {
+    -webkit-appearance: none;
+    border: none;
+    width: 2rem;
+    height: 1rem;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border-radius: 2rem;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+:is(button.az-button, a.az-link-button, label.az-input-button)[color=green] {
+    --az-button-background: var(--c-green);
+    --az-button-hover: var(--c-green-d);
+}
+
+:is(button.az-button, a.az-link-button, label.az-input-button)[color=magenta] {
+    --az-button-background: var(--c-magenta);
+    --az-button-hover: var(--c-magenta-d);
+}
+
+:is(button.az-button, a.az-link-button, label.az-input-button)[color=purple] {
+    --az-button-background: var(--c-purple);
+    --az-button-hover: var(--c-purple-d);
+}
+
+:is(button.az-button, a.az-link-button, label.az-input-button)[color=blue] {
+    --az-button-background: var(--c-blue);
+    --az-button-hover: var(--c-blue-d);
+}
+
+:is(button.az-button, a.az-link-button, label.az-input-button)[color=gold] {
+    --az-button-background: var(--c-gold);
+    --az-button-hover: var(--c-gold-d);
+}
+
+:is(button.az-button, a.az-link-button, label.az-input-button)[color=red] {
+    --az-button-background: var(--c-red);
+    --az-button-hover: var(--c-red-d);
+}
+
+:is(button.az-button, a.az-link-button, label.az-input-button)[color=gray] {
+    --az-button-background: var(--c-gray);
+    --az-button-hover: var(--c-gray-d);
+}

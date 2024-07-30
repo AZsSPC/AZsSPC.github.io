@@ -1,0 +1,13 @@
+header {
+    flex-direction: column
+}
+
+main {
+    align-items: center
+}
+
+#game {
+    margin: 1rem;
+    width: min(100dvw, 80dvh);
+    height: min(100dvw, 80dvh);
+}

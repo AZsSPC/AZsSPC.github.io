@@ -1,0 +1,98 @@
+#f_r {
+    text-align: center;
+    padding-top: 4rem;
+}
+
+#f_b {
+    z-index: 90;
+    text-align: center;
+    overflow: auto;
+    white-space: nowrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: var(--c-back-head);
+}
+
+#f_b button {
+    line-height: 1.5rem;
+    height: 1.5rem;
+}
+
+#f_d, .m_c > .m_f {
+    display: none;
+}
+
+.m_c, .m_cb {
+    display: inline-block;
+    margin: 0.3rem;
+    padding: 0.8rem;
+    background-color: var(--c-back-head);
+    cursor: pointer;
+    border-radius: 16pt;
+}
+
+.m_h * {
+    font-size: 14pt;
+}
+
+.m_c *, .m_cb * {
+    color: var(--c-gray-l);
+}
+
+.m_cb {
+    border-radius: 0;
+    margin: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99;
+    padding: 2rem 1rem;
+    border: solid 0.5rem var(--c-green);
+    animation: 0.2s tobig;
+}
+
+@keyframes tobig {
+    from {
+        position: fixed;
+        left: 40vw;
+        right: 40vw;
+        top: 40vh;
+        bottom: 40vh;
+    }
+
+    to {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+
+.m_cb > .m_f {
+    display: block !important;
+    margin-top: 2rem;
+}
+
+.m_c:hover {
+    background: white;
+}
+
+.MathJax_Display {
+    margin: 0 !important;
+}
+
+#find_labe {
+    width: 9rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+    background: var(--c-back-main);
+}

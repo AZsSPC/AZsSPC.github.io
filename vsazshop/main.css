@@ -1,0 +1,121 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');*/
+@font-face {
+    font-family: "JB mono";
+    font-size: 16px;
+    src: url("/_src/fonts/JB_Mono.woff2"), url("/AZsSPC.github.io/fonts/JB_Mono.woff2");
+}
+
+:root {
+    --cut-width: 1000px;
+    --header-height: 100px;
+    --footer-height: 100px;
+    --body-gap: 1rem;
+}
+
+* {
+    font-family: 'JB mono', monospace;
+    text-decoration: none;
+    color: white;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+body {
+    background-size: 100px 100px;
+    background-color: #2d2d2d;
+    background-image: repeating-radial-gradient(
+            #232323, #232323 20px,
+            #282828 20px, #282828 40px,
+            #2d2d2d 40px, #2d2d2d 60px
+    );
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    justify-content: flex-start;
+}
+
+header {
+    position: sticky;
+    height: 100px;
+    max-width: var(--cut-width);
+    width: 100%;
+    top: 0;
+    padding: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 1rem #00000080;
+    box-shadow: 0 0 1rem #00000080;
+    font-size: 24px;
+    text-align: center;
+    z-index: 999;
+}
+
+main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height) - 2 * var(--body-gap));
+    max-width: var(--cut-width);
+    width: 100%;
+    font-size: 18px;
+}
+
+footer {
+    height: 100px;
+    max-width: var(--cut-width);
+    width: 100%;
+    padding: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 1rem #00000080;
+    box-shadow: 0 0 1rem #00000080;
+    font-size: 24px;
+    text-align: center;
+}
+
+header * {
+    font-size: inherit;
+    font-weight: inherit;
+    text-shadow: inherit;
+}
+
+nav {
+    z-index: 998;
+    padding: 1rem 1.5rem;
+    background: #30303b;
+    box-shadow: 0 0 1rem #00000080;
+    border-radius: 2rem;
+}
+
+nav > a {
+    text-decoration: none;
+    font-size: 14px;
+    text-shadow: 0 0 1rem #00000080;
+}
+
+nav > a:hover {
+    color: #ffe176;
+    text-decoration: underline;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: white;
+    border: .3rem solid #1a1a1a;
+    border-radius: 1rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffe176;
+}
+

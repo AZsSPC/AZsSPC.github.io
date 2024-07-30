@@ -1,0 +1,855 @@
+{
+  "buttons": [
+    {
+      "name": "All formulas",
+      "pattern": "*"
+    }
+  ],
+  "formulas": [
+    {
+      "code": "s_{x} = x - x_{0}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec v = \\frac{\\vec s}{t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v_{средн.} = \\frac{s}{t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "x = x_{0} + v_{x} t",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec a = \\frac{\\vec v - \\vec v_{0}}{t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec v = \\vec v_{0} + \\vec a t",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec s = \\frac{\\vec v + \\vec v_{0}}{2} t",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec s = \\vec v_{0} t + \\frac{\\vec a t^2}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "s_{x} = \\frac{v^2_{x} - v^2_{0 x}}{2 a_{x}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "x = x_{0} + v_{0} t + \\frac{a t^2}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\nu = \\frac{N}{t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "T = \\frac{t}{N}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "T = \\frac{1}{\\nu}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v = \\frac{s}{t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v = \\frac{2 \\pi r}{T}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v = 2 \\pi r \\nu",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\omega = \\frac{\\varphi}{t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\omega = \\frac{2 \\pi}{T}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\omega = 2 \\pi \\nu",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v = \\omega r",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "a = \\frac{v^2}{r}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "a = \\omega^2 r",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec a = \\frac{\\vec F_{R}}{m}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec F_{1} = - \\vec F_{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F_{трения} = \\mu N",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F_{упругости} = - k x",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec F = m \\vec g",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec P = m \\vec g",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec P = m \\left( \\vec g - \\vec a \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F = G \\frac{m_{1} m_{2}}{r^2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "g = G \\frac{M}{\\left( R + h \\right)^2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\upsilon = \\sqrt{G \\frac{M}{R}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\frac{F} t = m \\vec v - m \\vec v_{0}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "m_{1} \\vec v_{1} + m_{2} \\vec v_{2} = m_{1} \\vec v_{1} + m_{2} \\vec v_{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "M = F d",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\sum_{i=1}^n \\vec F_{i} = \\vec 0",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\sum_{i=1}^n M_{i} = 0",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\rho = \\frac{m}{V}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "p = \\frac{F}{S}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "p = \\rho g h",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F_{давления \\ дно} = \\rho g H S",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F_{давления \\ бок} = \\frac{\\rho g H S}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\frac{h_{1}}{h_{2}} = \\frac{\\rho_{2}}{\\rho_{1}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F_{A} = \\rho g V",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F_{2} = \\frac{F_{1} S_{2}}{S_{1}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = F s \\cos \\alpha",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = - F_{трения} s",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = m g \\left( h_{1} - h_{2} \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = \\frac{k \\left( x^2_{1} - x^2_{2} \\right)}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "N = F v",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "N = \\frac{A}{t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E_{кин.} = \\frac{m v^2}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E_{пот.} = m g h",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E_{пот.} = \\frac{k x^2}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E = E_{кин.} + E_{пот.}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = \\frac{m \\left( v^2_{2} - v^2_{1} \\right)}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\eta = \\frac{A_{n}}{A} = \\frac{N_{n}}{N}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "x = A \\sin \\left( \\omega t + \\varphi_{0} \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v_{x} = v_{m} \\cos \\left( \\omega t + \\varphi_{0} \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "a_{x} = - a_{m} \\sin \\left( \\omega t + \\varphi_{0} \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\omega = 2 \\pi \\nu = \\frac{2 \\pi}{T}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "T = \\frac{1}{\\nu}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v_{m} = \\omega A",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "a_{m} = - \\omega^2 A",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "T = 2 \\pi \\sqrt{\\frac{m}{k}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "T = 2 \\pi \\sqrt{\\frac{l}{g}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\frac{k A^2}{2} = \\frac{m v^2_{x} + k x^2}{2} = \\frac{m v^2_{m}}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\lambda = v T",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\nu = \\frac{N}{N_{A}} = \\frac{m}{M}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "M = m_{0} N_{A}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "p = \\frac{n m_{0} \\bar v^2}{3}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "p = \\frac{2 n \\bar E}{3}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "p = n k T",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\bar E = \\frac{3 k T}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v = \\sqrt{\\frac{3 R T}{M}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "p V = \\frac{m R T}{M}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "U = \\frac{i m R T}{2 M}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "Q = c m \\left( t_{2} - t_{1} \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "C = c m",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "Q_{n} = r m",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "Q_{плавления} = \\lambda m",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "Q_{сгорания} = - q m",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = p \\Delta V",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "Q = \\Delta U + A",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\sum_{i=1}^n Q_{i} = 0",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\eta = \\frac{A}{Q_{1}} = \\frac{Q_{1} - Q_{2}}{Q_{1}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\eta = \\frac{T_{1} - T_{2}}{t_{1}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F = \\frac{k \\left| q_{1} \\right| \\left| q_{2} \\right|}{\\varepsilon r^2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "k = \\frac{1}{4 \\pi \\varepsilon_{0}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec E = \\frac{\\vec F}{q}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E = \\frac{k \\left| q \\right|}{\\varepsilon r^2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E = \\frac{k \\left| q_{шара} \\right|}{\\varepsilon \\left( R + r \\right)^2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\vec E = \\sum_{i=1}^n \\vec E_{i}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\varphi = \\frac{W_{пот.}}{q}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\varphi = \\frac{k q}{\\varepsilon r}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\varphi = \\frac{k q_{шара}}{\\varepsilon \\left( R + r \\right)}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\varphi = E d",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\varphi = \\sum_{i=1}^n \\varphi_{i}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = q \\left( \\varphi_{1} - \\varphi_{2} \\right) = q U",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E = \\frac{E}{d}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "C = \\frac{q}{U}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "C = \\frac{\\varepsilon \\varepsilon_{0} S}{d}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "C = \\sum_{i=1}^n C_{i}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\frac{1}{C} = \\sum_{i=1}^n \\frac{1}{C_{i}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "W = \\frac{q U}{2} = \\frac{C U^2}{2} = \\frac{q^2}{2 C}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\sigma = \\frac{q}{S}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I = \\frac{q}{t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I = q_{0} n v S",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "j = \\frac{I}{S}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I = \\frac{U}{R}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "R = \\frac{\\rho l}{S}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "R = R_{0} \\left( 1 + \\alpha t \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "R = \\sum_{i=1}^n R_{i}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\frac{1}{R} = \\sum_{i=1}^n \\frac{1}{R_{i}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = I U t = I^2 R t = \\frac{U^2 t}{R}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "P = \\frac{A}{t} = I U = I^2 R = \\frac{U^2}{R}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "Q = I^2 R t",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\mathcal{E} = \\frac{A}{q}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I = \\frac{\\mathcal{E}}{R + r}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I = \\frac{n \\mathcal{E}}{R + r n}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I = \\frac{\\mathcal{E}}{R + \\frac{r}{n}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "m = k I t",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\hat A = \\frac{M_{max}}{I S} = \\frac{F_{max}}{I \\Delta l}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F = I B \\Delta l \\sin \\alpha",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "F = \\left| q \\right| v B \\sin \\alpha",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "m v = q B R",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\Phi = B S \\cos \\alpha",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\mathcal{E}_{i} = - \\frac{\\Delta \\Phi}{\\Delta t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\Phi = L I",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\mathcal{E}_{max} = \\omega \\Phi",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\mathcal{E}_{самоиндукции} = - \\frac{\\Delta \\Phi}{\\Delta t} = - \\frac{L \\Delta I}{\\Delta t}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\mathcal{E} = B \\upsilon l \\sin \\alpha",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "q = \\frac{\\Delta \\Phi}{R}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "q = q_{max} \\sin \\left( \\omega t + \\varphi_{0} \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "u = U_{max} \\sin \\left( \\omega t + \\varphi_{0} \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "i = I_{max} \\cos \\left( \\omega t + \\varphi_{0} \\right)",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I_{max} = \\omega q_{max}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "T = 2 \\pi \\sqrt{L C}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "W = \\frac{L i^2}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\frac{q^2_{max}}{C} = \\frac{q^2}{C} + \\frac{L i^2}{2} = L I^2_{max}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I = \\frac{I_{max}}{\\sqrt{2}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "U = \\frac{U_{max}}{\\sqrt{2}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "X_{L} = \\omega L",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "X_{C} = \\frac{1}{\\omega C}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "Z = \\sqrt{R^2 + \\left( X_{L} - X_{C} \\right)^2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "I = \\frac{U}{Z}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\frac{\\sin \\alpha}{\\sin \\beta} = \\frac{n_{2}}{n_{1}} = \\frac{v_{1}}{v_{2}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "n = \\frac{c}{v}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\pm \\frac{1}{F} = \\pm \\frac{1}{f} \\pm \\frac{1}{d}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "D = \\frac{1}{F}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\Gamma = \\frac{H}{h} = \\frac{f}{d}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\Delta_{min} = \\frac{\\lambda \\left( 2 k + 1 \\right)}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\Delta_{max} = k \\lambda",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "d \\sin \\varphi = k \\lambda",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "v = \\frac{v_{1} + v_{2}}{1 + \\frac{v_{1} v_{2}}{c^2}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "l = l_{0} \\sqrt{1 - \\frac{v^2}{c^2}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\tau = \\frac{\\tau_{0}}{\\sqrt{1 - \\frac{v^2}{c^2}}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "m = \\frac{m_{0}}{\\sqrt{1 - \\frac{v^2}{c^2}}}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E = m c^2",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E = h \\nu",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "p = m c = \\frac{h \\nu}{c}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "h \\nu = A + \\frac{m v^2}{2}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "A = h \\nu_{min} = \\frac{h c}{\\lambda}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\frac{m v^2}{2} = e U",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "h \\nu = E_{n} - E_{m}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\lambda = \\frac{h}{m v}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "N = 2^{- \\frac{t}{T}} N_{0}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "\\Delta M = Z m_{p} + N m_{n} - M_{я}",
+      "tags": [],
+      "lore": "some lore about this formula"
+    },
+    {
+      "code": "E_{связи} = \\Delta M c^2",
+      "tags": [],
+      "lore": "some lore about this formula"
+    }
+  ]
+}

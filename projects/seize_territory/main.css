@@ -1,0 +1,51 @@
+
+:root {
+    --gc: 43;
+}
+
+@media (orientation: portrait) {
+    :root {
+        --ts: calc((100vw - 36px) / var(--gc));
+    }
+}
+
+@media (orientation: landscape) {
+    :root {
+        --ts: calc((100vh - 72px) / var(--gc));
+    }
+}
+
+#forg {
+    display: grid;
+    width: 100%;
+    height: 100%;
+}
+
+#game {
+    display: grid;
+    border-spacing: 0;
+    grid-template-columns: repeat(var(--gc), var(--ts));
+    cursor: pointer;
+    padding: 3px;
+    width: fit-content;
+    align-self: center;
+    justify-self: center;
+}
+
+#game > * {
+    font-size: calc(var(--ts) * .8);
+    width: var(--ts);
+    height: var(--ts);
+    text-align: center;
+    line-height: var(--ts);
+    display: inline-grid;
+    color: #fff;
+}
+
+#game > *:nth-child(2n) {
+    background: rgba(30, 30, 30, 0.8);
+}
+
+#game > *:not(:nth-child(2n)) {
+    background: rgba(25, 25, 25, 0.8);
+}
