@@ -1,7 +1,7 @@
 button.az-button, a.az-link-button, label.az-input-button, label.az-input-button {
     --az-button-background: var(--c-green);
     --az-button-hover: var(--c-green-d);
-    --az-button-foreground: var(--c-white-text);
+    --az-button-foreground: white;
     background: var(--az-button-background);
     color: var(--az-button-foreground);
     border-radius: 1rem;

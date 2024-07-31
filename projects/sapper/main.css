@@ -3,10 +3,6 @@
     --tsf: calc(var(--ts) * .65);
 }
 
-main {
-    align-items: center
-}
-
 #game {
     border: var(--c-blue) calc(var(--ts) * .05) solid;
     grid-template-columns: repeat(var(--gc), 1fr);

@@ -73,7 +73,7 @@ const PROJECTS = [
 		name: 'Laplas Matrix Helper',
 		path: 'laplas_matrix_helper',
 		lore: 'This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n(saves time, exports the solution in .TeX)',
-		enabled: true,
+		enabled: true, weight: -2,
 		tag: [TAG.WEB, TAG.UTIL, TAG.TEX, TAG.MATH]
 	},
 	{
@@ -146,6 +146,13 @@ const PROJECTS = [
 		enabled: false, weight: 2,
 		tag: [TAG.WEB, TAG.UTIL, TAG.REGEX, TAG.PROGRAMMING]
 	},
+	{
+		name: 'D&D Manager',
+		path: 'dnd_manager',
+		lore: 'This app will help you as game master or player in managing',
+		enabled: true,
+		tag: [TAG.WEB,]
+	},
 ]
 
 let plist = document.getElementById('project_list')
@@ -157,13 +164,13 @@ function displayProjects(tags = []) {
 	.sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0))
 		) {
 		const tile = document.createElement('a')
-		tile.classList.add('plist_tile', 'not_a_text')
+		tile.classList.add('plist_tile')
 		tile.href = `/projects/${project.path}/`
 		tile.innerHTML = `
 		<p class="plist-title" translate="no">${project.name}</p>
 		<p class="plist-lore">${project.lore.replaceAll('\n', '<br>')}</p>
-		<p class="plist-tags" onclick="return false">${
-			project.tag.map((v) => `<button is="az-button" onclick="displayProjects(['${v}'])">${v}</button>`).join('')
+		<p class="plist-tags">${
+			project.tag.map((v) => `<button is="az-button" color="blue" onclick="displayProjects(['${v}'])">${v}</button>`).join('')
 		}</p>`
 
 		plist.append(tile)
