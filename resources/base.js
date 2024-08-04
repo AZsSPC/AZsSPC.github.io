@@ -115,7 +115,8 @@ function settings() {
 		'<meta name="viewport" content="width=device-width,initial-scale=1"/>' +
 		'<link rel="icon" href="/resources/img/fic.png">' +
 		'<link rel="stylesheet" href="/resources/css/main.css">' +
-		'<link rel="stylesheet" href="main.css">'
+		'<link rel="stylesheet" href="main.css">' +
+		'<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>\n'
 	)
 }
 
@@ -170,12 +171,21 @@ function useMathJax() {
 	MathJax.Hub.Queue(['Typeset', MathJax.Hub])
 }
 
-function switchDisplay(el, v) {
-	el.style.display = (el.style.display === v ?'none' :v)
+function switchDisplay(element, v) {
+	element.style.display = (element.style.display === v ?'none' :v)
 }
 
-function takeshot(el, func) {
-	html2canvas(el).then((canvas) => func(canvas))
+function takeshot(element, func) {
+	html2canvas(element).then((canvas) => func(canvas))
+}
+
+function takeshot_and_download(element, filename) {
+	html2canvas(element).then((c) => {
+		let link = document.createElement('a')
+		link.setAttribute('download', filename + '.png')
+		link.setAttribute('href', c.toDataURL('image/png').replace('image/png', 'image/octet-stream'))
+		link.click()
+	})
 }
 
 function page(link) {

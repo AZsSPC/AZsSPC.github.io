@@ -48,7 +48,7 @@
     display: flex;
     gap: 4px;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
     /*
     height: 32px;
     overflow-y: auto;

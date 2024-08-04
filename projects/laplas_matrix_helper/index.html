@@ -10,9 +10,12 @@
 	<meta property="og:title" content="AZsSPC | Laplas Matrix Helper"/>
 	<meta property="og:description" content="This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n\n(saves time, exports the solution in .TeX)"/>
 	<meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
+	
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <script type="text/javascript">nav()</script>
+<header>Laplas Matrix Helper</header>
 <main>
 	<div id="initMS">
 		<label is="az-input-button">Matrix width <input id="mW" type="number" min="1" max="10" value="1"></label>
@@ -22,30 +25,28 @@
 	<div id="initMX">
 		<table id="matrixTable"></table>
 		<div id="initMatrix" hidden>
-			<button onclick="initMatrix()">Use this matrix</button>
+			<button is="az-button" onclick="initMatrix()">Use this matrix</button>
 		</div>
 		<div id="stepMatrix" hidden>
-			<input id="stepCommand" type="text" value="" placeholder="r3+2" onchange="userStepMatrix()">
-			<button onclick="userStepMatrix()">Step</button>
-			<button onclick="generateSolution()">Get TeX</button>
+			<label is="az-input-button">sNaF<input id="stepCommand" type="text" value="" placeholder="r3+2" onchange="userStepMatrix()"></label>
+			<button is="az-button" onclick="userStepMatrix()">Step</button>
+			<button is="az-button" onclick="generateSolution()">Get TeX</button>
 		</div>
 	</div>
 	<div id="solutionTeX">
-		<p>
 		<p>How to use it?</p>
-		Single command - sNaF:<br>
-		<u>s</u> - <u>[r or c]</u> row or column<br>
-		<u>N</u> - <u>row/column</u> number<br>
-		<u>F</u> - <u>row/column</u> number or number<br>
-		<u>a</u> - <u>[+ - / *>]</u> the action to be applied
+		<p>Single command - sNaF:</p>
+		<p><u>s</u> - <u>[r or c]</u> row or column</p>
+		<p><u>N</u> - <u>row/column</u> id</p>
+		<p><u>a</u> - <u>[+ - / * >]</u> the action to be applied</p>
 		<ul>
 			<li><u>+</u> - adds all cells values from <u>F</u> to <u>N</u>, writing in <u>N</u></li>
 			<li><u>-</u> - subtracts all cells values of <u>F</u> from <u>N</u> and writes to <u>N</u></li>
 			<li><u>*</u> - multiplies each cell <u>N</u> by the value <u>F</u>, writing to <u>N</u></li>
 			<li><u>/</u> - divides each cell <u>N</u> by the value <u>F</u>, writing in <u>N</u></li>
-			<li><u>></u> - moves the <u>row/column</u> to the specified index, shifting all others
+			<li><u>></u> - moves the <u>row/column</u> to the specified index, shifting all others</li>
 		</ul>
-		</p>
+		<p><u>F</u> - <u>row/column</u> id or number</p>
 	</div>
 </main>
 </body>

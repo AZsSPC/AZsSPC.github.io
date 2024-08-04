@@ -11,5 +11,6 @@
     <orderEntry type="library" name="main" level="application" />
     <orderEntry type="library" name="az" level="application" />
     <orderEntry type="library" name="mathjs" level="application" />
+    <orderEntry type="library" name="html2canvas" level="application" />
   </component>
 </module>

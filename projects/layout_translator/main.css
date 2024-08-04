@@ -1,9 +1,9 @@
-#text-in {
+#text-in, #text-out {
     border-radius: 1rem;
     background: var(--c-back-head);
-    border: 1px solid var(--c-magenta);
     padding: .7rem;
-    width: 100%;
+    width: calc(100vw - 2rem);
+    max-width: 800px;
     min-height: 20dvh;
     overflow: auto;
     resize: vertical;
@@ -12,13 +12,10 @@
 
 #text-out {
     border: 1px solid var(--c-blue);
-    border-radius: 1rem;
-    background: var(--c-back-head);
-    min-height: 20dvh;
-    padding: .7rem;
-    overflow: auto;
-    resize: vertical;
-    display: flex;
+}
+
+#text-in {
+    border: 1px solid var(--c-magenta);
 }
 
 main fieldset {
