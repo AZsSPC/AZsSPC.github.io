@@ -27,7 +27,7 @@ function setup() {
 	for (let x = 0; x < width; x++) {
 		petri[x] = []
 		for (let y = 0; y < width; y++) {
-			petri[x][y] = Math.random() < .3 ? new Cell(bc) : Math.random() < .3 ? TYPE.VEG : TYPE.EMPTY
+			petri[x][y] = Math.random() < .3 ?new Cell(bc) :Math.random() < .3 ?TYPE.VEG :TYPE.EMPTY
 		}
 	}
 	draw()
@@ -67,7 +67,7 @@ class Cell {
 
 		let next_cell = this.next_from(x, y, this.way)
 		let front = petri[next_cell[0]][next_cell[1]]
-		let front_type = typeof front === 'object' ? front.kin === this.kin ? TYPE.KIN : TYPE.CELL : front
+		let front_type = typeof front === 'object' ?front.kin === this.kin ?TYPE.KIN :TYPE.CELL :front
 		let action = parseInt(this.dna.substr((DEFGENES + this.stp) * 8, 8).split('')[front_type])
 
 		switch (action) {
@@ -201,9 +201,9 @@ class Cell {
 			+ '\n\n%c' + this.dna,
 
 			f + '#888',
-			'', f + (a < 0.3 ? 'coral' : a < 0.7 ? 'gold' : 'limegreen'),
-			'', f + (b > 0.3 ? 'coral' : b > 0.7 ? 'gold' : 'limegreen'),
-			'', f + (c < 0.3 ? 'coral' : c < 0.7 ? 'gold' : 'limegreen'),
+			'', f + (a < 0.3 ?'coral' :a < 0.7 ?'gold' :'limegreen'),
+			'', f + (b > 0.3 ?'coral' :b > 0.7 ?'gold' :'limegreen'),
+			'', f + (c < 0.3 ?'coral' :c < 0.7 ?'gold' :'limegreen'),
 			'', f + '#888',
 			'', f + '#888',
 			'', f + '#888',
@@ -296,7 +296,8 @@ function cycle() {
 	}
 
 	for (let x = 0; x < width; x++) for (let y = 0; y < width; y++)
-		if (typeof petri[x][y] === 'object' && petri[x][y].fixer !== fixer) petri[x][y].step(x, y)
+		if (typeof petri[x][y] === 'object' && petri[x][y].fixer !== fixer)
+			petri[x][y].step(x, y)
 	draw()
 	steps++
 	return true
@@ -306,7 +307,7 @@ function look(x, y) {
 	alert(x + ' ' + y + ' ' + petri[y][x])
 }
 
-AZ.run = async function () {
+AZ.run = async function() {
 	AZ.loop = true
 	while (AZ.loop && cycle()) await new Promise(res => setTimeout(res, AZ.timeout))
 	loop_change_view()
@@ -324,7 +325,7 @@ function screen_clicked(e) {
 	let rect = e.target.getBoundingClientRect(),
 		x = (e.clientX - rect.left) / game.offsetWidth * 1000 / cof | 0,
 		y = (e.clientY - rect.top) / game.offsetHeight * 1000 / cof | 0
-	target = typeof petri[x][y] === 'object' ? {id: petri[x][y].id, type: TYPE.CELL} : {x: x, y: y, type: -TYPE.CELL}
+	target = typeof petri[x][y] === 'object' ?{id: petri[x][y].id, type: TYPE.CELL} :{x: x, y: y, type: -TYPE.CELL}
 	draw()
 	if (typeof petri[x][y] === 'object') petri[x][y].prettyLog()
 }
