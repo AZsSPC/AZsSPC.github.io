@@ -1,14 +1,3 @@
-/*
-{
-    name: '__template',
-    path: '__template',
-    lore: '__template',
-    enabled: true,
-    tag: [WEB, ]
-},
-*/
-
-
 class Symbol {
 	constructor(type, value, weight) {
 		this.type = type
@@ -28,19 +17,18 @@ const symbols = [
 	new Symbol('rare', 'R4', 2),
 	new Symbol('wild', 'W1', 1),
 	new Symbol('wild', 'W2', 1),
-	new Symbol('gold', 'G', 1)
+	new Symbol('gold', 'G', 10)
 ]
+
+const totalWeight = symbols.reduce((sum, symbol) => sum + symbol.weight, 0)
 
 let slots = [[], [], [], [], []]
 
 function getRandomSymbol() {
-	const totalWeight = symbols.reduce((sum, symbol) => sum + symbol.weight, 0)
 	let random = Math.random() * totalWeight
 
 	for (const symbol of symbols) {
-		if (random < symbol.weight) {
-			return symbol
-		}
+		if (random < symbol.weight) return symbol
 		random -= symbol.weight
 	}
 }
@@ -48,10 +36,10 @@ function getRandomSymbol() {
 function fake() {
 	document.querySelectorAll('.reel').forEach((reel, index) => {
 		reel.innerHTML = ''
-		Array(3).fill().map(() => getRandomSymbol()).forEach((symbol, i) => {
+		Array(5).fill().map(() => getRandomSymbol()).forEach((symbol, i) => {
 			slots[index][i] = symbol
 			const div = document.createElement('div')
-			div.textContent = symbol.value
+			div.style.setProperty('background-image', `url(./set/dota/${symbol.value}.jpg)`)
 			reel.appendChild(div)
 		})
 	})
@@ -60,24 +48,25 @@ function fake() {
 function spin() {
 	document.querySelectorAll('.reel').forEach((reel, index) => {
 
-		const randomSymbols = Array(3).fill().map(() => getRandomSymbol())
-		const filler = Array(30 + 6 * index).fill().map(() => getRandomSymbol())
+		const randomSymbols = Array(5).fill().map(() => getRandomSymbol())
+		const filler = Array(20 + 10 * index).fill().map(() => getRandomSymbol())
 
 		const allSymbols = [...randomSymbols, ...filler, ...slots[index]]
 
 		reel.style.transition = 'none'
-		reel.style.transform = `translateY(calc(-100% + ${randomSymbols.length * 100}px))`
+		reel.style.transform = `translateY(calc(${(randomSymbols.length) * 75}px - 100%))`
 		reel.innerHTML = ''
 		allSymbols.forEach((symbol, i) => {
-			if (i < 3) slots[index][i] = symbol
+			if (i < 5) slots[index][i] = symbol
 			const div = document.createElement('div')
-			div.textContent = symbol.value
+			if (symbol.type === 'gold') div.textContent = `${(1 + (Math.random() * 4) | 0) * 2}`
+			div.style.setProperty('background-image', `url(./set/dota/${symbol.value}.jpg)`)
 			reel.appendChild(div)
 		})
 
 		// Плавное завершение анимации
 		setTimeout(() => {
-			reel.style.transition = `transform ${allSymbols.length * 50}ms ease-in-out`
+			reel.style.transition = `transform ${allSymbols.length * 50}ms cubic-bezier(0.6, 0, 0.4, 1)`
 			reel.style.transform = `translateY(0)`
 		}, 10)
 	})
