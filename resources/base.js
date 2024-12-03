@@ -3,11 +3,11 @@ function $AZ() {
 	this.timeout = 200
 }
 
-$AZ.prototype.run = async function() {
+$AZ.prototype.run = async function () {
 	console.log('run is not override')
 }
 
-$AZ.prototype.get_replace_href = function(regex = /^.+(github.io)/, replace = 'https://github.com/azsspc/azsspc.github.io/blob/main') {
+$AZ.prototype.get_replace_href = function (regex = /^.+(github.io)/, replace = 'https://github.com/azsspc/azsspc.github.io/blob/main') {
 	return window.location.href.replace(regex, replace)
 }
 
@@ -45,19 +45,19 @@ function loop_click(old_state = AZ.loop) {
 function on_text_from_cloud_loaded(file, func) {
 	let rf = new XMLHttpRequest()
 	rf.open('GET', file, false)
-	rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ?rf.responseText :null)
+	rf.onreadystatechange = func((rf.readyState === 4 && (rf.status === 200 || rf.status == null)) ? rf.responseText : null)
 	rf.send()
 }
 
 function on_keys_action(func, ...codes) {
 	let pressed = new Set()
-	document.addEventListener('keydown', function(event) {
+	document.addEventListener('keydown', function (event) {
 		pressed.add(event.code)
 		for (let code of codes) if (!pressed.has(code)) return
 		pressed.clear()
 		func()
 	})
-	document.addEventListener('keyup', function(event) {
+	document.addEventListener('keyup', function (event) {
 		pressed.delete(event.code)
 	})
 }
@@ -65,7 +65,7 @@ function on_keys_action(func, ...codes) {
 function reformatAZ() {
 	document.getElementsByTagName('main')[0].innerHTML = document.getElementsByTagName('main')[0].innerHTML.replaceAll('#AZsSPC',
 		'<span title="" translate="no">AZsSPC</span>')
-	.replace('#projects', '<a href="https://azsspc.github.io/projects">projects</a>')
+		.replace('#projects', '<a href="https://azsspc.github.io/projects">projects</a>')
 }
 
 function nav() {//&lt;/&gt;
@@ -87,27 +87,27 @@ function nav() {//&lt;/&gt;
 }
 
 function copy_to_clipboard(text) {
-	navigator.clipboard.writeText(text).then(function() {
+	navigator.clipboard.writeText(text).then(function () {
 		console.log(`Async: Copying to clipboard was successful! [${text}]`)
-	}, function(err) {
+	}, function (err) {
 		console.error('Async: Could not copy text: ', err)
 	})
 }
 
 /*
-function header() {
-    document.write('<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'checked' : '') + ' onchange="navhider()">'
-        + '<header>' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>'
-        + '<input type="checkbox" id="nav-burger-cb" hidden><label for="nav-burger-cb" id="nav-burger-labe">===</label> '
-        + '<nav>'
-        + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>'
-        + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>'
-        + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
-        + ' <a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>'
-        + '</nav>'
-        + '<label id="hsl" for="navhider"></label>'
-        + '</header> ');
-}*/
+ function header() {
+ document.write('<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'checked' : '') + ' onchange="navhider()">'
+ + '<header>' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>'
+ + '<input type="checkbox" id="nav-burger-cb" hidden><label for="nav-burger-cb" id="nav-burger-labe">===</label> '
+ + '<nav>'
+ + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>'
+ + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>'
+ + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
+ + ' <a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>'
+ + '</nav>'
+ + '<label id="hsl" for="navhider"></label>'
+ + '</header> ');
+ }*/
 
 function settings() {
 	document.write('<meta charset="utf-8">' +
@@ -116,7 +116,7 @@ function settings() {
 		'<link rel="icon" href="/resources/img/fic.png">' +
 		'<link rel="stylesheet" href="/resources/css/main.css">' +
 		'<link rel="stylesheet" href="main.css">' +
-		'<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>\n'
+		'<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>\n',
 	)
 }
 
@@ -159,7 +159,7 @@ function setCookie(name, value, options = {}) {
 
 function getCookie(name) {
 	let matches = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()\[\]\\\/+^])/g, '\\$1') + '=([^;]*)'))
-	return matches ?decodeURIComponent(matches[1]) :undefined
+	return matches ? decodeURIComponent(matches[1]) : undefined
 }
 
 function deleteCookie(name) {
@@ -172,7 +172,7 @@ function useMathJax() {
 }
 
 function switchDisplay(element, v) {
-	element.style.display = (element.style.display === v ?'none' :v)
+	element.style.display = (element.style.display === v ? 'none' : v)
 }
 
 function takeshot(element, func) {
