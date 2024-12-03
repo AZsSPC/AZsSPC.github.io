@@ -1,41 +1,9 @@
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
-.glyph {
-    display: inline-flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    text-align: center;
-    width: 48px;
-    height: 48px;
-    font-size: 12px;
-    border-radius: 24px;
-    background-color: gray;
-    font-family: monospace;
-    padding: 4px;
-    margin: 4px;
-    box-shadow: 0 2px 5px #00000080;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-}
-
-.inventory {
-    background: var(--c-back-head);
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    align-content: flex-start;
-    min-width: 300px;
-    min-height: 300px;
-    border-radius: 32px;
-    padding: 4px;
+#map {
+	display       : block;
+	width         : 90dvmin;
+	height        : 90dvmin;
+	margin        : auto;
+	border-radius : 100%;
+	overflow      : hidden;
 }
