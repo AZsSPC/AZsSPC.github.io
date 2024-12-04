@@ -1,6 +1,7 @@
 #alchemy {
-	display : flex;
+	display        : flex;
 	flex-direction : row;
+	flex-wrap      : wrap;
 }
 
 #map {
@@ -11,4 +12,5 @@
 	border-radius : 100%;
 	overflow      : hidden;
 }
+
 #inventory {}

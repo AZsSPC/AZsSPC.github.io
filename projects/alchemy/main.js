@@ -39,6 +39,7 @@ const axesGroup = createAxisGroup()
 scene.add(axesGroup)
 
 scene.add(brew.getQueueMesh())
+scene.add(brew.mesh)
 
 const light = new AmbientLight(0xffffff, 2)
 scene.add(light)
@@ -46,7 +47,6 @@ scene.add(light)
 const directionalLight = new DirectionalLight(0xffffff, 5)
 directionalLight.position.set(35, 50, 75)
 scene.add(directionalLight)
-
 
 function animate() {
 	const {width: nvw, height: nvh} = map_div.getBoundingClientRect()
