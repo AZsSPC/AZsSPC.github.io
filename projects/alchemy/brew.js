@@ -1,10 +1,8 @@
 import {
-	BufferGeometry, CylinderGeometry,
-	DoubleSide, Float32BufferAttribute, Group,
-	Line,
-	LineBasicMaterial,
+	CylinderGeometry,
+	DoubleSide, Group,
 	Mesh,
-	MeshStandardMaterial, Quaternion,
+	MeshStandardMaterial,
 	SphereGeometry,
 	Vector3,
 	Vector4,
@@ -66,7 +64,7 @@ export class Brew {
 			this.vector_weight.clone(),
 			{...this.elements},
 			'ingredient.test.title',
-			'ingredient.test.lore',
+			'ingredient.test.description',
 			0x555,
 			this.amount,
 		)
@@ -91,58 +89,37 @@ export class Brew {
 			side: DoubleSide,
 		})
 
-		const mergedGeometry = new BufferGeometry()
-
-		let positions = []
-		let normals = []
-		let indices = []
-		let indexOffset = 0
+		const group = new Group()
 
 		for (let i = 1; i < this.queue.length; i++) {
 			const start = this.queue[i - 1]
 			const end = this.queue[i]
 
+			// Add sphere at the start point
+			const startSphere = new Mesh(new SphereGeometry(start.w, 12, 12), material)
+			startSphere.position.set(start.x, start.y, start.z)
+			group.add(startSphere)
+
+			// Add tube connecting start and end
 			const direction = new Vector3().subVectors(end, start)
 			const length = direction.length()
-			const midpoint = new Vector3().addVectors(start, end).multiplyScalar(0.5)
 
-			const cylinderGeometry = new CylinderGeometry(end.w, start.w, length, 25)
+			const tubeGeometry = new CylinderGeometry(1, 1, length, 6)
+			const tube = new Mesh(tubeGeometry, material)
 
-			const quaternion = new Quaternion().setFromUnitVectors(new Vector3(0, 1, 0), direction.clone().normalize())
-			cylinderGeometry.applyQuaternion(quaternion)
+			// Align the tube to the direction and position it
+			tube.quaternion.setFromUnitVectors(new Vector3(0, 1, 0), direction.clone().normalize())
+			tube.position.copy(start).add(direction.multiplyScalar(0.5))
 
-			cylinderGeometry.translate(midpoint.x, midpoint.y, midpoint.z)
-
-			this.addGeometryData(cylinderGeometry, positions, normals, indices, indexOffset)
-			indexOffset += cylinderGeometry.attributes.position.count
-
-			const startSphereGeometry = new SphereGeometry(start.w, 12, 12)
-			startSphereGeometry.translate(start.x, start.y, start.z)
-			this.addGeometryData(startSphereGeometry, positions, normals, indices, indexOffset)
-			indexOffset += startSphereGeometry.attributes.position.count
+			group.add(tube)
 		}
 
-		mergedGeometry.setAttribute('position', new Float32BufferAttribute(positions, 3))
-		mergedGeometry.setAttribute('normal', new Float32BufferAttribute(normals, 3))
-		mergedGeometry.setIndex(indices)
+		// Add the last sphere for the final point
+		const lastPoint = this.queue[this.queue.length - 1]
+		const endSphere = new Mesh(new SphereGeometry(lastPoint.w, 12, 12), material)
+		endSphere.position.set(lastPoint.x, lastPoint.y, lastPoint.z)
+		group.add(endSphere)
 
-		return new Mesh(mergedGeometry, material)
+		return group
 	}
-
-	addGeometryData(geometry, positions, normals, indices, indexOffset) {
-		const positionAttribute = geometry.attributes.position
-		const normalAttribute = geometry.attributes.normal
-		const indexAttribute = geometry.index
-
-		for (let i = 0; i < positionAttribute.count; i++)
-			positions.push(positionAttribute.getX(i), positionAttribute.getY(i), positionAttribute.getZ(i))
-
-		for (let i = 0; i < normalAttribute.count; i++)
-			normals.push(normalAttribute.getX(i), normalAttribute.getY(i), normalAttribute.getZ(i))
-
-		for (let i = 0; i < indexAttribute.count; i++)
-			indices.push(indexAttribute.getX(i) + indexOffset)
-	}
-
-
 }

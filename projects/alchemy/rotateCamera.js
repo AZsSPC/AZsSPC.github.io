@@ -4,7 +4,7 @@ let isDragging = false
 let previousMousePosition = {x: 0, y: 0}
 let verticalAngle = 0
 
-export function rotateCamera(brew, camera, deltaX, deltaY) {
+export function rotateCamera(brew, camera, deltaX = 0, deltaY = 0) {
 	const rotationSpeed = 0.005
 
 	const cameraPosition = new Vector3(
@@ -41,8 +41,20 @@ export function connect(element, brew, camera) {
 		isDragging = true
 		previousMousePosition.x = event.clientX
 		previousMousePosition.y = event.clientY
+		event.preventDefault()
 	})
+/*
+	const zoomSpeed = 10
 
+	element.addEventListener('mousewheel', (event) => {
+		const zoomDirection = event.deltaY > 0 ? 1 : -1
+
+		camera.position.z += zoomDirection * zoomSpeed
+		camera.position.z = Math.max(0, Math.min(300, camera.position.z))
+		rotateCamera(brew, camera)
+		event.preventDefault()
+	})
+*/
 	window.addEventListener('mousemove', (event) => {
 		if (!isDragging) return
 		rotateCamera(brew, camera, event.clientX - previousMousePosition.x, event.clientY - previousMousePosition.y)

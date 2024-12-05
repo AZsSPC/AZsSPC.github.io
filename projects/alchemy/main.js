@@ -5,8 +5,16 @@ import {Brew} from './brew.js'
 import {Deadzone} from './deadzone.js'
 import * as CameraRotator from './rotateCamera.js'
 import {createAxisGroup} from './createAxisGroup.js'
+import {Inventory} from './inventory.js'
 
 //'https://unpkg.com/three@v0.160.0/examples/jsm/controls/OrbitControls.js';
+
+const inventory = new Inventory(
+	document.getElementById('ingredients'),
+	document.getElementById('brews'),
+	document.getElementById('hotbar'),
+)
+inventory.fillFromCreativeMode()
 
 const brew = new Brew()
 brew.put(Ingredient.list.herb.copy(1))
