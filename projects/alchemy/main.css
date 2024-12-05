@@ -66,3 +66,10 @@ transparent 50%, #2851B6 50%, #2851B6 var(--influence-percent), transparent var(
 
 .item-influence-w { background : linear-gradient(calc(90deg * var(--influence-direction)),
 transparent 50%, #D3B728 50%, #D3B728 var(--influence-percent), transparent var(--influence-percent))}
+
+.item-put {
+	background    : var(--c-green-d);
+	cursor        : pointer;
+	border-radius : 1rem;
+	margin-top: 4px;
+}

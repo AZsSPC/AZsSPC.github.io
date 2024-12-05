@@ -1,7 +1,9 @@
 import {Ingredient} from './ingredient.js'
+import {locale} from './locale.js'
 
 export class Inventory {
-	constructor(render_element_ingredients, render_element_brews, render_element_hotbar) {
+	constructor(brew, render_element_ingredients, render_element_brews, render_element_hotbar) {
+		this.brew = brew
 		this.render_element_ingredients = render_element_ingredients
 		this.render_element_brews = render_element_brews
 		this.render_element_hotbar = render_element_hotbar
@@ -23,11 +25,9 @@ export class Inventory {
 		this.removeItemFromDOM(hash)
 	}
 
-	updateItemAmount(hash, newAmount) {
+	updateItemAmount(hash) {
 		const ingredient = this.items[hash]
 		if (!ingredient) return
-
-		ingredient.amount = newAmount
 		this.renderItem(ingredient)
 	}
 
@@ -35,7 +35,7 @@ export class Inventory {
 		let itemDiv = this.render_element_ingredients.querySelector(`[data-hash="${ingredient.hash}"]`)
 
 		if (itemDiv) {
-			itemDiv.querySelector('.item-amount').textContent = `Amount: ${ingredient.amount}`
+			itemDiv.querySelector('.item-title').textContent = `x${ingredient.amount} ${locale.get(ingredient.title)}`
 			return
 		}
 
@@ -50,13 +50,13 @@ export class Inventory {
 		 */
 		const titleDiv = document.createElement('div')
 		titleDiv.classList.add('item-title')
-		titleDiv.textContent = `x${ingredient.amount} ${ingredient.title}`
+		titleDiv.textContent = `x${ingredient.amount} ${locale.get(ingredient.title)}`
 		titleDiv.style.setProperty('--item-color', `#${ingredient.color.toString(16).padStart(6, '0')}`)
 		itemDiv.appendChild(titleDiv)
 
 		const descriptionDiv = document.createElement('div')
 		descriptionDiv.classList.add('item-description')
-		descriptionDiv.textContent = ingredient.description
+		descriptionDiv.textContent = locale.get(ingredient.description)
 		itemDiv.appendChild(descriptionDiv)
 		/*
 		 const amountDiv = document.createElement('div')
@@ -72,7 +72,7 @@ export class Inventory {
 			Math.max(max, Math.abs(ingredient.vector_position[axis] * ingredient.vector_weight[axis])), 0) / 50
 
 		influences.forEach((axis) => {
-			if (ingredient.vector_position[axis] * ingredient.vector_weight[axis] === 0) return
+			if (ingredient.vector_weight[axis] === 0) return
 			const axisDiv = document.createElement('div')
 			axisDiv.classList.add('item-influence', `item-influence-${axis}`)
 			if (ingredient.vector_position[axis] * ingredient.vector_weight[axis] < 0) axisDiv.style.setProperty('--influence-direction', -1)
@@ -81,6 +81,23 @@ export class Inventory {
 			influenceDiv.appendChild(axisDiv)
 		})
 		itemDiv.appendChild(influenceDiv)
+
+		const putButton = document.createElement('button')
+		putButton.classList.add('item-put')
+		putButton.textContent = 'put'
+		putButton.onclick = () => {
+			const amount = prompt(`Insert amount of [${locale.get(ingredient.title)}] (0;${ingredient.amount}]`)
+			if (+amount != amount) {
+				alert(`"${amount}" of it is not a number`)
+				return
+			} else if (amount <= 0 || amount > ingredient.amount) {
+				alert(`${amount} is not in bound (0;${ingredient.amount}]`)
+				return
+			}
+			this.brew.put(ingredient.take(+amount))
+			this.updateItemAmount(ingredient.hash)
+		}
+		itemDiv.appendChild(putButton)
 
 		this.render_element_ingredients.appendChild(itemDiv)
 

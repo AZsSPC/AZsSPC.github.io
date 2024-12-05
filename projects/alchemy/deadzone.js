@@ -17,8 +17,8 @@ export class Deadzone {
 		this.to_render = true
 	}
 
-	updateGeometry(brew) {
-		const vertices = this.states.flatMap(v => this.findVertex(v, brew.vector_position.w))
+	updateGeometry(brew, delta = 0, old) {
+		const vertices = this.states.flatMap(v => this.findVertex(v, brew.vector_position.w + delta * (old.w - brew.vector_position.w)))
 		if (vertices === undefined) return
 		const faces = this.connections.flatMap(face => face)
 		this.geometry.setAttribute('position', new Float32BufferAttribute(vertices, 3))
@@ -45,10 +45,10 @@ export class Deadzone {
 
 	static list = /*Object.freeze*/([
 		new Deadzone([
-			[[50, 0, 0, 0], [50, 10, 20, 0.5], [40, -6, 5, 1]],
-			[[50, 50, 50, 0], [30, 60, 60, 0.5], [30, 10, 40, 1]],
-			[[0, 0, 0, 0], [10, 10, 10, 0.5], [23, 7, 5, 1]],
-			[[50, 50, -20, 0], [60, 40, 10, 0.5], [-20, 10, -10, 1]],
+			[[50, 0, 0, -20], [50, 10, 20, 0], [40, -6, 5, 20]],
+			[[50, 50, 50, -20], [30, 60, 60, 0], [30, 10, 40, 20]],
+			[[0, 0, 0, -20], [10, 10, 10, 0], [23, 7, 5, 20]],
+			[[50, 50, -20, -20], [60, 40, 10, 0], [-20, 10, -10, 20]],
 		], [[0, 1, 2], [0, 2, 3], [0, 1, 3], [1, 2, 3]]),
 
 		new Deadzone([

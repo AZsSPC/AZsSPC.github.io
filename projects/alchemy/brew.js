@@ -1,12 +1,4 @@
-import {
-	CylinderGeometry,
-	DoubleSide, Group,
-	Mesh,
-	MeshStandardMaterial,
-	SphereGeometry,
-	Vector3,
-	Vector4,
-} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
+import {CylinderGeometry, DoubleSide, Group, Mesh, MeshStandardMaterial, SphereGeometry, Vector3, Vector4} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 import {Ingredient} from './ingredient.js'
 
 export class Brew {
@@ -50,12 +42,20 @@ export class Brew {
 		for (const [key, value] of Object.entries(ingredient.elements))
 			this.elements[key] = (this.elements[key] || 0) + value
 
-		const newRadius = this.vector_weight.x + this.vector_weight.y + this.vector_weight.z + this.vector_weight.w
-		this.queue.push(new Vector4(this.vector_position.x, this.vector_position.y, this.vector_position.z, newRadius * 0.8))
+		const newRadius = this.calculatePercentageDifference(this.vector_weight)
+		this.queue.push(new Vector4(this.vector_position.x, this.vector_position.y, this.vector_position.z, newRadius))
 		this.geometry = new SphereGeometry(newRadius)
 		this.mesh.geometry.dispose()
 		this.mesh.geometry = this.geometry
 		this.mesh.position.set(this.vector_position.x, this.vector_position.y, this.vector_position.z)
+
+		console.log('put', ingredient)
+		console.log('pos', this.vector_position.clone(), 'weights', this.vector_weight.clone())
+	}
+
+	calculatePercentageDifference(v) {
+		const vs = [v.x, v.y, v.z, v.w]
+		return ((Math.max(...vs) - Math.min(...vs)) / vs.reduce((sum, value) => sum + value, 0)) * 10 || 0
 	}
 
 	take() {
