@@ -1,4 +1,5 @@
 import {Vector4} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
+import {compactVector4} from './data_storer.js'
 
 export class Ingredient {
 	constructor(vector_position = new Vector4(), vector_weight = new Vector4(), elements = {}, title = 'brew.unknown.title', description = 'brew.unknown.description', color = 0xffffff, amount = 1, hash = null) {
@@ -9,9 +10,8 @@ export class Ingredient {
 		this.description = description
 		this.color = color
 		this.amount = amount
-		this.hash = hash || `x${this.vector_position.x}y${this.vector_position.y}z${this.vector_position.z}w${this.vector_position.w}`
-			+ `x${this.vector_weight.x}y${this.vector_weight.y}z${this.vector_weight.z}w${this.vector_weight.w}`
-			+ JSON.stringify(this.elements)
+		this.hash = hash || compactVector4(this.vector_position) + ';' + compactVector4(this.vector_weight) //+ ';' + JSON.stringify(this.elements)
+		console.log(this.hash)
 	}
 
 	copy(amount = this.amount) {

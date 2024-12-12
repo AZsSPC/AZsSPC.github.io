@@ -1,4 +1,4 @@
-import {AmbientLight, DirectionalLight, Group, PerspectiveCamera, Scene, WebGLRenderer} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
+import {AmbientLight, DirectionalLight, Group, PerspectiveCamera, Scene, Vector3, Vector4, WebGLRenderer} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 import {ReceiptBulb} from './receiptBulb.js'
 import {Brew} from './brew.js'
 import {Deadzone} from './deadzone.js'
@@ -6,6 +6,8 @@ import * as CameraRotator from './rotateCamera.js'
 import {createAxisGroup} from './createAxisGroup.js'
 import {Inventory} from './inventory.js'
 import {rotateCamera} from './rotateCamera.js'
+import {compactVector4, expandVector4} from './data_storer.js'
+import {Ingredient} from './ingredient.js'
 
 //'https://unpkg.com/three@v0.160.0/examples/jsm/controls/OrbitControls.js';
 
@@ -90,3 +92,8 @@ function animate() {
 }
 
 animate()
+/*
+const newg = new Vector4(22312312312364.68461635469841, 446.1235000000346, 123.1000000000002, 123623346.43623456)
+let ccc = compactVector4(newg)
+console.log(newg, ccc, expandVector4(ccc))
+*/
