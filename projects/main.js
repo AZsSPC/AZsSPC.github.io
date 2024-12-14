@@ -260,9 +260,8 @@ const sw = {'green': 9, 'magenta': 8, 'purple': 7, 'red': 6, 'blue': 1, 'gray': 
 
 Object.keys(TAG).forEach(e => TAG[e] = TAG[e] ? [TAG[e][0], TAG[e][1] ?? 'blue'] : [e, 'gray'])
 PROJECTS.forEach(project => project.tag = project.tag.sort((a, b) => {
-	const weightA = sw[TAG[a]?.[1] ?? 'blue'] ?? sw.gray
-	const weightB = sw[TAG[b]?.[1] ?? 'blue'] ?? sw.gray
-	if (weightA !== weightB) return weightB - weightA
+	const delta = (sw[TAG[b]?.[1] ?? 'blue'] ?? sw.gray) - (sw[TAG[a]?.[1] ?? 'blue'] ?? sw.gray)
+	if (delta !== 0) return delta
 	return a[0].localeCompare(b[0])
 }))
 
