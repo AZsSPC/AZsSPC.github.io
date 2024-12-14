@@ -1,20 +1,179 @@
+AZ.locale.languages.en.page = {
+	header: '<span>Theres <a is="az-link-button" onclick="displayProjects([])">all</a> my projects! (Which I want to introduce)</span>',
+	tagnames: {
+		WEB: 'WEB',
+		ANDROID: 'Android',
+		EXAMPLE: 'example',
+		PROGRAMMING: 'programming',
+		TEX: 'TeX',
+		UTIL: 'util',
+		REGEX: 'RegEx',
+		FOR_ALL: 'for all',
+		GAME: 'game',
+		MATH: 'math',
+		PHYSIC: 'physic',
+		SCIENCE: 'science',
+	},
+	projects: {
+		alchemy: {
+			name: 'Alchemy',
+			lore: 'Alchemical game in 4th dimensions\n\n(Inspired by Potion Craft)',
+		},
+		evo: {
+			name: 'Evo',
+			lore: 'Primitive evolution simulator developed in 6h [Updating]',
+		},
+		history_line: {
+			name: 'history_line',
+			lore: 'Just a line with branches, what being historical events',
+		},
+		laplas_matrix_helper: {
+			name: 'Laplas Matrix Helper',
+			lore: 'This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n(saves time, exports the solution in .TeX)',
+		},
+		layout_translator: {
+			name: 'Layout Translator',
+			lore: 'Insert mistyped russian or ukrainian text and receive the right version',
+		},
+		normal_markov_algorithm: {
+			name: 'Normal Markov Algorithm',
+			lore: 'Now you can use comfortable normal_markov_algorithm',
+		},
+		regexp_algorithm: {
+			name: 'Regexp Algorithm',
+			lore: 'Same as Normal Markov algorithm, but with RegExp!',
+		},
+		sapper: {
+			name: 'Sapper',
+			lore: 'Almost a classic sapper Game!',
+		},
+		score_table: {
+			name: 'Score Table',
+			lore: 'Just some editable score tables',
+		},
+		seize_territory: {
+			name: 'Terr\'ize',
+			lore: 'One-device multiplayer game',
+		},
+		tattoo_templater: {
+			name: 'Tattoo Templater',
+			lore: 'Helps you to convert any image to simple contour like monochrome tattoo template',
+		},
+		turing_machine: {
+			name: 'Turing Machine',
+			lore: 'Now you can use comfortable turing_machine redactor',
+		},
+		web_syntax: {
+			name: 'web_syntax',
+			lore: 'Just an online editor with highlighted syntax for different languages',
+		},
+		dnd_manager: {
+			name: 'D&D Manager',
+			lore: 'This app will help you as game master or player in managing',
+		},
+		formulaz: {
+			name: 'FormulaZ',
+			lore: 'A collection of formulas in physics, mathematics and other subjects with a convenient search',
+		},
+	},
+}
+
+AZ.locale.languages.ru.page = {
+	header: '<span>Тут представлены <a is="az-link-button" onclick="displayProjects([])">все</a> мои проекты! (Которые я хочу показать)</span>',
+	tagnames: {
+		WEB: 'ВЕБ',
+		ANDROID: 'Андроид',
+		EXAMPLE: 'пример',
+		PROGRAMMING: 'програмы',
+		TEX: 'TeX',
+		UTIL: 'утилиты',
+		REGEX: 'RegEx',
+		FOR_ALL: 'для всех',
+		GAME: 'игра',
+		MATH: 'математика',
+		PHYSIC: 'физика',
+		SCIENCE: 'наука',
+	},
+	projects: {
+		alchemy: {
+			name: 'Алхимия',
+			lore: 'Алхимическая игра в 4 измерениях\n\n(Вдоновлено Potion Craft)',
+		},
+		evo: {
+			name: 'Эво',
+			lore: 'Примитвный эфолюционный симулятор написаный за 6 часов [В разработке]',
+		},
+		history_line: {
+			name: 'Историческая линия',
+			lore: 'Просто линии с ветками',
+		},
+		laplas_matrix_helper: {
+			name: 'Помощник по медоту Лапласа',
+			lore: 'Эта утилита позволит вам избежать арифметических ошибок, но все действия вы сделаете сами!\n(Экономит время, экспортирует решение в .TeX)',
+		},
+		layout_translator: {
+			name: 'Переводчик раскладок',
+			lore: 'Вставьте опечатку на русском или украинском языке и получите правильную версию',
+		},
+		normal_markov_algorithm: {
+			name: 'Нормальный алгоритм Маркова',
+			lore: 'Теперь можно легко и просто использовать Нормальный алгоритм Маркова',
+		},
+		regexp_algorithm: {
+			name: 'Алгоритм регулярных выражений',
+			lore: 'То же, что обычный алгоритм Маркова, но с RegExp!',
+		},
+		sapper: {
+			name: 'Сапёр',
+			lore: 'Почти классическая саперная игра!',
+		},
+		score_table: {
+			name: 'Игровые таблицы',
+			lore: 'Просто несколько редактируемых таблиц результатов',
+		},
+		seize_territory: {
+			name: 'Захват територий',
+			lore: 'Многопользовательская игра на одном устройстве',
+		},
+		tattoo_templater: {
+			name: 'Шаблонизатор татуировок',
+			lore: 'Помогает вам преобразовать любое изображение в простой контур, например монохромный шаблон татуировки',
+		},
+		turing_machine: {
+			name: 'Машина Тьюринга',
+			lore: 'Теперь вы можете использовать удобный редактор Машина Тьюринга',
+		},
+		web_syntax: {
+			name: 'Веб синтаксер',
+			lore: 'Просто онлайн-редактор с выделенным синтаксисом для разных языков',
+		},
+		dnd_manager: {
+			name: 'D&D менеджер',
+			lore: 'Это приложение поможет вам как мастеру игры или игроку в управлении',
+		},
+		formulaz: {
+			name: 'Фурмулки',
+			lore: 'Сборник формул по физике, математике и другим предметам с удобным поиском',
+		},
+	},
+}
+
 const TAG = {
-	WEB: ['WEB', 'green'],
-	ANDROID: ['Android', 'green'],
-	EXAMPLE: ['example', 'magenta'],
-	PROGRAMMING: ['programming'],
-	TEX: ['TeX'],
-	UTIL: ['util', 'magenta'],
-	REGEX: ['RegEx'],
-	FOR_ALL: ['for all'],
-	GAME: ['game', 'red'],
-	MATH: ['math'],
-	PHYSIC: ['physic'],
-	SCIENCE: ['science'],
+	WEB: [AZ.locale.get('page.tagnames.WEB'), 'green'],
+	ANDROID: [AZ.locale.get('page.tagnames.ANDROID'), 'green'],
+	EXAMPLE: [AZ.locale.get('page.tagnames.EXAMPLE'), 'magenta'],
+	PROGRAMMING: [AZ.locale.get('page.tagnames.PROGRAMMING')],
+	TEX: [AZ.locale.get('page.tagnames.TEX')],
+	UTIL: [AZ.locale.get('page.tagnames.UTIL'), 'magenta'],
+	REGEX: [AZ.locale.get('page.tagnames.REGEX')],
+	FOR_ALL: [AZ.locale.get('page.tagnames.FOR_ALL')],
+	GAME: [AZ.locale.get('page.tagnames.GAME'), 'red'],
+	MATH: [AZ.locale.get('page.tagnames.MATH')],
+	PHYSIC: [AZ.locale.get('page.tagnames.PHYSIC')],
+	SCIENCE: [AZ.locale.get('page.tagnames.SCIENCE')],
 	CROWN: ['***', 'gold'],
 	STAR: ['*', 'gold'],
 }
-
 
 class Project {
 	constructor(name = 'Test', path = 'test', enabled = false, weight = 0, lore = '', tag = []) {
@@ -28,66 +187,66 @@ class Project {
 }
 
 const PROJECTS = [
-	new Project('Alchemy', 'alchemy', true, 0,
-		'Alchemical game in 4th dimensions\n\n(Inspired by PotionCraft)',
+	new Project(AZ.locale.get('page.projects.alchemy.name'), 'alchemy', true, 0,
+		AZ.locale.get('page.projects.alchemy.lore'),
 		['WEB', 'GAME', 'FOR_ALL', 'MATH', 'STAR']),
 
-	new Project('Evo', 'evo', true, 0,
-		'Primitive evolution simulator developed in 6h [Updating]',
+	new Project(AZ.locale.get('page.projects.evo.name'), 'evo', true, 0,
+		AZ.locale.get('page.projects.evo.lore'),
 		['WEB', 'GAME', 'SCIENCE']),
 
-	new Project('history_line', 'history_line', false, 0,
-		'Just a line with branches, what being historical events',
+	new Project(AZ.locale.get('page.projects.history_line.name'), 'history_line', false, 0,
+		AZ.locale.get('page.projects.history_line.lore'),
 		['WEB', 'history', 'SCIENCE', 'FOR_ALL']),
 
-	new Project('Laplas Matrix Helper', 'laplas_matrix_helper', true, -2,
-		'This utility will allow you to avoid arithmetic errors, but you do all the actions yourself!\n(saves time, exports the solution in .TeX)',
+	new Project(AZ.locale.get('page.projects.laplas_matrix_helper.name'), 'laplas_matrix_helper', true, -2,
+		AZ.locale.get('page.projects.laplas_matrix_helper.lore'),
 		['WEB', 'UTIL', 'TEX', 'MATH', 'SCIENCE']),
 
-	new Project('Layout Translator', 'layout_translator', true, 0,
-		'Insert mistyped russian or ukrainian text and receive the right version',
+	new Project(AZ.locale.get('page.projects.layout_translator.name'), 'layout_translator', true, 0,
+		AZ.locale.get('page.projects.layout_translator.lore'),
 		['WEB', 'UTIL', 'translator', 'FOR_ALL']),
 
-	new Project('Normal Markov Algorithm', 'normal_markov_algorithm', true, 0,
-		'Now you can use comfortable normal_markov_algorithm',
+	new Project(AZ.locale.get('page.projects.normal_markov_algorithm.name'), 'normal_markov_algorithm', true, 0,
+		AZ.locale.get('page.projects.normal_markov_algorithm.lore'),
 		['WEB', 'UTIL', 'PROGRAMMING', 'SCIENCE']),
 
-	new Project('Regexp Algorithm', 'regexp_algorithm', true, 0,
-		'Same as Normal Markov algorithm, but with RegExp!',
+	new Project(AZ.locale.get('page.projects.regexp_algorithm.name'), 'regexp_algorithm', true, 0,
+		AZ.locale.get('page.projects.regexp_algorithm.lore'),
 		['WEB', 'UTIL', 'PROGRAMMING', 'REGEX', 'SCIENCE']),
 
-	new Project('Sapper', 'sapper', true, 0,
-		'Almost a classic sapper Game!',
+	new Project(AZ.locale.get('page.projects.sapper.name'), 'sapper', true, 0,
+		AZ.locale.get('page.projects.sapper.lore'),
 		['WEB', 'GAME', 'FOR_ALL']),
 
-	new Project('Score Table', 'score_table', true, 0,
-		'Just some editable score tables',
+	new Project(AZ.locale.get('page.projects.score_table.name'), 'score_table', true, 0,
+		AZ.locale.get('page.projects.score_table.lore'),
 		['WEB']),
 
-	new Project('Terr\'ize', 'seize_territory', true, 0,
-		'One-device multiplayer game',
+	new Project(AZ.locale.get('page.projects.seize_territory.name'), 'seize_territory', true, 0,
+		AZ.locale.get('page.projects.seize_territory.lore'),
 		['WEB', 'GAME']),
 
-	new Project('Tattoo Templater', 'tattoo_templater', true, 3,
-		'Helps you to convert any image to simple contour like monochrome tattoo template',
+	new Project(AZ.locale.get('page.projects.tattoo_templater.name'), 'tattoo_templater', true, 3,
+		AZ.locale.get('page.projects.tattoo_templater.lore'),
 		['WEB', 'UTIL', 'FOR_ALL']),
 
-	new Project('Turing Machine', 'turing_machine', true, 5,
-		'Now you can use comfortable turing_machine redactor',
+	new Project(AZ.locale.get('page.projects.turing_machine.name'), 'turing_machine', true, 5,
+		AZ.locale.get('page.projects.turing_machine.lore'),
 		['WEB', 'UTIL', 'PROGRAMMING', 'SCIENCE']),
 
-	new Project('web_syntax', 'web_syntax', false, 2,
-		'Just an online editor with highlighted syntax for different languages',
+	new Project(AZ.locale.get('page.projects.web_syntax.name'), 'web_syntax', false, 2,
+		AZ.locale.get('page.projects.web_syntax.lore'),
 		['WEB', 'UTIL', 'REGEX', 'PROGRAMMING']),
 
-	new Project('D&D Manager', 'dnd_manager', false, 0,
-		'This app will help you as game master or player in managing',
+	new Project(AZ.locale.get('page.projects.dnd_manager.name'), 'dnd_manager', false, 0,
+		AZ.locale.get('page.projects.dnd_manager.lore'),
 		['WEB']),
 
 //BROKEN OR UNDER DEV
 
-	new Project('FormulaZ', 'formulaz', false, 0,
-		'A collection of formulas in physics, mathematics and other subjects with a convenient search',
+	new Project(AZ.locale.get('page.projects.formulaz.name'), 'formulaz', false, 0,
+		AZ.locale.get('page.projects.formulaz.lore'),
 		['WEB', 'UTIL', 'REGEX', 'MATH', 'PHYSIC', 'SCIENCE']),
 
 	new Project('mathaz', 'mathaz', false, 0, '', ['WEB']),
@@ -133,4 +292,5 @@ function displayProjects(tags = []) {
 		})
 }
 
+document.querySelector('header').innerHTML = AZ.locale.get('page.header')
 displayProjects()

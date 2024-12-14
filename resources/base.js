@@ -1,14 +1,52 @@
 function $AZ() {
 	this.loop = false
 	this.timeout = 200
-}
+	this.locale = {
+		localization: (window.navigator.userLanguage || window.navigator.language).split('-', 1)[0],
+		get: (str) =>
+			str.split('.').reduce((current, key) => current?.[key], this.locale.languages[this.locale.localization]) ??
+			(this.locale.localization === 'en' ? str : str.split('.').reduce((current, key) => current?.[key], this.locale.languages.en)),
+		languages: {
+			ru: {
+				page: {},
+				nav: {
+					main: 'главная',
+					readme: 'детали',
+					source: 'код',
+					author: 'об авторе',
+					projects: 'проекты',
+				},
+			},
+			/*ua: {
+			 page:{},
+			 nav: {
+			 main: 'main',
+			 readme: 'readme',
+			 source: 'source',
+			 author: 'author',
+			 projects: 'projects',
+			 },
+			 },*/
+			en: {
+				page: {},
+				nav: {
+					main: 'main',
+					readme: 'readme',
+					source: 'source',
+					author: 'author',
+					projects: 'projects',
+				},
+			},
+		},
+	}
 
-$AZ.prototype.run = async function () {
-	console.log('run is not override')
-}
+	$AZ.prototype.run = async function () {
+		console.log('run is not override')
+	}
 
-$AZ.prototype.get_replace_href = function (regex = /^.+(github.io)/, replace = 'https://github.com/azsspc/azsspc.github.io/blob/main') {
-	return window.location.href.replace(regex, replace)
+	$AZ.prototype.get_replace_href = function (regex = /^.+(github.io)/, replace = 'https://github.com/azsspc/azsspc.github.io/blob/main') {
+		return window.location.href.replace(regex, replace)
+	}
 }
 
 const AZ = new $AZ()
@@ -73,14 +111,14 @@ function nav() {//&lt;/&gt;
 <input type="checkbox" id="navhider" hidden/>
 <label id="hsl" for="navhider" onclick="navhider()">|||</label> 
 <div id="az-nav-subfield-top">
-	<a is="az-link-button" color="red" href="/">main</a>
-	<a is="az-link-button" color="green" id="az-link-button-readme" href="${AZ.get_replace_href()}/README.md">readme</a>
-	<a is="az-link-button" color="blue" id="az-link-button-source"	href="${AZ.get_replace_href()}">source</a>
+	<a is="az-link-button" color="red" href="/">${AZ.locale.get('nav.main')}</a>
+	<a is="az-link-button" color="green" id="az-link-button-readme" href="${AZ.get_replace_href()}/README.md">${AZ.locale.get('nav.readme')}</a>
+	<a is="az-link-button" color="blue" id="az-link-button-source"	href="${AZ.get_replace_href()}">${AZ.locale.get('nav.source')}</a>
 </div>
 
 <div id="az-nav-subfield-list">
- <a is="az-link-button" color="gold" href="/contacts/">author</a>
- <a is="az-link-button" color="green" href="/projects/">projects</a>
+ <a is="az-link-button" color="gold" href="/contacts/">${AZ.locale.get('nav.author')}</a>
+ <a is="az-link-button" color="green" href="/projects/">${AZ.locale.get('nav.projects')}</a>
 </div>
 </nav>
 `)
@@ -94,22 +132,7 @@ function copy_to_clipboard(text) {
 	})
 }
 
-/*
- function header() {
- document.write('<input type="checkbox" id="navhider" hidden ' + (getCookie('NAVH') ? 'checked' : '') + ' onchange="navhider()">'
- + '<header>' + '<img id="icon" src="https://azsspc.github.io/img/icon.png" onclick="window.location.href=\'https://azsspc.github.io\'"/>'
- + '<input type="checkbox" id="nav-burger-cb" hidden><label for="nav-burger-cb" id="nav-burger-labe">===</label> '
- + '<nav>'
- + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '/README.md" class="b-btn not_a_text">?</a>'
- + ' <a href="' + (window.location.href.replace(/^.+(github.io)/, 'https://github.com/azsspc/azsspc.github.io/blob/main')) + '" class="b-btn not_a_text">&lt;/&gt;</a>'
- + ' <a href="https://azsspc.github.io/projects" class="m-btn not_a_text">projects</a>'
- + ' <a href="https://azsspc.github.io/contacts" class="not_a_text">@_</a>'
- + '</nav>'
- + '<label id="hsl" for="navhider"></label>'
- + '</header> ');
- }*/
-
-function settings(settings = {}) {
+function settings(includes = {html2canvas: false, MathJax: false}) {
 	document.write(`
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -117,10 +140,9 @@ function settings(settings = {}) {
 <link rel="icon" href="/resources/img/fic.png">
 <link rel="stylesheet" href="/resources/css/main.css">
 <link rel="stylesheet" href="main.css">
-${settings.html2canvas ? '<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>' : ''}
-${settings.MathJax ? '<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>' : ''}
-`,
-	)
+${includes.html2canvas ? '<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>' : ''}
+${includes.MathJax ? '<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>' : ''}
+`)
 }
 
 function create_file_and_download(filename = 'AZsSPC.file', text = 'Hello World!') {
@@ -155,7 +177,8 @@ function setCookie(name, value, options = {}) {
 	let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value)
 	for (let optionKey in options) {
 		updatedCookie += '; ' + optionKey
-		if (options[optionKey] !== true) updatedCookie += '=' + options[optionKey]
+		if (options[optionKey] !== true)
+			updatedCookie += '=' + options[optionKey]
 	}
 	document.cookie = updatedCookie
 }

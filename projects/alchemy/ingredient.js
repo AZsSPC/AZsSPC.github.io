@@ -11,7 +11,7 @@ export class Ingredient {
 		this.color = color
 		this.amount = amount
 		this.hash = hash || compactVector4(this.vector_position) + ';' + compactVector4(this.vector_weight) //+ ';' + JSON.stringify(this.elements)
-		console.log(this.hash)
+		//console.log(this.hash)
 	}
 
 	copy(amount = this.amount) {
