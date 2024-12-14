@@ -1,5 +1,5 @@
 export const locale = {
-	localization: 'en',
+	localization: (window.navigator.userLanguage || window.navigator.language).split('-', 1)[0],
 	get: (str) =>
 		str.split('.').reduce((current, key) => current?.[key], locale.languages[locale.localization]) ??
 		(locale.localization === 'en' ? str : str.split('.').reduce((current, key) => current?.[key], locale.languages.en)),

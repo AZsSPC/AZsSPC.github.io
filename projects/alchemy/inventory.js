@@ -65,19 +65,23 @@ export class Inventory {
 		 itemDiv.appendChild(amountDiv)
 		 */
 		const influenceDiv = document.createElement('div')
-		influenceDiv.classList.add('item-influence')
+		influenceDiv.classList.add('item-influence-group')
 		const influences = ['x', 'y', 'z', 'w']
 
 		const max_influence = influences.reduce((max, axis) =>
 			Math.max(max, Math.abs(ingredient.vector_position[axis] * ingredient.vector_weight[axis])), 0) / 50
 
 		influences.forEach((axis) => {
-			if (ingredient.vector_weight[axis] === 0) return
+			if (ingredient.vector_weight[axis] === 0)
+				return
 			const axisDiv = document.createElement('div')
 			axisDiv.classList.add('item-influence', `item-influence-${axis}`)
-			if (ingredient.vector_position[axis] * ingredient.vector_weight[axis] < 0) axisDiv.style.setProperty('--influence-direction', -1)
-			axisDiv.style.setProperty('--influence-percent', `${50 + Math.abs(ingredient.vector_position[axis] * ingredient.vector_weight[axis] / max_influence || 0)}%`)
-			axisDiv.textContent = `${ingredient.vector_position[axis]} ~${ingredient.vector_weight[axis]}`
+			if (ingredient.vector_position[axis] * ingredient.vector_weight[axis] < 0)
+				axisDiv.style.setProperty('--influence-direction', -1)
+			axisDiv.style.setProperty('--influence-percent',
+				`${50 + Math.abs(ingredient.vector_position[axis] * ingredient.vector_weight[axis] / max_influence || 0)}%`,
+			)
+			axisDiv.textContent = `${ingredient.vector_position[axis]}•${ingredient.vector_weight[axis]}`
 			influenceDiv.appendChild(axisDiv)
 		})
 		itemDiv.appendChild(influenceDiv)

@@ -53,23 +53,34 @@ main {padding : 1rem}
 
 .item-description {color : var(--c-gray-l);padding : 4px}
 
-.item-influence {font-size : 11px;padding : 0 4px;border-radius : 8px;}
+.item-influence-group {
+	display       : flex;
+	gap           : 4px;
+}
+
+.item-influence {
+	font-size     : 12px;
+	padding       : 0 4px;
+	border-radius : 8px;
+	width         : -webkit-fill-available;
+	border: solid 1px #353434;
+}
 
 .item-influence-x { background : linear-gradient(calc(90deg * var(--influence-direction)),
-transparent 50%, #C83947 50%, #C83947 var(--influence-percent), transparent var(--influence-percent))}
+black 50%, #C83947 50%, #C83947 var(--influence-percent), #351317 var(--influence-percent))}
 
 .item-influence-y { background : linear-gradient(calc(90deg * var(--influence-direction)),
-transparent 50%, #248A38 50%, #248A38 var(--influence-percent), transparent var(--influence-percent))}
+black 50%, #248A38 50%, #248A38 var(--influence-percent), #132716 var(--influence-percent))}
 
 .item-influence-z { background : linear-gradient(calc(90deg * var(--influence-direction)),
-transparent 50%, #2851B6 50%, #2851B6 var(--influence-percent), transparent var(--influence-percent))}
+black 50%, #2851B6 50%, #2851B6 var(--influence-percent), #151E33 var(--influence-percent))}
 
 .item-influence-w { background : linear-gradient(calc(90deg * var(--influence-direction)),
-transparent 50%, #D3B728 50%, #D3B728 var(--influence-percent), transparent var(--influence-percent))}
+black 50%, #D3B728 50%, #D3B728 var(--influence-percent), #43280D var(--influence-percent))}
 
 .item-put {
 	background    : var(--c-green-d);
 	cursor        : pointer;
 	border-radius : 1rem;
-	margin-top: 4px;
+	margin-top    : 4px;
 }

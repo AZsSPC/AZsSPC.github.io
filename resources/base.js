@@ -33,7 +33,7 @@ function loop_click(old_state = AZ.loop) {
 		AZ.loop = true
 		loop_change_view()
 		console.info('RUN started')
-		AZ.run().then(r => {
+		AZ.run().then(() => {
 			AZ.loop = false
 			console.info('RUN stopped')
 			loop_change_view()
@@ -109,14 +109,17 @@ function copy_to_clipboard(text) {
  + '</header> ');
  }*/
 
-function settings() {
-	document.write('<meta charset="utf-8">' +
-		'<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">' +
-		'<meta name="viewport" content="width=device-width,initial-scale=1"/>' +
-		'<link rel="icon" href="/resources/img/fic.png">' +
-		'<link rel="stylesheet" href="/resources/css/main.css">' +
-		'<link rel="stylesheet" href="main.css">' +
-		'<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>\n',
+function settings(settings = {}) {
+	document.write(`
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<link rel="icon" href="/resources/img/fic.png">
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="main.css">
+${settings.html2canvas ? '<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>' : ''}
+${settings.MathJax ? '<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>' : ''}
+`,
 	)
 }
 
@@ -166,7 +169,6 @@ function deleteCookie(name) {
 	setCookie(name, '', {'max-age': -1})
 }
 
-// <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 function useMathJax() {
 	MathJax.Hub.Queue(['Typeset', MathJax.Hub])
 }
