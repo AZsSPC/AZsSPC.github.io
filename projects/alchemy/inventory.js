@@ -1,5 +1,7 @@
 import {Ingredient} from './ingredient.js'
-import {locale} from './locale.js'
+import {use_locale} from './locale.js'
+
+use_locale()
 
 export class Inventory {
 	constructor(brew, render_element_ingredients, render_element_brews, render_element_hotbar) {
@@ -35,7 +37,7 @@ export class Inventory {
 		let itemDiv = this.render_element_ingredients.querySelector(`[data-hash="${ingredient.hash}"]`)
 
 		if (itemDiv) {
-			itemDiv.querySelector('.item-title').textContent = `x${ingredient.amount} ${locale.get(ingredient.title)}`
+			itemDiv.querySelector('.item-title').textContent = `x${ingredient.amount} ${AZ.locale.get(ingredient.title)}`
 			return
 		}
 
@@ -50,13 +52,13 @@ export class Inventory {
 		 */
 		const titleDiv = document.createElement('div')
 		titleDiv.classList.add('item-title')
-		titleDiv.textContent = `x${ingredient.amount} ${locale.get(ingredient.title)}`
+		titleDiv.textContent = `x${ingredient.amount} ${AZ.locale.get(ingredient.title)}`
 		titleDiv.style.setProperty('--item-color', `#${ingredient.color.toString(16).padStart(6, '0')}`)
 		itemDiv.appendChild(titleDiv)
 
 		const descriptionDiv = document.createElement('div')
 		descriptionDiv.classList.add('item-description')
-		descriptionDiv.textContent = locale.get(ingredient.description)
+		descriptionDiv.textContent = AZ.locale.get(ingredient.description)
 		itemDiv.appendChild(descriptionDiv)
 		/*
 		 const amountDiv = document.createElement('div')
