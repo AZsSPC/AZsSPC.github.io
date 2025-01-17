@@ -1,9 +1,9 @@
 import {CylinderGeometry, DoubleSide, Group, Mesh, MeshStandardMaterial, SphereGeometry, Vector3, Vector4} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
-import {Ingredient} from './ingredient.js'
+import Ingredient from './ingredient.js'
 
-export class Brew {
+export default class Brew {
 	constructor() {
-		this.vector_position = new Vector4(0, 0, 0, 0)
+		this.position = new Vector4(0, 0, 0, 0)
 		this.vector_weight = new Vector4(0, 0, 0, 0)
 		this.amount = 0
 		this.elements = {}
@@ -28,10 +28,10 @@ export class Brew {
 		this.vector_weight[axis] = combinedWeight / totalAmount || 0
 
 		const weightedPosition =
-			this.vector_position[axis] * this.vector_weight[axis] * this.amount +
-			ingredient.vector_position[axis] * ingredient.vector_weight[axis] * ingredient.amount
+			this.position[axis] * this.vector_weight[axis] * this.amount +
+			ingredient.position[axis] * ingredient.vector_weight[axis] * ingredient.amount
 
-		this.vector_position[axis] = weightedPosition / (this.amount * this.vector_weight[axis] + ingredient.amount * ingredient.vector_weight[axis]) || 0
+		this.position[axis] = weightedPosition / (this.amount * this.vector_weight[axis] + ingredient.amount * ingredient.vector_weight[axis]) || 0
 	}
 
 	put(ingredient) {
@@ -43,14 +43,14 @@ export class Brew {
 			this.elements[key] = (this.elements[key] || 0) + value
 
 		const newRadius = this.calculatePercentageDifference(this.vector_weight)
-		this.queue.push(new Vector4(this.vector_position.x, this.vector_position.y, this.vector_position.z, newRadius))
+		this.queue.push(new Vector4(this.position.x, this.position.y, this.position.z, newRadius))
 		this.geometry = new SphereGeometry(newRadius)
 		this.mesh.geometry.dispose()
 		this.mesh.geometry = this.geometry
-		this.mesh.position.set(this.vector_position.x, this.vector_position.y, this.vector_position.z)
+		this.mesh.position.set(this.position.x, this.position.y, this.position.z)
 
 		console.log('put', ingredient)
-		console.log('pos', this.vector_position.clone(), 'weights', this.vector_weight.clone())
+		console.log('pos', this.position.clone(), 'weights', this.vector_weight.clone())
 	}
 
 	calculatePercentageDifference(v) {
@@ -60,7 +60,7 @@ export class Brew {
 
 	take() {
 		const result = new Ingredient(
-			this.vector_position.clone(),
+			this.position.clone(),
 			this.vector_weight.clone(),
 			{...this.elements},
 			'ingredient.test.title',
@@ -70,7 +70,7 @@ export class Brew {
 		)
 
 		// Reset properties
-		this.vector_position.set(0, 0, 0, 0)
+		this.position.set(0, 0, 0, 0)
 		this.vector_weight.set(0, 0, 0, 0)
 		this.amount = 0
 		this.elements = {}

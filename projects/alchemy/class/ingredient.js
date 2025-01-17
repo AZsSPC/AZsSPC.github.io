@@ -1,26 +1,26 @@
 import {Vector4} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
-import {compactVector4} from './data_storer.js'
+import {compactVector4} from '../comp/data_storer.js'
 
-export class Ingredient {
-	constructor(vector_position = new Vector4(), vector_weight = new Vector4(), elements = {}, title = 'brew.unknown.title', description = 'brew.unknown.description', color = 0xffffff, amount = 1, hash = null) {
-		this.vector_position = vector_position
+export default class Ingredient {
+	constructor(position = new Vector4(), vector_weight = new Vector4(), elements = {}, title = 'brew.unknown.title', description = 'brew.unknown.description', color = 0xffffff, amount = 1, hash = null) {
+		this.position = position
 		this.vector_weight = vector_weight
 		this.elements = elements
 		this.title = title
 		this.description = description
 		this.color = color
 		this.amount = amount
-		this.hash = hash || compactVector4(this.vector_position) + ';' + compactVector4(this.vector_weight) //+ ';' + JSON.stringify(this.elements)
+		this.hash = hash || compactVector4(this.position) + ';' + compactVector4(this.vector_weight) //+ ';' + JSON.stringify(this.elements)
 		//console.log(this.hash)
 	}
 
 	copy(amount = this.amount) {
-		return new Ingredient(this.vector_position.clone(), this.vector_weight.clone(), {...this.elements}, this.title, this.description, this.color, amount)
+		return new Ingredient(this.position.clone(), this.vector_weight.clone(), {...this.elements}, this.title, this.description, this.color, amount)
 	}
 
 	take(amount = 1) {
 		this.amount -= amount
-		return new Ingredient(this.vector_position.clone(), this.vector_weight.clone(), {...this.elements}, this.title, this.description, this.color, amount)
+		return new Ingredient(this.position.clone(), this.vector_weight.clone(), {...this.elements}, this.title, this.description, this.color, amount)
 	}
 
 	static list = Object.freeze({

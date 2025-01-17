@@ -1,6 +1,6 @@
 import {CylinderGeometry, Group, Mesh, MeshStandardMaterial} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 
-export function createAxisGroup() {
+export default function createAxisGroup() {
 	const group = new Group()
 
 	const radius = 1

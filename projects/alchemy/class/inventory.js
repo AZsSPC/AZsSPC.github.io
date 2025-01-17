@@ -1,9 +1,9 @@
-import {Ingredient} from './ingredient.js'
-import {use_locale} from './locale.js'
+import Ingredient from './ingredient.js'
+import {use_locale} from '../comp/locale.js'
 
 use_locale()
 
-export class Inventory {
+export default class Inventory {
 	constructor(brew, render_element_ingredients, render_element_brews, render_element_hotbar) {
 		this.brew = brew
 		this.render_element_ingredients = render_element_ingredients
@@ -71,19 +71,19 @@ export class Inventory {
 		const influences = ['x', 'y', 'z', 'w']
 
 		const max_influence = influences.reduce((max, axis) =>
-			Math.max(max, Math.abs(ingredient.vector_position[axis] * ingredient.vector_weight[axis])), 0) / 50
+			Math.max(max, Math.abs(ingredient.position[axis] * ingredient.vector_weight[axis])), 0) / 50
 
 		influences.forEach((axis) => {
 			if (ingredient.vector_weight[axis] === 0)
 				return
 			const axisDiv = document.createElement('div')
 			axisDiv.classList.add('item-influence', `item-influence-${axis}`)
-			if (ingredient.vector_position[axis] * ingredient.vector_weight[axis] < 0)
+			if (ingredient.position[axis] * ingredient.vector_weight[axis] < 0)
 				axisDiv.style.setProperty('--influence-direction', -1)
 			axisDiv.style.setProperty('--influence-percent',
-				`${50 + Math.abs(ingredient.vector_position[axis] * ingredient.vector_weight[axis] / max_influence || 0)}%`,
+				`${50 + Math.abs(ingredient.position[axis] * ingredient.vector_weight[axis] / max_influence || 0)}%`,
 			)
-			axisDiv.textContent = `${ingredient.vector_position[axis]}•${ingredient.vector_weight[axis]}`
+			axisDiv.textContent = `${ingredient.position[axis]}•${ingredient.vector_weight[axis]}`
 			influenceDiv.appendChild(axisDiv)
 		})
 		itemDiv.appendChild(influenceDiv)
@@ -92,7 +92,7 @@ export class Inventory {
 		putButton.classList.add('item-put')
 		putButton.textContent = 'put'
 		putButton.onclick = () => {
-			const amount = prompt(`Insert amount of [${locale.get(ingredient.title)}] (0;${ingredient.amount}]`)
+			const amount = prompt(`Insert amount of [${AZ.locale.get(ingredient.title)}] (0;${ingredient.amount}]`)
 			if (+amount != amount) {
 				alert(`"${amount}" of it is not a number`)
 				return

@@ -4,35 +4,35 @@ let isDragging = false
 let previousMousePosition = {x: 0, y: 0}
 let verticalAngle = 0
 
-export function rotateCamera(brew, camera, deltaX = 0, deltaY = 0, delta = 0, old = new Vector4()) {
+export function rotateCamera(brew, camera, deltaX = 0, deltaY = 0, old = brew.position, delta = 0) {
 	const rotationSpeed = 0.005
 
 	if (deltaX === 0 && deltaY === 0) {
 		const cameraPosition = new Vector3(
-			camera.position.x - (brew.vector_position.x + delta * (old.x - brew.vector_position.x)),
-			camera.position.y - (brew.vector_position.y + delta * (old.y - brew.vector_position.y)),
-			camera.position.z - (brew.vector_position.z + delta * (old.z - brew.vector_position.z)),
+			camera.position.x - (brew.position.x + delta * (old.x - brew.position.x)),
+			camera.position.y - (brew.position.y + delta * (old.y - brew.position.y)),
+			camera.position.z - (brew.position.z + delta * (old.z - brew.position.z)),
 		)
 
 		camera.position.set(
-			cameraPosition.x + (brew.vector_position.x + delta * (old.x - brew.vector_position.x)),
-			cameraPosition.y + (brew.vector_position.y + delta * (old.y - brew.vector_position.y)),
-			cameraPosition.z + (brew.vector_position.z + delta * (old.z - brew.vector_position.z)),
+			cameraPosition.x + (brew.position.x + delta * (old.x - brew.position.x)),
+			cameraPosition.y + (brew.position.y + delta * (old.y - brew.position.y)),
+			cameraPosition.z + (brew.position.z + delta * (old.z - brew.position.z)),
 		)
 
 		camera.lookAt(
-			(brew.vector_position.x + delta * (old.x - brew.vector_position.x)),
-			(brew.vector_position.y + delta * (old.y - brew.vector_position.y)),
-			(brew.vector_position.z + delta * (old.z - brew.vector_position.z)),
+			(brew.position.x + delta * (old.x - brew.position.x)),
+			(brew.position.y + delta * (old.y - brew.position.y)),
+			(brew.position.z + delta * (old.z - brew.position.z)),
 		)
 
 		return
 	}
 
 	const cameraPosition = new Vector3(
-		camera.position.x - (brew.vector_position.x + delta * (old.x - brew.vector_position.x)),
-		camera.position.y - (brew.vector_position.y + delta * (old.y - brew.vector_position.y)),
-		camera.position.z - (brew.vector_position.z + delta * (old.z - brew.vector_position.z)),
+		camera.position.x - (brew.position.x + delta * (old.x - brew.position.x)),
+		camera.position.y - (brew.position.y + delta * (old.y - brew.position.y)),
+		camera.position.z - (brew.position.z + delta * (old.z - brew.position.z)),
 	)
 
 	cameraPosition.applyAxisAngle(new Vector3(0, 1, 0), -deltaX * rotationSpeed)
@@ -49,15 +49,15 @@ export function rotateCamera(brew, camera, deltaX = 0, deltaY = 0, delta = 0, ol
 	}
 
 	camera.position.set(
-		cameraPosition.x + (brew.vector_position.x + delta * (old.x - brew.vector_position.x)),
-		cameraPosition.y + (brew.vector_position.y + delta * (old.y - brew.vector_position.y)),
-		cameraPosition.z + (brew.vector_position.z + delta * (old.z - brew.vector_position.z)),
+		cameraPosition.x + (brew.position.x + delta * (old.x - brew.position.x)),
+		cameraPosition.y + (brew.position.y + delta * (old.y - brew.position.y)),
+		cameraPosition.z + (brew.position.z + delta * (old.z - brew.position.z)),
 	)
 
 	camera.lookAt(
-		(brew.vector_position.x + delta * (old.x - brew.vector_position.x)),
-		(brew.vector_position.y + delta * (old.y - brew.vector_position.y)),
-		(brew.vector_position.z + delta * (old.z - brew.vector_position.z)),
+		(brew.position.x + delta * (old.x - brew.position.x)),
+		(brew.position.y + delta * (old.y - brew.position.y)),
+		(brew.position.z + delta * (old.z - brew.position.z)),
 	)
 
 }
