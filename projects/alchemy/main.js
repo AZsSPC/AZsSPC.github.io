@@ -1,4 +1,4 @@
-import {AmbientLight, DirectionalLight, Group, PerspectiveCamera, Scene, Vector3, Vector4, WebGLRenderer} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
+import { AmbientLight, DirectionalLight, Group, PerspectiveCamera, Scene, Vector3, Vector4, WebGLRenderer } from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 
 import ZoneBubble from './class/zone/ZoneBubble.js'
 import ReceiptZoneBubble from './class/zone/ReceiptZoneBubble.js'
@@ -21,7 +21,9 @@ const inventory = new Inventory(
 inventory.fillFromCreativeMode()
 
 const map_div = document.getElementById('map')
-let {width: vw, height: vh} = map_div.getBoundingClientRect()
+let { width: vw, height: vh } = map_div.getBoundingClientRect()
+
+const map_pos = document.getElementById('map-pos')
 
 const scene = new Scene()
 
@@ -55,7 +57,7 @@ let old = oldcord
 let decrementer = 0
 
 function animate() {
-	const {width: nvw, height: nvh} = map_div.getBoundingClientRect()
+	const { width: nvw, height: nvh } = map_div.getBoundingClientRect()
 
 	if (vw !== nvw || vh !== nvh) {
 		[vw, vh] = [nvw, nvh]
@@ -74,6 +76,12 @@ function animate() {
 		decrementer -= 0.03
 		if (decrementer < 0) decrementer = 0
 		CameraRotator.rotateCamera(brew, camera, 0, 0, old, decrementer)
+		map_pos.innerHTML = `
+		 x:${(((brew.position.x + decrementer * (old.x - brew.position.x)) * 100) | 0) / 100}
+		 y:${(((brew.position.y + decrementer * (old.y - brew.position.y)) * 100) | 0) / 100}
+		 z:${(((brew.position.z + decrementer * (old.z - brew.position.z)) * 100) | 0) / 100}
+		 <br>
+		 w:${(((brew.position.w + decrementer * (old.w - brew.position.w)) * 100) | 0) / 100}`
 	}
 
 	requestAnimationFrame(animate)
