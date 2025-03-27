@@ -1,4 +1,4 @@
-import {CylinderGeometry, DoubleSide, Group, Mesh, MeshStandardMaterial, SphereGeometry, Vector3, Vector4} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
+import { CylinderGeometry, DoubleSide, Group, Mesh, MeshStandardMaterial, SphereGeometry, Vector3, Vector4 } from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 import Ingredient from './ingredient.js'
 
 export default class Brew {
@@ -62,7 +62,7 @@ export default class Brew {
 		const result = new Ingredient(
 			this.position.clone(),
 			this.vector_weight.clone(),
-			{...this.elements},
+			{ ...this.elements },
 			'ingredient.test.title',
 			'ingredient.test.description',
 			0x555,

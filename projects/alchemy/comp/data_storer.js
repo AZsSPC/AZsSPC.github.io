@@ -1,6 +1,7 @@
-import {Vector4} from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
+import { Vector4 } from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 
 const ALPHABET = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+const SEPARATOR = ':'
 const BASE = ALPHABET.length
 
 export const floatToCompactString = (value) => {
@@ -35,10 +36,10 @@ export const compactStringToFloat = (str) => {
 }
 
 export const compactVector4 = (vector4 = new Vector4()) => {
-	return [vector4.x, vector4.y, vector4.z, vector4.w].map(floatToCompactString).join(':')
+	return [vector4.x, vector4.y, vector4.z, vector4.w].map(floatToCompactString).join(SEPARATOR)
 }
 
 export const expandVector4 = (compactString) => {
-	const [x, y, z, w] = compactString.split(':').map(compactStringToFloat)
+	const [x, y, z, w] = compactString.split(SEPARATOR).map(compactStringToFloat)
 	return new Vector4(x, y, z, w)
 }

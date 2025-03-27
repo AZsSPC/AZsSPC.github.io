@@ -19,7 +19,6 @@ main {
 	height: min(45dvmax, 90dvw);
 	border-radius: 100%;
 	overflow: hidden;
-	position: relative;
 }
 
 #inventory {
@@ -106,5 +105,31 @@ main {
 	right: 0;
 	left: 0;
 	text-align: center;
+}
 
+#brew-btn {
+	display: block;
+	position: absolute;
+	bottom: 10%;
+	right: 10%;
+	overflow: visible;
+	border-radius: 100% 0 100% 0;
+	width: 10%;
+	height: 10%;
+	cursor: pointer;
+	transition: 300ms;
+	border: solid 2px black;
+	background-color: #11551f;
+}
+
+#map-holder:hover #brew-btn {
+	border-color: #26bb44;
+}
+
+#brew-btn:hover {
+	background-color: #26bb44;
+}
+
+#map-holder {
+	position: relative;
 }

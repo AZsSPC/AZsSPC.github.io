@@ -24,6 +24,10 @@ const map_div = document.getElementById('map')
 let { width: vw, height: vh } = map_div.getBoundingClientRect()
 
 const map_pos = document.getElementById('map-pos')
+map_pos.innerHTML = 'x:0 y:0 z:0<br>w:0'
+
+const brew_btn = document.getElementById('brew-btn')
+brew_btn.onclick = () => { inventory.addItem(brew.take()) }
 
 const scene = new Scene()
 

@@ -1,5 +1,5 @@
 import Ingredient from './ingredient.js'
-import {use_locale} from '../comp/locale.js'
+import { use_locale } from '../comp/locale.js'
 
 use_locale()
 
