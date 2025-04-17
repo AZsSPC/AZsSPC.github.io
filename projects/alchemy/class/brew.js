@@ -1,5 +1,6 @@
 import { CylinderGeometry, DoubleSide, Group, Mesh, MeshStandardMaterial, SphereGeometry, Vector3, Vector4 } from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 import Ingredient from './ingredient.js'
+import ReceiptZoneBubble from './zone/ReceiptZoneBubble.js'
 
 export default class Brew {
 	constructor() {
@@ -63,11 +64,23 @@ export default class Brew {
 			this.position.clone(),
 			this.vector_weight.clone(),
 			{ ...this.elements },
-			'ingredient.test.title',
-			'ingredient.test.description',
+			'brew.default.title',
+			'brew.default.description',
 			0x555,
 			this.amount,
 		)
+
+		for (const rec of ReceiptZoneBubble.list) {
+			const dx = (result.position.x - rec.position.x) / rec.radius
+			const dy = (result.position.x - rec.position.x) / rec.radius
+			const dz = (result.position.x - rec.position.x) / rec.radius
+			const dw = (result.position.x - rec.position.x) / rec.radiusW
+			const condition = dx ** 2 + dy ** 2 + dz ** 2 + dw ** 2 <= 1
+			if (!condition) continue
+			result.title = rec.result.title
+			result.description = rec.result.description
+			result.color = rec.result.color
+		}
 
 		// Reset properties
 		this.position.set(0, 0, 0, 0)

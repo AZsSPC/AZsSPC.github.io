@@ -22,9 +22,10 @@ main {
 }
 
 #inventory {
-	height: 50dvmin;
+	height: 100%;
 	overflow-y: scroll;
 	gap: 8px;
+	padding: 8px;
 }
 
 #ingredients {

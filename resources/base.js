@@ -5,7 +5,8 @@ function $AZ() {
 		localization: (window.navigator.userLanguage || window.navigator.language).split('-', 1)[0],
 		get: (str) =>
 			str.split('.').reduce((current, key) => current?.[key], this.locale.languages[this.locale.localization]) ??
-			(this.locale.localization === 'en' ? str : str.split('.').reduce((current, key) => current?.[key], this.locale.languages.en)),
+			(this.locale.localization === 'en' ? str : str.split('.').reduce((current, key) => current?.[key], this.locale.languages.en))
+			?? str,
 		languages: {
 			ru: {
 				page: {},
@@ -132,7 +133,7 @@ function copy_to_clipboard(text) {
 	})
 }
 
-function settings(includes = {html2canvas: false, MathJax: false}) {
+function settings(includes = { html2canvas: false, MathJax: false }) {
 	document.write(`
 <meta charset="utf-8">
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -172,7 +173,7 @@ function navhider() {
 }
 
 function setCookie(name, value, options = {}) {
-	options = {path: '/', ...options}
+	options = { path: '/', ...options }
 	if (options.expires instanceof Date) options.expires = options.expires.toUTCString()
 	let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value)
 	for (let optionKey in options) {
@@ -189,7 +190,7 @@ function getCookie(name) {
 }
 
 function deleteCookie(name) {
-	setCookie(name, '', {'max-age': -1})
+	setCookie(name, '', { 'max-age': -1 })
 }
 
 function useMathJax() {

@@ -18,6 +18,22 @@ export default class Inventory {
 	}
 
 	addItem(ingredient) {
+		if (this.items[ingredient.hash]) {
+			this.items[ingredient.hash].amount += ingredient.amount
+			this.renderItem(this.items[ingredient.hash])
+			return
+		}
+
+		console.log('rewrited')
+		const is_new = !(this.items[ingredient.hash]?.amount)
+		const is_unnamed = ingredient.title === 'brew.unknown.title' || ingredient.title === 'brew.default.title'
+
+		if (is_new && is_unnamed) {
+			const new_name = prompt('Name your new brew', 'brew.default.title')
+			ingredient.title = new_name
+			ingredient.description = 'brew.default.description'
+		}
+
 		this.items[ingredient.hash] = ingredient
 		this.renderItem(ingredient)
 	}

@@ -37,7 +37,7 @@ export default class Ingredient {
 		ice: new Ingredient(new Vector4(10, -50, 10, 0), new Vector4(1, 1, 1, 0), {}, 'ingredient.ice.title', 'ingredient.ice.description', 0xadd8e6),
 		coal: new Ingredient(new Vector4(-20, 40, -10, 0), new Vector4(1, 1, 1, 0), {}, 'ingredient.coal.title', 'ingredient.coal.description', 0x36454f),
 		clay: new Ingredient(new Vector4(-15, -20, 25, 0), new Vector4(1, 1, 1, 0), {}, 'ingredient.clay.title', 'ingredient.clay.description', 0x964b00),
-		silver: new Ingredient(new Vector4(30, 10, -15, 10), new Vector4(1, 1, 1, 1), {}, 'ingredient.silver.title', 'ingredient.silver.description', 0xc0c0c0),
+		silver: new Ingredient(new Vector4(30, 10, -15, 0), new Vector4(1, 1, 1, 0), {}, 'ingredient.silver.title', 'ingredient.silver.description', 0xc0c0c0),
 		honey: new Ingredient(new Vector4(0, -40, 30, 0), new Vector4(1, 1, 1, 0), {}, 'ingredient.honey.title', 'ingredient.honey.description', 0xffc30b),
 		ash: new Ingredient(new Vector4(-25, 20, 5, 0), new Vector4(1, 1, 1, 0), {}, 'ingredient.ash.title', 'ingredient.ash.description', 0x555555),
 		milk: new Ingredient(new Vector4(10, -15, 15, 0), new Vector4(1, 1, 1, 1), {}, 'ingredient.milk.title', 'ingredient.milk.description', 0xffffe0),
