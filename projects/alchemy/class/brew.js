@@ -1,6 +1,7 @@
 import { CylinderGeometry, DoubleSide, Group, Mesh, MeshStandardMaterial, SphereGeometry, Vector3, Vector4 } from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 import Ingredient from './ingredient.js'
-import ReceiptZoneBubble from './zone/ReceiptZoneBubble.js'
+import ReceiptConditionsZoneBubble from './zone/ReceiptZoneBubble.js'
+import Receipt from './receipt.js'
 
 export default class Brew {
 	constructor() {
@@ -18,26 +19,39 @@ export default class Brew {
 		})
 		this.geometry = new SphereGeometry(5)
 		this.mesh = new Mesh(this.geometry, this.material)
+		this.receipt = new Receipt()
 	}
 
 	recalculateVectorAxis(axis, ingredient) {
-		const totalAmount = this.amount + ingredient.amount
-		const combinedWeight =
-			this.vector_weight[axis] * this.amount +
-			ingredient.vector_weight[axis] * ingredient.amount
+		const amountA = this.amount
+		const amountB = ingredient.amount
+		const totalAmount = amountA + amountB
 
-		this.vector_weight[axis] = combinedWeight / totalAmount || 0
+		const weightA = this.vector_weight[axis]
+		const weightB = ingredient.vector_weight[axis]
+
+		const posA = this.position[axis]
+		const posB = ingredient.position[axis]
+
+		const combinedWeight = weightA * amountA + weightB * amountB
+		const newWeight = combinedWeight / totalAmount || 0
+		this.vector_weight[axis] = newWeight
 
 		const weightedPosition =
-			this.position[axis] * this.vector_weight[axis] * this.amount +
-			ingredient.position[axis] * ingredient.vector_weight[axis] * ingredient.amount
+			posA * weightA * amountA +
+			posB * weightB * amountB
 
-		this.position[axis] = weightedPosition / (this.amount * this.vector_weight[axis] + ingredient.amount * ingredient.vector_weight[axis]) || 0
+		const totalWeightedAmount = weightA * amountA + weightB * amountB
+
+		this.position[axis] = totalWeightedAmount
+			? weightedPosition / totalWeightedAmount
+			: 0
 	}
 
 	put(ingredient) {
 		['x', 'y', 'z', 'w'].forEach((axis) => this.recalculateVectorAxis(axis, ingredient))
 
+		this.receipt.action_put(ingredient)
 		this.amount += ingredient.amount
 
 		for (const [key, value] of Object.entries(ingredient.elements))
@@ -60,6 +74,7 @@ export default class Brew {
 	}
 
 	take() {
+		const receipt = this.receipt
 		const result = new Ingredient(
 			this.position.clone(),
 			this.vector_weight.clone(),
@@ -70,16 +85,17 @@ export default class Brew {
 			this.amount,
 		)
 
-		for (const rec of ReceiptZoneBubble.list) {
-			const dx = (result.position.x - rec.position.x) / rec.radius
-			const dy = (result.position.x - rec.position.x) / rec.radius
-			const dz = (result.position.x - rec.position.x) / rec.radius
-			const dw = (result.position.x - rec.position.x) / rec.radiusW
+
+		for (const reciept_conditions of ReceiptConditionsZoneBubble.list) {
+			const dx = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radius
+			const dy = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radius
+			const dz = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radius
+			const dw = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radiusW
 			const condition = dx ** 2 + dy ** 2 + dz ** 2 + dw ** 2 <= 1
 			if (!condition) continue
-			result.title = rec.result.title
-			result.description = rec.result.description
-			result.color = rec.result.color
+			result.title = reciept_conditions.result.title
+			result.description = reciept_conditions.result.description
+			result.color = reciept_conditions.result.color
 		}
 
 		// Reset properties
@@ -88,8 +104,9 @@ export default class Brew {
 		this.amount = 0
 		this.elements = {}
 		this.queue = []
+		this.receipt = new Receipt()
 
-		return result
+		return [result, receipt]
 	}
 
 	getQueueMesh() {

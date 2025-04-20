@@ -19,6 +19,8 @@ main {
 	height: min(45dvmax, 90dvw);
 	border-radius: 100%;
 	overflow: hidden;
+	cursor: grab;
+	border: outset 3px #b420b9;
 }
 
 #inventory {
@@ -108,29 +110,60 @@ main {
 	text-align: center;
 }
 
-#brew-btn {
-	display: block;
-	position: absolute;
-	bottom: 10%;
-	right: 10%;
-	overflow: visible;
-	border-radius: 100% 0 100% 0;
-	width: 10%;
-	height: 10%;
-	cursor: pointer;
-	transition: 300ms;
-	border: solid 2px black;
-	background-color: #11551f;
-}
-
-#map-holder:hover #brew-btn {
-	border-color: #26bb44;
-}
-
-#brew-btn:hover {
-	background-color: #26bb44;
-}
-
 #map-holder {
 	position: relative;
+}
+
+#brew-btn,
+#write-btn,
+#receipts-btn {
+	display: block;
+	position: absolute;
+	overflow: visible;
+	border-radius: 50%;
+	width: 8%;
+	height: 8%;
+	cursor: pointer;
+	transition: 300ms;
+	border: inset 5px black;
+}
+
+#brew-btn {
+	width: 10%;
+	height: 10%;
+	bottom: 10%;
+	right: 10%;
+	font-size: 28px;
+	background-color: #11551f;
+	border-color: #1bd840;
+}
+
+
+#brew-btn:hover {
+	background-color: #1bd840;
+}
+
+#receipts-btn {
+	bottom: 19%;
+	right: 5%;
+	font-size: 22px;
+	background-color: #0b8661;
+	border-color: #1fce99;
+}
+
+
+#receipts-btn:hover {
+	background-color: #1fce99;
+}
+
+#write-btn {
+	bottom: 5%;
+	right: 19%;
+	font-size: 22px;
+	background-color: #770b2b;
+	border-color: #ff155b;
+}
+
+#write-btn:hover {
+	background-color: #ff155b;
 }

@@ -1,7 +1,7 @@
 import { AmbientLight, DirectionalLight, Group, PerspectiveCamera, Scene, Vector3, Vector4, WebGLRenderer } from 'https://unpkg.com/three@v0.160.0/build/three.module.js'
 
 import ZoneBubble from './class/zone/ZoneBubble.js'
-import ReceiptZoneBubble from './class/zone/ReceiptZoneBubble.js'
+import ReceiptConditionsZoneBubble from './class/zone/ReceiptZoneBubble.js'
 import Ingredient from './class/ingredient.js'
 import Brew from './class/brew.js'
 import Inventory from './class/inventory.js'
@@ -27,7 +27,14 @@ const map_pos = document.getElementById('map-pos')
 map_pos.innerHTML = 'x:0 y:0 z:0<br>w:0'
 
 const brew_btn = document.getElementById('brew-btn')
-brew_btn.onclick = () => { inventory.addItem(brew.take()) }
+brew_btn.onclick = () => {
+	const [a, b] = brew.take()
+	inventory.addItem(a)
+	b.check(inventory)
+}
+
+const receipts_btn = document.getElementById('receipts-btn')
+receipts_btn.onclick = () => { alert('"receipts"') }
 
 const scene = new Scene()
 
@@ -39,7 +46,7 @@ let camera = new PerspectiveCamera(75, vw / vh, 0.1, 1000)
 CameraRotator.connect(map_div, brew, camera)
 
 const group_spheres = new Group()
-ReceiptZoneBubble.list.forEach(e => group_spheres.add(e.mesh))
+ReceiptConditionsZoneBubble.list.forEach(e => group_spheres.add(e.mesh))
 scene.add(group_spheres)
 
 const axesGroup = createAxisGroup()
@@ -94,11 +101,11 @@ function animate() {
 		(brew.position.y + decrementer * (old.y - brew.position.y)),
 		(brew.position.z + decrementer * (old.z - brew.position.z)),
 	)
-	ReceiptZoneBubble.list.forEach(e => e.updateGeometry(brew, old, decrementer))
+	ReceiptConditionsZoneBubble.list.forEach(e => e.updateGeometry(brew, old, decrementer))
 	renderer.render(scene, camera)
 }
 
-ReceiptZoneBubble.list.forEach(e => console.log(e.on_touch))
+ReceiptConditionsZoneBubble.list.forEach(e => console.log(e.on_touch))
 animate()
 /*
  const newg = new Vector4(22312312312364.68461635469841, 446.1235000000346, 123.1000000000002, 123623346.43623456)
