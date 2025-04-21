@@ -33,8 +33,8 @@ brew_btn.onclick = () => {
 	b.check(inventory)
 }
 
-const receipts_btn = document.getElementById('receipts-btn')
-receipts_btn.onclick = () => { alert('"receipts"') }
+// const receipts_btn = document.getElementById('receipts-btn')
+// receipts_btn.onclick = () => { alert('"receipts"') }
 
 const scene = new Scene()
 

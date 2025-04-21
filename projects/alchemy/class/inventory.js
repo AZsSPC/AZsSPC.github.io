@@ -53,7 +53,7 @@ export default class Inventory {
 		let itemDiv = this.render_element_ingredients.querySelector(`[data-hash="${ingredient.hash}"]`)
 
 		if (itemDiv) {
-			itemDiv.querySelector('.item-title').textContent = `x${ingredient.amount} ${AZ.locale.get(ingredient.title)}`
+			itemDiv.querySelector('.item-amount').textContent = ingredient.amount
 			return
 		}
 
@@ -66,13 +66,27 @@ export default class Inventory {
 		 colorDiv.style.backgroundColor = `#${ingredient.color.toString(16).padStart(6, '0')}`
 		 itemDiv.appendChild(colorDiv)
 		 */
-		const titleDiv = document.createElement('div')
+		const titleDiv = document.createElement('span')
 		titleDiv.classList.add('item-title')
-		titleDiv.textContent = `x${ingredient.amount} ${AZ.locale.get(ingredient.title)}`
-		titleDiv.style.setProperty('--item-color', `#${ingredient.color.toString(16).padStart(6, '0')}`)
+
+		const eAmount = document.createElement('span')
+		eAmount.classList.add('item-name')
+		eAmount.textContent = AZ.locale.get(ingredient.title)
+		titleDiv.appendChild(eAmount)
+
+		const eTitle = document.createElement('span')
+		eTitle.classList.add('item-amount')
+		eTitle.textContent = ingredient.amount
+		titleDiv.appendChild(eTitle)
+
 		itemDiv.appendChild(titleDiv)
 
-		const descriptionDiv = document.createElement('div')
+		const colorDiv = document.createElement('div')
+		colorDiv.classList.add('item-color')
+		colorDiv.style.setProperty('background', `#${ingredient.color.toString(16).padStart(6, '0')}`)
+		itemDiv.appendChild(colorDiv)
+
+		const descriptionDiv = document.createElement('p')
 		descriptionDiv.classList.add('item-description')
 		descriptionDiv.textContent = AZ.locale.get(ingredient.description)
 		itemDiv.appendChild(descriptionDiv)
@@ -89,26 +103,35 @@ export default class Inventory {
 		const max_influence = influences.reduce((max, axis) =>
 			Math.max(max, Math.abs(ingredient.position[axis] * ingredient.vector_weight[axis])), 0) / 50
 
+		let active_axises = 0
+
 		influences.forEach((axis) => {
 			if (ingredient.vector_weight[axis] === 0)
 				return
-			const axisDiv = document.createElement('div')
+
+			active_axises++
+
+			const axisDiv = document.createElement('span')
 			axisDiv.classList.add('item-influence', `item-influence-${axis}`)
+
 			if (ingredient.position[axis] * ingredient.vector_weight[axis] < 0)
 				axisDiv.style.setProperty('--influence-direction', -1)
+
 			axisDiv.style.setProperty('--influence-percent',
 				`${50 + Math.abs(ingredient.position[axis] * ingredient.vector_weight[axis] / max_influence || 0)}%`,
 			)
-			axisDiv.textContent = `${ingredient.position[axis]}•${ingredient.vector_weight[axis]}`
+			axisDiv.textContent = `${ingredient.position[axis]} \\ ${ingredient.vector_weight[axis]}`
 			influenceDiv.appendChild(axisDiv)
 		})
+		itemDiv.style.setProperty('--active-axises', active_axises)
 		itemDiv.appendChild(influenceDiv)
 
-		const putButton = document.createElement('button')
+		const putButton = document.createElement('div')
 		putButton.classList.add('item-put')
-		putButton.textContent = 'put'
-		putButton.onclick = () => {
-			const amount = prompt(`Insert amount of [${AZ.locale.get(ingredient.title)}] (0;${ingredient.amount}]`)
+
+		itemDiv.addEventListener('click', () => {
+			const amount = prompt(`Insert amount of [${AZ.locale.get(ingredient.title)}] (0;${ingredient.amount}]`, Math.min(1, ingredient.amount))
+
 			if (+amount != amount) {
 				alert(`"${amount}" of it is not a number`)
 				return
@@ -116,9 +139,10 @@ export default class Inventory {
 				alert(`${amount} is not in bound (0;${ingredient.amount}]`)
 				return
 			}
+
 			this.brew.put(ingredient.take(+amount))
 			this.updateItemAmount(ingredient.hash)
-		}
+		})
 		itemDiv.appendChild(putButton)
 
 		this.render_element_ingredients.appendChild(itemDiv)

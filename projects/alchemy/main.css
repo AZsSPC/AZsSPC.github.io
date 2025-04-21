@@ -3,14 +3,14 @@ main {
 }
 
 #alchemy {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	display: grid;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
 	gap: 1rem;
 	height: 100dvh;
+	grid-template-columns: auto auto;
+	grid-template-rows: 1fr auto;
 }
 
 #map {
@@ -30,6 +30,12 @@ main {
 	padding: 8px;
 }
 
+#receipts {
+	column-span: 2;
+}
+
+@media screen and (max-width : 1200px) {}
+
 #ingredients {
 	display: flex;
 	flex-direction: column;
@@ -37,68 +43,108 @@ main {
 }
 
 .item {
+	width: 100vw;
+	max-width: 600px;
 	display: grid;
 	--influence-direction: 1;
 	--influence-percent: 50%;
 	--item-color: white;
 	padding: 4px;
 	background-color: var(--c-dark-text);
-	border-radius: 8px;
+	border-radius: 12px;
+	grid-template-areas:
+		'color title put'
+		'color description put'
+		'color influence put';
+	grid-template-rows: auto auto auto;
+	grid-template-columns: auto 1fr auto;
+	gap: 4px;
+	cursor: pointer;
 }
 
-.item-title:before {
-	display: inline-block;
-	content: ' ';
-	height: 1rem;
-	width: 1rem;
-	border-radius: 1rem;
-	background-color: var(--item-color);
-	/*margin-right     : 4px;*/
+.item-title {
+	grid-area: title;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 4px 4px 0 4px;
+	gap: 1rem;
 }
+
+.item-color {
+	grid-area: color;
+	width: .5rem;
+	border-radius: 8px 0 0 8px;
+}
+
+.item-amount {}
 
 .item-description {
+	grid-area: description;
 	color: var(--c-gray-l);
-	padding: 4px
+	padding: 0 4px 4px 4px;
 }
 
 .item-influence-group {
+	grid-area: influence;
 	display: flex;
+	justify-content: space-between;
 	gap: 4px;
 }
 
 .item-influence {
 	font-size: 12px;
 	padding: 0 4px;
-	border-radius: 8px;
+	/* border-radius: 8px; */
 	width: -webkit-fill-available;
-	border: solid 1px #353434;
+	/* border: solid 1px #353535; */
+	/* font-family: consolas; */
+	overflow: hidden;
+	text-wrap: nowrap;
+	transition: 500ms;
+	width: calc(100% / var(--active-axises));
+	cursor: help;
+}
+
+.item-influence-group:has(.item-influence:hover) .item-influence:not(:hover) {
+	opacity: 50%;
+	width: 0;
+}
+
+.item-influence:hover {
+	width: 100%;
 }
 
 .item-influence-x {
 	background: linear-gradient(calc(90deg * var(--influence-direction)),
-			black 50%, #C83947 50%, #C83947 var(--influence-percent), #351317 var(--influence-percent))
+			#351317 50%, #C83947 50%, #C83947 var(--influence-percent), #351317 var(--influence-percent))
 }
 
 .item-influence-y {
 	background: linear-gradient(calc(90deg * var(--influence-direction)),
-			black 50%, #248A38 50%, #248A38 var(--influence-percent), #132716 var(--influence-percent))
+			#132716 50%, #248A38 50%, #248A38 var(--influence-percent), #132716 var(--influence-percent))
 }
 
 .item-influence-z {
 	background: linear-gradient(calc(90deg * var(--influence-direction)),
-			black 50%, #2851B6 50%, #2851B6 var(--influence-percent), #151E33 var(--influence-percent))
+			#151E33 50%, #2851B6 50%, #2851B6 var(--influence-percent), #151E33 var(--influence-percent))
 }
 
 .item-influence-w {
 	background: linear-gradient(calc(90deg * var(--influence-direction)),
-			black 50%, #D3B728 50%, #D3B728 var(--influence-percent), #43280D var(--influence-percent))
+			#2b1608 50%, #D3B728 50%, #D3B728 var(--influence-percent), #2b1608 var(--influence-percent))
 }
 
 .item-put {
+	grid-area: put;
 	background: var(--c-green-d);
-	cursor: pointer;
-	border-radius: 1rem;
-	margin-top: 4px;
+	border-radius: 0 8px 8px 0;
+	width: .5rem;
+	transition: 300ms;
+}
+
+.item:hover .item-put{
+	background-color: var(--c-green-l);
 }
 
 #map-pos {
