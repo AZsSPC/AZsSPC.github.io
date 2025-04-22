@@ -3,14 +3,15 @@ main {
 }
 
 #alchemy {
-	display: grid;
+	display: flex;
 	justify-content: center;
 	align-items: center;
-	align-content: center;
 	gap: 1rem;
 	height: 100dvh;
 	grid-template-columns: auto auto;
 	grid-template-rows: 1fr auto;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
 
 #map {
@@ -21,13 +22,14 @@ main {
 	overflow: hidden;
 	cursor: grab;
 	border: outset 3px #b420b9;
+	box-shadow: 0 0 8px black;
 }
 
 #inventory {
 	height: 100%;
 	overflow-y: scroll;
 	gap: 8px;
-	padding: 8px;
+	padding: 0 8px;
 }
 
 #receipts {
@@ -45,36 +47,41 @@ main {
 .item {
 	width: 100vw;
 	max-width: 600px;
-	display: grid;
 	--influence-direction: 1;
 	--influence-percent: 50%;
 	--item-color: white;
-	padding: 4px;
-	background-color: var(--c-dark-text);
+	background: var(--item-color);
 	border-radius: 12px;
-	grid-template-areas:
-		'color title put'
-		'color description put'
-		'color influence put';
-	grid-template-rows: auto auto auto;
-	grid-template-columns: auto 1fr auto;
-	gap: 4px;
 	cursor: pointer;
+	overflow: hidden;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	/* box-shadow: 0 0 5px black; */
+}
+
+.item-data {
+	margin: 0 8px;
+	background-color: var(--c-dark-text);
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	width: 100%;
 }
 
 .item-title {
 	grid-area: title;
 	display: flex;
 	flex-direction: row;
+	margin-top: 4px;
 	justify-content: space-between;
-	padding: 4px 4px 0 4px;
+	padding: 0 4px;
 	gap: 1rem;
 }
 
 .item-color {
 	grid-area: color;
 	width: .5rem;
-	border-radius: 8px 0 0 8px;
 }
 
 .item-amount {}
@@ -82,28 +89,43 @@ main {
 .item-description {
 	grid-area: description;
 	color: var(--c-gray-l);
-	padding: 0 4px 4px 4px;
+	padding: 0 4px;
 }
 
 .item-influence-group {
+	padding: 4px;
+	gap: 4px;
 	grid-area: influence;
 	display: flex;
 	justify-content: space-between;
-	gap: 4px;
+	overflow: hidden;
+	text-wrap: nowrap;
+	flex-wrap: nowrap;
+}
+
+.item:hover .item-influence-group {
+	background: var(--item-color);
 }
 
 .item-influence {
-	font-size: 12px;
-	padding: 0 4px;
-	/* border-radius: 8px; */
+	padding: 0 8px;
 	width: -webkit-fill-available;
-	/* border: solid 1px #353535; */
-	/* font-family: consolas; */
 	overflow: hidden;
-	text-wrap: nowrap;
 	transition: 500ms;
 	width: calc(100% / var(--active-axises));
+	max-width: calc(100% / var(--active-axises));
 	cursor: help;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	text-wrap: nowrap;
+	overflow: hidden;
+	flex-wrap: nowrap;
+	text-shadow: 0 0 5px black;
+}
+
+.item-influence>* {
+	font-size: 12px;
 }
 
 .item-influence-group:has(.item-influence:hover) .item-influence:not(:hover) {
@@ -113,6 +135,7 @@ main {
 
 .item-influence:hover {
 	width: 100%;
+	max-width: 100%;
 }
 
 .item-influence-x {
@@ -143,7 +166,7 @@ main {
 	transition: 300ms;
 }
 
-.item:hover .item-put{
+.item:hover .item-put {
 	background-color: var(--c-green-l);
 }
 
@@ -162,7 +185,8 @@ main {
 
 #brew-btn,
 #write-btn,
-#receipts-btn {
+#receipts-btn,
+#mix-btn {
 	display: block;
 	position: absolute;
 	overflow: visible;
@@ -172,6 +196,8 @@ main {
 	cursor: pointer;
 	transition: 300ms;
 	border: inset 5px black;
+	text-shadow: 0 0 8px black;
+	box-shadow: 0 0 8px black;
 }
 
 #brew-btn {
@@ -183,7 +209,6 @@ main {
 	background-color: #11551f;
 	border-color: #1bd840;
 }
-
 
 #brew-btn:hover {
 	background-color: #1bd840;
@@ -197,7 +222,6 @@ main {
 	border-color: #1fce99;
 }
 
-
 #receipts-btn:hover {
 	background-color: #1fce99;
 }
@@ -208,8 +232,22 @@ main {
 	font-size: 22px;
 	background-color: #770b2b;
 	border-color: #ff155b;
+	opacity: 30%;
 }
 
 #write-btn:hover {
 	background-color: #ff155b;
+}
+
+#mix-btn {
+	bottom: 19%;
+	right: 5%;
+	font-size: 22px;
+	background-color: #333;
+	border-color: #999;
+	opacity: 30%
+}
+
+#mix-btn:hover {
+	background-color: #999;
 }

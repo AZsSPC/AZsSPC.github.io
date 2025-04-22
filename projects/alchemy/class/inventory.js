@@ -57,78 +57,8 @@ export default class Inventory {
 			return
 		}
 
-		itemDiv = document.createElement('div')
-		itemDiv.classList.add('item', 'ingredient')
+		itemDiv = nel('div', ['item', 'ingredient'], '', { '--item-color': `#${ingredient.color.toString(16).padStart(6, '0')}` })
 		itemDiv.setAttribute('data-hash', ingredient.hash)
-		/*
-		 const colorDiv = document.createElement('div')
-		 colorDiv.classList.add('item-color')
-		 colorDiv.style.backgroundColor = `#${ingredient.color.toString(16).padStart(6, '0')}`
-		 itemDiv.appendChild(colorDiv)
-		 */
-		const titleDiv = document.createElement('span')
-		titleDiv.classList.add('item-title')
-
-		const eAmount = document.createElement('span')
-		eAmount.classList.add('item-name')
-		eAmount.textContent = AZ.locale.get(ingredient.title)
-		titleDiv.appendChild(eAmount)
-
-		const eTitle = document.createElement('span')
-		eTitle.classList.add('item-amount')
-		eTitle.textContent = ingredient.amount
-		titleDiv.appendChild(eTitle)
-
-		itemDiv.appendChild(titleDiv)
-
-		const colorDiv = document.createElement('div')
-		colorDiv.classList.add('item-color')
-		colorDiv.style.setProperty('background', `#${ingredient.color.toString(16).padStart(6, '0')}`)
-		itemDiv.appendChild(colorDiv)
-
-		const descriptionDiv = document.createElement('p')
-		descriptionDiv.classList.add('item-description')
-		descriptionDiv.textContent = AZ.locale.get(ingredient.description)
-		itemDiv.appendChild(descriptionDiv)
-		/*
-		 const amountDiv = document.createElement('div')
-		 amountDiv.classList.add('item-amount')
-		 amountDiv.textContent = `Amount: ${ingredient.amount}`
-		 itemDiv.appendChild(amountDiv)
-		 */
-		const influenceDiv = document.createElement('div')
-		influenceDiv.classList.add('item-influence-group')
-		const influences = ['x', 'y', 'z', 'w']
-
-		const max_influence = influences.reduce((max, axis) =>
-			Math.max(max, Math.abs(ingredient.position[axis] * ingredient.vector_weight[axis])), 0) / 50
-
-		let active_axises = 0
-
-		influences.forEach((axis) => {
-			if (ingredient.vector_weight[axis] === 0)
-				return
-
-			active_axises++
-
-			const axisDiv = document.createElement('span')
-			axisDiv.classList.add('item-influence', `item-influence-${axis}`)
-
-			if (ingredient.position[axis] * ingredient.vector_weight[axis] < 0)
-				axisDiv.style.setProperty('--influence-direction', -1)
-
-			axisDiv.style.setProperty('--influence-percent',
-				`${50 + Math.abs(ingredient.position[axis] * ingredient.vector_weight[axis] / max_influence || 0)}%`,
-			)
-			axisDiv.textContent = `${ingredient.position[axis]} \\ ${ingredient.vector_weight[axis]}`
-			influenceDiv.appendChild(axisDiv)
-		})
-		itemDiv.style.setProperty('--active-axises', active_axises)
-		itemDiv.appendChild(influenceDiv)
-
-		const putButton = document.createElement('div')
-		putButton.classList.add('item-put')
-
 		itemDiv.addEventListener('click', () => {
 			const amount = prompt(`Insert amount of [${AZ.locale.get(ingredient.title)}] (0;${ingredient.amount}]`, Math.min(1, ingredient.amount))
 
@@ -143,14 +73,74 @@ export default class Inventory {
 			this.brew.put(ingredient.take(+amount))
 			this.updateItemAmount(ingredient.hash)
 		})
-		itemDiv.appendChild(putButton)
 
-		this.render_element_ingredients.appendChild(itemDiv)
 
+		const influenceDiv = nel('div', ['item-influence-group'])
+
+		let active_axises = 0
+		const influences = ['x', 'y', 'z', 'w']
+		const max_influence = influences.reduce((max, axis) =>
+			Math.max(max, Math.abs(ingredient.position[axis] * ingredient.vector_weight[axis])), 0) / 50
+
+		influences.forEach((axis) => {
+			if (ingredient.vector_weight[axis] === 0)
+				return
+
+			active_axises++
+
+			influenceDiv.appendChild(nel_nest(
+				nel('div', ['item-influence', `item-influence-${axis}`], '', {
+					'--influence-direction': (ingredient.position[axis] * ingredient.vector_weight[axis] < 0) ? -1 : 1,
+					'--influence-percent': `${50 + Math.abs(ingredient.position[axis] * ingredient.vector_weight[axis] / max_influence || 0)}%`,
+				}),
+				nel('span', ['axis-pos'], `${ingredient.position[axis]}`),
+				nel('span', ['axis-weight'], `${ingredient.vector_weight[axis]}`)
+			)
+			)
+		})
+		itemDiv.style.setProperty('--active-axises', active_axises)
+
+
+
+		this.render_element_ingredients.appendChild(
+			nel_nest(itemDiv,
+				// nel('div', ['item-color'], '', { 'background': `#${ingredient.color.toString(16).padStart(6, '0')}` }),
+				nel_nest(nel('div', ['item-data']),
+					nel_nest(
+						nel('span', ['item-title']),
+						nel('span', ['item-name'], AZ.locale.get(ingredient.title)),
+						nel('span', ['item-amount'], ingredient.amount)
+					),
+					nel('p', ['item-description'], AZ.locale.get(ingredient.description)),
+					influenceDiv,
+				),
+				// nel('div', ['item-color'], '', { 'background': `#${ingredient.color.toString(16).padStart(6, '0')}` })
+			)
+		)
 	}
 
 	removeItemFromDOM(hash) {
 		const itemDiv = this.render_element_ingredients.querySelector(`[data-hash="${hash}"]`)
 		if (itemDiv) itemDiv.remove()
 	}
+}
+
+const nel = (tag = 'div', classes = [], text = '', style_props = {}) => {
+	const element = document.createElement(tag)
+
+	if (classes)
+		element.classList.add(...classes)
+
+	if (text)
+		element.textContent = text
+
+	if (style_props)
+		Object.keys(style_props).forEach(e => element.style.setProperty(e, style_props[e]))
+
+	return element
+}
+
+const nel_nest = (parent, ...childs) => {
+	childs.forEach(e => parent.appendChild(e))
+	return parent
 }

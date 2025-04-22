@@ -75,7 +75,7 @@ export default class Brew {
 
 	take() {
 		const receipt = this.receipt
-		const result = new Ingredient(
+		let result = new Ingredient(
 			this.position.clone(),
 			this.vector_weight.clone(),
 			{ ...this.elements },
@@ -93,9 +93,7 @@ export default class Brew {
 			const dw = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radiusW
 			const condition = dx ** 2 + dy ** 2 + dz ** 2 + dw ** 2 <= 1
 			if (!condition) continue
-			result.title = reciept_conditions.result.title
-			result.description = reciept_conditions.result.description
-			result.color = reciept_conditions.result.color
+			result = reciept_conditions.result.copy(this.amount)
 		}
 
 		// Reset properties
