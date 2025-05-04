@@ -87,11 +87,13 @@ export default class Brew {
 
 
 		for (const reciept_conditions of ReceiptConditionsZoneBubble.list) {
-			const dx = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radius
-			const dy = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radius
-			const dz = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radius
-			const dw = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radiusW
+			const dx = (result.position.x - reciept_conditions.position.x) / reciept_conditions.radius;
+			const dy = (result.position.y - reciept_conditions.position.y) / reciept_conditions.radius;
+			const dz = (result.position.z - reciept_conditions.position.z) / reciept_conditions.radius;
+			const dw = (result.position.w - reciept_conditions.position.w) / reciept_conditions.radiusW;
+
 			const condition = dx ** 2 + dy ** 2 + dz ** 2 + dw ** 2 <= 1
+
 			if (!condition) continue
 			result = reciept_conditions.result.copy(this.amount)
 		}
