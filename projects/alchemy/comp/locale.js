@@ -1,11 +1,15 @@
 export const use_locale = () => {
 	//ru
 	AZ.locale.languages.ru.alerts = {
-		you_created: (a) => `Вы только что создали "${a}"`
+		you_created: (a) => `Вы только что создали "${a}"`,
+		name_your_brew: 'Назовите ваш новый напиток',
+		not_in_bound: (a, b) => `${a} не входит в допустимый диапазон (0;${b}]`,
+		not_a_number: (a) => `"${a}" не является числом`,
+		insert_amount: (a, b) => `Введите количество "${a}" (от 0 до ${b})`
 	}
 
 	AZ.locale.languages.ru.brew = {
-		default: { title: 'Особый напиток', description: 'Сделанная вручную смесь ингредиентов.' },
+		default: { title: 'Собственная смесь', description: 'Сделанная вручную смесь ингредиентов.' },
 		unknown: { title: 'Неизвестный напиток', description: 'Что это? Откуда оно взялось?' }
 	}
 
@@ -111,11 +115,15 @@ export const use_locale = () => {
 
 	//ua
 	AZ.locale.languages.ua.alerts = {
-		you_created: (a) => `Ви тільки що створили "${a}"`
+		you_created: (a) => `Ви тільки що створили "${a}"`,
+		name_your_brew: 'Назвіть ваш новий напій',
+		not_in_bound: (a, b) => `${a} не входить в допустимі межі (0;${b}]`,
+		not_a_number: (a) => `"${a}" не є числом`,
+		insert_amount: (a, b) => `Введіть кількість "${a}" (від 0 до ${b})`
 	}
 
 	AZ.locale.languages.ua.brew = {
-		default: { title: 'Особливий напій', description: 'Саморобна суміш інгредієнтів.' },
+		default: { title: 'Саморобна суміш', description: 'Зроблема власноруч суміш інгредієнтів.' },
 		unknown: { title: 'Невідомий напій', description: 'Що це? Звідки воно взялося?' }
 	}
 
@@ -221,7 +229,11 @@ export const use_locale = () => {
 
 	// en
 	AZ.locale.languages.en.alerts = {
-		you_created: (a) => `You just created "${a}"`
+		you_created: (a) => `You just created "${a}"`,
+		name_your_brew: `Name your new brew`,
+		not_in_bound: (a, b) => `${a} is not in bound (0;${b}]`,
+		not_a_number: (a) => `"${a}" of it is not a number`,
+		insert_amount: (a, b) => `Insert amount of "${a}" (from 0 to ${b})`
 	}
 
 	AZ.locale.languages.en.brew = {

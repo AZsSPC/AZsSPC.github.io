@@ -12,7 +12,7 @@ export default class Inventory {
 	fillFromCreativeMode() {
 		for (let key in Ingredient.list)
 			this.addItem(Ingredient.list[key].copy(999999))
-		for (let key in Ingredient.list)console.log(key,Ingredient.list[key].hash)
+		for (let key in Ingredient.list) console.log(key, Ingredient.list[key].hash)
 	}
 
 	addItem(ingredient) {
@@ -22,12 +22,12 @@ export default class Inventory {
 			return
 		}
 
-		console.log('rewrited')
+		//console.log('rewrited')
 		const is_new = !(this.items[ingredient.hash]?.amount)
 		const is_unnamed = ingredient.title === 'brew.unknown.title' || ingredient.title === 'brew.default.title'
 
 		if (is_new && is_unnamed) {
-			const new_name = prompt('Name your new brew', 'brew.default.title')
+			const new_name = prompt(AZ.locale.get('alerts.name_your_brew'), 'brew.default.title')
 			ingredient.title = new_name
 			ingredient.description = 'brew.default.description'
 		}
@@ -52,19 +52,21 @@ export default class Inventory {
 
 		if (itemDiv) {
 			itemDiv.querySelector('.item-amount').textContent = ingredient.amount
+
+			itemDiv.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
 			return
 		}
 
 		itemDiv = nel('div', ['item', 'ingredient'], '', { '--item-color': `#${ingredient.color.toString(16).padStart(6, '0')}` })
 		itemDiv.setAttribute('data-hash', ingredient.hash)
 		itemDiv.addEventListener('click', () => {
-			const amount = prompt(`Insert amount of [${AZ.locale.get(ingredient.title)}] (0;${ingredient.amount}]`, Math.min(1, ingredient.amount))
+			const amount = prompt(AZ.locale.get('alerts.insert_amount')(AZ.locale.get(ingredient.title), ingredient.amount), Math.min(1, ingredient.amount))
 
 			if (+amount != amount) {
-				alert(`"${amount}" of it is not a number`)
+				alert(AZ.locale.get('alerts.not_a_number')(amount))
 				return
 			} else if (amount <= 0 || amount > ingredient.amount) {
-				alert(`${amount} is not in bound (0;${ingredient.amount}]`)
+				alert(AZ.locale.get('alerts.not_in_bound')(amount, ingredient.amount))
 				return
 			}
 
