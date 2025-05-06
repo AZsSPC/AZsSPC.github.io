@@ -2,7 +2,11 @@ function $AZ() {
 	this.loop = false
 	this.timeout = 200
 	this.locale = {
-		localization: (window.navigator.userLanguage || window.navigator.language).split('-', 1)[0],
+		localization: (
+			new URLSearchParams(document.location.search).get("lang")
+			|| window.navigator.userLanguage
+			|| window.navigator.language
+		).split('-', 1)[0],
 		get: (str) =>
 			str.split('.').reduce((current, key) => current?.[key], this.locale.languages[this.locale.localization]) ??
 			(this.locale.localization === 'en' ? str : str.split('.').reduce((current, key) => current?.[key], this.locale.languages.en))
@@ -18,16 +22,16 @@ function $AZ() {
 					projects: 'проекты',
 				},
 			},
-			/*ua: {
-			 page:{},
-			 nav: {
-			 main: 'main',
-			 readme: 'readme',
-			 source: 'source',
-			 author: 'author',
-			 projects: 'projects',
-			 },
-			 },*/
+			ua: {
+				page: {},
+				nav: {
+					main: 'головна',
+					readme: 'деталі',
+					source: 'код',
+					author: 'автор',
+					projects: 'проєкти',
+				},
+			},
 			en: {
 				page: {},
 				nav: {

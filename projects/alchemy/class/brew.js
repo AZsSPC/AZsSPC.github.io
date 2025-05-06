@@ -64,8 +64,8 @@ export default class Brew {
 		this.mesh.geometry = this.geometry
 		this.mesh.position.set(this.position.x, this.position.y, this.position.z)
 
-		console.log('put', ingredient)
-		console.log('pos', this.position.clone(), 'weights', this.vector_weight.clone())
+		//console.log('put', ingredient)
+		//console.log('pos', this.position.clone(), 'weights', this.vector_weight.clone())
 	}
 
 	calculatePercentageDifference(v) {
@@ -105,6 +105,8 @@ export default class Brew {
 		this.elements = {}
 		this.queue = []
 		this.receipt = new Receipt()
+
+		alert(AZ.locale.get('alerts.you_created')(AZ.locale.get(result.title)))
 
 		return [result, receipt]
 	}
@@ -152,4 +154,6 @@ export default class Brew {
 
 		return group
 	}
+
+
 }

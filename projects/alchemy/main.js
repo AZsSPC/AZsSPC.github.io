@@ -8,7 +8,10 @@ import Inventory from './class/inventory.js'
 
 import * as CameraRotator from './comp/rotateCamera.js'
 import createAxisGroup from './comp/createAxisGroup.js'
+import { use_locale } from './comp/locale.js'
 
+use_locale()
+console.log(AZ.locale.get('nav.main'))
 //'https://unpkg.com/three@v0.160.0/examples/jsm/controls/OrbitControls.js';
 
 const brew = new Brew()
@@ -30,7 +33,7 @@ const brew_btn = document.getElementById('brew-btn')
 brew_btn.onclick = () => {
 	const [a, b] = brew.take()
 	inventory.addItem(a)
-	b.check(inventory)
+	//b.check(inventory)
 }
 
 // const receipts_btn = document.getElementById('receipts-btn')
@@ -105,7 +108,7 @@ function animate() {
 	renderer.render(scene, camera)
 }
 
-ReceiptConditionsZoneBubble.list.forEach(e => console.log(e.on_touch))
+//ReceiptConditionsZoneBubble.list.forEach(e => console.log(e.on_touch))
 animate()
 /*
  const newg = new Vector4(22312312312364.68461635469841, 446.1235000000346, 123.1000000000002, 123623346.43623456)

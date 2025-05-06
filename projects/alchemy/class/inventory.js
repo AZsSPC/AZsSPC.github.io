@@ -1,7 +1,4 @@
 import Ingredient from './ingredient.js'
-import { use_locale } from '../comp/locale.js'
-
-use_locale()
 
 export default class Inventory {
 	constructor(brew, render_element_ingredients, render_element_brews, render_element_hotbar) {
@@ -15,6 +12,7 @@ export default class Inventory {
 	fillFromCreativeMode() {
 		for (let key in Ingredient.list)
 			this.addItem(Ingredient.list[key].copy(999999))
+		for (let key in Ingredient.list)console.log(key,Ingredient.list[key].hash)
 	}
 
 	addItem(ingredient) {
