@@ -60,21 +60,26 @@ function drawGuideCircle(radius, group) {
 function drawSymbol(char, group) {
     let path = '';
     switch (char) {
-        case ':': path = 'M0,4 L0,14 M0,-16 L0,-6'; break;
-        case ';': path = 'M0,-16 L0,14'; break;
+        case ':': path = 'M0,4 L0,14 M0,-14 L0,-6'; break;
+        case ';': path = 'M0,-14 L0,14'; break;
         case ',': path = 'M0,4 L0,14'; break;
         case '.': path = 'M-5,14 L0,6 M5,14 L0,6'; break;
-        case '"': path = 'M-3,-16 L-3,-4 M3,-16 L3,-4'; break;
-        case "'": path = 'M0,-16 L0,-4'; break;
-        case '`': path = 'M-5,-16 L0,-8 M5,-16 L0,-8'; break;
-        case '=': path = 'M-3,-16 L-3,14 M3,-16 L3,14'; break;
+        case '"': path = 'M-3,-14 L-3,-4 M3,-14 L3,-4'; break;
+        case "'": path = 'M0,-14 L0,-4'; break;
+        case '`': path = 'M-5,-14 L0,-8 M5,-14 L0,-8'; break;
+        case '=': path = 'M-3,-14 L-3,14 M3,-14 L3,14'; break;
+
         case '©': path = 'M4,-10 L-4,8 L4,8 L-4,-10 L4,-10'; break;
-        case '(': path = `M8,-1 A15,15 0 0,0 8,14`; break;
-        case ')': path = `M-8,-1 A15,15 0 0,1 -8,14`; break;
-        case '{': path = `M3,-16 L0,-1 L3,14 M9,-16 L0,-1 L9,14`; break;
-        case '}': path = `M-9,-16 L0,-1 L-9,14 M-3,-16 L0,-1 L-3,14`; break;
-        case '[': path = `M6,-16 L0,-1 L6,14`; break;
-        case ']': path = `M-6,-16 L0,-1 L-6,14`; break;
+
+        case '(': path = `M8,-14 L-2,-1 L4,14`; break;
+        case ')': path = `M-8,-14 L2,-1 L-4,14`; break;
+
+        case '{': path = `M8,-14 L-2,8 L0,-8 L4,14 `; break;
+        case '}': path = `M-8,-14 L2,8 L0,-8 L-4,14`; break;
+       
+        case '[': path = `M6,-14 L0,-1 L6,14`; break;
+        case ']': path = `M-6,-14 L0,-1 L-6,14`; break;
+       
         case '<': path = `M6,-10 L3,-1 L6,8 L6,-12`; break;
         case '>': path = `M-6,-10 L3,-1 L-6,8 L-6,-12`; break;
 
@@ -84,7 +89,7 @@ function drawSymbol(char, group) {
             t.setAttribute('y', 0);
             t.setAttribute('text-anchor', 'middle');
             t.setAttribute('dominant-baseline', 'middle');
-            t.setAttribute('fill', '#0f0');
+            t.setAttribute('fill', '#ff0');
             t.textContent = char;
             group.appendChild(t);
             return;
@@ -93,7 +98,7 @@ function drawSymbol(char, group) {
 
     const p = document.createElementNS(NS, 'path');
     p.setAttribute('d', path);
-    p.setAttribute('stroke', '#0f0');
+    p.setAttribute('stroke', '#0ff');
     p.setAttribute('stroke-width', 1);
     p.setAttribute('fill', 'none');
     group.appendChild(p);
