@@ -1,8 +1,42 @@
 @media screen and (min-width: 800px) {}
 
-canvas {
-    background: #111;
+
+
+svg {
+    background: #000;
     display: block;
-    margin: 0 auto;
-    width: 90dvmin;
+    margin: auto;
+}
+
+text {
+    font: 16px monospace;
+    fill: #0f0;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+circle,
+path,
+line {
+    stroke: #0f0;
+    stroke-width: 1;
+    fill: none;
+}
+
+g.ring {
+   /* animation: spin 30s linear infinite;*/
+}
+
+g.ring:nth-of-type(2n) {
+    animation-direction: reverse;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }

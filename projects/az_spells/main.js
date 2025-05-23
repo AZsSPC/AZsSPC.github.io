@@ -1,111 +1,124 @@
-const code = `const a = 5 "asda.sd";const b = (s) => { return [10, 20, 30]; };
-const sum = a + b;const message = "Total \`asd\` is: " + sum;`;
+const code = `
+const a = 5;
+function greet(name) {
+    const message = "Hello, " + name;
+    return message;
+}
 
-const replacements = { 'const': '©' ,' ':''};
+const b = 10;
+const calc = () => {
+    let result = a + b;
+    return result;
+}
 
-const canvas = document.getElementById('circleCanvas');
-const ctx = canvas.getContext('2d');
-ctx.translate(canvas.width / 2, canvas.height / 2);
-ctx.font = '16px monospace';
-ctx.fillStyle = '#0f0';
-ctx.textAlign = 'center';
-ctx.textBaseline = 'middle';
+console.log(greet("Alice"), calc());
+`;
 
-const charWidth = 16;
-const minRadius = 80;
-const layerSpacing = 30;
+const svg = document.getElementById('circleSvg');
+const NS = svg.namespaceURI;
+const centerX = svg.clientWidth / 2;
+const centerY = svg.clientHeight / 2;
 
-// Preprocess code lines
-const lines = code.split('\n')
-    .map(line => {
-        for (const [key, val] of Object.entries(replacements)) {
-            line = line.replaceAll(key, val);
-        }
-        return line.trim();
-    })
-    .filter(Boolean);
+const functionRegex = /(function\s+\w+\s*\([^)]*\)\s*{[\s\S]*?})|(const\s+\w+\s*=\s*\([^)]*\)\s*=>\s*{[\s\S]*?})/g;
 
-// Symbol renderer
-function drawSymbol(char) {
-    ctx.beginPath();
-    ctx.strokeStyle = '#0f0';
-    ctx.lineWidth = 1;
+const functionBlocks = [...code.matchAll(functionRegex)].map(m => m[0]);
+const globalCode = code.replace(functionRegex, '').trim();
+const allBlocks = [{ label: 'main', code: globalCode }, ...functionBlocks.map((fn, i) => ({ label: `fn-${i + 1}`, code: fn }))];
 
+function tokenizeLine(line) {
+    return line.match(/(\w+|=>|==|===|!=|!==|<=|>=|&&|\|\||[{}();,.+\-*/=<>[\]])/g) || [];
+}
+
+function drawTokenCircle(group, tokens, radius) {
+    const allChars = tokens.flatMap(t => [...t]);
+    const angleStep = 360 / allChars.length;
+    let charIndex = 0;
+
+    tokens.forEach(token => {
+        [...token].forEach(char => {
+            const angle = charIndex * angleStep;
+            const g = document.createElementNS(NS, 'g');
+            g.setAttribute('transform', `rotate(${angle}) translate(0,-${radius})`);
+            drawSymbol(char, g);
+            group.appendChild(g);
+            charIndex++;
+        });
+    });
+}
+
+function drawGuideCircle(radius, group) {
+    const c = document.createElementNS(NS, 'circle');
+    c.setAttribute('r', radius);
+    c.setAttribute('cx', 0);
+    c.setAttribute('cy', 0);
+    c.setAttribute('stroke', '#0f0');
+    c.setAttribute('stroke-width', 1);
+    c.setAttribute('fill', 'none');
+    group.appendChild(c);
+}
+
+function drawSymbol(char, group) {
+    let path = '';
     switch (char) {
-        case ':': drawLine(0, 4, 0, 14); drawLine(0, -16, 0, -6); break;
-        case ';': drawLine(0, -16, 0, 14); break;
-        case ',': drawLine(0, 4, 0, 14); break;
-        case '.': drawLine(-5, 14, 0, 6); drawLine(5, 14, 0, 6); break;
-        case '"': drawLine(-3, -16, -3, -4); drawLine(3, -16, 3, -4); break;
-        case "'": drawLine(0, -16, 0, -4); break;
-        case '`': drawLine(-5, -16, 0, -8); drawLine(5, -16, 0, -8); break;
-        case '=': drawLine(-3, -16, -3, 14); drawLine(3, -16, 3, 14); break;
+        case ':': path = 'M0,4 L0,14 M0,-16 L0,-6'; break;
+        case ';': path = 'M0,-16 L0,14'; break;
+        case ',': path = 'M0,4 L0,14'; break;
+        case '.': path = 'M-5,14 L0,6 M5,14 L0,6'; break;
+        case '"': path = 'M-3,-16 L-3,-4 M3,-16 L3,-4'; break;
+        case "'": path = 'M0,-16 L0,-4'; break;
+        case '`': path = 'M-5,-16 L0,-8 M5,-16 L0,-8'; break;
+        case '=': path = 'M-3,-16 L-3,14 M3,-16 L3,14'; break;
+        case '©': path = 'M4,-10 L-4,8 L4,8 L-4,-10 L4,-10'; break;
+        case '(': path = `M8,-1 A15,15 0 0,0 8,14`; break;
+        case ')': path = `M-8,-1 A15,15 0 0,1 -8,14`; break;
+        case '{': path = `M3,-16 L0,-1 L3,14 M9,-16 L0,-1 L9,14`; break;
+        case '}': path = `M-9,-16 L0,-1 L-9,14 M-3,-16 L0,-1 L-3,14`; break;
+        case '[': path = `M6,-16 L0,-1 L6,14`; break;
+        case ']': path = `M-6,-16 L0,-1 L-6,14`; break;
+        case '<': path = `M6,-10 L3,-1 L6,8 L6,-12`; break;
+        case '>': path = `M-6,-10 L3,-1 L-6,8 L-6,-12`; break;
 
-        case '©': ctx.moveTo(4, -10); ctx.lineTo(-4, 8); ctx.lineTo(4, 8); ctx.lineTo(-4, -10); ctx.lineTo(4, -10); break;
-
-        case '(': case ')':
-            ctx.arc(char === ')' ? -8 : 8, -1, 15,
-                char === ')' ? -Math.PI / 2 : Math.PI / 2,
-                char === ')' ? Math.PI / 2 : 3 * Math.PI / 2
-            ); break;
-
-        case '{': case '}':
-            const dir = char === '}' ? -1 : 1;
-            ctx.moveTo(dir * 6 - 3, -16); ctx.lineTo(0 - 3, -1); ctx.lineTo(dir * 6 - 3, 14);
-            ctx.moveTo(dir * 6 + 3, -16); ctx.lineTo(0 + 3, -1); ctx.lineTo(dir * 6 + 3, 14); break;
-
-        case '[': case ']':
-            const dir1 = char === ']' ? -1 : 1;
-            ctx.moveTo(dir1 * 6, -16); ctx.lineTo(0, -1); ctx.lineTo(dir1 * 6, 14); break;
-
-        case '<': case '>':
-            const dir2 = char === '>' ? -1 : 1;
-            ctx.moveTo(dir2 * 6, -10); ctx.lineTo(3, -1); ctx.lineTo(dir2 * 6, 8); ctx.lineTo(dir2 * 6, -12); break;
-
-        default:
-            ctx.fillText(char, 0, 0); return;
+        default: {
+            const t = document.createElementNS(NS, 'text');
+            t.setAttribute('x', 0);
+            t.setAttribute('y', 0);
+            t.setAttribute('text-anchor', 'middle');
+            t.setAttribute('dominant-baseline', 'middle');
+            t.setAttribute('fill', '#0f0');
+            t.textContent = char;
+            group.appendChild(t);
+            return;
+        }
     }
-    ctx.stroke();
+
+    const p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', path);
+    p.setAttribute('stroke', '#0f0');
+    p.setAttribute('stroke-width', 1);
+    p.setAttribute('fill', 'none');
+    group.appendChild(p);
 }
 
-function drawGuideCircle(radius) {
-    ctx.beginPath();
-    ctx.strokeStyle = '#0f0';
-    ctx.lineWidth = 1;
-    ctx.arc(0, 0, radius + 16, 0, Math.PI * 2);
-    ctx.stroke();
-}
-function drawLine(x1, y1, x2, y2) {
-    ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-}
-// Drawing
-let radius = minRadius;
+allBlocks.forEach((block, i) => {
+    const g = document.createElementNS(NS, 'g');
+    const angle = (i / allBlocks.length) * 2 * Math.PI;
+    const r = 250;
+    const x = centerX + Math.cos(angle) * r;
+    const y = centerY + Math.sin(angle) * r;
+    g.setAttribute('transform', `translate(${x},${y})`);
+    svg.appendChild(g);
 
-lines.forEach(line => {
-    const chars = [...line];
-    
-    // Calculate the radius needed to fit the line
-    const arcLength = chars.length * charWidth;
-    const requiredRadius = arcLength / (2 * Math.PI);
-    radius = Math.max(radius, requiredRadius + 16); // Ensure no overlap
+    let layerR = 50;
+    block.code.split('\n').map(l => l.trim()).filter(Boolean).forEach(line => {
+        const tokens = tokenizeLine(line);
+        if (!tokens.length) return;
 
-    const angleStep = (2 * Math.PI) / chars.length;
-    let angle = 0;
-
-    chars.forEach(char => {
-        ctx.save();
-        ctx.rotate(angle);
-        ctx.translate(0, -radius);
-        drawSymbol(char);
-        ctx.restore();
-        angle += angleStep;
+        const ring = document.createElementNS(NS, 'g');
+        drawTokenCircle(ring, tokens, layerR);
+        drawGuideCircle(layerR - 14, g);
+        g.appendChild(ring);
+        layerR += 28;
     });
 
-    drawGuideCircle(radius- layerSpacing); // optional visual aid
-    radius += layerSpacing; // bump up for next line
+    drawGuideCircle(layerR - 14, g);
 });
-
-drawGuideCircle(radius - layerSpacing)
