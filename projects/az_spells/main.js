@@ -1,10 +1,11 @@
 const code = `
-const a = [5];
-const b = 10;
+const a = [5];const b = false,true;
 const asdasd = (123,123,1) =>{
-    const message = "Hello,\` " + name;    return message;}
+    const message = "Hello,\` " + name;
+    return message;}
 const calc = ()=> {
-    let result = a + b;    return result;}
+    let result = a + b;
+    return result;}
 console.log(greet("Alice"), calc());
 `;
 
@@ -16,7 +17,14 @@ const centerY = svg.clientHeight / 2;
 const RING_RADIUS = 250;
 const FONT_SIZE = 16;
 const RAD_STEP = 28;
-const KEYWORDS = ['const', 'let', 'var', '()', '=>'];
+const KEYWORDS = [
+    'const', 'let', 'var',
+    '()', '=>',
+    'break', 'case', 'catch', 'class', 'const', 'let', 'extends', 'throw',
+    'true', 'false', 'default', 'var', 'super', 'try', 'null', 'do',
+    'function', 'import', 'debugger', 'else', 'async', 'export', 'finally',
+    'for', 'await', 'if', 'new', 'switch', 'return', 'while', 'with', 'continue',
+];
 
 const functionBlocks = [...code.matchAll(/const\s+\w+\s*=\s*\([^)]*\)\s*=>\s*{[\s\S]*?}/g)].map(m => m[0]);
 const globalCode = code.replace(/const\s+\w+\s*=\s*\([^)]*\)\s*=>\s*{[\s\S]*?}/g, '').trim();
@@ -27,7 +35,7 @@ const allBlocks = [
 ];
 
 const tokenizeLine = line =>
-    line.match(/(\(\)|\[\]|=>|==|===|!=|!==|<=|>=|&&|\|\||[{}():;,.`+\-*/=<>\[\]]|\w+)/g) || [];
+    line.match(/(\(\)|\[\]|=>|==|===|!=|!==|<=|>=|&&|\|\||[{}():;,."'`+\-*/=<>\[\]]|\w+)/g) || [];
 
 const drawGuideCircle = (radius, group) => {
     const c = document.createElementNS(NS, 'circle');
@@ -41,37 +49,73 @@ const drawGuideCircle = (radius, group) => {
     group.appendChild(c);
 };
 
-const drawSymbol = (char, group) => {
-    const symbols = {
-        // characters
-        ':': 'M-5,-14 L0,-6 L5,-14 M-5,14 L0,6 M5,14 L0,6',
-        ';': 'M-5,-14 L0,-6 L5,-14 M0,4 L0,14',
-        ',': 'M0,4 L0,14',
-        '.': 'M-5,14 L0,6 M5,14 L0,6',
-        '"': 'M-3,-14 L-3,-4 M3,-14 L3,-4',
-        "'": 'M0,-14 L0,-4',
-        '`': 'M-5,-14 L0,-6 L5,-14',
-        '=': 'M-3,-14 L-3,14 M3,-14 L3,14',
-        // braces
-        '(': 'M4,-14 L-2,0 L4,14',
-        ')': 'M-4,-14 L2,0 L-4,14',
-        '{': 'M4,-14 L-2,0 L4,14 M-2,-8 L4,0 L-2,8',
-        '}': 'M-4,-14 L2,0 L-4,14 M2,8 L-4,0 L2,-8',
-        '[': 'M4,-14 L-2,0 L4,14 M-2,-8 L6,-8 M-2,8 L6,8',
-        ']': 'M-4,-14 L2,0 L-4,14 M2,-8 L-6,-8 M2,8 L-6,8',
-        '<': 'M6,-8 L3,0 L6,8 L6,-8',
-        '>': 'M-6,-8 L3,0 L-6,8 L-6,-8',
-        // keywords
-        'const': 'M4,-10 L-4,8 L4,8 L-4,-10 L4,-10 M-8,0 L8,0',
-        'let': 'M4,-10 L-4,8 L4,8 L-4,-10 L4,-10',
-        // ligatures
-        '()': 'M0,-8 Q-8,-8 -8,0 Q-8,8 0,8 Q8,8 8,0 Q8,-8 0,-8',
-        // '()': 'M0,-8 L-6,-6 L-8,0 L-6,6 L0,8 L6,6 L8,0 L6,-6 L0,-8',
-        '=>': 'M-4,-14 L2,0 L-4,14 M0,3 L-8,3 M0,-3 L-8,-3',
+const convertPath = (path) => path.replace(/([-\d.]+),([-\d.]+)/g, (_, x, y) =>
+    `${(+x / 200 * FONT_SIZE).toFixed(1)},${(+y / 200 * RAD_STEP).toFixed(1)}`);
 
-        // TODO: add curvature and adjustment to prev or next token
-        //'()=>': 'M0,-8 L-6,-6 L-8,0 L-6,6 L0,8 L6,6 L8,0 L6,-6 L0,-8 M-4,-14 L2,0 L-4,14 M0,3 L-8,3 M0,-3 L-8,-3',
-    };
+const symbols = {
+    // characters
+    ':': 'M-60,-100 L0,-40 L60,-100 M-60,100 L0,40 L60,100',
+    ';': 'M-60,-100 L0,-40 L60,-100 M0,40 L0,100',
+    ',': 'M0,40 L0,100',
+    '.': 'M-60,100 L0,40 L60,100',
+    '"': 'M-40,-100 L-40,-30 M40,-100 L40,-30',
+    "'": 'M0,-100 L0,-30',
+    '`': 'M-60,-100 L0,-40 L60,-100',
+    '=': 'M-40,-100 L-40,100 M40,-100 L40,100',
+    // braces
+    '(': 'M50,-100 L-25,0 L50,100',
+    ')': 'M-50,-100 L25,0 L-50,100',
+    '{': 'M50,-100 L-25,0 L50,100 M-25,-50 L50,0 L-25,50',
+    '}': 'M-50,-100 L25,0 L-50,100 M25,50 L-50,0 L25,-50',
+    '[': 'M50,-100 L-25,0 L50,100 M0,-50 L-60,-50 M0,50 L-60,50',
+    ']': 'M-50,-100 L25,0 L-50,100 M0,-50 L60,-50 M0,50 L60,50',
+    '<': 'M30,-50 L40,0 L75,50 L75,-50',
+    '>': 'M-30,-50 L40,0 L-75,50 L-75,-50',
+    // keywords
+
+    // ligatures
+    '()': ('M0,-50 Q-90,-50 -90,0 Q-90,50 0,50 Q90,50 90,0 Q90,-50 0,-50'),
+    '=>': ('M-40,-100 L25,0 L-40,100 M0,25 L-80,25 M0,-25 L-80,-25'),
+    'break': ('M0,-50 L-50,50 L50,50 Z'),
+    'case': ('M50,-30 L-50,-30 L-50,30 L50,30'),
+    'catch': ('M0,-50 L0,50 M0,50 L30,30'),
+    'class': ('M-25,-50 L25,-50 L25,50 L-25,50 Z'),
+    'const': ('M40,-40 L-40,40 L40,40 L-40,-40 L40,-40 M-80,0 L80,0'),
+    'let': ('M40,-40 L-40,40 L40,40 L-40,-40 L40,-40'),
+    'extends': ('M-40,-30 L40,0 L-40,30'),
+    'throw': ('M0,-50 L-40,50 L40,50 Z'),
+    'true': ('M-30,10 L-10,30 L30,-30'),
+    'false': ('M-30,-30 L30,30 M30,-30 L-30,30'),
+    'default': ('M40,-30 L-40,-30 L-40,30 L40,30 M-40,0 L40,0'),
+    'var': ('M-30,50 L0,-50 L30,50'),
+    'super': ('M0,-40 L-40,0 L0,40 L40,0 Z'),
+    'try': ('M-10,-50 L-10,50 M10,-50 L10,50 M-30,-30 L0,-30'),
+    'null': ('M-30,-30 L-30,30 M-10,-30 L-10,30 M10,-30 L10,30 M30,-30 L30,30'),
+    'do': ('M30,-50 Q-30,-50 -30,0 Q-30,50 30,50'),
+    'function': ('M-30,0 Q-30,-40 0,-40 Q30,-40 30,0 Q30,40 0,40 Q-30,40 -30,0'),
+    'import': ('M-40,-30 L20,0 L-40,30'),
+    'debugger': ('M-20,-20 L20,20 M20,-20 L-20,20'),
+    'else': ('M-30,-30 L30,-30 M-30,0 L30,0 M-30,30 L30,30'),
+    'async': ('M-30,-40 Q0,40 30,-40 Q0,20 -30,-40'),
+    'export': ('M-40,30 L20,0 L-40,-30'),
+    'finally': ('M-20,-50 L-20,50 L20,50'),
+    'for': ('M0,-50 Q-40,-20 -40,0 Q-40,20 0,50'),
+    'await': ('M-20,-50 L0,-10 L20,-50 M-20,50 L0,10 L20,50'),
+    'if': ('M-10,-50 L-10,50 M10,-50 L10,50'),
+    'new': ('M-20,50 L-20,-50 L20,50 L20,-50'),
+    'switch': ('M-30,20 Q-50,0 -30,-20 Q-10,-30 10,-20 Q30,0 10,20 Q-10,30 -30,20'),
+    'return': ('M30,-30 L-30,0 L30,30'),
+    'while': ('M-30,50 Q-50,0 -30,-50 Q-10,-50 0,-25 Q10,-50 30,-50 Q50,0 30,50 Q10,50 0,25 Q-10,50 -30,50'),
+    'with': (''),
+    'continue': ('M-30,30 Q-50,0 -30,-30 Q-10,-40 10,-30 Q30,0 10,30 Q-10,40 -30,30'),
+
+    // TODO: add curvature and adjustment to prev or next token
+    //'()=>': 'M0,-8 L-6,-6 L-8,0 L-6,6 L0,8 L6,6 L8,0 L6,-6 L0,-8 M-4,-14 L2,0 L-4,14 M0,3 L-8,3 M0,-3 L-8,-3',
+};
+
+Object.keys(symbols).forEach(e => { symbols[e] = convertPath(symbols[e]) })
+
+const drawSymbol = (char, group) => {
 
     const path = symbols[char];
     if (path) {
@@ -127,7 +171,7 @@ function drawTokenCircle(group, tokens, radius) {
             word.classList = 'word-token'
             word.setAttribute('word', token)
 
-            const step = FONT_SIZE * RAD_STEP * 2 / radius;
+            const step = FONT_SIZE * 50 / radius;
             let angle = currentAngle + (tokenAngle - token.length * step + step) / 2;
 
             [...token].forEach((char, i) => {
@@ -167,7 +211,7 @@ allBlocks.forEach((block, i, arr) => {
         ) / (2 * Math.PI)
     );
 
-    const baseRadius = Math.max(...radneed.map((r, i) => r - i * RAD_STEP));
+    const baseRadius = Math.max(RAD_STEP * 2, Math.max(...radneed.map((r, i) => r - i * RAD_STEP)));
     const radii = radneed.map((_, i) => baseRadius + i * RAD_STEP);
 
     drawGuideCircle(baseRadius - RAD_STEP / 2, g);
