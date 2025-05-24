@@ -17,3 +17,16 @@ Although similar projects exist — such as [mystical_ps by denismm](https://git
 ### 🚧 Current Status
 
 Actively under development. Expect frequent updates as features are built and refined.
+
+
+## License
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)**.
+
+You are free to use, copy, modify, and share this code for **non-commercial purposes**, provided that you give proper credit and link to the original repository.
+
+**Commercial use is strictly prohibited** without explicit written permission from the author.
+
+> © [Your Name or Pseudonym], [Year]  
+> Project URL: [GitHub URL]  
+> License text: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
