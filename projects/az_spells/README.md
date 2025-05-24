@@ -28,5 +28,7 @@ You are free to use, copy, modify, and share this code for **non-commercial purp
 **Commercial use is strictly prohibited** without explicit written permission from the author.
 
 > © Ratmyr Myroshnychenko (aka AZsSPC) (aka AZ_218), 2025 
+>
 > Project URL: https://github.com/AZsSPC/AZsSPC.github.io/tree/main/projects/az_spells
+>
 > License text: https://creativecommons.org/licenses/by-nc/4.0/
