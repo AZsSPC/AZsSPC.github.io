@@ -1,15 +1,10 @@
 const code = `
-const a = 5;
-function greet(name) {
-    const message = "Hello, " + name;
-    return message;
-}
+const a = [5];const b = 10;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+const asdasd = (123,123,1) =>{
+    const message = "Hello,\` " + name;    return message;}
 
-const b = 10;
 const calc = () => {
-    let result = a + b;
-    return result;
-}
+    let result = a + b;    return result;}
 
 console.log(greet("Alice"), calc());
 `;
@@ -19,14 +14,14 @@ const NS = svg.namespaceURI;
 const centerX = svg.clientWidth / 2;
 const centerY = svg.clientHeight / 2;
 
-const functionRegex = /(function\s+\w+\s*\([^)]*\)\s*{[\s\S]*?})|(const\s+\w+\s*=\s*\([^)]*\)\s*=>\s*{[\s\S]*?})/g;
+const functionRegex = /const\s+\w+\s*=\s*\([^)]*\)\s*=>\s*{[\s\S]*?}/g;
 
 const functionBlocks = [...code.matchAll(functionRegex)].map(m => m[0]);
 const globalCode = code.replace(functionRegex, '').trim();
 const allBlocks = [{ label: 'main', code: globalCode }, ...functionBlocks.map((fn, i) => ({ label: `fn-${i + 1}`, code: fn }))];
 
 function tokenizeLine(line) {
-    return line.match(/(\w+|=>|==|===|!=|!==|<=|>=|&&|\|\||[{}();,.+\-*/=<>[\]])/g) || [];
+    return line.match(/(\w+|=>|==|===|!=|!==|<=|>=|&&|\|\||[{}():;,.`+\-*/=<>[\]])/g) || [];
 }
 
 function drawTokenCircle(group, tokens, radius) {
@@ -60,28 +55,28 @@ function drawGuideCircle(radius, group) {
 function drawSymbol(char, group) {
     let path = '';
     switch (char) {
-        case ':': path = 'M0,4 L0,14 M0,-14 L0,-6'; break;
-        case ';': path = 'M0,-14 L0,14'; break;
+        case ':': path = 'M-5,-14 L0,-6 L5,-14 M-5,14 L0,6 M5,14 L0,6'; break;
+        case ';': path = 'M-5,-14 L0,-6 L5,-14 M0,4 L0,14'; break;
         case ',': path = 'M0,4 L0,14'; break;
         case '.': path = 'M-5,14 L0,6 M5,14 L0,6'; break;
         case '"': path = 'M-3,-14 L-3,-4 M3,-14 L3,-4'; break;
         case "'": path = 'M0,-14 L0,-4'; break;
-        case '`': path = 'M-5,-14 L0,-8 M5,-14 L0,-8'; break;
+        case '`': path = 'M-5,-14 L0,-6 L5,-14'; break;
         case '=': path = 'M-3,-14 L-3,14 M3,-14 L3,14'; break;
 
         case '©': path = 'M4,-10 L-4,8 L4,8 L-4,-10 L4,-10'; break;
 
-        case '(': path = `M8,-14 L-2,-1 L4,14`; break;
-        case ')': path = `M-8,-14 L2,-1 L-4,14`; break;
+        case '(': path = `M4,-14 L-2,0 L4,14`; break;
+        case ')': path = `M-4,-14 L2,0 L-4,14`; break;
 
-        case '{': path = `M8,-14 L-2,8 L0,-8 L4,14 `; break;
-        case '}': path = `M-8,-14 L2,8 L0,-8 L-4,14`; break;
-       
-        case '[': path = `M6,-14 L0,-1 L6,14`; break;
-        case ']': path = `M-6,-14 L0,-1 L-6,14`; break;
-       
-        case '<': path = `M6,-10 L3,-1 L6,8 L6,-12`; break;
-        case '>': path = `M-6,-10 L3,-1 L-6,8 L-6,-12`; break;
+        case '{': path = `M4,-14 L-2,0 L4,14 M-2,-8 L4,0 L-2,8`; break;
+        case '}': path = `M-4,-14 L2,0 L-4,14 M2,8 L-4,0 L2,-8`; break;
+
+        case '[': path = `M4,-14 L-2,0 L4,14 M-2,-8 L6,-8 M-2,8 L6,8`; break;
+        case ']': path = `M-4,-14 L2,0 L-4,14 M2,-8 L-6,-8 M2,8 L-6,8`; break;
+
+        case '<': path = `M6,-8 L3,0 L6,8 L6,-8`; break;
+        case '>': path = `M-6,-8 L3,0 L-6,8 L-6,-8`; break;
 
         default: {
             const t = document.createElementNS(NS, 'text');
