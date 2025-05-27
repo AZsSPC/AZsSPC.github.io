@@ -19,6 +19,10 @@ AZ.locale.languages.en.page = {
 			name: 'Alchemy',
 			lore: 'Alchemical game in 4th dimensions\n\n(Inspired by Potion Craft)',
 		},
+		az_spells: {
+			name: 'AZ Spells',
+			lore: 'Visualizes JavaScript as animated spell circles\n\nDynamic magic system for TTRPGs',
+		},
 		evo: {
 			name: 'Evo',
 			lore: 'Primitive evolution simulator developed in 6h [Updating]',
@@ -243,7 +247,7 @@ const PROJECTS = [
 		AZ.locale.get('page.projects.dnd_manager.lore'),
 		['WEB']),
 
-//BROKEN OR UNDER DEV
+	//BROKEN OR UNDER DEV
 
 	new Project(AZ.locale.get('page.projects.formulaz.name'), 'formulaz', false, 0,
 		AZ.locale.get('page.projects.formulaz.lore'),
@@ -256,7 +260,7 @@ const PROJECTS = [
 	new Project('electrical_board', 'electrical_board', false, 0, '', ['WEB']),
 ]
 
-const sw = {'green': 9, 'magenta': 8, 'purple': 7, 'red': 6, 'blue': 1, 'gray': -1, 'gold': -2}
+const sw = { 'green': 9, 'magenta': 8, 'purple': 7, 'red': 6, 'blue': 1, 'gray': -1, 'gold': -2 }
 
 Object.keys(TAG).forEach(e => TAG[e] = TAG[e] ? [TAG[e][0], TAG[e][1] ?? 'blue'] : [e, 'gray'])
 PROJECTS.forEach(project => project.tag = project.tag.sort((a, b) => {
