@@ -13,6 +13,7 @@ AZ.locale.languages.en.page = {
 		MATH: 'math',
 		PHYSIC: 'physic',
 		SCIENCE: 'science',
+		VISUAL: "visual",
 	},
 	projects: {
 		alchemy: {
@@ -97,11 +98,16 @@ AZ.locale.languages.ru.page = {
 		MATH: 'математика',
 		PHYSIC: 'физика',
 		SCIENCE: 'наука',
+		VISUAL: "графика",
 	},
 	projects: {
 		alchemy: {
 			name: 'Алхимия',
 			lore: 'Алхимическая игра в 4 измерениях\n\n(Вдоновлено Potion Craft)',
+		},
+		az_spells: {
+			name: 'AZ Spells',
+			lore: 'Визуализация JavaScript в виде магических кругов\n\nДинамическая магия для настольных RPG',
 		},
 		evo: {
 			name: 'Эво',
@@ -175,6 +181,7 @@ const TAG = {
 	MATH: [AZ.locale.get('page.tagnames.MATH')],
 	PHYSIC: [AZ.locale.get('page.tagnames.PHYSIC')],
 	SCIENCE: [AZ.locale.get('page.tagnames.SCIENCE')],
+	VISUAL: [AZ.locale.get('page.tagnames.VISUAL'), 'blue'],
 	CROWN: ['***', 'gold'],
 	STAR: ['*', 'gold'],
 }
@@ -191,9 +198,13 @@ class Project {
 }
 
 const PROJECTS = [
-	new Project(AZ.locale.get('page.projects.alchemy.name'), 'alchemy', true, 0,
+	new Project(AZ.locale.get('page.projects.alchemy.name'), 'alchemy', true, 3,
 		AZ.locale.get('page.projects.alchemy.lore'),
 		['WEB', 'GAME', 'FOR_ALL', 'MATH', 'STAR']),
+
+	new Project(AZ.locale.get('page.projects.az_spells.name'), 'az_spells', true, 4,
+		AZ.locale.get('page.projects.az_spells.lore'),
+		['WEB', 'VISUAL', 'GAME', 'FOR_ALL', 'STAR']),
 
 	new Project(AZ.locale.get('page.projects.evo.name'), 'evo', true, 0,
 		AZ.locale.get('page.projects.evo.lore'),
@@ -231,7 +242,7 @@ const PROJECTS = [
 		AZ.locale.get('page.projects.seize_territory.lore'),
 		['WEB', 'GAME']),
 
-	new Project(AZ.locale.get('page.projects.tattoo_templater.name'), 'tattoo_templater', true, 3,
+	new Project(AZ.locale.get('page.projects.tattoo_templater.name'), 'tattoo_templater', true, 2,
 		AZ.locale.get('page.projects.tattoo_templater.lore'),
 		['WEB', 'UTIL', 'FOR_ALL']),
 
@@ -239,7 +250,7 @@ const PROJECTS = [
 		AZ.locale.get('page.projects.turing_machine.lore'),
 		['WEB', 'UTIL', 'PROGRAMMING', 'SCIENCE']),
 
-	new Project(AZ.locale.get('page.projects.web_syntax.name'), 'web_syntax', false, 2,
+	new Project(AZ.locale.get('page.projects.web_syntax.name'), 'web_syntax', false, 1,
 		AZ.locale.get('page.projects.web_syntax.lore'),
 		['WEB', 'UTIL', 'REGEX', 'PROGRAMMING']),
 
