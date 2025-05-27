@@ -14,15 +14,9 @@ text {
     dominant-baseline: middle;
 }
 
-circle,
-path,
-line {
-    stroke-width: 1;
-    fill: none;
-}
 
 g.ring {
-   /* animation: spin 30s linear infinite;*/
+    /* animation: spin 30s linear infinite;*/
 }
 
 g.ring:nth-of-type(2n) {
