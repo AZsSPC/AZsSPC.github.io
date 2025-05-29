@@ -19,6 +19,31 @@
 	<script type="text/javascript">nav()</script>
 	<header><span>AZ Spells</span></header>
 	<main>
+		<textarea id="edit_code" placeholder="Just write JS code here to slellify it!">const fireball = () => {
+    const a = [-6.5];
+    const isActive = true; /*nonl*/
+
+    const generateMessage = (name) => {
+        const formatName = (rawName) => {
+            return rawName.trim().toUpperCase();
+        }; /*nonl*/
+
+        const message = "Hello, " + formatName(name);
+        return message; /*nonl*/
+    }; /*nonl*/
+
+    const calculate = () => { /*nonl*/
+        const baseValue = (param1, param2) => {
+            return isActive ? 1 : 0;
+        }; /*nonl*/
+
+        const result = a[0] + baseValue();
+        return result; /*nonl*/
+    }; /*nonl*/
+    
+
+    console.log(generateMessage("Alice"), calculate());
+}; /*nonl*/</textarea>
 		<svg id="circleSvg" width="800" height="800" xmlns="http://www.w3.org/2000/svg"></svg>
 	</main>
 </body>

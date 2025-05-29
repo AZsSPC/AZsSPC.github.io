@@ -1,20 +1,3 @@
-@media screen and (min-width: 800px) {}
-
-
-
-svg {
-    background: #000;
-    display: block;
-    margin: auto;
-}
-
-text {
-    font: 16px monospace;
-    text-anchor: middle;
-    dominant-baseline: middle;
-}
-
-
 g.ring {
     /* animation: spin 30s linear infinite;*/
 }
@@ -30,5 +13,45 @@ g.ring:nth-of-type(2n) {
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+main {
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+#edit_code {
+    display: block;
+    border: solid 2px var(--c-header);
+    height: 80dvh;
+    width: 50dvw;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+#circleSvg {
+    display: block;
+    width: 90dvmin;
+    height: 90dvmin;
+}
+
+@media screen and (max-width: 800px) {
+    main {
+        flex-direction: column-reverse;
+    }
+
+    #circleSvg {
+        width: 50dvmin;
+        height: 50dvmin;
+    }
+
+    #edit_code {
+        display: block;
+        border: solid 2px var(--c-header);
+        height: calc(90dvh - 50dvmin);
+        width: 100%;
     }
 }
