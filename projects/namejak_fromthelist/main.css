@@ -1,0 +1,53 @@
+main {
+    padding: 1rem;
+    height: 100dvh;
+    justify-content: center;
+}
+
+.rylak_metallhead {
+    font-weight: 400;
+    font-style: normal;
+    font-size: 72px;
+    text-align: center;
+    /* font-weight: bold; */
+    background-color: rgb(214, 138, 175);
+    padding: .5em 1em;
+    border-radius: 2em;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    text-shadow: 0 0 15px rgb(143, 20, 87);
+    box-shadow: 0 0 15px rgb(143, 20, 87);
+    cursor: pointer;
+    position: relative;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.rylak_metallhead::after {
+    position: absolute;
+    display: block;
+    content: 'Just click to refresh!';
+    font-size: 16px;
+    bottom: -2rem;
+    left: 0;
+    right: 0;
+    animation: pulse 500ms infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media screen and (min-width: 800px) {}
