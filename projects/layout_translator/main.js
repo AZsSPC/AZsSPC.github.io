@@ -1,3 +1,77 @@
+(function () {
+	const header = document.createElement('header');
+	const fieldset = document.createElement('fieldset');
+
+	const fromLabel = document.createElement('label');
+	fromLabel.setAttribute('for', 'from');
+	fromLabel.textContent = 'From: ';
+
+	const fromSelect = document.createElement('select');
+	fromSelect.id = 'from';
+	fromSelect.onchange = () => set_tm(fromSelect.value, toSelect.value);
+	['en', 'ru', 'fr'].forEach(lang => {
+		const option = document.createElement('option');
+		option.value = lang;
+		option.textContent = lang;
+		if (lang === 'en') option.selected = true;
+		fromSelect.appendChild(option);
+	});
+
+	const toLabel = document.createElement('label');
+	toLabel.setAttribute('for', 'to');
+	toLabel.textContent = 'To: ';
+
+	const toSelect = document.createElement('select');
+	toSelect.id = 'to';
+	toSelect.onchange = () => set_tm(fromSelect.value, toSelect.value);
+	['en', 'ru', 'fr'].forEach(lang => {
+		const option = document.createElement('option');
+		option.value = lang;
+		option.textContent = lang;
+		if (lang === 'ru') option.selected = true;
+		toSelect.appendChild(option);
+	});
+
+	const copyButton = document.createElement('button');
+	copyButton.className = 'az-button';
+	copyButton.id = 'copy';
+	copyButton.textContent = 'copy translated';
+
+	fieldset.appendChild(fromLabel);
+	fieldset.appendChild(fromSelect);
+	fieldset.appendChild(toLabel);
+	fieldset.appendChild(toSelect);
+	fieldset.appendChild(copyButton);
+	header.appendChild(fieldset);
+
+	const main = document.createElement('main');
+
+	const inputLabel = document.createElement('label');
+	inputLabel.setAttribute('for', 'text-in');
+	const textIn = document.createElement('textarea');
+	textIn.id = 'text-in';
+	textIn.oninput = () => ttt(textIn.value);
+	inputLabel.appendChild(textIn);
+
+	const arrows = document.createElement('span');
+	arrows.id = 'arrows';
+	arrows.className = 'unselectable';
+	arrows.textContent = '↓ ↓ ↓';
+
+	const outputLabel = document.createElement('label');
+	outputLabel.setAttribute('for', 'text-out');
+	const textOut = document.createElement('span');
+	textOut.id = 'text-out';
+	outputLabel.appendChild(textOut);
+
+	main.appendChild(inputLabel);
+	main.appendChild(arrows);
+	main.appendChild(outputLabel);
+
+	document.body.appendChild(header);
+	document.body.appendChild(main);
+})();
+
 let et = document.getElementById('text-in'),
 	eo = document.getElementById('text-out'),
 	cb = document.getElementById('copy'),
@@ -6,7 +80,7 @@ let et = document.getElementById('text-in'),
 	translate_map,
 	allowed = ['en', 'ru', 'fr']
 
-cb.addEventListener('click', () => copy_to_clipboard(eo.innerText))
+cb.addEventListener('click', () => AZ.copyToClipboard(eo.innerText))
 
 function get_layout(from) {
 	let ret = undefined

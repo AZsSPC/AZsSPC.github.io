@@ -1,43 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Tattoo Templater</title>
-	<script type="text/javascript" src="/resources/custom_html.js"></script>
-	<script type="text/javascript" src="/resources/base.js"></script>
-	<script type="text/javascript">settings({html2canvas: true})</script>
 
-	<meta property="og:url" content="https://azsspc.github.io/projects/tattoo_templater/"/>
-	<meta property="og:title" content="AZsSPC | Tattoo Templater"/>
-	<meta property="og:description" content="Here ypu can make some tempates for tattoos"/>
-	<meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" href="/resources/img/fic.png">
+	<link rel="stylesheet" href="/resources/css/main.css">
+	<link rel="stylesheet" href="./main.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
+	<script type="text/javascript" src="/resources/base.js" defer></script>
+	<script type="module" src="./main.js" defer></script>
+
+	<title>AZsSPC • Tattoo Templater</title>
+	<meta property="og:url" content="https://azsspc.github.io/projects/tattoo_templater/" />
+	<meta property="og:title" content="AZsSPC • Tattoo Templater" />
+	<meta property="og:description" content="Here ypu can make some tempates for tattoos" />
+	<meta property="og:image" content="https://azsspc.github.io/img/icon.png" />
 </head>
-<body>
-<script type="text/javascript">nav()</script>
-<header>
-	<div>
-		<label is="az-input-button" color="red">Red <input id="kr" type="number" step=".01"></label>
-		<label is="az-input-button" color="green">Green <input id="kg" type="number" step=".01"></label>
-		<label is="az-input-button" color="blue">Blue <input id="kb" type="number" step=".01"></label>
-	</div>
-	<div>
-		<label is="az-input-button" color="magenta">Side <input id="side" type="number" step=".01"></label>
-		<label is="az-input-button" color="gold">Corner <input id="corner" type="number" step=".01"></label>
-		<label is="az-input-button" color="gray">Dark <input id="dark" type="number" step=".1"></label></div>
-	<div>
-		<label is="az-input-button" color="purple">Background <input id="cbg" type="color"></label>
-		<label is="az-input-button" color="purple">Foreground <input id="cfg" type="color"></label>
-		<button is="az-button" color="red" onclick="setDefaults();redrawImg(null)">Reset</button>
-		<label is="az-input-button" color="blue">Import <input id="img" type="file" accept="image/*"/></label></div>
-</header>
-<main>
-	<div id="images">
-		<img id="img_from" src="">
-		<div class="relative">
-			<img id="img_buf" src="">
-			<img id="img_to" src="">
-		</div>
-	</div>
-</main>
-</body>
+
+<body></body>
+
 </html>
-<script type="text/javascript" src="main.js"></script>

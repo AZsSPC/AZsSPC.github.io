@@ -1,3 +1,149 @@
+(function () {
+    const header = document.createElement('header');
+
+    const div1 = document.createElement('div');
+    const redLabel = document.createElement('label');
+    redLabel.className = 'az-input-button';
+    redLabel.setAttribute('color', 'red');
+    redLabel.textContent = 'Red ';
+    const redInput = document.createElement('input');
+    redInput.id = 'kr';
+    redInput.type = 'number';
+    redInput.step = '.01';
+    redLabel.appendChild(redInput);
+
+    const greenLabel = document.createElement('label');
+    greenLabel.className = 'az-input-button';
+    greenLabel.setAttribute('color', 'green');
+    greenLabel.textContent = 'Green ';
+    const greenInput = document.createElement('input');
+    greenInput.id = 'kg';
+    greenInput.type = 'number';
+    greenInput.step = '.01';
+    greenLabel.appendChild(greenInput);
+
+    const blueLabel = document.createElement('label');
+    blueLabel.className = 'az-input-button';
+    blueLabel.setAttribute('color', 'blue');
+    blueLabel.textContent = 'Blue ';
+    const blueInput = document.createElement('input');
+    blueInput.id = 'kb';
+    blueInput.type = 'number';
+    blueInput.step = '.01';
+    blueLabel.appendChild(blueInput);
+
+    div1.appendChild(redLabel);
+    div1.appendChild(greenLabel);
+    div1.appendChild(blueLabel);
+
+    const div2 = document.createElement('div');
+    const sideLabel = document.createElement('label');
+    sideLabel.className = 'az-input-button';
+    sideLabel.setAttribute('color', 'magenta');
+    sideLabel.textContent = 'Side ';
+    const sideInput = document.createElement('input');
+    sideInput.id = 'side';
+    sideInput.type = 'number';
+    sideInput.step = '.01';
+    sideLabel.appendChild(sideInput);
+
+    const cornerLabel = document.createElement('label');
+    cornerLabel.className = 'az-input-button';
+    cornerLabel.setAttribute('color', 'gold');
+    cornerLabel.textContent = 'Corner ';
+    const cornerInput = document.createElement('input');
+    cornerInput.id = 'corner';
+    cornerInput.type = 'number';
+    cornerInput.step = '.01';
+    cornerLabel.appendChild(cornerInput);
+
+    const darkLabel = document.createElement('label');
+    darkLabel.className = 'az-input-button';
+    darkLabel.setAttribute('color', 'gray');
+    darkLabel.textContent = 'Dark ';
+    const darkInput = document.createElement('input');
+    darkInput.id = 'dark';
+    darkInput.type = 'number';
+    darkInput.step = '.1';
+    darkLabel.appendChild(darkInput);
+
+    div2.appendChild(sideLabel);
+    div2.appendChild(cornerLabel);
+    div2.appendChild(darkLabel);
+
+    const div3 = document.createElement('div');
+    const bgLabel = document.createElement('label');
+    bgLabel.className = 'az-input-button';
+    bgLabel.setAttribute('color', 'purple');
+    bgLabel.textContent = 'Background ';
+    const bgInput = document.createElement('input');
+    bgInput.id = 'cbg';
+    bgInput.type = 'color';
+    bgLabel.appendChild(bgInput);
+
+    const fgLabel = document.createElement('label');
+    fgLabel.className = 'az-input-button';
+    fgLabel.setAttribute('color', 'purple');
+    fgLabel.textContent = 'Foreground ';
+    const fgInput = document.createElement('input');
+    fgInput.id = 'cfg';
+    fgInput.type = 'color';
+    fgLabel.appendChild(fgInput);
+
+    const resetButton = document.createElement('button');
+    resetButton.className = 'az-button';
+    resetButton.setAttribute('color', 'red');
+    resetButton.textContent = 'Reset';
+    resetButton.onclick = () => { setDefaults(); redrawImg(null); };
+
+    const importLabel = document.createElement('label');
+    importLabel.className = 'az-input-button';
+    importLabel.setAttribute('color', 'blue');
+    importLabel.textContent = 'Import ';
+    const importInput = document.createElement('input');
+    importInput.id = 'img';
+    importInput.type = 'file';
+    importInput.accept = 'image/*';
+    importLabel.appendChild(importInput);
+
+    div3.appendChild(bgLabel);
+    div3.appendChild(fgLabel);
+    div3.appendChild(resetButton);
+    div3.appendChild(importLabel);
+
+    header.appendChild(div1);
+    header.appendChild(div2);
+    header.appendChild(div3);
+
+    const main = document.createElement('main');
+    const imagesDiv = document.createElement('div');
+    imagesDiv.id = 'images';
+
+    const imgFrom = document.createElement('img');
+    imgFrom.id = 'img_from';
+    imgFrom.src = '';
+
+    const relativeDiv = document.createElement('div');
+    relativeDiv.className = 'relative';
+
+    const imgBuf = document.createElement('img');
+    imgBuf.id = 'img_buf';
+    imgBuf.src = '';
+
+    const imgTo = document.createElement('img');
+    imgTo.id = 'img_to';
+    imgTo.src = '';
+
+    relativeDiv.appendChild(imgBuf);
+    relativeDiv.appendChild(imgTo);
+    imagesDiv.appendChild(imgFrom);
+    imagesDiv.appendChild(relativeDiv);
+    main.appendChild(imagesDiv);
+
+    document.body.appendChild(header);
+    document.body.appendChild(main);
+})();
+
 let img_from = document.getElementById('img_from')
 let img_buf = document.getElementById('img_buf')
 let img_to = document.getElementById('img_to')

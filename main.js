@@ -45,4 +45,4 @@ AZ.locale.languages.ru.page = {
  */
 document.querySelector('header').innerHTML = AZ.locale.get('page.header')
 document.querySelector('main').innerHTML = AZ.locale.get('page.sections')
-reformatAZ()
+AZ.reformatAZ()

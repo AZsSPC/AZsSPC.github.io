@@ -217,7 +217,7 @@ const renderCodeToSpell = (code) => {
 
                     const rq = isNaN(char) ? (char === char.toLowerCase()
                         ? 1         // is default
-                        : 0.985     // is uppercase
+                        : 1 //0.985     // is uppercase
                     ) : 0.975;      // is number
 
                     g.setAttribute('transform', `rotate(${angle}) translate(0,-${radius * rq})`);
@@ -451,6 +451,7 @@ const renderCodeToSpell = (code) => {
 
         svg.setAttribute('viewBox', `${cx - size / 2} ${cy - size / 2} ${size} ${size}`);
     }
+
     layoutTree(functionTree);
     fitViewBox(50);
 }

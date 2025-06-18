@@ -1,20 +1,115 @@
+(function renderUI() {
+
+	const header = document.createElement('header');
+
+	const topControls = document.createElement('div');
+	const sizeLabel = document.createElement('label');
+	sizeLabel.setAttribute('class', 'az-input-button');
+	sizeLabel.setAttribute('color', 'magenta');
+	const sizeText = document.createTextNode('Size ');
+	const sizeInput = document.createElement('input');
+	sizeInput.id = 'w';
+	sizeInput.type = 'number';
+	sizeInput.min = '10';
+	sizeInput.max = '100';
+	sizeInput.step = '1';
+	sizeInput.value = '20';
+	sizeLabel.appendChild(sizeText);
+	sizeLabel.appendChild(sizeInput);
+
+	const brainLabel = document.createElement('label');
+	brainLabel.setAttribute('class', 'az-input-button');
+	brainLabel.setAttribute('color', 'magenta');
+	const brainText = document.createTextNode('Brain cells ');
+	const brainInput = document.createElement('input');
+	brainInput.id = 'b';
+	brainInput.type = 'number';
+	brainInput.min = '1';
+	brainInput.max = '50';
+	brainInput.step = '1';
+	brainInput.value = '5';
+	brainLabel.appendChild(brainText);
+	brainLabel.appendChild(brainInput);
+
+	const refreshButton = document.createElement('button');
+	refreshButton.setAttribute('class', 'az-button');
+	refreshButton.setAttribute('color', 'gold');
+	refreshButton.textContent = 'Refresh';
+	refreshButton.onclick = setup;
+
+	const runButton = document.createElement('button');
+	runButton.setAttribute('class', 'az-button az-run-button');
+	runButton.addEventListener('click', () => AZ.loop.click());
+
+	topControls.appendChild(sizeLabel);
+	topControls.appendChild(brainLabel);
+	topControls.appendChild(refreshButton);
+	topControls.appendChild(runButton);
+
+	const bottomControls = document.createElement('div');
+	const foodLabel = document.createElement('label');
+	foodLabel.setAttribute('class', 'az-input-button');
+	foodLabel.setAttribute('color', 'green');
+	const foodText = document.createTextNode('Food per cycle ');
+	const foodInput = document.createElement('input');
+	foodInput.type = 'range';
+	foodInput.id = 'food';
+	foodInput.min = '0';
+	foodInput.max = '50';
+	foodInput.value = '5';
+	foodInput.onchange = () => { fc = foodInput.value; };
+	foodLabel.appendChild(foodText);
+	foodLabel.appendChild(foodInput);
+
+	const speedLabel = document.createElement('label');
+	speedLabel.setAttribute('class', 'az-input-button');
+	speedLabel.setAttribute('color', 'purple');
+	const speedText = document.createTextNode('Delay between steps ');
+	const speedInput = document.createElement('input');
+	speedInput.type = 'range';
+	speedInput.id = 'speed';
+	speedInput.min = '0';
+	speedInput.max = '1000';
+	speedInput.value = '100';
+	speedInput.onchange = () => { AZ.loop.timeout = speedInput.value; };
+	speedLabel.appendChild(speedText);
+	speedLabel.appendChild(speedInput);
+
+	bottomControls.appendChild(foodLabel);
+	bottomControls.appendChild(speedLabel);
+
+	header.appendChild(topControls);
+	header.appendChild(bottomControls);
+
+	const main = document.createElement('main');
+	const canvas = document.createElement('canvas');
+	canvas.id = 'game';
+	canvas.className = 'unselectable';
+	canvas.width = 1000;
+	canvas.height = 1000;
+	main.appendChild(canvas);
+
+	document.body.appendChild(header);
+	document.body.appendChild(main);
+})();
+
 const
 	game = document.getElementById('game'),
 	game_ctx = game.getContext('2d'),
 	iw = document.getElementById('w'),
 	ib = document.getElementById('b'),
 	DEFGENES = 12, MUTATE_COUNT = 3, MUTATE_CHANCE = 0.1,
-	TYPE = {EMPTY: 0, VEG: 1, MEAT: 2, KIN: 3, CELL: 4, GARBAGE: 5, A: 6, B: 7},
-	ROTATE = {U: 0, UR: 1, R: 2, DR: 3, D: 4, DL: 5, L: 6, UL: 7},
-	ACTION = {NONE: 0, MOVE: 1, RIGHT: 2, LEFT: 3, EAT: 4, HIT: 5, A: 6, B: 7}//ACT - move, bite, eat, birth
+	TYPE = { EMPTY: 0, VEG: 1, MEAT: 2, KIN: 3, CELL: 4, GARBAGE: 5, A: 6, B: 7 },
+	ROTATE = { U: 0, UR: 1, R: 2, DR: 3, D: 4, DL: 5, L: 6, UL: 7 },
+	ACTION = { NONE: 0, MOVE: 1, RIGHT: 2, LEFT: 3, EAT: 4, HIT: 5, A: 6, B: 7 }//ACT - move, bite, eat, birth
 
 let petri = [], width, cof, cell_rad, pul_rad, food_rad, bc, fc = 5, id_counter, lineW,
-	target = {id: 1, type: 4}, fixer = false, steps
+	target = { id: 1, type: 4 }, fixer = false, steps
 
 function setup() {
 	steps = 0
-	AZ.loop = false
-	loop_change_view()
+	AZ.loop.value = false
+	AZ.loop.change_view()
 	width = parseInt(iw.value)
 	bc = parseInt(ib.value)
 	cof = 1000 / width | 0
@@ -27,7 +122,7 @@ function setup() {
 	for (let x = 0; x < width; x++) {
 		petri[x] = []
 		for (let y = 0; y < width; y++) {
-			petri[x][y] = Math.random() < .3 ?new Cell(bc) :Math.random() < .3 ?TYPE.VEG :TYPE.EMPTY
+			petri[x][y] = Math.random() < .3 ? new Cell(bc) : Math.random() < .3 ? TYPE.VEG : TYPE.EMPTY
 		}
 	}
 	draw()
@@ -67,7 +162,7 @@ class Cell {
 
 		let next_cell = this.next_from(x, y, this.way)
 		let front = petri[next_cell[0]][next_cell[1]]
-		let front_type = typeof front === 'object' ?front.kin === this.kin ?TYPE.KIN :TYPE.CELL :front
+		let front_type = typeof front === 'object' ? front.kin === this.kin ? TYPE.KIN : TYPE.CELL : front
 		let action = parseInt(this.dna.substr((DEFGENES + this.stp) * 8, 8).split('')[front_type])
 
 		switch (action) {
@@ -190,20 +285,20 @@ class Cell {
 			//{EMPTY: 0, VEG: 1, MEAT: 2, KIN: 3, CELL: 4, GARBAGE: 5, A: 6, B: 7},
 			+ '\n\n%c    | %c   %c | %c   %c | %c   %c | CEL | %c   %c |  ?  |  ? %c'
 			+ t[6].replaceAll(/(\d)(\d)(\d)(\d)(\d)(\d)(\d)(\d)/g, '\n$1 | $2 | $3 | $4 | $5 | $6 | $7 | $8')
-			.replaceAll(0, '   ')
-			.replaceAll(1, 'MOV')
-			.replaceAll(2, ' > ')
-			.replaceAll(3, ' < ')
-			.replaceAll(4, 'EAT')
-			.replaceAll(5, 'BIT')
-			.replaceAll(6, '   ')
-			.replaceAll(7, '   ')
+				.replaceAll(0, '   ')
+				.replaceAll(1, 'MOV')
+				.replaceAll(2, ' > ')
+				.replaceAll(3, ' < ')
+				.replaceAll(4, 'EAT')
+				.replaceAll(5, 'BIT')
+				.replaceAll(6, '   ')
+				.replaceAll(7, '   ')
 			+ '\n\n%c' + this.dna,
 
 			f + '#888',
-			'', f + (a < 0.3 ?'coral' :a < 0.7 ?'gold' :'limegreen'),
-			'', f + (b > 0.3 ?'coral' :b > 0.7 ?'gold' :'limegreen'),
-			'', f + (c < 0.3 ?'coral' :c < 0.7 ?'gold' :'limegreen'),
+			'', f + (a < 0.3 ? 'coral' : a < 0.7 ? 'gold' : 'limegreen'),
+			'', f + (b > 0.3 ? 'coral' : b > 0.7 ? 'gold' : 'limegreen'),
+			'', f + (c < 0.3 ? 'coral' : c < 0.7 ? 'gold' : 'limegreen'),
 			'', f + '#888',
 			'', f + '#888',
 			'', f + '#888',
@@ -234,7 +329,7 @@ class Cell {
 }
 
 function draw() {
-	if (AZ.timeout < 10 && steps % 10 !== 0) return
+	if (AZ.loop.timeout < 10 && steps % 10 !== 0) return
 	let tx = -1, ty = -1
 	game_ctx.clearRect(0, 0, 1000, 1000)
 	game_ctx.font = food_rad + 'px serif'
@@ -307,10 +402,10 @@ function look(x, y) {
 	alert(x + ' ' + y + ' ' + petri[y][x])
 }
 
-AZ.run = async function() {
-	AZ.loop = true
-	while (AZ.loop && cycle()) await new Promise(res => setTimeout(res, AZ.timeout))
-	loop_change_view()
+AZ.loop.run = async function () {
+	AZ.loop.value = true
+	while (AZ.loop.value && cycle()) await new Promise(res => setTimeout(res, AZ.loop.timeout))
+	AZ.loop.change_view()
 }
 
 function d2h(d) {
@@ -325,19 +420,19 @@ function screen_clicked(e) {
 	let rect = e.target.getBoundingClientRect(),
 		x = (e.clientX - rect.left) / game.offsetWidth * 1000 / cof | 0,
 		y = (e.clientY - rect.top) / game.offsetHeight * 1000 / cof | 0
-	target = typeof petri[x][y] === 'object' ?{id: petri[x][y].id, type: TYPE.CELL} :{x: x, y: y, type: -TYPE.CELL}
+	target = typeof petri[x][y] === 'object' ? { id: petri[x][y].id, type: TYPE.CELL } : { x: x, y: y, type: -TYPE.CELL }
 	draw()
 	if (typeof petri[x][y] === 'object') petri[x][y].prettyLog()
 }
 
-on_keys_action(loop_click, 'KeyP')
-on_keys_action(cycle, 'KeyS')
-on_keys_action(setup, 'KeyR')
+AZ.onKeysAction(AZ.loop.click, 'KeyP')
+AZ.onKeysAction(cycle, 'KeyS')
+AZ.onKeysAction(setup, 'KeyR')
 
 game.addEventListener('click', e => {
 	screen_clicked(e)
 	e.preventDefault()
 })
 
-loop_change_view(false)
+AZ.loop.change_view(false)
 setup()

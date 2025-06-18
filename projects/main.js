@@ -1,3 +1,16 @@
+(function () {
+	const header = document.createElement('header');
+
+	const main = document.createElement('main');
+
+	const projectList = document.createElement('div');
+	projectList.id = 'project_list';
+
+	main.appendChild(projectList);
+	document.body.appendChild(header);
+	document.body.appendChild(main);
+})()
+
 AZ.locale.languages.en.page = {
 	header: '<span>Theres <a is="az-link-button" onclick="displayProjects([])">all</a> my projects! (Which I want to introduce)</span>',
 	tagnames: {
@@ -214,9 +227,9 @@ const PROJECTS = [
 		AZ.locale.get('page.projects.history_line.lore'),
 		['WEB', 'history', 'SCIENCE', 'FOR_ALL']),
 
-	new Project(AZ.locale.get('page.projects.laplas_matrix_helper.name'), 'laplas_matrix_helper', true, -2,
-		AZ.locale.get('page.projects.laplas_matrix_helper.lore'),
-		['WEB', 'UTIL', 'TEX', 'MATH', 'SCIENCE']),
+	// new Project(AZ.locale.get('page.projects.laplas_matrix_helper.name'), 'laplas_matrix_helper', true, -2,
+	// 	AZ.locale.get('page.projects.laplas_matrix_helper.lore'),
+	// 	['WEB', 'UTIL', 'TEX', 'MATH', 'SCIENCE']),
 
 	new Project(AZ.locale.get('page.projects.layout_translator.name'), 'layout_translator', true, 0,
 		AZ.locale.get('page.projects.layout_translator.lore'),
@@ -234,11 +247,11 @@ const PROJECTS = [
 		AZ.locale.get('page.projects.sapper.lore'),
 		['WEB', 'GAME', 'FOR_ALL']),
 
-	new Project(AZ.locale.get('page.projects.score_table.name'), 'score_table', true, 0,
-		AZ.locale.get('page.projects.score_table.lore'),
-		['WEB']),
+	// new Project(AZ.locale.get('page.projects.score_table.name'), 'score_table', true, 0,
+	// 	AZ.locale.get('page.projects.score_table.lore'),
+	// 	['WEB']),
 
-	new Project(AZ.locale.get('page.projects.seize_territory.name'), 'seize_territory', true, 0,
+	new Project(AZ.locale.get('page.projects.seize_territory.name'), 'seize_territory', false, 0,
 		AZ.locale.get('page.projects.seize_territory.lore'),
 		['WEB', 'GAME']),
 
@@ -250,13 +263,13 @@ const PROJECTS = [
 		AZ.locale.get('page.projects.turing_machine.lore'),
 		['WEB', 'UTIL', 'PROGRAMMING', 'SCIENCE']),
 
-	new Project(AZ.locale.get('page.projects.web_syntax.name'), 'web_syntax', false, 1,
-		AZ.locale.get('page.projects.web_syntax.lore'),
-		['WEB', 'UTIL', 'REGEX', 'PROGRAMMING']),
+	// new Project(AZ.locale.get('page.projects.web_syntax.name'), 'web_syntax', false, 1,
+	// 	AZ.locale.get('page.projects.web_syntax.lore'),
+	// 	['WEB', 'UTIL', 'REGEX', 'PROGRAMMING']),
 
-	new Project(AZ.locale.get('page.projects.dnd_manager.name'), 'dnd_manager', false, 0,
-		AZ.locale.get('page.projects.dnd_manager.lore'),
-		['WEB']),
+	// new Project(AZ.locale.get('page.projects.dnd_manager.name'), 'dnd_manager', false, 0,
+	// 	AZ.locale.get('page.projects.dnd_manager.lore'),
+	// 	['WEB']),
 
 	//BROKEN OR UNDER DEV
 
@@ -299,7 +312,7 @@ function displayProjects(tags = []) {
 				<p class="plist-tags">
 			${project.tag.map(tag => {
 				const [text, color] = TAG[tag] ?? [tag, 'gray']
-				return `<button is="az-button" color="${color}" onclick="displayProjects(['${tag}']);return false;">${text}</button>`
+				return `<button class="az-button" color="${color}" onclick="displayProjects(['${tag}']);return false;">${text}</button>`
 			}).join('')}
 				</p>`
 			plist.appendChild(tile)

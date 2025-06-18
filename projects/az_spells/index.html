@@ -2,24 +2,27 @@
 <html lang="en">
 
 <head>
-	<title>AZ Spells</title>
-	<script type="text/javascript" src="/resources/custom_html.js"></script>
-	<script type="text/javascript" src="/resources/base.js"></script>
-	<script type="text/javascript">settings()</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="/resources/img/fic.png">
+    <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="stylesheet" href="./main.css">
 
-	<meta property="og:url" content="https://azsspc.github.io/projects/az_spells/" />
-	<meta property="og:title" content="AZsSPC | AZ Spells" />
-	<meta property="og:description"
-		content="Visualizes JavaScript as animated spell circles\n\nDynamic magic system for TTRPGs" />
-	<meta property="og:image" content="https://azsspc.github.io/img/icon.png" />
-	<script type="text/javascript" src="main.js" defer></script>
+    <script type="text/javascript" src="/resources/base.js" defer></script>
+    <script type="module" src="./main.js" defer></script>
+
+    <title>AZsSPC • Spells</title>
+    <meta property="og:url" content="https://azsspc.github.io/projects/az_spells/" />
+    <meta property="og:title" content="AZsSPC • Spells" />
+    <meta property="og:description"
+        content="Visualizes JavaScript as animated spell circles\n\nDynamic magic system for TTRPGs" />
+    <meta property="og:image" content="https://azsspc.github.io/img/icon.png" />
 </head>
 
 <body>
-	<script type="text/javascript">nav()</script>
-	<header><span>AZ Spells</span></header>
-	<main>
-		<textarea id="edit_code" placeholder="Just write JS code here to slellify it!">const fireball = () => {
+    <header><span>AZ Spells</span></header>
+    <main>
+        <textarea id="edit_code" placeholder="Just write JS code here to slellify it!">const fireball = () => {
     const a = [-6.5];
     const isActive = true; /*nonl*/
 
@@ -44,8 +47,8 @@
 
     console.log(generateMessage("Alice"), calculate());
 }; /*nonl*/</textarea>
-		<svg id="circleSvg" width="800" height="800" xmlns="http://www.w3.org/2000/svg"></svg>
-	</main>
+        <svg id="circleSvg" width="800" height="800" xmlns="http://www.w3.org/2000/svg"></svg>
+    </main>
 </body>
 
 </html>

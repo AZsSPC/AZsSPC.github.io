@@ -54,16 +54,16 @@ function setRule(q, c) {
 	document.getElementById('me_i' + q + '_j' + c).innerText = transcriptRule(q, c)[0]
 }
 
-AZ.run = async function () {
+AZ.loop.run = async function () {
 	refreshString()
-	AZ.loop = true
+	AZ.loop.value = true
 	updateRules()
 	console.log(string)
 	console.log(rules)
 
 	Q = 0
 	steps = 0
-	while (machineStep() !== TERMINATION && AZ.loop) await new Promise(res => setTimeout(res, AZ.timeout))
+	while (machineStep() !== TERMINATION && AZ.loop.value) await new Promise(res => setTimeout(res, AZ.loop.timeout))
 
 	refreshString()
 	drawLine()
@@ -139,19 +139,19 @@ function refreshString() {
 function clearString() {
 	string = {}
 	cell = 0
-	AZ.loop = false
+	AZ.loop.value = false
 	Q = 0
 	drawLine()
 }
 
 function copyString() {
-	buf_string = {...(string ?? {})}
+	buf_string = { ...(string ?? {}) }
 }
 
 function pasteString() {
-	string = {...(buf_string ?? {})}
+	string = { ...(buf_string ?? {}) }
 	cell = 0
-	AZ.loop = false
+	AZ.loop.value = false
 	Q = 0
 	drawLine()
 }
@@ -159,38 +159,32 @@ function pasteString() {
 function exportTM() {
 	updateRules()
 	let filename = prompt('Name this file?')
-	if (filename) create_file_and_download(filename + '.json', JSON.stringify({
+	if (filename) AZ.downloadTextAsFile(filename + '.json', JSON.stringify({
 		abc: abc,
 		rules: rules
 	}))
 }
 
 function importTM() {
-	switchDisplay(popup_upload, 'grid')
+	AZ.switchDisplay(popup_upload, 'grid')
 }
 
 function uploadTM(el) {
-	on_file_uploaded(el, (t) => {
+	AZ.onFileUploaded(el, (t) => {
 		let json = JSON.parse(t)
 		setABC(json.abc)
 		updateRules(json.rules)
 	}, (e) => {
 	})
-	switchDisplay(popup_upload, 'grid')
+	AZ.switchDisplay(popup_upload, 'grid')
 }
 
 function makeImg() {
 	updateRules()
-	takeshot(document.getElementById('turing_table'),
-		(c) => {
-			let link = document.createElement('a')
-			link.setAttribute('download', 'AZ-TM shot.png')
-			link.setAttribute('href', c.toDataURL('image/png').replace('image/png', 'image/octet-stream'))
-			link.click()
-		})
+	AZ.downloadShot(document.getElementById('turing_table'), 'AZ-TM shot')
 }
 
 updateRules()
 drawLine()
 
-loop_change_view(false)
+AZ.loop.change_view(false)

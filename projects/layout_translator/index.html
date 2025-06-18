@@ -1,40 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<title>Layout Translator</title>
-	<script type="text/javascript" src="/resources/custom_html.js"></script>
-	<script type="text/javascript" src="/resources/base.js"></script>
-	<script type="text/javascript">settings()</script>
 
-	<meta property="og:url" content="https://azsspc.github.io/projects/laoyut_translator/"/>
-	<meta property="og:title" content="AZsSPC | Main page"/>
-	<meta property="og:description" content="This site may for all: coders, students, kids, humans, aliens... If you find something useful - why not to use it?"/>
-	<meta property="og:image" content="https://azsspc.github.io/img/icon.png"/>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" href="/resources/img/fic.png">
+	<link rel="stylesheet" href="/resources/css/main.css">
+	<link rel="stylesheet" href="./main.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+	<script type="text/javascript" src="/resources/base.js" defer></script>
+	<script type="module" src="./main.js" defer></script>
+
+	<title>AZsSPC • Layout Translator</title>
+	<meta property="og:url" content="https://azsspc.github.io/projects/laoyut_translator/" />
+	<meta property="og:title" content="AZsSPC • Layout Translator" />
+	<meta property="og:description" content="Insert mistyped russian or ukrainian text and receive the right version" />
+	<meta property="og:image" content="https://azsspc.github.io/img/icon.png" />
 </head>
-<body>
-<script type="text/javascript">nav()</script>
-<header>
-	<fieldset>
-		<label for="from">From: </label>
-		<select id="from" onchange="set_tm(sf.value,st.value)">
-			<option value="en" selected>en</option>
-			<option value="ru">ru</option>
-			<option value="fr">fr</option>
-		</select>
-		<label for="to">To: </label>
-		<select id="to" onchange="set_tm(sf.value,st.value)">
-			<option value="en">en</option>
-			<option value="ru" selected>ru</option>
-			<option value="fr">fr</option>
-		</select>
-		<button is="az-button" id="copy">copy translated</button>
-	</fieldset>
-</header>
-<main>
-	<label for="text-in"><textarea id="text-in" oninput="ttt(this.value)"></textarea></label>
-	<span id="arrows" class="unselectable">↓ ↓ ↓</span>
-	<label for="text-out"><span id="text-out"></span></label>
-</main>
-</body>
+
+<body></body>
+
 </html>
-<script type="text/javascript" src="main.js"></script>

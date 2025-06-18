@@ -13,22 +13,24 @@
 	<script type="text/javascript" src="/resources/base.js" defer></script>
 	<script type="module" src="./main.js" defer></script>
 
-	<title>AZsSPC • Score Table</title>
-	<meta property="og:url" content="https://azsspc.github.io/projects/score_table/" />
-	<meta property="og:title" content="AZsSPC • Score Table" />
-	<meta property="og:description" content="Tust test it" />
+	<title>AZsSPC • FormulaZ</title>
+	<meta property="og:url" content="https://azsspc.github.io/projects/formulaz/" />
+	<meta property="og:title" content="AZsSPC • FormulaZ" />
+	<meta property="og:description"
+		content="A collection of formulas in physics, mathematics and other subjects with a convenient search" />
 	<meta property="og:image" content="https://azsspc.github.io/img/icon.png" />
+
+	<script type="text/javascript"
+		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 
 <body>
 	<header>
-		<button is="az-button" onclick="new_table()">new table</button>
-		<button is="az-button" onclick="new_score_template()">new score</button>
+		<div id="f_b">α</div>
 	</header>
 	<main>
-		<div id="tables"></div>
+		<div id="f_r" class="not-jbm"></div>
 	</main>
-	<form id="constructor"></form>
 </body>
 
 </html>

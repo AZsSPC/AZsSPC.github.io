@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" href="/resources/img/fic.png">
+	<link rel="stylesheet" href="/resources/css/main.css">
+	<link rel="stylesheet" href="./main.css">
+
+	<script type="text/javascript" src="/resources/custom_html.js" defer></script>
+	<script type="text/javascript" src="/resources/base.js" defer></script>
+	<script type="module" src="./main.js" defer></script>
+
+	<title>AZsSPC • Azembly</title>
+	<meta property="og:url" content="https://azsspc.github.io/projects/azembly/" />
+	<meta property="og:title" content="AZsSPC • Azembly" />
+	<meta property="og:description" content="Azembly" />
+	<meta property="og:image" content="https://azsspc.github.io/img/icon.png" />
+
+	<!--
+	<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	-->
+</head>
+
+<body>
+	<main>
+		<div id="tab">
+			<button id="edit_pane_refresh" title="Reformatting code using regex">reformat</button>
+			<button id="edit_pane_download" title="Download this code as ASM code">download</button>
+			<button id="edit_pane_download_az" title="Download this code as AZM code">save az</button>
+			<button id="edit_pane_upload" title="Upload file here! (syntax automatically changed)">upload</button>
+		</div>
+		<div id="ec" spellcheck="false">
+			<ol id="epf"></ol>
+			<div id="ep" contenteditable="PLAINTEXT-ONLY"></div>
+		</div>
+		<div id="popup_syntax" style="display:none"></div>
+		<form id="popup_upload" style="display:none"><input type="file" name="photo" onchange="on_file_uploaded(this)">
+			<div>Drop files<br><br>or<br><br>Click here</div>
+		</form>
+	</main>
+</body>
+
+</html>

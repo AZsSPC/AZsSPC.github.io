@@ -1,57 +1,66 @@
-g.ring {
-    /* animation: spin 30s linear infinite;*/
-}
+ @font-face {
+     font-family: "DND_Font";
+     src: url("./font.otf") format("otf");
+ }
 
-g.ring:nth-of-type(2n) {
-    animation-direction: reverse;
-}
+ g.ring {
+     /* animation: spin 30s linear infinite;*/
+ }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
+ g.ring:nth-of-type(2n) {
+     animation-direction: reverse;
+ }
 
-    to {
-        transform: rotate(360deg);
-    }
-}
+ @keyframes spin {
+     from {
+         transform: rotate(0deg);
+     }
 
-main {
-    flex-direction: row-reverse;
-    justify-content: center;
-    padding: 1rem;
-    gap: 1rem;
-}
+     to {
+         transform: rotate(360deg);
+     }
+ }
 
-#edit_code {
-    display: block;
-    border: solid 2px var(--c-header);
-    height: 80dvh;
-    width: 50dvw;
-    padding: 1rem;
-    border-radius: 1rem;
-}
+ main {
+     flex-direction: row-reverse;
+     justify-content: center;
+     padding: 1rem;
+     gap: 1rem;
+ }
 
-#circleSvg {
-    display: block;
-    width: 90dvmin;
-    height: 90dvmin;
-}
+ #edit_code {
+     display: block;
+     border: solid 2px var(--c-header);
+     height: 80dvh;
+     width: 50dvw;
+     padding: 1rem;
+     border-radius: 1rem;
+ }
 
-@media screen and (max-width: 800px) {
-    main {
-        flex-direction: column-reverse;
-    }
+ #circleSvg {
+     display: block;
+     width: 90dvmin;
+     height: 90dvmin;
+ }
 
-    #circleSvg {
-        width: 50dvmin;
-        height: 50dvmin;
-    }
+ text {
+     font-family: "DND_Font";
+ }
 
-    #edit_code {
-        display: block;
-        border: solid 2px var(--c-header);
-        height: calc(90dvh - 50dvmin);
-        width: 100%;
-    }
-}
+ @media screen and (max-width: 800px) {
+     main {
+         flex-direction: column-reverse;
+     }
+
+     #circleSvg {
+         width: 50dvmin;
+         height: 50dvmin;
+     }
+
+     #edit_code {
+         display: block;
+         border: solid 2px var(--c-header);
+         height: calc(90dvh - 50dvmin);
+         width: 100%;
+     }
+ }
