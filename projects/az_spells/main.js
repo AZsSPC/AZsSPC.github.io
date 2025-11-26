@@ -4,7 +4,6 @@ const NS = svg.namespaceURI;
 
 const renderCodeToSpell = (code) => {
     svg.innerHTML = "";
-
     let uuid = 0
     const extractFunctionsRecursively = (code, label = 'main', params = [], level = 0, fid = 0) => {
         const children = [];
@@ -456,8 +455,9 @@ const renderCodeToSpell = (code) => {
     fitViewBox(50);
 }
 
-const code = `
-const fireball = () => {
+
+const ted = document.getElementById('edit_code');
+ted.value = `const fireball = () => {
     const a = [-6.5];
     const isActive = true; /*nonl*/
 
@@ -477,16 +477,11 @@ const fireball = () => {
 
         const result = a[0] + baseValue();
         return result; /*nonl*/
-    }; /*nonl*/
+    };
     
 
     console.log(generateMessage("Alice"), calculate());
-}; /*nonl*/
-`;
-
-renderCodeToSpell(code)
-
-const ted = document.getElementById('edit_code')
-ted.addEventListener(
-    'input', () => renderCodeToSpell(ted.value)
-)
+}; /*nonl*/`
+ted.addEventListener('input', () => renderCodeToSpell(ted.value));
+ted.addEventListener('change', () => renderCodeToSpell(ted.value));
+renderCodeToSpell(ted.value);
