@@ -48,7 +48,7 @@ const AZ = {
 			);
 		}
 	},
-	getReplaceHref: async function (regex = /^.+(github.io)/, replace = 'https://github.com/azsspc/azsspc.github.io/blob/main') {
+	getReplaceHref: function (regex = /^.+(github.io)/, replace = 'https://github.com/azsspc/azsspc.github.io/blob/main') {
 		return location.href.replace(regex, replace);
 	},
 	on_text_from_cloud_loaded: function (file, func) {
